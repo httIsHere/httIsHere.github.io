@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="在项目（vue）测试过程中发现，ios10一下版本的浏览器均无法正常加载，出现白屏现象，开始以为是不支持es6语法的原因，但是添加es6转es5的配置之后还是无法加载，通过找了一系列方法发现可能是swiper造成的（首页使用了swiper进行图片轮播）。解决：将swiper4.4.1-&amp;gt;3.4.2，并修改一定的语法。12345678910111213141516171819202122//">
+<meta name="description" content="在JavaScript内Function有3个自带的方法（call，apply，bind），均是为了改变函数体内的this指向。  相同：call，apply，bind函数第一个参数都是this要指向的对象，即想指定的上下文。 区别：  apply的第二个参数是一个参数数组； call第二个及以后是多个参数（即参数数组内容全部列举）； bind会创建一个新函数（绑定函数），返回也是函数，当调用这">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ios10以下版本内浏览器无法打开vue项目">
-<meta property="og:url" content="http://yoursite.com/2019/01/21/yuque/ios10以下版本内浏览器无法打开vue项目/index.html">
+<meta property="og:title" content="js绑定call, apply, bind">
+<meta property="og:url" content="http://yoursite.com/2019/01/23/js绑定/index.html">
 <meta property="og:site_name" content="HTTISHERE">
-<meta property="og:description" content="在项目（vue）测试过程中发现，ios10一下版本的浏览器均无法正常加载，出现白屏现象，开始以为是不支持es6语法的原因，但是添加es6转es5的配置之后还是无法加载，通过找了一系列方法发现可能是swiper造成的（首页使用了swiper进行图片轮播）。解决：将swiper4.4.1-&amp;gt;3.4.2，并修改一定的语法。12345678910111213141516171819202122//">
+<meta property="og:description" content="在JavaScript内Function有3个自带的方法（call，apply，bind），均是为了改变函数体内的this指向。  相同：call，apply，bind函数第一个参数都是this要指向的对象，即想指定的上下文。 区别：  apply的第二个参数是一个参数数组； call第二个及以后是多个参数（即参数数组内容全部列举）； bind会创建一个新函数（绑定函数），返回也是函数，当调用这">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-21T09:49:07.664Z">
+<meta property="og:updated_time" content="2019-01-24T01:43:11.908Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ios10以下版本内浏览器无法打开vue项目">
-<meta name="twitter:description" content="在项目（vue）测试过程中发现，ios10一下版本的浏览器均无法正常加载，出现白屏现象，开始以为是不支持es6语法的原因，但是添加es6转es5的配置之后还是无法加载，通过找了一系列方法发现可能是swiper造成的（首页使用了swiper进行图片轮播）。解决：将swiper4.4.1-&amp;gt;3.4.2，并修改一定的语法。12345678910111213141516171819202122//">
+<meta name="twitter:title" content="js绑定call, apply, bind">
+<meta name="twitter:description" content="在JavaScript内Function有3个自带的方法（call，apply，bind），均是为了改变函数体内的this指向。  相同：call，apply，bind函数第一个参数都是this要指向的对象，即想指定的上下文。 区别：  apply的第二个参数是一个参数数组； call第二个及以后是多个参数（即参数数组内容全部列举）； bind会创建一个新函数（绑定函数），返回也是函数，当调用这">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/01/21/yuque/ios10以下版本内浏览器无法打开vue项目/">
+  <link rel="canonical" href="http://yoursite.com/2019/01/23/js绑定/">
 
 
 
 
 
-  <title>ios10以下版本内浏览器无法打开vue项目 | HTTISHERE</title>
+  <title>js绑定call, apply, bind | HTTISHERE</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/21/yuque/ios10以下版本内浏览器无法打开vue项目/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/23/js绑定/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="httishere">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ios10以下版本内浏览器无法打开vue项目</h1>
+          <h1 class="post-title" itemprop="name headline">js绑定call, apply, bind</h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-21T09:53:08+08:00">
-                2019-01-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-23T16:01:15+08:00">
+                2019-01-23
               </time>
             
 
@@ -271,6 +271,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/js/" itemprop="url" rel="index">
+                    <span itemprop="name">js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -299,7 +321,30 @@
       
 
       
-        <p>在项目（vue）测试过程中发现，ios10一下版本的浏览器均无法正常加载，出现白屏现象，开始以为是不支持es6语法的原因，但是添加es6转es5的配置之后还是无法加载，<em>通过找了一系列方法发现可能是swiper造成的（首页使用了swiper进行图片轮播）</em>。<br><br>解决：将swiper4.4.1-&gt;3.4.2，并修改一定的语法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">// 4.4.1</span><br><span class="line">var swiper = new Swiper(&quot;.swiper-container&quot;, &#123;</span><br><span class="line">  loop: true,</span><br><span class="line">  speed: 800,</span><br><span class="line">  autoplay: &#123;</span><br><span class="line">    disableOnInteraction: false, //手动滑动之后不打断播放</span><br><span class="line">    delay: 2000</span><br><span class="line">  &#125;,</span><br><span class="line">  observer: true, //监听，当改变swiper的样式（例如隐藏/显示）或者修改swiper的子元素时，自动初始化swiper。</span><br><span class="line">  pagination: &#123;</span><br><span class="line">    el: &quot;.swiper-pagination&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line">// 3.4.2</span><br><span class="line">var swiper = new Swiper(&quot;.swiper-container&quot;, &#123;</span><br><span class="line">  loop: true,</span><br><span class="line">  speed: 800,</span><br><span class="line">  autoplay: 2000,</span><br><span class="line">  autoplayDisableOnInteraction: false,</span><br><span class="line">  observer: true, //监听，当改变swiper的样式（例如隐藏/显示）或者修改swiper的子元素时，自动初始化swiper。</span><br><span class="line">  pagination : &apos;.swiper-pagination&apos;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+        <blockquote>
+<p>在JavaScript内Function有3个自带的方法（call，apply，bind），均是为了改变函数体内的this指向。</p>
+</blockquote>
+<p>相同：call，apply，bind函数第一个参数都是this要指向的对象，即想指定的上下文。</p>
+<p>区别：</p>
+<ul>
+<li>apply的第二个参数是一个参数数组；</li>
+<li>call第二个及以后是多个参数（即参数数组内容全部列举）；</li>
+<li>bind会创建一个新函数（绑定函数），返回也是函数，当调用这个绑定函数时，绑定函数会以创建它时传入 bind() 方法的第一个参数 作为 this，传入 bind() 方法的 第二个以及以后的参数加上绑定函数运行时本身的参数按照顺序作为原函数的参数来调用原函数，使用bind不会立即执行，在调用创建的新的函数才会执行。</li>
+</ul>
+<p>apply和call功能是完全一样的，传参就在于传参的方式。</p>
+<p>apply, call用法：</p>
+<ol>
+<li><p>数组追加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var array1 = [12, &apos;foo&apos;, &#123;name:&apos;Joe&apos;&#125;, -2458];</span><br><span class="line">var array2 = [&apos;Doe&apos; , 555 , 100];</span><br><span class="line">Array.prototype.push.call(array1, array2);</span><br><span class="line">// [12, &apos;foo&apos;, &#123;name:&apos;Joe&apos;&#125;, -2458, [&apos;Doe&apos; , 555 , 100]]</span><br><span class="line">// array1.length = 5</span><br><span class="line"></span><br><span class="line">Array.prototype.push.apply(array1, array2); // 这里用 apply 第二个参数是一个数组</span><br><span class="line">// [12, &apos;foo&apos;, &#123;name:&apos;Joe&apos;&#125;, -2458, &apos;Doe&apos; , 555 , 100]</span><br><span class="line">// array1.length = 7</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获得数组内的最大值，最小值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 由于没有指向，第一个参数传null或本身</span><br><span class="line">var numbers = [5, 458, 120, -215]; </span><br><span class="line">var maxInNumbers = Math.max.apply(Math, numbers),   // 458</span><br><span class="line">    maxInNumbers = Math.max.call(Math,5, 458 , 120 , -215); // 458</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>验证是否是数组（前提是toString（）方法没有被重写过）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function isArray(obj)&#123; </span><br><span class="line">    return Object.prototype.toString.call(obj) === &apos;[object Array]&apos; ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>bind用法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var bar = function()&#123;</span><br><span class="line">    console.log(this.x);</span><br><span class="line">&#125;</span><br><span class="line">var foo = &#123;</span><br><span class="line">    x:3</span><br><span class="line">&#125;</span><br><span class="line">bar(); // undefined</span><br><span class="line">var func = bar.bind(foo); //此时this已经指向了foo，但是用bind（）方法并不会立即执行，而是创建一个新函数，如果要直接调用的话 可以 bar.bind(foo)（）</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">func(); // 3</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -324,14 +369,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/01/23/vue2.0/" rel="next" title="vue source code 2.0">
+                <i class="fa fa-chevron-left"></i> vue source code 2.0
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/01/21/yuque/swiper4.0自动轮播+循环轮播/" rel="prev" title="swiper4.0自动轮播+循环轮播">
-                swiper4.0自动轮播+循环轮播 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/01/24/js-proxy/" rel="prev" title="js内proxy检测">
+                js内proxy检测 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

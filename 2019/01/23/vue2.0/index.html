@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="从入门到放弃,">
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="在项目（vue）测试过程中发现，ios10一下版本的浏览器均无法正常加载，出现白屏现象，开始以为是不支持es6语法的原因，但是添加es6转es5的配置之后还是无法加载，通过找了一系列方法发现可能是swiper造成的（首页使用了swiper进行图片轮播）。解决：将swiper4.4.1-&amp;gt;3.4.2，并修改一定的语法。12345678910111213141516171819202122//">
+<meta name="description" content="Vue options核心代码-&amp;gt;core/index，暴露一个Vue类（core/instance/index），在该文件内发现初始定义了一个Vue：12345678function Vue (options) &amp;#123;  if (process.env.NODE_ENV !== &amp;apos;production&amp;apos; &amp;amp;&amp;amp;    !(this instanceo">
+<meta name="keywords" content="从入门到放弃">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ios10以下版本内浏览器无法打开vue项目">
-<meta property="og:url" content="http://yoursite.com/2019/01/21/yuque/ios10以下版本内浏览器无法打开vue项目/index.html">
+<meta property="og:title" content="vue source code 2.0">
+<meta property="og:url" content="http://yoursite.com/2019/01/23/vue2.0/index.html">
 <meta property="og:site_name" content="HTTISHERE">
-<meta property="og:description" content="在项目（vue）测试过程中发现，ios10一下版本的浏览器均无法正常加载，出现白屏现象，开始以为是不支持es6语法的原因，但是添加es6转es5的配置之后还是无法加载，通过找了一系列方法发现可能是swiper造成的（首页使用了swiper进行图片轮播）。解决：将swiper4.4.1-&amp;gt;3.4.2，并修改一定的语法。12345678910111213141516171819202122//">
+<meta property="og:description" content="Vue options核心代码-&amp;gt;core/index，暴露一个Vue类（core/instance/index），在该文件内发现初始定义了一个Vue：12345678function Vue (options) &amp;#123;  if (process.env.NODE_ENV !== &amp;apos;production&amp;apos; &amp;amp;&amp;amp;    !(this instanceo">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-21T09:49:07.664Z">
+<meta property="og:updated_time" content="2019-01-23T08:05:25.568Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ios10以下版本内浏览器无法打开vue项目">
-<meta name="twitter:description" content="在项目（vue）测试过程中发现，ios10一下版本的浏览器均无法正常加载，出现白屏现象，开始以为是不支持es6语法的原因，但是添加es6转es5的配置之后还是无法加载，通过找了一系列方法发现可能是swiper造成的（首页使用了swiper进行图片轮播）。解决：将swiper4.4.1-&amp;gt;3.4.2，并修改一定的语法。12345678910111213141516171819202122//">
+<meta name="twitter:title" content="vue source code 2.0">
+<meta name="twitter:description" content="Vue options核心代码-&amp;gt;core/index，暴露一个Vue类（core/instance/index），在该文件内发现初始定义了一个Vue：12345678function Vue (options) &amp;#123;  if (process.env.NODE_ENV !== &amp;apos;production&amp;apos; &amp;amp;&amp;amp;    !(this instanceo">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/01/21/yuque/ios10以下版本内浏览器无法打开vue项目/">
+  <link rel="canonical" href="http://yoursite.com/2019/01/23/vue2.0/">
 
 
 
 
 
-  <title>ios10以下版本内浏览器无法打开vue项目 | HTTISHERE</title>
+  <title>vue source code 2.0 | HTTISHERE</title>
   
 
 
@@ -232,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/21/yuque/ios10以下版本内浏览器无法打开vue项目/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/23/vue2.0/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="httishere">
@@ -249,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ios10以下版本内浏览器无法打开vue项目</h1>
+          <h1 class="post-title" itemprop="name headline">vue source code 2.0</h1>
         
 
         <div class="post-meta">
@@ -261,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-21T09:53:08+08:00">
-                2019-01-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-23T10:30:23+08:00">
+                2019-01-23
               </time>
             
 
@@ -271,6 +272,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/vue/" itemprop="url" rel="index">
+                    <span itemprop="name">vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -299,7 +322,14 @@
       
 
       
-        <p>在项目（vue）测试过程中发现，ios10一下版本的浏览器均无法正常加载，出现白屏现象，开始以为是不支持es6语法的原因，但是添加es6转es5的配置之后还是无法加载，<em>通过找了一系列方法发现可能是swiper造成的（首页使用了swiper进行图片轮播）</em>。<br><br>解决：将swiper4.4.1-&gt;3.4.2，并修改一定的语法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">// 4.4.1</span><br><span class="line">var swiper = new Swiper(&quot;.swiper-container&quot;, &#123;</span><br><span class="line">  loop: true,</span><br><span class="line">  speed: 800,</span><br><span class="line">  autoplay: &#123;</span><br><span class="line">    disableOnInteraction: false, //手动滑动之后不打断播放</span><br><span class="line">    delay: 2000</span><br><span class="line">  &#125;,</span><br><span class="line">  observer: true, //监听，当改变swiper的样式（例如隐藏/显示）或者修改swiper的子元素时，自动初始化swiper。</span><br><span class="line">  pagination: &#123;</span><br><span class="line">    el: &quot;.swiper-pagination&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line">// 3.4.2</span><br><span class="line">var swiper = new Swiper(&quot;.swiper-container&quot;, &#123;</span><br><span class="line">  loop: true,</span><br><span class="line">  speed: 800,</span><br><span class="line">  autoplay: 2000,</span><br><span class="line">  autoplayDisableOnInteraction: false,</span><br><span class="line">  observer: true, //监听，当改变swiper的样式（例如隐藏/显示）或者修改swiper的子元素时，自动初始化swiper。</span><br><span class="line">  pagination : &apos;.swiper-pagination&apos;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+        <h2 id="Vue-options"><a href="#Vue-options" class="headerlink" title="Vue options"></a>Vue options</h2><p>核心代码-&gt;core/index，暴露一个Vue类（core/instance/index），在该文件内发现初始定义了一个Vue：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function Vue (options) &#123;</span><br><span class="line">  if (process.env.NODE_ENV !== &apos;production&apos; &amp;&amp;</span><br><span class="line">    !(this instanceof Vue)</span><br><span class="line">  ) &#123;</span><br><span class="line">    warn(&apos;Vue is a constructor and should be called with the `new` keyword&apos;)</span><br><span class="line">  &#125;</span><br><span class="line">  this._init(options)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>其中传入的参数options，即我妈实例化Vue对象时传入的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    el: &apos;#data&apos;,</span><br><span class="line">    data: &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>再定义完这个Vue类之后执行了5个方法：</p>
+<ul>
+<li>initMixin(Vue)<br>主要为Vue原型定义了<code>_init</code>方法，再实例化过程中会执行<code>_init</code>方法，其中先对options进行了判断，若非组件则会进入<code>mergeOptions</code>方法，该方法是将<code>resolveConstructorOptions(vm.constructor)</code>和<code>options</code>合在一起。<br>那<code>resolveConstructorOptions</code>时干嘛的呢，<code>Ctor.super</code>可想而知是上级，所以主要是来判断该类是否为Vue的子类，进而判断父类中的options有没有发生变化，当Vue混入一些options时<code>superOptions</code>会发生变化，之后就会更新子类的<code>superOptions</code>，Vue混入options的情况：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Vue.extend(options)</span><br><span class="line">Vue.mixin(options)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>在<code>mergeOptions</code>根据不同的key采用不同的merge策略，ue提供了一个strats对象，其本身就是一个hook，如果strats有提供特殊的逻辑，就走strats，否则走默认merge逻辑，能很好的区分对待公共处理逻辑与特殊处理逻辑。<br><code>initMixin</code>就是把业务逻辑以及组件的一些特性全都放到了vm.$options中了，后续的操作我们都可以从vm.$options拿到可用的信息，后续动态添加任何东西都可以规范的收入到<code>vm.$options</code>内。</p>
 
       
     </div>
@@ -315,6 +345,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/从入门到放弃/" rel="tag"># 从入门到放弃</a>
+          
+        </div>
+      
 
       
       
@@ -324,14 +360,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/01/22/vue1.0/" rel="next" title="vue source code 1.0">
+                <i class="fa fa-chevron-left"></i> vue source code 1.0
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/01/21/yuque/swiper4.0自动轮播+循环轮播/" rel="prev" title="swiper4.0自动轮播+循环轮播">
-                swiper4.0自动轮播+循环轮播 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/01/23/js绑定/" rel="prev" title="js绑定call, apply, bind">
+                js绑定call, apply, bind <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -384,8 +424,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -445,6 +494,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue-options"><span class="nav-number">1.</span> <span class="nav-text">Vue options</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
