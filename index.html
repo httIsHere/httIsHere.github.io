@@ -229,6 +229,206 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/08/yuque/Weekly sharing 02（20190304）/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="httishere">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HTTISHERE">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/08/yuque/Weekly sharing 02（20190304）/" itemprop="url">Weekly sharing 02（20190304）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-08T10:38:38+08:00">
+                2019-03-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/250093/1551774465093-1ce923b2-9218-49db-95aa-080d214e7931.jpeg#align=left&amp;display=inline&amp;height=560&amp;name=%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190305162724.jpg&amp;originHeight=1080&amp;originWidth=1440&amp;size=327112&amp;status=done&amp;width=746" alt="微信图片_20190305162724.jpg"><br>（题图 杭州 2019冬）</p>
+<p><a name="b6724cff"></a></p>
+<h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>1、访问微博时的运转流程（<a href="https://juejin.im/post/58db7d742f301e007e9a00a7" target="_blank" rel="noopener">Nginx+PHP-FPM的工作原理</a>）：<br><a href="http://www.weibo.com" target="_blank" rel="noopener">www.weibo.com</a><br>       |<br>       |<br>     Nginx<br>       |<br>       |<br>路由到<a href="http://www.weibo.com/index.php" target="_blank" rel="noopener">www.weibo.com/index.php</a><br>       |<br>       |<br>加载nginx的fast-cgi模块<br>       |<br>       |<br>fast-cgi监听127.0.0.1:9000地址<br>       |<br>       |<br><a href="http://www.weibo.com/index.php请求到达127.0.0.1:9000" target="_blank" rel="noopener">www.weibo.com/index.php请求到达127.0.0.1:9000</a><br>       |<br>       |<br>php-fpm 监听127.0.0.1:9000<br>       |<br>       |<br>php-fpm 接收到请求，启用worker进程处理请求<br>       |<br>       |<br>php-fpm 处理完请求，返回给nginx<br>       |<br>       |<br>nginx将结果通过http返回给浏览器</p>
+<p>（来源：微博@古月中心相心）</p>
+<p><a name="b7824d5c"></a></p>
+<h4 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h4><p>1、新认识的css属性–box-decoration-break</p>
+<blockquote>
+<p>MDN 上英文释意为：The box-decoration-break CSS property specifies how an element’s fragments should be rendered when broken across multiple lines, columns, or pages。大意是 box-decoration-break 属性规定了一个元素片段在发生折行/断行时，应该如何被渲染。</p>
+</blockquote>
+<p>该属性的取值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    box-decoration-break: slice;   // 默认取值</span><br><span class="line">    box-decoration-break: clone;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该属性主要作用于内联元素，当取值为clone时，换行的元素将被赋予相同的样式，最简单的例子：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"my-text"</span>&gt;</span></span><br><span class="line">	The <span class="tag">&lt;<span class="name">text</span>&gt;</span>box-decoration-break<span class="tag">&lt;/<span class="name">text</span>&gt;</span> CSS property specifies how an element's fragments should be rendered when</span><br><span class="line">	broken across multiple lines, columns, or pages..Each box fragment is rendered independently with the <span class="tag">&lt;<span class="name">text</span>&gt;</span>specified</span><br><span class="line">		border, padding, and margin wrapping each fragment.<span class="tag">&lt;/<span class="name">text</span>&gt;</span> The border-radius, border-image, and box-shadow are</span><br><span class="line">	applied to each <span class="tag">&lt;<span class="name">text</span>&gt;</span>fragment independently.<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.my-text</span> &#123;</span><br><span class="line">	<span class="attribute">font-size</span>: <span class="number">22px</span>;</span><br><span class="line">	<span class="attribute">line-height</span>: <span class="number">36px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.my-text</span> <span class="selector-tag">text</span> &#123;</span><br><span class="line">	<span class="attribute">background-image</span>: <span class="built_in">linear-gradient</span>(135deg, deeppink, yellowgreen);</span><br><span class="line">	<span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">	<span class="attribute">padding</span>: <span class="number">2px</span> <span class="number">10px</span>;</span><br><span class="line">	<span class="attribute">border-radius</span>: <span class="number">50%</span> <span class="number">3em</span> <span class="number">50%</span> <span class="number">3em</span>;</span><br><span class="line">	<span class="attribute">box-decoration-break</span>: clone;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>无该属性时效果：（可以看出文字断行时样式同时也会被截断）<br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1551775424204-bf6704fb-5de1-417c-9728-9c46a24a56db.png#align=left&amp;display=inline&amp;height=189&amp;name=image.png&amp;originHeight=260&amp;originWidth=656&amp;size=90942&amp;status=done&amp;width=478" alt="image.png"></p>
+<p>为text增加该属性：（这样显然美观很多）<br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1551775533505-107f200a-effc-4e52-83d2-7ec3b5cc7118.png#align=left&amp;display=inline&amp;height=193&amp;name=image.png&amp;originHeight=267&amp;originWidth=667&amp;size=92501&amp;status=done&amp;width=482" alt="image.png"></p>
+<p>2、<a href="https://segmentfault.com/a/1190000018383955" target="_blank" rel="noopener">实战情况下的函数防抖和节流</a></p>
+<blockquote>
+<p>JavaScript的执行过程，是基于栈来进行的。复杂的程序代码被封装到函数中，程序执行时，函数不断被推入执行栈中，所以 <strong>“执行栈”</strong> 也称 <strong>“函数执行栈”</strong>。</p>
+</blockquote>
+<p>在函数被频繁调用时将会造成较大的性能开销也比较大，所以就需要“防抖”和“节流”。</p>
+<ul>
+<li>防抖（debounce)<blockquote>
+<p>在事件被触发 n 秒后再执行回调函数，如果在这 n 秒内又被触发，则重新计时延迟时间。</p>
+</blockquote>
+</li>
+</ul>
+<p>实现方式：“立即执行”和“非立即执行”。<br>函数防抖原理：通过维护一个定时器，其延迟计时以最后一次触发为计时起点，到达延迟时间后才会触发函数执行。</p>
+<ul>
+<li>节流（throttle)<blockquote>
+<p>规定在一个单位时间内，只能触发一次函数。如果这个单位时间内触发多次函数，只有一次生效（间隔执行）</p>
+</blockquote>
+</li>
+</ul>
+<p>实现方式：“时间戳”和“定时器”。<br>函数节流原理：一定时间内只触发一次，间隔执行。通过判断是否到达指定触发时间，间隔时间固定。</p>
+<p>主要的应用场景：<br>防抖</p>
+<ol>
+<li>文本输入搜索联想</li>
+<li>文本输入验证（包括 Ajax 后端验证）</li>
+</ol>
+<p>节流</p>
+<ol>
+<li>鼠标点击</li>
+<li>监听滚动 <code>scroll</code></li>
+<li>窗口 <code>resize</code></li>
+<li><code>mousemove</code> 拖拽</li>
+</ol>
+<p>实际代码开发中，一般会引入<code>lodash</code> 等相对 “靠谱” 的第三方库，帮我们去实现防抖节流的工具函数。<br><br><br>3、<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial" target="_blank" rel="noopener">canvas绘制</a>（&lt;– MDN文档）<br>相信<code>canvas</code>会是很多人初学前端知识的时候会接触到的，但是在后来的学习中除游戏开发外基本不会用到的东西，现在想来重拾一下<code>canvas</code>的知识。</p>
+<ul>
+<li>先在页面内设置一个画布：</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"theCanvas"</span> <span class="attr">width</span>=<span class="string">"800"</span> <span class="attr">height</span>=<span class="string">"400"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>在js内需判断当前浏览器是否支持canvas：</li>
+<li><p><br></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> theCanvas = <span class="built_in">document</span>.querySelector(<span class="string">'#theCanvas'</span>);</span><br><span class="line"><span class="keyword">if</span>(!theCanvas || !theCanvas.getContext()) &#123;</span><br><span class="line">	alert(<span class="string">'该浏览器不支持canvas!'</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获得其2d对象</p>
+</li>
+<li><p><br></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> context = theCanvas.getContext(<span class="string">'2d'</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>鼠标绘制只要在于onmousedown事件和onmousemove事件</p>
+</li>
+<li><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> theCanvas = <span class="built_in">document</span>.querySelector(<span class="string">'#theCanvas'</span>);</span><br><span class="line">	<span class="keyword">if</span> (!theCanvas || !theCanvas.getContext(<span class="string">'2d'</span>)) &#123;</span><br><span class="line">		alert(<span class="string">'该浏览器不支持canvas!'</span>)</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">let</span> context = theCanvas.getContext(<span class="string">'2d'</span>);</span><br><span class="line">		<span class="keyword">let</span> isAllowDrawLine = <span class="literal">false</span></span><br><span class="line">		<span class="comment">// 为其绑定鼠标按下的事件</span></span><br><span class="line">		theCanvas.onmousedown = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">			isAllowDrawLine = <span class="literal">true</span></span><br><span class="line">			<span class="keyword">let</span> ele = windowToCanvas(theCanvas, e.clientX, e.clientY)</span><br><span class="line">			<span class="keyword">let</span> &#123;</span><br><span class="line">				x,</span><br><span class="line">				y</span><br><span class="line">			&#125; = ele <span class="comment">// 解构</span></span><br><span class="line">			<span class="comment">// 绘制起点</span></span><br><span class="line">			context.moveTo(x, y)</span><br><span class="line">			<span class="comment">// 长按时监听鼠标移动</span></span><br><span class="line">			theCanvas.onmousemove = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">				<span class="keyword">if</span> (isAllowDrawLine) &#123;</span><br><span class="line">					<span class="keyword">let</span> ele = windowToCanvas(theCanvas, e.clientX, e.clientY)</span><br><span class="line">					<span class="keyword">let</span> &#123;</span><br><span class="line">						x,</span><br><span class="line">						y</span><br><span class="line">					&#125; = ele</span><br><span class="line">					context.lineTo(x, y)</span><br><span class="line">					context.stroke() <span class="comment">// 连接绘制</span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">document</span>.onmouseup = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">			isAllowDrawLine = <span class="literal">false</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)()</span><br><span class="line"><span class="comment">// 获取当前鼠标相对于canvas的坐标</span></span><br><span class="line"><span class="keyword">const</span> windowToCanvas = <span class="function">(<span class="params">canvas, x, y</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">let</span> rect = canvas.getBoundingClientRect()</span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		x: x - rect.left * (canvas.width / rect.width),</span><br><span class="line">		y: y - rect.top * (canvas.height / rect.height)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>最终效果：<br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1551843164284-92775a3b-9c89-430a-83e7-f558ccd3ed13.png#align=left&amp;display=inline&amp;height=168&amp;name=image.png&amp;originHeight=168&amp;originWidth=259&amp;size=4466&amp;status=done&amp;width=259" alt="image.png"></p>
+<p><a name="20dce2c6"></a></p>
+<h4 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h4><p>1、<a href="https://www.yuque.com/httishere/share/zow67c/edit" target="_blank" rel="noopener">Chrome模拟微信浏览器</a> – UA（User agent：用户代理）<br>安卓微信UA： mozilla/5.0 (linux; u; android 4.1.2; zh-cn; mi-one plus build/jzo54k) applewebkit/534.30 (khtml, like gecko) version/4.0 mobile safari/534.30 micromessenger/5.0.1.352  <br>Ios微信UA：  mozilla/5.0 (iphone; cpu iphone os 5_1_1 like mac os x) applewebkit/534.46 (khtml, like gecko) mobile/9b206 micromessenger/5.0 <br>使用方法：</p>
+<ul>
+<li>打开浏览的开发者模式</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1552008628959-0fd5cbc7-1f5c-4782-abef-aa340929bf73.png#align=left&amp;display=inline&amp;height=294&amp;name=image.png&amp;originHeight=294&amp;originWidth=317&amp;size=44355&amp;status=done&amp;width=317" alt="image.png"></p>
+<ul>
+<li>增加代理（选择你需要的环境UA）</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1552008636767-dd0edb9b-278a-44d1-8f6a-6f3e87534793.png#align=left&amp;display=inline&amp;height=278&amp;name=image.png&amp;originHeight=278&amp;originWidth=630&amp;size=24368&amp;status=done&amp;width=630" alt="image.png"></p>
+<p><a name="123e09da"></a></p>
+<h4 id="文摘"><a href="#文摘" class="headerlink" title="文摘"></a>文摘</h4><p>1、AI生成人脸<br>Philip Wang，他是一位来自 Uber的软件工程师。他利用英伟达去年发布的研究成果创作了源源不断的假人像。「每次你刷新这个网站，网络就会从头开始生成新的人脸图像。<br><a href="https://thispersondoesnotexist.com/" target="_blank" rel="noopener">https://thispersondoesnotexist.com/</a><br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1551775809431-67b3e1d2-08c3-4caf-9d87-d4591c0cf71f.png#align=left&amp;display=inline&amp;height=525&amp;name=image.png&amp;originHeight=687&amp;originWidth=476&amp;size=487489&amp;status=done&amp;width=364" alt="image.png"></p>
+<p>2、程序员成长之路<br>会用-&gt;会查和避免问题-&gt;懂高级的API和原理-&gt;系统设计能力的成长。<br>程序员的价值关键体现在作品上，被打上作品标签是很大的荣幸。作品影响程度的大小决定了金字塔的层次，所以我会这么去理解程序员的金字塔。<br>塔尖：有世界级作品的<br>塔中：有国民作品的<br>塔基：有公司级作品的<br>（来源：<a href="https://mp.weixin.qq.com/s/nUtUu6e_bXHvb_06Pf_05g" target="_blank" rel="noopener">阿里毕玄现身说法：程序员成长路线</a>）<br><br><br>3、uber开源<br>Kraken: uber开源的基于P2P的docker镜像仓库，专注于可扩展性和可用性。它专为混合云环境中的docker镜像管理，复制和分发而设计。在uber最繁忙的集群中，Kraken每天分发超过100万个blob，包括100k 1G + blob。在最高生产负荷下，Kraken在30秒内分配20K 100MB-1G的blob。<br>库–&gt;<a href="https://github.com/uber/kraken" target="_blank" rel="noopener">https://github.com/uber/kraken</a><br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1552009011507-c15ee47b-bae5-4112-adc4-1f24aa5d9cc8.png#align=left&amp;display=inline&amp;height=356&amp;name=image.png&amp;originHeight=601&amp;originWidth=907&amp;size=178044&amp;status=done&amp;width=537" alt="image.png"><br>（来源：微博@tonybai_cn）</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/19/canvas/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -449,11 +649,11 @@
       
         
           
-            <p>错误信息：<br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1549953523594-244e41bb-0d21-4195-839b-c7f7dd8fdfa8.png#align=left&amp;display=inline&amp;height=218&amp;linkTarget=_blank&amp;originHeight=320&amp;originWidth=1095&amp;size=0&amp;width=746" alt=""></p>
+            <p>错误信息：<br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1549953523594-244e41bb-0d21-4195-839b-c7f7dd8fdfa8.png#align=left&amp;display=inline&amp;height=218&amp;originHeight=320&amp;originWidth=1095&amp;size=0&amp;width=746" alt=""></p>
 <p>解决方法：<br>打开工具-&gt;选项板块</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1549953701131-973a069a-7712-44f2-bb4d-10805c62b624.png#align=left&amp;display=inline&amp;height=212&amp;linkTarget=_blank&amp;name=image.png&amp;originHeight=212&amp;originWidth=598&amp;size=51915&amp;width=598" alt="image.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1549953701131-973a069a-7712-44f2-bb4d-10805c62b624.png#align=left&amp;display=inline&amp;height=212&amp;name=image.png&amp;originHeight=212&amp;originWidth=598&amp;size=51915&amp;width=598" alt="image.png"></p>
 <p>将SSH客户端选项改为OpenSSH：</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1549953782953-f6c8fd41-8a81-4d8f-8d4c-ec68cfde3ebf.png#align=left&amp;display=inline&amp;height=191&amp;linkTarget=_blank&amp;name=image.png&amp;originHeight=191&amp;originWidth=531&amp;size=15360&amp;width=531" alt="image.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1549953782953-f6c8fd41-8a81-4d8f-8d4c-ec68cfde3ebf.png#align=left&amp;display=inline&amp;height=191&amp;name=image.png&amp;originHeight=191&amp;originWidth=531&amp;size=15360&amp;width=531" alt="image.png"></p>
 <p>这样就可以推送成功啦！</p>
 
           
@@ -577,14 +777,14 @@
             <blockquote>
 <p>在css内position的含义是指定位类型，取值类型可以有：static、relative、absolute、fixed、inherit和sticky，这里sticky是CSS3新发布的一个属性。</p>
 </blockquote>
-<p>原来在页面设计中时常会遇到所谓的“吸顶”的效果，如下图（当页面滑动至介绍部分时介绍栏需要有一个吸顶效果）：<br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1549936020128-7ed27eaa-85eb-4314-a859-e7d54b15cac1.png#align=left&amp;display=inline&amp;height=466&amp;linkTarget=_blank&amp;name=image.png&amp;originHeight=466&amp;originWidth=399&amp;size=153632&amp;width=399" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1549936102348-7eed426c-9cd7-495a-bc71-93e85524f68e.png#align=left&amp;display=inline&amp;height=353&amp;linkTarget=_blank&amp;name=image.png&amp;originHeight=353&amp;originWidth=398&amp;size=161946&amp;width=398" alt="image.png"></p>
+<p>原来在页面设计中时常会遇到所谓的“吸顶”的效果，如下图（当页面滑动至介绍部分时介绍栏需要有一个吸顶效果）：<br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1549936020128-7ed27eaa-85eb-4314-a859-e7d54b15cac1.png#align=left&amp;display=inline&amp;height=466&amp;name=image.png&amp;originHeight=466&amp;originWidth=399&amp;size=153632&amp;width=399" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1549936102348-7eed426c-9cd7-495a-bc71-93e85524f68e.png#align=left&amp;display=inline&amp;height=353&amp;name=image.png&amp;originHeight=353&amp;originWidth=398&amp;size=161946&amp;width=398" alt="image.png"></p>
 <p>原来的实现方式是采用js监听滑动并对需要吸顶的内容进行定位设置。<br>但是现在使用<code>sticky</code>也可以直接实现。</p>
 <p>对需要吸顶的元素设置sticky属性：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.main-header &#123;</span><br><span class="line">	position: -webkit-sticky;</span><br><span class="line">	position: sticky;</span><br><span class="line">	top: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>效果：<br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1549937063469-3f821c80-4e14-4035-9f6d-bdf52c1b4b0a.png#align=left&amp;display=inline&amp;height=363&amp;linkTarget=_blank&amp;name=image.png&amp;originHeight=363&amp;originWidth=408&amp;size=12745&amp;width=408" alt="image.png"></p>
+<p>效果：<br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1549937063469-3f821c80-4e14-4035-9f6d-bdf52c1b4b0a.png#align=left&amp;display=inline&amp;height=363&amp;name=image.png&amp;originHeight=363&amp;originWidth=408&amp;size=12745&amp;width=408" alt="image.png"></p>
 <p><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1549937022077-730b8a25-40f2-41f8-a144-0871c8ffc0e8.png" alt=""><br> <br>完整：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Page Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">        body &#123;</span></span><br><span class="line"><span class="undefined">            color: #fff;</span></span><br><span class="line"><span class="undefined">            font-family: arial;</span></span><br><span class="line"><span class="undefined">            font-weight: bold;</span></span><br><span class="line"><span class="undefined">            font-size: 40px;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        .main-container &#123;</span></span><br><span class="line"><span class="undefined">            max-width: 600px;</span></span><br><span class="line"><span class="undefined">            margin: 0 auto;</span></span><br><span class="line"><span class="undefined">            border: solid 10px green;</span></span><br><span class="line"><span class="undefined">            padding: 10px;</span></span><br><span class="line"><span class="undefined">            margin-top: 40px;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        .main-container * &#123;</span></span><br><span class="line"><span class="undefined">            padding: 10px;</span></span><br><span class="line"><span class="undefined">            background: #aaa;</span></span><br><span class="line"><span class="undefined">            border: dashed 5px #000;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        .main-container *+* &#123;</span></span><br><span class="line"><span class="undefined">            margin-top: 20px;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        .main-header &#123;</span></span><br><span class="line"><span class="undefined">            height: 50px;</span></span><br><span class="line"><span class="undefined">            background: #aaa;</span></span><br><span class="line"><span class="undefined">            border-color: red;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        .main-content &#123;</span></span><br><span class="line"><span class="undefined">            min-height: 1000px;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        .main-header &#123;</span></span><br><span class="line"><span class="undefined">            position: -webkit-sticky;</span></span><br><span class="line"><span class="undefined">            position: sticky;</span></span><br><span class="line"><span class="undefined">            top: 0;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">main</span> <span class="attr">class</span>=<span class="string">"main-container"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">header</span> <span class="attr">class</span>=<span class="string">"main-header"</span>&gt;</span>HEADER<span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"main-content"</span>&gt;</span>MAIN CONTENT<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">footer</span> <span class="attr">class</span>=<span class="string">"main-footer"</span>&gt;</span>FOOTER<span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">main</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>总结：<br>比较不好的是这个属性的兼容性还不是很好，它之所以会出现，也是因为监听<code>scroll</code>事件来实现粘性布局使浏览器进入慢滚动的模式，这与浏览器想要通过硬件加速来提升滚动的体验是相悖的。<br>　　这个属性使用的浏览器只有FireFox和iOS的Safari：<br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1549937196181-a18925ca-f6f3-4dab-b56f-efc03b7f0dcc.png#align=left&amp;display=inline&amp;height=311&amp;linkTarget=_blank&amp;originHeight=493&amp;originWidth=1181&amp;size=0&amp;width=746" alt=""></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Page Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">        body &#123;</span></span><br><span class="line"><span class="css">            <span class="selector-tag">color</span>: <span class="selector-id">#fff</span>;</span></span><br><span class="line"><span class="undefined">            font-family: arial;</span></span><br><span class="line"><span class="undefined">            font-weight: bold;</span></span><br><span class="line"><span class="undefined">            font-size: 40px;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="css">        <span class="selector-class">.main-container</span> &#123;</span></span><br><span class="line"><span class="undefined">            max-width: 600px;</span></span><br><span class="line"><span class="undefined">            margin: 0 auto;</span></span><br><span class="line"><span class="undefined">            border: solid 10px green;</span></span><br><span class="line"><span class="undefined">            padding: 10px;</span></span><br><span class="line"><span class="undefined">            margin-top: 40px;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="css">        <span class="selector-class">.main-container</span> * &#123;</span></span><br><span class="line"><span class="undefined">            padding: 10px;</span></span><br><span class="line"><span class="css">            <span class="selector-tag">background</span>: <span class="selector-id">#aaa</span>;</span></span><br><span class="line"><span class="css">            <span class="selector-tag">border</span>: <span class="selector-tag">dashed</span> 5<span class="selector-tag">px</span> <span class="selector-id">#000</span>;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="css">        <span class="selector-class">.main-container</span> *+* &#123;</span></span><br><span class="line"><span class="undefined">            margin-top: 20px;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="css">        <span class="selector-class">.main-header</span> &#123;</span></span><br><span class="line"><span class="undefined">            height: 50px;</span></span><br><span class="line"><span class="css">            <span class="selector-tag">background</span>: <span class="selector-id">#aaa</span>;</span></span><br><span class="line"><span class="undefined">            border-color: red;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="css">        <span class="selector-class">.main-content</span> &#123;</span></span><br><span class="line"><span class="undefined">            min-height: 1000px;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="css">        <span class="selector-class">.main-header</span> &#123;</span></span><br><span class="line"><span class="undefined">            position: -webkit-sticky;</span></span><br><span class="line"><span class="undefined">            position: sticky;</span></span><br><span class="line"><span class="undefined">            top: 0;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">main</span> <span class="attr">class</span>=<span class="string">"main-container"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">header</span> <span class="attr">class</span>=<span class="string">"main-header"</span>&gt;</span>HEADER<span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"main-content"</span>&gt;</span>MAIN CONTENT<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">footer</span> <span class="attr">class</span>=<span class="string">"main-footer"</span>&gt;</span>FOOTER<span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">main</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>总结：<br>比较不好的是这个属性的兼容性还不是很好，它之所以会出现，也是因为监听<code>scroll</code>事件来实现粘性布局使浏览器进入慢滚动的模式，这与浏览器想要通过硬件加速来提升滚动的体验是相悖的。<br>　　这个属性使用的浏览器只有FireFox和iOS的Safari：<br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1549937196181-a18925ca-f6f3-4dab-b56f-efc03b7f0dcc.png#align=left&amp;display=inline&amp;height=311&amp;originHeight=493&amp;originWidth=1181&amp;size=0&amp;width=746" alt=""></p>
 <p>还有要让sticky属性生效需要满足以下两点：</p>
 <ul>
 <li>元素自身在文档流中的位置</li>
@@ -1573,7 +1773,7 @@
       
         
           
-            <p>功能需求：获取海报参数自定义生成一张带二维码海报。<br>效果如下：<br><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/250093/1548062679065-c45906c9-bae5-4d02-92bc-13f747042672.jpeg#align=left&amp;display=inline&amp;height=657&amp;linkTarget=_blank&amp;name=Inked%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190121172129_LI.jpg&amp;originHeight=1298&amp;originWidth=836&amp;size=673550&amp;width=423" alt="Inked微信图片_20190121172129_LI.jpg"></p>
+            <p>功能需求：获取海报参数自定义生成一张带二维码海报。<br>效果如下：<br><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/250093/1548062679065-c45906c9-bae5-4d02-92bc-13f747042672.jpeg#align=left&amp;display=inline&amp;height=657&amp;name=Inked%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190121172129_LI.jpg&amp;originHeight=1298&amp;originWidth=836&amp;size=673550&amp;width=423" alt="Inked微信图片_20190121172129_LI.jpg"></p>
 <p>元素：主要分成背景图，用户信息和带用户信息的二维码（由前端生成）；</p>
 <p>步骤：先根据设计完成布局设计-&gt;将这张海报的html元素生成为canvas-&gt;将该canvas转化成图片；</p>
 <ul>
@@ -1591,126 +1791,6 @@
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 每次图片加载成功后都会请求执行该函数（但是要在所有图片都加载成功后才能真正生成canvas）</span></span><br><span class="line"> getCard(box, canvas, c_width, c_height) &#123;</span><br><span class="line">   <span class="keyword">const</span> _this = <span class="keyword">this</span>;</span><br><span class="line">   _this.cnt++; <span class="comment">// 对已加载成功的图片数进行判断</span></span><br><span class="line">   <span class="keyword">if</span> (_this.cnt &lt; <span class="number">3</span>) <span class="keyword">return</span>; <span class="comment">// 所有图片都成功可以生成</span></span><br><span class="line">   html2canvas(box, &#123;</span><br><span class="line">     allowTaint: <span class="literal">true</span>,</span><br><span class="line">     useCORS: <span class="literal">true</span>,</span><br><span class="line">     canvas: canvas,</span><br><span class="line">     width: c_width,</span><br><span class="line">     height: c_height</span><br><span class="line">   &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">canvas</span>) </span>&#123;</span><br><span class="line">     canvas.setAttribute(<span class="string">"id"</span>, <span class="string">"my-canvas"</span>); <span class="comment">//添加属性</span></span><br><span class="line">     box.appendChild(canvas);</span><br><span class="line">     <span class="comment">// 转换图片得到base64格式</span></span><br><span class="line">     <span class="keyword">let</span> dataURL = canvas.toDataURL(<span class="string">"image/png"</span>);</span><br><span class="line">     <span class="keyword">let</span> img = <span class="keyword">new</span> Image();</span><br><span class="line">     img.src = dataURL;</span><br><span class="line">     img.className = <span class="string">"cardImg"</span>;</span><br><span class="line">     img.style.position = <span class="string">"absolute"</span>;</span><br><span class="line">     img.style.left = <span class="string">"50%"</span>;</span><br><span class="line">     img.style.top = <span class="string">"50%"</span>;</span><br><span class="line">     img.style.transform = <span class="string">"translate(-50%, -50%)"</span>;</span><br><span class="line">     img.style.zIndex = <span class="string">"150"</span>;</span><br><span class="line">     img.style.width = c_width + <span class="string">"px"</span>;</span><br><span class="line">     img.style.height = c_height + <span class="string">"px"</span>;</span><br><span class="line">     box.appendChild(img);</span><br><span class="line">     <span class="comment">// 生成成功</span></span><br><span class="line">     _this.$emit(<span class="string">'createPosterSuccess'</span>, dataURL);</span><br><span class="line">     _this.isLoading = <span class="literal">false</span>;</span><br><span class="line">     _this.isSuccess = <span class="literal">true</span>;</span><br><span class="line">   &#125;);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 <p>大致就完成了，主要在与异步的问题，在图片base64格式转换的时候也要判断二维码是否生成成功。<br>还有生成到成为一张图片还是需要一定时间，所以最好有一个生成中的加载状态。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/21/yuque/在ios系统浏览器中输入框得到焦点时页面自动放大/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="httishere">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HTTISHERE">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/21/yuque/在ios系统浏览器中输入框得到焦点时页面自动放大/" itemprop="url">在ios系统浏览器中输入框得到焦点时页面自动放大</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-21T17:10:24+08:00">
-                2019-01-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>问题：<br><br>在ios系统浏览器中输入框得到焦点时页面自动放大。<br><br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1548061829274-7732e1b1-4662-4cae-b22b-f4bcba322815.png#align=left&amp;display=inline&amp;height=1136&amp;linkTarget=_blank&amp;originHeight=1136&amp;originWidth=639&amp;size=0&amp;width=639" alt=""><br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1548061829276-d6ed4129-4e6e-42b3-8a6f-6d4827a7eebe.png#align=left&amp;display=inline&amp;height=1136&amp;linkTarget=_blank&amp;originHeight=1136&amp;originWidth=639&amp;size=0&amp;width=639" alt=""><br>解决：<br><br>添加meta标签。</p>
 
           
         
@@ -1796,7 +1876,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
