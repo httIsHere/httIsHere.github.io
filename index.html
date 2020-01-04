@@ -229,6 +229,253 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/26/yuque/微信小程序自定义组件使用canvas绘图，无法绘制以及fail canvas is empty问题/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="httishere">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HTTISHERE">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/26/yuque/微信小程序自定义组件使用canvas绘图，无法绘制以及fail canvas is empty问题/" itemprop="url">微信小程序自定义组件使用canvas绘图，无法绘制以及fail canvas is empty问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-26T11:55:10+08:00">
+                2019-11-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>情况1：普通页面，canvas绘制，正常，生成图片正常；</p>
+<p>情况2：自定义组件引用canvas绘制，空白；<br>原因：查看文档，在自定义组件内需要手动传入当前实例的this，否则canvas指向的this为父组件所以无法找到正确canvas；<br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1574740757955-44eee736-554f-4bb3-a6a9-9cb1f1bc6e1f.png#align=left&amp;display=inline&amp;height=351&amp;name=image.png&amp;originHeight=351&amp;originWidth=885&amp;size=39059&amp;status=done&amp;width=885" alt="image.png"></p>
+<p>情况3：自定义组件内，canvas绘制好了，但是<code>canvasToTempFilePath</code>报fail canvas is empty错误；<br>原因：同上，但是canvasToTempFilePath({}, this)添加this可能无法解决，因为我使用的小程序框架是Taro，在 Taro 的页面和组件类中，this 指向的是 Taro页面或组件实例。<br>所以一般我们需要获取 Taro的页面和组件所对应的小程序原生页面和组件实例，这个时候我们可以通过 this.$scope 访问到它们；<br>所以最后写成：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Taro.createCanvasContext(<span class="string">"canvas-id"</span>, <span class="keyword">this</span>.$scope);</span><br><span class="line">Taro.canvasToTempFilePath(&#123;&#125;, <span class="keyword">this</span>.$scope);</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/05/yuque/mpvue 引入第三方UI组件库/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="httishere">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HTTISHERE">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/05/yuque/mpvue 引入第三方UI组件库/" itemprop="url">mpvue 引入第三方UI组件库</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-05T13:52:32+08:00">
+                2019-06-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1、下载第三方UI组件包，将其dist文件夹复制至自己项目下<br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1559714105275-093b7242-cbe2-44b6-a3d3-250b711442f8.png#align=left&amp;display=inline&amp;height=210&amp;name=image.png&amp;originHeight=210&amp;originWidth=679&amp;size=24183&amp;status=done&amp;width=679" alt="image.png"></p>
+<p>2、在需使用组件的页面json内引入需要的组件<br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1559714798430-aed62fe7-c10c-44b4-978b-d1a56a7adde2.png#align=left&amp;display=inline&amp;height=99&amp;name=image.png&amp;originHeight=99&amp;originWidth=528&amp;size=6287&amp;status=done&amp;width=528" alt="image.png"></p>
+<p>3、直接在内面内使用组件<br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1559714828248-15d7b958-05ba-4ef8-9097-45e203b4145e.png#align=left&amp;display=inline&amp;height=382&amp;name=image.png&amp;originHeight=382&amp;originWidth=353&amp;size=26112&amp;status=done&amp;width=353" alt="image.png"></p>
+<p>注意：<br>①、需要将微信开发工具的ES6转ES5选项选上，否则报错。<br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1559714974755-a4062352-698c-4762-8613-04137896444a.png#align=left&amp;display=inline&amp;height=43&amp;name=image.png&amp;originHeight=43&amp;originWidth=183&amp;size=1731&amp;status=done&amp;width=183" alt="image.png"></p>
+<p>②、我项目出现的问题，原先我把第三方的dist放在项目文件的dist文件下，但是发现还是会报not found错误，然后转移到项目的static文件夹下就好了。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/08/yuque/Weekly sharing 02（20190304）/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -347,7 +594,8 @@
 <li>窗口 <code>resize</code></li>
 <li><code>mousemove</code> 拖拽</li>
 </ol>
-<p>实际代码开发中，一般会引入<code>lodash</code> 等相对 “靠谱” 的第三方库，帮我们去实现防抖节流的工具函数。<br><br><br>3、<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial" target="_blank" rel="noopener">canvas绘制</a>（&lt;– MDN文档）<br>相信<code>canvas</code>会是很多人初学前端知识的时候会接触到的，但是在后来的学习中除游戏开发外基本不会用到的东西，现在想来重拾一下<code>canvas</code>的知识。</p>
+<p>实际代码开发中，一般会引入<code>lodash</code> 等相对 “靠谱” 的第三方库，帮我们去实现防抖节流的工具函数。</p>
+<p>3、<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial" target="_blank" rel="noopener">canvas绘制</a>（&lt;– MDN文档）<br>相信<code>canvas</code>会是很多人初学前端知识的时候会接触到的，但是在后来的学习中除游戏开发外基本不会用到的东西，现在想来重拾一下<code>canvas</code>的知识。</p>
 <ul>
 <li>先在页面内设置一个画布：</li>
 </ul>
@@ -783,7 +1031,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.main-header &#123;</span><br><span class="line">	position: -webkit-sticky;</span><br><span class="line">	position: sticky;</span><br><span class="line">	top: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>效果：<br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1549937063469-3f821c80-4e14-4035-9f6d-bdf52c1b4b0a.png#align=left&amp;display=inline&amp;height=363&amp;name=image.png&amp;originHeight=363&amp;originWidth=408&amp;size=12745&amp;width=408" alt="image.png"></p>
 <p><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1549937022077-730b8a25-40f2-41f8-a144-0871c8ffc0e8.png" alt=""><br> <br>完整：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Page Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">        body &#123;</span></span><br><span class="line"><span class="css">            <span class="selector-tag">color</span>: <span class="selector-id">#fff</span>;</span></span><br><span class="line"><span class="undefined">            font-family: arial;</span></span><br><span class="line"><span class="undefined">            font-weight: bold;</span></span><br><span class="line"><span class="undefined">            font-size: 40px;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="css">        <span class="selector-class">.main-container</span> &#123;</span></span><br><span class="line"><span class="undefined">            max-width: 600px;</span></span><br><span class="line"><span class="undefined">            margin: 0 auto;</span></span><br><span class="line"><span class="undefined">            border: solid 10px green;</span></span><br><span class="line"><span class="undefined">            padding: 10px;</span></span><br><span class="line"><span class="undefined">            margin-top: 40px;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="css">        <span class="selector-class">.main-container</span> * &#123;</span></span><br><span class="line"><span class="undefined">            padding: 10px;</span></span><br><span class="line"><span class="css">            <span class="selector-tag">background</span>: <span class="selector-id">#aaa</span>;</span></span><br><span class="line"><span class="css">            <span class="selector-tag">border</span>: <span class="selector-tag">dashed</span> 5<span class="selector-tag">px</span> <span class="selector-id">#000</span>;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="css">        <span class="selector-class">.main-container</span> *+* &#123;</span></span><br><span class="line"><span class="undefined">            margin-top: 20px;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="css">        <span class="selector-class">.main-header</span> &#123;</span></span><br><span class="line"><span class="undefined">            height: 50px;</span></span><br><span class="line"><span class="css">            <span class="selector-tag">background</span>: <span class="selector-id">#aaa</span>;</span></span><br><span class="line"><span class="undefined">            border-color: red;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="css">        <span class="selector-class">.main-content</span> &#123;</span></span><br><span class="line"><span class="undefined">            min-height: 1000px;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="css">        <span class="selector-class">.main-header</span> &#123;</span></span><br><span class="line"><span class="undefined">            position: -webkit-sticky;</span></span><br><span class="line"><span class="undefined">            position: sticky;</span></span><br><span class="line"><span class="undefined">            top: 0;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">main</span> <span class="attr">class</span>=<span class="string">"main-container"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">header</span> <span class="attr">class</span>=<span class="string">"main-header"</span>&gt;</span>HEADER<span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"main-content"</span>&gt;</span>MAIN CONTENT<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">footer</span> <span class="attr">class</span>=<span class="string">"main-footer"</span>&gt;</span>FOOTER<span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">main</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Page Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">        body &#123;</span></span><br><span class="line"><span class="undefined">            color: #fff;</span></span><br><span class="line"><span class="undefined">            font-family: arial;</span></span><br><span class="line"><span class="undefined">            font-weight: bold;</span></span><br><span class="line"><span class="undefined">            font-size: 40px;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        .main-container &#123;</span></span><br><span class="line"><span class="undefined">            max-width: 600px;</span></span><br><span class="line"><span class="undefined">            margin: 0 auto;</span></span><br><span class="line"><span class="undefined">            border: solid 10px green;</span></span><br><span class="line"><span class="undefined">            padding: 10px;</span></span><br><span class="line"><span class="undefined">            margin-top: 40px;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        .main-container * &#123;</span></span><br><span class="line"><span class="undefined">            padding: 10px;</span></span><br><span class="line"><span class="undefined">            background: #aaa;</span></span><br><span class="line"><span class="undefined">            border: dashed 5px #000;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        .main-container *+* &#123;</span></span><br><span class="line"><span class="undefined">            margin-top: 20px;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        .main-header &#123;</span></span><br><span class="line"><span class="undefined">            height: 50px;</span></span><br><span class="line"><span class="undefined">            background: #aaa;</span></span><br><span class="line"><span class="undefined">            border-color: red;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        .main-content &#123;</span></span><br><span class="line"><span class="undefined">            min-height: 1000px;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        .main-header &#123;</span></span><br><span class="line"><span class="undefined">            position: -webkit-sticky;</span></span><br><span class="line"><span class="undefined">            position: sticky;</span></span><br><span class="line"><span class="undefined">            top: 0;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">main</span> <span class="attr">class</span>=<span class="string">"main-container"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">header</span> <span class="attr">class</span>=<span class="string">"main-header"</span>&gt;</span>HEADER<span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"main-content"</span>&gt;</span>MAIN CONTENT<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">footer</span> <span class="attr">class</span>=<span class="string">"main-footer"</span>&gt;</span>FOOTER<span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">main</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>总结：<br>比较不好的是这个属性的兼容性还不是很好，它之所以会出现，也是因为监听<code>scroll</code>事件来实现粘性布局使浏览器进入慢滚动的模式，这与浏览器想要通过硬件加速来提升滚动的体验是相悖的。<br>　　这个属性使用的浏览器只有FireFox和iOS的Safari：<br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1549937196181-a18925ca-f6f3-4dab-b56f-efc03b7f0dcc.png#align=left&amp;display=inline&amp;height=311&amp;originHeight=493&amp;originWidth=1181&amp;size=0&amp;width=746" alt=""></p>
 <p>还有要让sticky属性生效需要满足以下两点：</p>
 <ul>
@@ -1516,316 +1764,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/22/constructor & prototype/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="httishere">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HTTISHERE">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/22/constructor & prototype/" itemprop="url">constructor & prototype</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-22T10:08:03+08:00">
-                2019-01-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/js/" itemprop="url" rel="index">
-                    <span itemprop="name">js</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>定义：constructor 是一个对象的属性，这个属性存在在此对象的 prototype 中, 指向此对象的构造函数。</p>
-</blockquote>
-<ul>
-<li>constructor 是一个对象属性；</li>
-<li>constructor 在 prototype 中；</li>
-<li>constructor 指向构造函数；</li>
-</ul>
-<blockquote>
-<p>prototype 是一个函数属性, 此属性同时也是一个对象, 保存着对象实例所共有的属性和方法。</p>
-</blockquote>
-<ul>
-<li>prototype 是函数属性, 只要是函数, 就有 prototype 属性. 而不管是构造函数还是普通函数.</li>
-<li>prototype 同时也是对象.</li>
-<li>prototype 放的是公共的东西, 包括属性和方法.</li>
-</ul>
-<p>在 JavaScript 内将使用 function 定义的称为函数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function Person(name) &#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">    this.showMyName = function() &#123;</span><br><span class="line">        alert(this.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>而对于 Person 还可以使用 new 操作符进行实例化，<code>var Lilei = new Person(&#39;Lilei&#39;);</code>，于是此时 Person 就类似于类，但是其没有关键字 class，所以就称之为类的构造函数。<br>按照 javascript 的说法，function 定义的这个 Person 就是一个 Object（对象），而使用 function 生成的对象和使用 new 操作符生成的对象是不同的，function 定义的对象有 prototype（原型）属性，而 new 生成的对象没有该属性。<br>prototype 属性是指向一个 prototype 对象的。<br>prototype 对象中又有一个 constructor 属性，这个 constructor 属性同样指向一个 constructor 对象，而这个 constructor 对象恰恰就是这个 function 函数本身。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function Person(name) &#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">    this.showMyName = function() &#123;</span><br><span class="line">        alert(this.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var Lilei = new Person(&apos;Lilei&apos;);</span><br><span class="line">console.log(Lilei.prototype); // undefined</span><br><span class="line">console.log(typeof Person.prototype); // Object</span><br><span class="line">console.log(Person.prototype.constructor);// function Person(name) &#123;...&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">// type 1 （所有对象实例共享）</span><br><span class="line">Person.prototype.getName = function()&#123;</span><br><span class="line">    alert(this.name);</span><br><span class="line">&#125;</span><br><span class="line">var Meimei = new Person(&apos;Meimei&apos;);</span><br><span class="line">alert(obj.constructor == Person);// true</span><br><span class="line">// type 2</span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">    getName: function()&#123;</span><br><span class="line">        alert(this.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var Meimei = new Person(&apos;Meimei&apos;);</span><br><span class="line">alert(obj.constructor == Person);// false</span><br><span class="line">// type2情况下就是将Person的prototype进行重写，导致原来的constructor被覆盖</span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">    constructor: Person, // 强制指回Person</span><br><span class="line">    getName: function()&#123;</span><br><span class="line">        alert(this.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var Lilei = new Person(&apos;Lilei&apos;);</span><br><span class="line">var Meimei = new Person(&apos;Meimei&apos;);</span><br><span class="line">Lilei.getName(); // &apos;Lilei&apos;</span><br><span class="line">Meimei.getName(); // &apos;Meimei&apos;</span><br><span class="line">Lilei.getName() == Meimei.getName(); // true</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>同时说说 this，定义是<code>this</code>就是函数赖以执行的对象：</p>
-</blockquote>
-<ul>
-<li>this 是对象；</li>
-<li>this 以来函数执行的上下文环境；</li>
-<li>this 存在于函数内；</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">alert(this); // 全局环境，此时this指向window</span><br><span class="line">function Person(name) &#123;</span><br><span class="line">    console.log(this);</span><br><span class="line">    this.name = name;</span><br><span class="line">    this.showMyName = function() &#123;</span><br><span class="line">        alert(this.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">Person(&apos;Lilei&apos;); // 全局环境执行Person函数，this指向window</span><br><span class="line">var Lilei = new Person(&apos;Lilei&apos;); // 将Person作为构造函数实例化对象</span><br><span class="line">                                 // 此时this指向Object</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function Person2()&#123;</span><br><span class="line">    alert(this.name);</span><br><span class="line">&#125;</span><br><span class="line">Person2(); // this指向window，所以输出了也就是window.name，此时未在窗口内定义name，所以为undefined</span><br><span class="line">function Person(name) &#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">    alert(this.name);</span><br><span class="line">&#125;</span><br><span class="line">Person(&apos;Lilei&apos;); // &apos;Lilei&apos;</span><br><span class="line">Person2(); // &apos;Lilei&apos;，两个函数都是对window.name进行操作，所以会互相影响</span><br><span class="line">var person = new Person2();</span><br><span class="line">console.log(person); // undefined，this.name = Object.name</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">// 综合例子</span><br><span class="line">var Tinker = function()&#123;</span><br><span class="line">    this.elements = [];</span><br><span class="line">&#125;;</span><br><span class="line">// 对Tinker定义一个对象，动态为对象原型增加方法</span><br><span class="line">Tinker.fn = Tinker.prototype = &#123;</span><br><span class="line">    constructor: Tinker,</span><br><span class="line">    extend: function(obj)&#123;</span><br><span class="line">        var p;</span><br><span class="line">        for(p in obj)&#123;</span><br><span class="line">            this.constructor.prototype[p] = obj[p];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">// 为原型增加了get和each方法</span><br><span class="line">Tinker.fn.extend(&#123;</span><br><span class="line">    get: function()&#123; // 查找页面内id元素</span><br><span class="line">        var length = arguments.length, i = 0;</span><br><span class="line">        for(; i &lt; length; i++)&#123;</span><br><span class="line">            this.elements.push(document.getElementById(arguments[i])); </span><br><span class="line">        &#125;</span><br><span class="line">        return this;</span><br><span class="line">    &#125;,</span><br><span class="line">    each: function(fn)&#123; // 对所查找到的元素绑定方法</span><br><span class="line">        var i = 0, length = this.elements.length;</span><br><span class="line">        for(; i &lt; length; i++)&#123;</span><br><span class="line">            fn.call(this.elements[i], i, this.elements[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        return this;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">//假设有id = &apos;data&apos;, id = &apos;message&apos;</span><br><span class="line">var obj = new Tinker();</span><br><span class="line">obj.get(&apos;data&apos;, &apos;message&apos;).each(function(i, item)&#123;</span><br><span class="line">    this.style.color = &apos;red&apos;;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/21/yuque/h5自定义海报生成/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="httishere">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HTTISHERE">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/21/yuque/h5自定义海报生成/" itemprop="url">h5自定义海报生成</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-21T17:16:03+08:00">
-                2019-01-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>功能需求：获取海报参数自定义生成一张带二维码海报。<br>效果如下：<br><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/250093/1548062679065-c45906c9-bae5-4d02-92bc-13f747042672.jpeg#align=left&amp;display=inline&amp;height=657&amp;name=Inked%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190121172129_LI.jpg&amp;originHeight=1298&amp;originWidth=836&amp;size=673550&amp;width=423" alt="Inked微信图片_20190121172129_LI.jpg"></p>
-<p>元素：主要分成背景图，用户信息和带用户信息的二维码（由前端生成）；</p>
-<p>步骤：先根据设计完成布局设计-&gt;将这张海报的html元素生成为canvas-&gt;将该canvas转化成图片；</p>
-<ul>
-<li>步骤1：请求数据，成功后主要是二维码的生成（使用qrcodejs2）</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 生成二维码</span></span><br><span class="line">    qrcodeCreate() &#123;</span><br><span class="line">      <span class="keyword">const</span> _this = <span class="keyword">this</span>;</span><br><span class="line">      <span class="keyword">if</span> (_this.poster_params.code_url) &#123;</span><br><span class="line">        <span class="keyword">let</span> qrcodeDom = <span class="built_in">document</span>.getElementById(<span class="string">"qrcode"</span>);</span><br><span class="line">        qrcode = <span class="keyword">new</span> QRCode(<span class="string">"qrcode"</span>, &#123;</span><br><span class="line">          width: <span class="built_in">parseInt</span>(qrcodeDom.clientWidth), <span class="comment">// 设置宽度，单位像素</span></span><br><span class="line">          height: <span class="built_in">parseInt</span>(qrcodeDom.clientHeight), <span class="comment">// 设置高度，单位像素</span></span><br><span class="line">          text: _this.poster_params.code_url <span class="comment">// 设置二维码内容或跳转地址</span></span><br><span class="line">        &#125;);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        _this.isLoading = <span class="literal">false</span>;</span><br><span class="line">        _this.isFailed = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">return</span> _this.$toast.center(<span class="string">"海报跑走了~"</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>步骤2：设计海报canvas</li>
-</ul>
-<p>注意是内部图片必须有效加载才能生成成功，所以需要先判断图片链接的有效性，之后等图片完全加载完成之后再转为canvas；还有在图片为不同域的情况也可能会产生生成失败的现象，所以需要先将跨域图片转换为base64格式。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建海报canvas</span></span><br><span class="line"><span class="keyword">let</span> box = <span class="built_in">document</span>.getElementById(<span class="string">"poster-box"</span>); <span class="comment">// 海报盒子</span></span><br><span class="line">      <span class="keyword">let</span> c_width = box.offsetWidth;</span><br><span class="line">      <span class="keyword">let</span> c_height = box.offsetHeight;</span><br><span class="line">      <span class="keyword">let</span> canvas = <span class="built_in">document</span>.createElement(<span class="string">"canvas"</span>);</span><br><span class="line">      <span class="keyword">let</span> context = canvas.getContext(<span class="string">"2d"</span>);</span><br><span class="line">      <span class="comment">// 获取根据屏幕分辨率，来设置canvas的宽高以获得高清图片</span></span><br><span class="line">      <span class="keyword">let</span> devicePixelRatio = <span class="built_in">window</span>.devicePixelRatio || <span class="number">2</span>;</span><br><span class="line">      <span class="keyword">let</span> backingStoreRatio =</span><br><span class="line">        context.webkitBackingStorePixelRatio ||</span><br><span class="line">        context.mozBackingStorePixelRatio ||</span><br><span class="line">        context.msBackingStorePixelRatio ||</span><br><span class="line">        context.oBackingStorePixelRatio ||</span><br><span class="line">        context.backingStorePixelRatio ||</span><br><span class="line">        <span class="number">1</span>;</span><br><span class="line">      <span class="keyword">let</span> ratio = devicePixelRatio / backingStoreRatio;</span><br><span class="line">      canvas.width = c_width * ratio;</span><br><span class="line">      canvas.height = c_height * ratio;</span><br><span class="line">      canvas.style.width = c_width + <span class="string">"px"</span>;</span><br><span class="line">      canvas.style.height = c_height + <span class="string">"px"</span>;</span><br><span class="line">      canvas.style.position = <span class="string">"absolute"</span>;</span><br><span class="line">      canvas.style.left = <span class="string">"50%"</span>;</span><br><span class="line">      canvas.style.top = <span class="string">"50%"</span>;</span><br><span class="line">      canvas.style.transform = <span class="string">"translate(-50%, -50%)"</span>;</span><br><span class="line">      canvas.style.zIndex = <span class="string">"10"</span>;</span><br><span class="line">      canvas.style.opacity = <span class="string">"0"</span>;</span><br><span class="line">      <span class="comment">// canvas的页面位置自行调整</span></span><br><span class="line">      <span class="keyword">let</span> scrollTop =</span><br><span class="line">        <span class="built_in">document</span>.documentElement.scrollTop ||</span><br><span class="line">        <span class="built_in">window</span>.pageYOffset ||</span><br><span class="line">        <span class="built_in">document</span>.body.scrollTop;</span><br><span class="line">      <span class="keyword">let</span> scrollLeft =</span><br><span class="line">        <span class="built_in">document</span>.documentElement.scrollLeft ||</span><br><span class="line">        <span class="built_in">window</span>.pageXOffset ||</span><br><span class="line">        <span class="built_in">document</span>.body.scrollLeft;</span><br><span class="line">      <span class="keyword">let</span> transTop =</span><br><span class="line">        screenTop -</span><br><span class="line">        (<span class="built_in">document</span>.getElementsByClassName(<span class="string">"poster-view-content"</span>)[<span class="number">0</span>].offsetTop -</span><br><span class="line">          c_height / <span class="number">2</span>);</span><br><span class="line">      <span class="keyword">let</span> transLeft = (c_width - <span class="built_in">window</span>.innerWidth) / <span class="number">2</span>;</span><br><span class="line">      context.scale(ratio, ratio);</span><br><span class="line">      <span class="comment">// canvas的位置要保证与div位置相同。</span></span><br><span class="line">      context.translate(transLeft, transTop);</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 背景图片</span></span><br><span class="line">      <span class="keyword">let</span> img = <span class="keyword">new</span> Image();</span><br><span class="line">      <span class="keyword">let</span> canvas2 = <span class="built_in">document</span>.createElement(<span class="string">"canvas"</span>);</span><br><span class="line">      <span class="keyword">let</span> ctx = canvas2.getContext(<span class="string">"2d"</span>);</span><br><span class="line">      img.crossOrigin = <span class="string">"Anonymous"</span>;</span><br><span class="line">      img.src = _this.poster_params.share;</span><br><span class="line">      img.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (img.width &gt; <span class="number">0</span>) &#123;</span><br><span class="line">          canvas2.height = img.height;</span><br><span class="line">          canvas2.width = img.width;</span><br><span class="line">          ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">          <span class="keyword">let</span> dataURL = canvas2.toDataURL(<span class="string">"image/png"</span>);</span><br><span class="line">          <span class="built_in">document</span>.getElementById(<span class="string">"poster-bg"</span>).setAttribute(<span class="string">"src"</span>, dataURL);</span><br><span class="line">          canvas2 = <span class="literal">null</span>;</span><br><span class="line">          _this.getCard(box, canvas, c_width, c_height); <span class="comment">// 生成海报canvas</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          _this.isLoading = <span class="literal">false</span>;</span><br><span class="line">          _this.isFailed = <span class="literal">true</span>;</span><br><span class="line">          <span class="keyword">return</span> _this.$toast.center(<span class="string">"海报跑走了~"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;;</span><br><span class="line">      img.onerror = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        _this.isLoading = <span class="literal">false</span>;</span><br><span class="line">        _this.isFailed = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">return</span> _this.$toast.center(<span class="string">"海报跑走了~"</span>);</span><br><span class="line">      &#125;;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>步骤3：在所有图片都加载以及转换成功后，可以生成海报canvas并转换生成图片（使用html2canvas）</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 每次图片加载成功后都会请求执行该函数（但是要在所有图片都加载成功后才能真正生成canvas）</span></span><br><span class="line"> getCard(box, canvas, c_width, c_height) &#123;</span><br><span class="line">   <span class="keyword">const</span> _this = <span class="keyword">this</span>;</span><br><span class="line">   _this.cnt++; <span class="comment">// 对已加载成功的图片数进行判断</span></span><br><span class="line">   <span class="keyword">if</span> (_this.cnt &lt; <span class="number">3</span>) <span class="keyword">return</span>; <span class="comment">// 所有图片都成功可以生成</span></span><br><span class="line">   html2canvas(box, &#123;</span><br><span class="line">     allowTaint: <span class="literal">true</span>,</span><br><span class="line">     useCORS: <span class="literal">true</span>,</span><br><span class="line">     canvas: canvas,</span><br><span class="line">     width: c_width,</span><br><span class="line">     height: c_height</span><br><span class="line">   &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">canvas</span>) </span>&#123;</span><br><span class="line">     canvas.setAttribute(<span class="string">"id"</span>, <span class="string">"my-canvas"</span>); <span class="comment">//添加属性</span></span><br><span class="line">     box.appendChild(canvas);</span><br><span class="line">     <span class="comment">// 转换图片得到base64格式</span></span><br><span class="line">     <span class="keyword">let</span> dataURL = canvas.toDataURL(<span class="string">"image/png"</span>);</span><br><span class="line">     <span class="keyword">let</span> img = <span class="keyword">new</span> Image();</span><br><span class="line">     img.src = dataURL;</span><br><span class="line">     img.className = <span class="string">"cardImg"</span>;</span><br><span class="line">     img.style.position = <span class="string">"absolute"</span>;</span><br><span class="line">     img.style.left = <span class="string">"50%"</span>;</span><br><span class="line">     img.style.top = <span class="string">"50%"</span>;</span><br><span class="line">     img.style.transform = <span class="string">"translate(-50%, -50%)"</span>;</span><br><span class="line">     img.style.zIndex = <span class="string">"150"</span>;</span><br><span class="line">     img.style.width = c_width + <span class="string">"px"</span>;</span><br><span class="line">     img.style.height = c_height + <span class="string">"px"</span>;</span><br><span class="line">     box.appendChild(img);</span><br><span class="line">     <span class="comment">// 生成成功</span></span><br><span class="line">     _this.$emit(<span class="string">'createPosterSuccess'</span>, dataURL);</span><br><span class="line">     _this.isLoading = <span class="literal">false</span>;</span><br><span class="line">     _this.isSuccess = <span class="literal">true</span>;</span><br><span class="line">   &#125;);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p>大致就完成了，主要在与异步的问题，在图片base64格式转换的时候也要判断二维码是否生成成功。<br>还有生成到成为一张图片还是需要一定时间，所以最好有一个生成中的加载状态。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1876,7 +1814,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1935,7 +1873,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

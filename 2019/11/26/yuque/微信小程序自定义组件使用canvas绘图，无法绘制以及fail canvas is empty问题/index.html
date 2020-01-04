@@ -79,13 +79,19 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="HTTISHERE">
-<meta property="og:url" content="http://yoursite.com/categories/js/index.html">
+<meta name="description" content="情况1：普通页面，canvas绘制，正常，生成图片正常； 情况2：自定义组件引用canvas绘制，空白；原因：查看文档，在自定义组件内需要手动传入当前实例的this，否则canvas指向的this为父组件所以无法找到正确canvas； 情况3：自定义组件内，canvas绘制好了，但是canvasToTempFilePath报fail canvas is empty错误；原因：同上，但是canvas">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信小程序自定义组件使用canvas绘图，无法绘制以及fail canvas is empty问题">
+<meta property="og:url" content="http://yoursite.com/2019/11/26/yuque/微信小程序自定义组件使用canvas绘图，无法绘制以及fail canvas is empty问题/index.html">
 <meta property="og:site_name" content="HTTISHERE">
+<meta property="og:description" content="情况1：普通页面，canvas绘制，正常，生成图片正常； 情况2：自定义组件引用canvas绘制，空白；原因：查看文档，在自定义组件内需要手动传入当前实例的this，否则canvas指向的this为父组件所以无法找到正确canvas； 情况3：自定义组件内，canvas绘制好了，但是canvasToTempFilePath报fail canvas is empty错误；原因：同上，但是canvas">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/250093/1574740757955-44eee736-554f-4bb3-a6a9-9cb1f1bc6e1f.png#align=left&display=inline&height=351&name=image.png&originHeight=351&originWidth=885&size=39059&status=done&width=885">
+<meta property="og:updated_time" content="2020-01-03T11:08:12.486Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HTTISHERE">
+<meta name="twitter:title" content="微信小程序自定义组件使用canvas绘图，无法绘制以及fail canvas is empty问题">
+<meta name="twitter:description" content="情况1：普通页面，canvas绘制，正常，生成图片正常； 情况2：自定义组件引用canvas绘制，空白；原因：查看文档，在自定义组件内需要手动传入当前实例的this，否则canvas指向的this为父组件所以无法找到正确canvas； 情况3：自定义组件内，canvas绘制好了，但是canvasToTempFilePath报fail canvas is empty错误；原因：同上，但是canvas">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2019/png/250093/1574740757955-44eee736-554f-4bb3-a6a9-9cb1f1bc6e1f.png#align=left&display=inline&height=351&name=image.png&originHeight=351&originWidth=885&size=39059&status=done&width=885">
 
 
 
@@ -115,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/js/">
+  <link rel="canonical" href="http://yoursite.com/2019/11/26/yuque/微信小程序自定义组件使用canvas绘图，无法绘制以及fail canvas is empty问题/">
 
 
 
 
 
-  <title>Category: js | HTTISHERE</title>
+  <title>微信小程序自定义组件使用canvas绘图，无法绘制以及fail canvas is empty问题 | HTTISHERE</title>
   
 
 
@@ -140,7 +146,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -214,105 +220,144 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block category">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>js<small>Category</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/26/yuque/微信小程序自定义组件使用canvas绘图，无法绘制以及fail canvas is empty问题/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="httishere">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HTTISHERE">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/01/24/js-proxy/" itemprop="url">
-              
-                <span itemprop="name">js内proxy检测</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">微信小程序自定义组件使用canvas绘图，无法绘制以及fail canvas is empty问题</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-24T09:44:41+08:00" content="2019-01-24">
-          01-24
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-26T11:55:10+08:00">
+                2019-11-26
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/23/js绑定/" itemprop="url">
-              
-                <span itemprop="name">js绑定call, apply, bind</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-23T16:01:15+08:00" content="2019-01-23">
-          01-23
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/22/constructor & prototype/" itemprop="url">
-              
-                <span itemprop="name">constructor & prototype</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-22T10:08:03+08:00" content="2019-01-22">
-          01-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <p>情况1：普通页面，canvas绘制，正常，生成图片正常；</p>
+<p>情况2：自定义组件引用canvas绘制，空白；<br>原因：查看文档，在自定义组件内需要手动传入当前实例的this，否则canvas指向的this为父组件所以无法找到正确canvas；<br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1574740757955-44eee736-554f-4bb3-a6a9-9cb1f1bc6e1f.png#align=left&amp;display=inline&amp;height=351&amp;name=image.png&amp;originHeight=351&amp;originWidth=885&amp;size=39059&amp;status=done&amp;width=885" alt="image.png"></p>
+<p>情况3：自定义组件内，canvas绘制好了，但是<code>canvasToTempFilePath</code>报fail canvas is empty错误；<br>原因：同上，但是canvasToTempFilePath({}, this)添加this可能无法解决，因为我使用的小程序框架是Taro，在 Taro 的页面和组件类中，this 指向的是 Taro页面或组件实例。<br>所以一般我们需要获取 Taro的页面和组件所对应的小程序原生页面和组件实例，这个时候我们可以通过 this.$scope 访问到它们；<br>所以最后写成：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Taro.createCanvasContext(<span class="string">"canvas-id"</span>, <span class="keyword">this</span>.$scope);</span><br><span class="line">Taro.canvasToTempFilePath(&#123;&#125;, <span class="keyword">this</span>.$scope);</span><br></pre></td></tr></table></figure>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/05/yuque/mpvue 引入第三方UI组件库/" rel="next" title="mpvue 引入第三方UI组件库">
+                <i class="fa fa-chevron-left"></i> mpvue 引入第三方UI组件库
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -320,6 +365,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -528,6 +577,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

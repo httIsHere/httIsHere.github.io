@@ -79,17 +79,22 @@
 
 
 
-<meta name="description" content="在JavaScript内Function有3个自带的方法（call，apply，bind），均是为了改变函数体内的this指向。  相同：call，apply，bind函数第一个参数都是this要指向的对象，即想指定的上下文。 区别：  apply的第二个参数是一个参数数组； call第二个及以后是多个参数（即参数数组内容全部列举）； bind会创建一个新函数（绑定函数），返回也是函数，当调用这">
+<meta name="description" content="1、下载第三方UI组件包，将其dist文件夹复制至自己项目下 2、在需使用组件的页面json内引入需要的组件 3、直接在内面内使用组件 注意：①、需要将微信开发工具的ES6转ES5选项选上，否则报错。 ②、我项目出现的问题，原先我把第三方的dist放在项目文件的dist文件下，但是发现还是会报not found错误，然后转移到项目的static文件夹下就好了。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js绑定call, apply, bind">
-<meta property="og:url" content="http://yoursite.com/2019/01/23/js绑定/index.html">
+<meta property="og:title" content="mpvue 引入第三方UI组件库">
+<meta property="og:url" content="http://yoursite.com/2019/06/05/yuque/mpvue 引入第三方UI组件库/index.html">
 <meta property="og:site_name" content="HTTISHERE">
-<meta property="og:description" content="在JavaScript内Function有3个自带的方法（call，apply，bind），均是为了改变函数体内的this指向。  相同：call，apply，bind函数第一个参数都是this要指向的对象，即想指定的上下文。 区别：  apply的第二个参数是一个参数数组； call第二个及以后是多个参数（即参数数组内容全部列举）； bind会创建一个新函数（绑定函数），返回也是函数，当调用这">
+<meta property="og:description" content="1、下载第三方UI组件包，将其dist文件夹复制至自己项目下 2、在需使用组件的页面json内引入需要的组件 3、直接在内面内使用组件 注意：①、需要将微信开发工具的ES6转ES5选项选上，否则报错。 ②、我项目出现的问题，原先我把第三方的dist放在项目文件的dist文件下，但是发现还是会报not found错误，然后转移到项目的static文件夹下就好了。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-24T01:43:11.908Z">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/250093/1559714105275-093b7242-cbe2-44b6-a3d3-250b711442f8.png#align=left&display=inline&height=210&name=image.png&originHeight=210&originWidth=679&size=24183&status=done&width=679">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/250093/1559714798430-aed62fe7-c10c-44b4-978b-d1a56a7adde2.png#align=left&display=inline&height=99&name=image.png&originHeight=99&originWidth=528&size=6287&status=done&width=528">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/250093/1559714828248-15d7b958-05ba-4ef8-9097-45e203b4145e.png#align=left&display=inline&height=382&name=image.png&originHeight=382&originWidth=353&size=26112&status=done&width=353">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/250093/1559714974755-a4062352-698c-4762-8613-04137896444a.png#align=left&display=inline&height=43&name=image.png&originHeight=43&originWidth=183&size=1731&status=done&width=183">
+<meta property="og:updated_time" content="2020-01-03T11:08:12.499Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="js绑定call, apply, bind">
-<meta name="twitter:description" content="在JavaScript内Function有3个自带的方法（call，apply，bind），均是为了改变函数体内的this指向。  相同：call，apply，bind函数第一个参数都是this要指向的对象，即想指定的上下文。 区别：  apply的第二个参数是一个参数数组； call第二个及以后是多个参数（即参数数组内容全部列举）； bind会创建一个新函数（绑定函数），返回也是函数，当调用这">
+<meta name="twitter:title" content="mpvue 引入第三方UI组件库">
+<meta name="twitter:description" content="1、下载第三方UI组件包，将其dist文件夹复制至自己项目下 2、在需使用组件的页面json内引入需要的组件 3、直接在内面内使用组件 注意：①、需要将微信开发工具的ES6转ES5选项选上，否则报错。 ②、我项目出现的问题，原先我把第三方的dist放在项目文件的dist文件下，但是发现还是会报not found错误，然后转移到项目的static文件夹下就好了。">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2019/png/250093/1559714105275-093b7242-cbe2-44b6-a3d3-250b711442f8.png#align=left&display=inline&height=210&name=image.png&originHeight=210&originWidth=679&size=24183&status=done&width=679">
 
 
 
@@ -119,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/01/23/js绑定/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/05/yuque/mpvue 引入第三方UI组件库/">
 
 
 
 
 
-  <title>js绑定call, apply, bind | HTTISHERE</title>
+  <title>mpvue 引入第三方UI组件库 | HTTISHERE</title>
   
 
 
@@ -232,7 +237,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/23/js绑定/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/05/yuque/mpvue 引入第三方UI组件库/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="httishere">
@@ -249,7 +254,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">js绑定call, apply, bind</h1>
+          <h1 class="post-title" itemprop="name headline">mpvue 引入第三方UI组件库</h1>
         
 
         <div class="post-meta">
@@ -261,8 +266,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-23T16:01:15+08:00">
-                2019-01-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-05T13:52:32+08:00">
+                2019-06-05
               </time>
             
 
@@ -271,28 +276,6 @@
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/js/" itemprop="url" rel="index">
-                    <span itemprop="name">js</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -321,30 +304,11 @@
       
 
       
-        <blockquote>
-<p>在JavaScript内Function有3个自带的方法（call，apply，bind），均是为了改变函数体内的this指向。</p>
-</blockquote>
-<p>相同：call，apply，bind函数第一个参数都是this要指向的对象，即想指定的上下文。</p>
-<p>区别：</p>
-<ul>
-<li>apply的第二个参数是一个参数数组；</li>
-<li>call第二个及以后是多个参数（即参数数组内容全部列举）；</li>
-<li>bind会创建一个新函数（绑定函数），返回也是函数，当调用这个绑定函数时，绑定函数会以创建它时传入 bind() 方法的第一个参数 作为 this，传入 bind() 方法的 第二个以及以后的参数加上绑定函数运行时本身的参数按照顺序作为原函数的参数来调用原函数，使用bind不会立即执行，在调用创建的新的函数才会执行。</li>
-</ul>
-<p>apply和call功能是完全一样的，传参就在于传参的方式。</p>
-<p>apply, call用法：</p>
-<ol>
-<li><p>数组追加</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var array1 = [12, &apos;foo&apos;, &#123;name:&apos;Joe&apos;&#125;, -2458];</span><br><span class="line">var array2 = [&apos;Doe&apos; , 555 , 100];</span><br><span class="line">Array.prototype.push.call(array1, array2);</span><br><span class="line">// [12, &apos;foo&apos;, &#123;name:&apos;Joe&apos;&#125;, -2458, [&apos;Doe&apos; , 555 , 100]]</span><br><span class="line">// array1.length = 5</span><br><span class="line"></span><br><span class="line">Array.prototype.push.apply(array1, array2); // 这里用 apply 第二个参数是一个数组</span><br><span class="line">// [12, &apos;foo&apos;, &#123;name:&apos;Joe&apos;&#125;, -2458, &apos;Doe&apos; , 555 , 100]</span><br><span class="line">// array1.length = 7</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>获得数组内的最大值，最小值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 由于没有指向，第一个参数传null或本身</span><br><span class="line">var numbers = [5, 458, 120, -215]; </span><br><span class="line">var maxInNumbers = Math.max.apply(Math, numbers),   // 458</span><br><span class="line">    maxInNumbers = Math.max.call(Math,5, 458 , 120 , -215); // 458</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>验证是否是数组（前提是toString（）方法没有被重写过）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function isArray(obj)&#123; </span><br><span class="line">    return Object.prototype.toString.call(obj) === &apos;[object Array]&apos; ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>bind用法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var bar = function()&#123;</span><br><span class="line">    console.log(this.x);</span><br><span class="line">&#125;</span><br><span class="line">var foo = &#123;</span><br><span class="line">    x:3</span><br><span class="line">&#125;</span><br><span class="line">bar(); // undefined</span><br><span class="line">var func = bar.bind(foo); //此时this已经指向了foo，但是用bind（）方法并不会立即执行，而是创建一个新函数，如果要直接调用的话 可以 bar.bind(foo)（）</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">func(); // 3</span><br></pre></td></tr></table></figure></p>
+        <p>1、下载第三方UI组件包，将其dist文件夹复制至自己项目下<br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1559714105275-093b7242-cbe2-44b6-a3d3-250b711442f8.png#align=left&amp;display=inline&amp;height=210&amp;name=image.png&amp;originHeight=210&amp;originWidth=679&amp;size=24183&amp;status=done&amp;width=679" alt="image.png"></p>
+<p>2、在需使用组件的页面json内引入需要的组件<br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1559714798430-aed62fe7-c10c-44b4-978b-d1a56a7adde2.png#align=left&amp;display=inline&amp;height=99&amp;name=image.png&amp;originHeight=99&amp;originWidth=528&amp;size=6287&amp;status=done&amp;width=528" alt="image.png"></p>
+<p>3、直接在内面内使用组件<br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1559714828248-15d7b958-05ba-4ef8-9097-45e203b4145e.png#align=left&amp;display=inline&amp;height=382&amp;name=image.png&amp;originHeight=382&amp;originWidth=353&amp;size=26112&amp;status=done&amp;width=353" alt="image.png"></p>
+<p>注意：<br>①、需要将微信开发工具的ES6转ES5选项选上，否则报错。<br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1559714974755-a4062352-698c-4762-8613-04137896444a.png#align=left&amp;display=inline&amp;height=43&amp;name=image.png&amp;originHeight=43&amp;originWidth=183&amp;size=1731&amp;status=done&amp;width=183" alt="image.png"></p>
+<p>②、我项目出现的问题，原先我把第三方的dist放在项目文件的dist文件下，但是发现还是会报not found错误，然后转移到项目的static文件夹下就好了。</p>
 
       
     </div>
@@ -369,8 +333,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/23/vue2.0/" rel="next" title="vue source code 2.0">
-                <i class="fa fa-chevron-left"></i> vue source code 2.0
+              <a href="/2019/03/08/yuque/Weekly sharing 02（20190304）/" rel="next" title="Weekly sharing 02（20190304）">
+                <i class="fa fa-chevron-left"></i> Weekly sharing 02（20190304）
               </a>
             
           </div>
@@ -379,8 +343,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/01/24/js-proxy/" rel="prev" title="js内proxy检测">
-                js内proxy检测 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/11/26/yuque/微信小程序自定义组件使用canvas绘图，无法绘制以及fail canvas is empty问题/" rel="prev" title="微信小程序自定义组件使用canvas绘图，无法绘制以及fail canvas is empty问题">
+                微信小程序自定义组件使用canvas绘图，无法绘制以及fail canvas is empty问题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
