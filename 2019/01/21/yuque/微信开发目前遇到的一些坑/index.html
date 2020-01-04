@@ -1,313 +1,135 @@
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next muse use-motion" lang="">
+<html lang="">
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="theme-color" content="#222">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <meta name="author" content="httishere">
 
 
 
 
 
+<title>微信开发目前遇到的一些坑 | HTTISHERE</title>
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+    <link rel="icon" href="/favicon.ico">
 
 
 
 
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
 
 
 
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
 
 
 
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hexo, NexT">
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="1、video在安卓微信内的表现（- -）  层级始终置顶，会遮挡页面上其他元素；video的z-index无论设置为多少，他始终处于最顶层。    进行x5调试的话，播放视频将全屏；  腾讯对x5内核的解释以及部分解决方法：https://x5.tencent.com/tbs/guide/video.html2、video在ios微信内的表现加载页面时会自动播放视频：页面内有video但是需要触">
-<meta property="og:type" content="article">
-<meta property="og:title" content="微信开发目前遇到的一些坑">
-<meta property="og:url" content="http://yoursite.com/2019/01/21/yuque/微信开发目前遇到的一些坑/index.html">
-<meta property="og:site_name" content="HTTISHERE">
-<meta property="og:description" content="1、video在安卓微信内的表现（- -）  层级始终置顶，会遮挡页面上其他元素；video的z-index无论设置为多少，他始终处于最顶层。    进行x5调试的话，播放视频将全屏；  腾讯对x5内核的解释以及部分解决方法：https://x5.tencent.com/tbs/guide/video.html2、video在ios微信内的表现加载页面时会自动播放视频：页面内有video但是需要触">
-<meta property="og:locale" content="default">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/250093/1548061614599-76110260-27cc-47bd-bb4c-ce56d38e8ab6.jpeg#align=left&display=inline&height=1291&originHeight=1920&originWidth=1080&size=0&width=726">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/250093/1548061614505-6c5062ea-dc0c-48f3-a7c9-665bf67d30de.jpeg#align=left&display=inline&height=1326&originHeight=1920&originWidth=1080&size=0&width=746">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/250093/1548061615110-c039680c-9765-4c56-bfb2-8f6fc70b10cc.png#align=left&display=inline&height=764&originHeight=764&originWidth=495&size=0&width=495">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/250093/1548061614823-864a2252-1e4b-4079-915c-a9e2f130535b.png#align=left&display=inline&height=219&originHeight=219&originWidth=590&size=0&width=590">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/250093/1548061614768-1604b976-9905-47de-a3d1-1c65fd807d83.png#align=left&display=inline&height=120&originHeight=120&originWidth=374&size=0&width=374">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/250093/1548061614843-d734ac65-2d1c-4017-bea6-cffd7c93beaa.png#align=left&display=inline&height=114&originHeight=114&originWidth=257&size=0&width=257">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/250093/1548061614659-7aaa7dde-3938-43d1-98c8-c67d3bc9bab4.png#align=left&display=inline&height=178&originHeight=178&originWidth=361&size=0&width=361">
-<meta property="og:updated_time" content="2020-01-03T11:08:12.536Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="微信开发目前遇到的一些坑">
-<meta name="twitter:description" content="1、video在安卓微信内的表现（- -）  层级始终置顶，会遮挡页面上其他元素；video的z-index无论设置为多少，他始终处于最顶层。    进行x5调试的话，播放视频将全屏；  腾讯对x5内核的解释以及部分解决方法：https://x5.tencent.com/tbs/guide/video.html2、video在ios微信内的表现加载页面时会自动播放视频：页面内有video但是需要触">
-<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/250093/1548061614599-76110260-27cc-47bd-bb4c-ce56d38e8ab6.jpeg#align=left&display=inline&height=1291&originHeight=1920&originWidth=1080&size=0&width=726">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: 'Author'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="http://yoursite.com/2019/01/21/yuque/微信开发目前遇到的一些坑/">
-
-
-
-
-
-  <title>微信开发目前遇到的一些坑 | HTTISHERE</title>
-  
-
-
-
-
-
-
+    
+    
+        
+    
 
 
 </head>
-
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">HTTISHERE</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-      
-        <p class="site-subtitle"></p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            Home
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            Archives
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/21/yuque/微信开发目前遇到的一些坑/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="httishere">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HTTISHERE">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">微信开发目前遇到的一些坑</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-21T17:06:49+08:00">
-                2019-01-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">httishere&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/categories">Categories</a>
+                
+                    <a class="menu-item" href="/tags">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
 
         </div>
-      </header>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">httishere&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/categories">Categories</a>
+                
+                    <a class="menu-item" href="/tags">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
     
 
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">微信开发目前遇到的一些坑</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">httishere</a>
+                    
 
-      
-      
+                    
+                        <span class="post-time">
+                        Date: <a href="#">January 21, 2019&nbsp;&nbsp;17:06:49</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
 
-      
-        <p>1、video在安卓微信内的表现（- -）</p>
+        <div class="post-content">
+            <p>1、video在安卓微信内的表现（- -）</p>
 <ul>
 <li>层级始终置顶，会遮挡页面上其他元素；<br><br>video的z-index无论设置为多少，他始终处于最顶层。<br><br><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/250093/1548061614599-76110260-27cc-47bd-bb4c-ce56d38e8ab6.jpeg#align=left&amp;display=inline&amp;height=1291&amp;originHeight=1920&amp;originWidth=1080&amp;size=0&amp;width=726" alt=""></li>
 </ul>
@@ -317,346 +139,70 @@
 </ul>
 <p>腾讯对x5内核的解释以及部分解决方法：<a href="https://x5.tencent.com/tbs/guide/video.html" target="_blank" rel="noopener">https://x5.tencent.com/tbs/guide/video.html</a><br>2、video在ios微信内的表现<br><br>加载页面时会自动播放视频：<br><br>页面内有video但是需要触发才能播放，首次进入页面时不会播放视频但是从这个页面进入下一个页面再返回上一个页面时将自动全屏播放视频；<br><br>解决：<br>但是在部分ios系统内已解决自动全屏播放视频但是还会存在声音（即无视频显示但实际应该还是在播放视频），处理将<code>preload=&quot;auto&quot;</code>属性改为<code>preload=&quot;none&quot;</code>，在加载页面时不加载video。<br>3、ios微信内SPA路由问题<br><br>条件：SPA，且采用history模式；<br><br>表现：ios微信获得<code>window.location.href</code>时获得的实际上时进入页的url而非当前页的真实地址，从而导致微信分享地址不正确以及微信支付唤起失败（提示xxx地址未注册，原因是实际获取到的地址和后台配置的不同）；<br><br>粗暴解决：对于需要获得真实地址的页面进入时不使用<code>router</code>，直接使用<code>location.href</code>进入。<br>4、新的分享接口<br><br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1548061614823-864a2252-1e4b-4079-915c-a9e2f130535b.png#align=left&amp;display=inline&amp;height=219&amp;originHeight=219&amp;originWidth=590&amp;size=0&amp;width=590" alt=""><br>现象：在安卓微信6.7.3内进行分享自定义内容无效，但分享到QQ是正常有效的；<br><br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1548061614768-1604b976-9905-47de-a3d1-1c65fd807d83.png#align=left&amp;display=inline&amp;height=120&amp;originHeight=120&amp;originWidth=374&amp;size=0&amp;width=374" alt=""><br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1548061614843-d734ac65-2d1c-4017-bea6-cffd7c93beaa.png#align=left&amp;display=inline&amp;height=114&amp;originHeight=114&amp;originWidth=257&amp;size=0&amp;width=257" alt=""><br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1548061614659-7aaa7dde-3938-43d1-98c8-c67d3bc9bab4.png#align=left&amp;display=inline&amp;height=178&amp;originHeight=178&amp;originWidth=361&amp;size=0&amp;width=361" alt=""><br>粗暴解决：最后还是使用了旧的分享接口，但是就接口即将废弃不知道还有什么解决方法。<br>5、新版本默认背景色非<code>#FFFFFF</code>，需自己在样式中对其进行设置。<br>Finally：微信开发千万别用SPA，会疯。</p>
 
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/01/21/yuque/swiper4.0自动轮播+循环轮播/" rel="next" title="swiper4.0自动轮播+循环轮播">
-                <i class="fa fa-chevron-left"></i> swiper4.0自动轮播+循环轮播
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/21/yuque/在ios系统浏览器中输入框得到焦点时页面自动放大/" rel="prev" title="在ios系统浏览器中输入框得到焦点时页面自动放大">
-                在ios系统浏览器中输入框得到焦点时页面自动放大 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
         </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">httishere</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">16</span>
-                  <span class="site-state-item-name">posts</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                
-                  <span class="site-state-item-count">3</span>
-                  <span class="site-state-item-name">categories</span>
-                
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                
-                  <span class="site-state-item-count">1</span>
-                  <span class="site-state-item-name">tags</span>
-                
-              </div>
-            
-
-          </nav>
-
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
-      
-
-      
-
-    </div>
-  </aside>
-
 
         
-      </div>
-    </main>
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>httishere</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://yoursite.com/2019/01/21/yuque/微信开发目前遇到的一些坑/">http://yoursite.com/2019/01/21/yuque/微信开发目前遇到的一些坑/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY<strong>?</strong></strong></span>
+                     </p>
+                
 
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">httishere</span>
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2019/01/21/yuque/在ios系统浏览器中输入框得到焦点时页面自动放大/">在ios系统浏览器中输入框得到焦点时页面自动放大</a>
+            
+            
+            <a class="next" rel="next" href="/2019/01/21/yuque/swiper4.0自动轮播+循环轮播/">swiper4.0自动轮播+循环轮播</a>
+            
+        </section>
 
-  
+
+    </article>
 </div>
 
-
-
-
-
-
-
-
-
-        
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© httishere | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
 </body>
 </html>
