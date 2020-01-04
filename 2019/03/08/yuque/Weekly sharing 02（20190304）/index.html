@@ -1,339 +1,197 @@
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next mist use-motion" lang="">
+<html lang="">
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="theme-color" content="#222">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <meta name="author" content="httishere">
 
 
 
 
 
+<title>Weekly sharing 02（20190304） | HTTISHERE</title>
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+    <link rel="icon" href="/favicon.ico">
 
 
 
 
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
 
 
 
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
 
 
 
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hexo, NexT">
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="（题图 杭州 2019冬）  原理1、访问微博时的运转流程（Nginx+PHP-FPM的工作原理）：www.weibo.com       |       |     Nginx       |       |路由到www.weibo.com/index.php       |       |加载nginx的fast-cgi模块       |       |fast-cgi监听127.0.0.1">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Weekly sharing 02（20190304）">
-<meta property="og:url" content="http://yoursite.com/2019/03/08/yuque/Weekly sharing 02（20190304）/index.html">
-<meta property="og:site_name" content="HTTISHERE">
-<meta property="og:description" content="（题图 杭州 2019冬）  原理1、访问微博时的运转流程（Nginx+PHP-FPM的工作原理）：www.weibo.com       |       |     Nginx       |       |路由到www.weibo.com/index.php       |       |加载nginx的fast-cgi模块       |       |fast-cgi监听127.0.0.1">
-<meta property="og:locale" content="default">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/250093/1551774465093-1ce923b2-9218-49db-95aa-080d214e7931.jpeg#align=left&display=inline&height=560&name=%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190305162724.jpg&originHeight=1080&originWidth=1440&size=327112&status=done&width=746">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/250093/1551775424204-bf6704fb-5de1-417c-9728-9c46a24a56db.png#align=left&display=inline&height=189&name=image.png&originHeight=260&originWidth=656&size=90942&status=done&width=478">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/250093/1551775533505-107f200a-effc-4e52-83d2-7ec3b5cc7118.png#align=left&display=inline&height=193&name=image.png&originHeight=267&originWidth=667&size=92501&status=done&width=482">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/250093/1551843164284-92775a3b-9c89-430a-83e7-f558ccd3ed13.png#align=left&display=inline&height=168&name=image.png&originHeight=168&originWidth=259&size=4466&status=done&width=259">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/250093/1552008628959-0fd5cbc7-1f5c-4782-abef-aa340929bf73.png#align=left&display=inline&height=294&name=image.png&originHeight=294&originWidth=317&size=44355&status=done&width=317">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/250093/1552008636767-dd0edb9b-278a-44d1-8f6a-6f3e87534793.png#align=left&display=inline&height=278&name=image.png&originHeight=278&originWidth=630&size=24368&status=done&width=630">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/250093/1551775809431-67b3e1d2-08c3-4caf-9d87-d4591c0cf71f.png#align=left&display=inline&height=525&name=image.png&originHeight=687&originWidth=476&size=487489&status=done&width=364">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/250093/1552009011507-c15ee47b-bae5-4112-adc4-1f24aa5d9cc8.png#align=left&display=inline&height=356&name=image.png&originHeight=601&originWidth=907&size=178044&status=done&width=537">
-<meta property="og:updated_time" content="2020-01-04T11:05:58.801Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Weekly sharing 02（20190304）">
-<meta name="twitter:description" content="（题图 杭州 2019冬）  原理1、访问微博时的运转流程（Nginx+PHP-FPM的工作原理）：www.weibo.com       |       |     Nginx       |       |路由到www.weibo.com/index.php       |       |加载nginx的fast-cgi模块       |       |fast-cgi监听127.0.0.1">
-<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/250093/1551774465093-1ce923b2-9218-49db-95aa-080d214e7931.jpeg#align=left&display=inline&height=560&name=%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190305162724.jpg&originHeight=1080&originWidth=1440&size=327112&status=done&width=746">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    version: '5.1.4',
-    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: 'Author'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="http://yoursite.com/2019/03/08/yuque/Weekly sharing 02（20190304）/">
-
-
-
-
-
-  <title>Weekly sharing 02（20190304） | HTTISHERE</title>
-  
-
-
-
-
-
-
+    
+    
+        
+    
 
 
 </head>
-
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-right page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">HTTISHERE</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-      
-        <p class="site-subtitle"></p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            Home
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            Tags
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            Categories
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            Archives
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/08/yuque/Weekly sharing 02（20190304）/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="httishere">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HTTISHERE">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">Weekly sharing 02（20190304）</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-08T10:38:38+08:00">
-                2019-03-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-            <span class="post-meta-divider">|</span>
-            <span class="page-pv"><i class="fa fa-file-o"></i>
-            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
-            </span>
-          
-
-          
-
-          
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">httishere&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
 
         </div>
-      </header>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">httishere&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
     
 
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Weekly sharing 02（20190304）</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">httishere</a>
+                    
 
-      
-      
+                    
+                        <span class="post-time">
+                        Date: <a href="#">March 8, 2019&nbsp;&nbsp;10:38:38</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
 
-      
-        <p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/250093/1551774465093-1ce923b2-9218-49db-95aa-080d214e7931.jpeg#align=left&amp;display=inline&amp;height=560&amp;name=%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190305162724.jpg&amp;originHeight=1080&amp;originWidth=1440&amp;size=327112&amp;status=done&amp;width=746" alt="微信图片_20190305162724.jpg"><br>（题图 杭州 2019冬）</p>
+        <div class="post-content">
+            <p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/250093/1551774465093-1ce923b2-9218-49db-95aa-080d214e7931.jpeg#align=left&amp;display=inline&amp;height=560&amp;name=%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190305162724.jpg&amp;originHeight=1080&amp;originWidth=1440&amp;size=327112&amp;status=done&amp;width=746" alt="微信图片_20190305162724.jpg"><br>（题图 杭州 2019冬）</p>
 <p><a name="b6724cff"></a></p>
 <h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>1、访问微博时的运转流程（<a href="https://juejin.im/post/58db7d742f301e007e9a00a7" target="_blank" rel="noopener">Nginx+PHP-FPM的工作原理</a>）：<br><a href="http://www.weibo.com" target="_blank" rel="noopener">www.weibo.com</a><br>       |<br>       |<br>     Nginx<br>       |<br>       |<br>路由到<a href="http://www.weibo.com/index.php" target="_blank" rel="noopener">www.weibo.com/index.php</a><br>       |<br>       |<br>加载nginx的fast-cgi模块<br>       |<br>       |<br>fast-cgi监听127.0.0.1:9000地址<br>       |<br>       |<br><a href="http://www.weibo.com/index.php请求到达127.0.0.1:9000" target="_blank" rel="noopener">www.weibo.com/index.php请求到达127.0.0.1:9000</a><br>       |<br>       |<br>php-fpm 监听127.0.0.1:9000<br>       |<br>       |<br>php-fpm 接收到请求，启用worker进程处理请求<br>       |<br>       |<br>php-fpm 处理完请求，返回给nginx<br>       |<br>       |<br>nginx将结果通过http返回给浏览器</p>
 <p>（来源：微博@古月中心相心）</p>
@@ -416,463 +274,65 @@
 <h4 id="文摘"><a href="#文摘" class="headerlink" title="文摘"></a>文摘</h4><p>1、AI生成人脸<br>Philip Wang，他是一位来自 Uber的软件工程师。他利用英伟达去年发布的研究成果创作了源源不断的假人像。「每次你刷新这个网站，网络就会从头开始生成新的人脸图像。<br><a href="https://thispersondoesnotexist.com/" target="_blank" rel="noopener">https://thispersondoesnotexist.com/</a><br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1551775809431-67b3e1d2-08c3-4caf-9d87-d4591c0cf71f.png#align=left&amp;display=inline&amp;height=525&amp;name=image.png&amp;originHeight=687&amp;originWidth=476&amp;size=487489&amp;status=done&amp;width=364" alt="image.png"></p>
 <p>2、程序员成长之路<br>会用-&gt;会查和避免问题-&gt;懂高级的API和原理-&gt;系统设计能力的成长。<br>程序员的价值关键体现在作品上，被打上作品标签是很大的荣幸。作品影响程度的大小决定了金字塔的层次，所以我会这么去理解程序员的金字塔。<br>塔尖：有世界级作品的<br>塔中：有国民作品的<br>塔基：有公司级作品的<br>（来源：<a href="https://mp.weixin.qq.com/s/nUtUu6e_bXHvb_06Pf_05g" target="_blank" rel="noopener">阿里毕玄现身说法：程序员成长路线</a>）<br><br><br>3、uber开源<br>Kraken: uber开源的基于P2P的docker镜像仓库，专注于可扩展性和可用性。它专为混合云环境中的docker镜像管理，复制和分发而设计。在uber最繁忙的集群中，Kraken每天分发超过100万个blob，包括100k 1G + blob。在最高生产负荷下，Kraken在30秒内分配20K 100MB-1G的blob。<br>库–&gt;<a href="https://github.com/uber/kraken" target="_blank" rel="noopener">https://github.com/uber/kraken</a><br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1552009011507-c15ee47b-bae5-4112-adc4-1f24aa5d9cc8.png#align=left&amp;display=inline&amp;height=356&amp;name=image.png&amp;originHeight=601&amp;originWidth=907&amp;size=178044&amp;status=done&amp;width=537" alt="image.png"><br>（来源：微博@tonybai_cn）</p>
 
-      
-    </div>
-    
-    
-    
-
-    
-      <div>
-        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="httishere wechat" style="width: 200px; max-width: 100%;">
-    <div>subscribe to my blog by scanning my public wechat account</div>
-</div>
-
-      </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/02/19/canvas/" rel="next" title="canvas 基础">
-                <i class="fa fa-chevron-left"></i> canvas 基础
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/05/yuque/mpvue 引入第三方UI组件库/" rel="prev" title="mpvue 引入第三方UI组件库">
-                mpvue 引入第三方UI组件库 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
         </div>
-      
 
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-
-  
-
-
-<div id="gitment_title" class="gitment_title"></div>
-<div id="container" style="display:none"></div>
-<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script>
-  const myTheme = {
-    render(state, instance) {
-      const container = document.createElement('div');
-      container.lang = "en-US";
-      container.className = 'gitment-container gitment-root-container';
-      container.appendChild(instance.renderHeader(state, instance));
-      container.appendChild(instance.renderEditor(state, instance));
-      container.appendChild(instance.renderComments(state, instance));
-      container.appendChild(instance.renderFooter(state, instance));
-      return container;
-    }
-  }
-
-  function showGitment() {
-    $("#gitment_title").attr("style", "display:none");
-    $("#container").attr("style", "").addClass("gitment_container");
-    var gitment = new Gitment({
-      id: decodeURI(window.location.pathname),
-      theme: myTheme,
-      owner: 'httishere',
-      repo: 'httIsHere.github.io',
-      oauth: {
-        client_id: 'c61a26564784a9cb16f3',
-        client_secret: '25a391b4405c726bfa417a4d09a8a9d46fd41e12'
-      }
-    });
-    gitment.render('container');
-  }
-
-  showGitment();
-</script>
-        </div>
         
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">httishere</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">17</span>
-                  <span class="site-state-item-name">posts</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
-                  <span class="site-state-item-name">categories</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
-                  <span class="site-state-item-name">tags</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-
-          
-            <div class="links-of-author motion-element">
+            <section class="post-copyright">
                 
-                  <span class="links-of-author-item">
-                    <a href="https://github.com/httIsHere" target="_blank" title="GitHub">
-                      
-                        <i class="fa fa-fw fa-github"></i>GitHub</a>
-                  </span>
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>httishere</span>
+                    </p>
                 
-                  <span class="links-of-author-item">
-                    <a href="https://www.zhihu.com/people/a-wang-16" target="_blank" title="ZhiHu">
-                      
-                        <i class="fa fa-fw fa-zhihu"></i>ZhiHu</a>
-                  </span>
                 
-                  <span class="links-of-author-item">
-                    <a href="https://m.weibo.cn/profile/1840417414" target="_blank" title="Weibo">
-                      
-                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
-                  </span>
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://yoursite.com/2019/03/08/yuque/Weekly sharing 02（20190304）/">http://yoursite.com/2019/03/08/yuque/Weekly sharing 02（20190304）/</a></span>
+                    </p>
                 
-                  <span class="links-of-author-item">
-                    <a href="mailto:httishere0728@gmail.com" target="_blank" title="E-Mail">
-                      
-                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                  </span>
                 
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY<strong>?</strong></strong></span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
             </div>
-          
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2019/06/05/yuque/mpvue 引入第三方UI组件库/">mpvue 引入第三方UI组件库</a>
+            
+            
+            <a class="next" rel="next" href="/2019/02/19/canvas/">canvas 基础</a>
+            
+        </section>
 
-          
-          
 
-          
-          
-
-          
+    </article>
+</div>
 
         </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#原理"><span class="nav-number">1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#教程"><span class="nav-number">2.</span> <span class="nav-text">教程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#工具"><span class="nav-number">3.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文摘"><span class="nav-number">4.</span> <span class="nav-text">文摘</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© httishere | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
 
     </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
-  <span class="with-love">
-    <i class="fa fa-[object Object]"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">httishere</span>
-
-  
-</div>
-
-
-
-
-
-
-
-
-
-        
-<div class="busuanzi-count">
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-  
-    <span class="site-uv">
-      <i class="fa fa-user"></i>
-      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-      
-    </span>
-  
-
-  
-    <span class="site-pv">
-      <i class="fa fa-eye"></i>
-      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
-      
-    </span>
-  
-</div>
-
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
 </body>
 </html>
