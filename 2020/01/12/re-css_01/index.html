@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="httishere">
+
+
+
+
+
+<title>重看css 01 | HTTISHERE</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">httishere&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">httishere&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">重看css 01</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">httishere</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">January 12, 2020&nbsp;&nbsp;14:57:23</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/css/">css</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p>直到前天同事的技术分享，我才突然觉得我好像并不懂 css，只会实现，不会就 Google，但是从来没有去真正的了解过其中的原理，惭愧。</p>
+<p>所以重看 css 和 js 都是必须要做的事。</p>
+<h4 id="x-baseline"><a href="#x-baseline" class="headerlink" title="x (baseline)"></a>x (baseline)</h4><p>我之前一直没有了解过的”x”，在各种内联模型中，涉及排版或者对齐时都需要用到基线（baseline），比如<code>line-light</code>行高的定义就是两基线的间距，<code>vertical-align</code>的默认值就是基线。<br>那么最普遍的就是字母基线（<code>x</code>的下边缘线）：</p>
+<p><img src="https://image.zhangxinxu.com/image/blog/201506/2015-06-28_105734.png" alt=""></p>
+<p><img src="https://image.zhangxinxu.com/image/blog/201506/410px-Typography_Line_Terms.svg.png" alt=""></p>
+<ul>
+<li>x-height: 小写 x 字母的高度</li>
+<li>ascender height: 上下线高度</li>
+<li>cap height: 大写字母高度</li>
+<li>median: 中线</li>
+<li>descender height: 下行线高度</li>
+</ul>
+<p>在 css 内<code>vertical-align: middle</code>就与<code>x-height</code>有关，其中 middle 与上述 median 并不同，在规范中对<code>middle</code>的解释：</p>
+<blockquote>
+<p><em>middle</em>: This identifies a baseline that is offset from the alphabetic baseline in the shift-direction by 1/2 the value of the x-height font characteristic. The position of this baseline may be obtained from the font data or, for fonts that have a font characteristic for “x-height”, it may be computed using 1/2 the “x-height”. Lacking either of these pieces of information, the position of this baseline may be approximated by the “central” baseline.</p>
+</blockquote>
+<p>middle 指的是基线往上 1/2 “x-height”高度。可以近似看做字母 x 交叉点那个位置。<br>所以<code>vertical-align: middle</code>并不是绝对的垂直居中对齐。</p>
+<p>css 内的<code>ex</code>单位：一个相对单位，指小写字母 x 的高度。<br>实用：借助<code>ex</code>实现 icon 上下垂直居中的效果（必须为内联元素），优点在于不受字体字号影响。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.icon-arrow &#123;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    width: 20px;</span><br><span class="line">    height: 1ex;</span><br><span class="line">    background: url(arrow.png) no-repeat center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://image.zhangxinxu.com/image/blog/201506/2015-06-28_143139.png" alt=""></p>
+<p>参考：<a href="https://www.zhangxinxu.com/wordpress/2015/06/about-letter-x-of-css/" target="_blank" rel="noopener">字母’x’在 CSS 世界中的角色和故事</a></p>
+<h4 id="border"><a href="#border" class="headerlink" title="border"></a>border</h4><p><em>border-color</em>: 如果设置 border 宽度为 Xpx，那么可以在 border 上适应 X 种颜色，每种颜色显示 1px 的宽度。如果说你的 border 的宽度是 10 个像素，但是只声明了 5 或 6 种颜色，那么最后一个颜色将被添加到剩下的宽度。</p>
+<p><em>border-radius</em>：左上角水平圆角半径大小 右上角水平圆角半径大小 右下角水平圆角半径大小 左下角水平圆角半径大小/左上角垂直圆角半径大小 右上角垂直圆角半径大小 右下角垂直圆角半径大小 左下角垂直圆角半径大小。<br>如果忽略垂直圆角值，则等于水平圆角值即此时圆角为 1/4 圆，水平/垂直半径有一个小于等于 0，则这个角是矩形不会是圆的。</p>
+<p><img src="https://image.zhangxinxu.com/image/blog/201511/2015-11-01_191017-highlight.png" alt=""></p>
+<p><em>border-image</em>：&lt; image &gt; &lt; number &gt; &lt; percentage &gt;</p>
+<p>[ stretch | repeat | round ]：拉伸 | 重复 | 平铺 (其中 stretch 是默认值)。</p>
+<p>图片裁剪位置&lt; number &gt;：无单位，默认单位 px，支持百分比。<br>在设置<code>border-image</code>时实际是将图片进行裁剪形成九个分离区域，然后进行边角设置。</p>
+<p><img src="http://image.zhangxinxu.com/image/blog/201001/jiugong.gif" alt=""></p>
+<p>即有了 border-top-image , border-right-image , border-bottom-image , border-left-image, border-top-left-image , border-top-right-image , border-bottom-left-image , border-bottom-right-image 以及中间内容区域。</p>
+<p>比如当前边框背景图资源为 81px*81px。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 边框平铺</span><br><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">20px</span> solid transparent;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">  <span class="attribute">-moz-border-image</span>: <span class="built_in">url</span>(/i/border.png) <span class="number">27</span> round; <span class="comment">/* Old Firefox */</span></span><br><span class="line">  <span class="attribute">-webkit-border-image</span>: <span class="built_in">url</span>(/i/border.png) <span class="number">27</span> round; <span class="comment">/* Safari and Chrome */</span></span><br><span class="line">  <span class="attribute">-o-border-image</span>: <span class="built_in">url</span>(/i/border.png) <span class="number">27</span> round; <span class="comment">/* Opera */</span></span><br><span class="line">  <span class="attribute">border-image</span>: <span class="built_in">url</span>(/i/border.png) <span class="number">27</span> round;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://image.zhangxinxu.com/image/blog/201001/2010-01-08_164725.png" alt=""></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 边框拉伸</span><br><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">20px</span> solid transparent;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">  <span class="attribute">-moz-border-image</span>: <span class="built_in">url</span>(/i/border.png) <span class="number">27</span> stretch; <span class="comment">/* Old Firefox */</span></span><br><span class="line">  <span class="attribute">-webkit-border-image</span>: <span class="built_in">url</span>(/i/border.png) <span class="number">27</span> stretch; <span class="comment">/* Safari and Chrome */</span></span><br><span class="line">  <span class="attribute">-o-border-image</span>: <span class="built_in">url</span>(/i/border.png) <span class="number">27</span> stretch; <span class="comment">/* Opera */</span></span><br><span class="line">  <span class="attribute">border-image</span>: <span class="built_in">url</span>(/i/border.png) <span class="number">27</span> stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://image.zhangxinxu.com/image/blog/201001/2010-01-08_140351.png" alt=""></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 边框重复</span><br><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">20px</span> solid transparent;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">  <span class="attribute">-moz-border-image</span>: <span class="built_in">url</span>(/i/border.png) <span class="number">27</span> repeat; <span class="comment">/* Old Firefox */</span></span><br><span class="line">  <span class="attribute">-webkit-border-image</span>: <span class="built_in">url</span>(/i/border.png) <span class="number">27</span> repeat; <span class="comment">/* Safari and Chrome */</span></span><br><span class="line">  <span class="attribute">-o-border-image</span>: <span class="built_in">url</span>(/i/border.png) <span class="number">27</span> repeat; <span class="comment">/* Opera */</span></span><br><span class="line">  <span class="attribute">border-image</span>: <span class="built_in">url</span>(/i/border.png) <span class="number">27</span> repeat;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://image.zhangxinxu.com/image/blog/201001/2010-01-08_170850.png" alt=""></p>
+<p>round 会压缩（或伸展）图片大小使其正好在区域内显示，而 repeat 是不管三七二十一直接重复的，而且是居中重复。</p>
+<p>边框图片被切割成 9 部分，以一一对应的关系放到 div 边框的九宫格中，然后再压缩（或拉伸）至边框（border-width 或 border-image-width）的宽度大小。</p>
+<p>设置<code>border-image-width</code>：优先以边框图片宽度。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">border-image</span>: <span class="built_in">url</span>(/i/border.png) <span class="number">27</span>/<span class="number">10px</span> stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Text-effects"><a href="#Text-effects" class="headerlink" title="Text effects"></a>Text effects</h4><p><em>text-stroke</em>：文字描边属性，宽度+颜色，目前只能实现描边，也无法指定是外描边，内描边还是居中描边，目前指的是剧中描边。</p>
+<p>本质上让真实文本的字重削弱了，例如文字在页面上渲染时候，线条粗细大概是 1 像素，这时候我们设置个 1 像素宽的描边，则真实显示粗细岂不是只剩下 0.5 像素，如果真是这样，我们其实可以模拟 font-weight 属性的不同字重效果。但是对于某些字体，由于字重的确实，font-weight:100 和 font-weight:400 粗细都是一样的，都是正常粗细。</p>
+<p><img src="https://image.zhangxinxu.com/image/blog/201706/2017-06-04_175554.png" alt=""></p>
+<p>实现外描边可以使用<code>text-shadow</code>：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.strok-outside</span> &#123;</span><br><span class="line">  <span class="attribute">text-shadow</span>: <span class="number">0</span> <span class="number">1px</span> red, <span class="number">1px</span> <span class="number">0</span> red, -<span class="number">1px</span> <span class="number">0</span> red, <span class="number">0</span> -<span class="number">1px</span> red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://image.zhangxinxu.com/image/blog/201706/2017-06-04_205440.png" alt=""></p>
+<p>多重描边：</p>
+<p><code>text-shadow</code> 属性值可以不断累加，但是 <code>text-stroke</code> 属性却不行，如果想要实现多重描边效果，可以借助伪元素多层叠加模拟。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">data-text</span>=<span class="string">"多重描边"</span>&gt;</span>多重描边<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">-webkit-text-stroke</span>: <span class="number">1px</span> <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">40px</span>;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">z-index</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">p</span><span class="selector-pseudo">::before</span>,</span><br><span class="line"><span class="selector-tag">p</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="built_in">attr</span>(data-text);</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">z-index</span>: -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">p</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">  <span class="attribute">-webkit-text-stroke</span>: <span class="number">7px</span> yellow;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">p</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">-webkit-text-stroke</span>: <span class="number">4px</span> red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://image.zhangxinxu.com/image/blog/201706/2017-06-04_211947.png" alt=""></p>
+<p><em>text-fill-color</em>：文字颜色填充，实现效果基本与<code>color</code>一致，目前仅<code>webkit</code>核心浏览器下支持该属性，会覆盖<code>color</code>属性，主要可实现渐变字体和镂空字体。</p>
+<p>渐变字体：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"font1"</span>&gt;</span>渐变色字体<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.font1</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">22px</span>;</span><br><span class="line">  <span class="attribute">background-image</span>: <span class="built_in">-webkit-linear-gradient</span>(</span><br><span class="line">    bottom,</span><br><span class="line">    rgb(201, 21, 134),</span><br><span class="line">    <span class="built_in">rgb</span>(20, 11, 255)</span><br><span class="line">  );</span><br><span class="line">  <span class="attribute">-webkit-background-clip</span>: text;</span><br><span class="line">  <span class="attribute">-webkit-text-fill-color</span>: transparent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/6080416-d411cc5334e83b22.PNG?imageMogr2/auto-orient/strip|imageView2/2/w/135/format/webp" alt=""></p>
+<p>镂空字体（配合<code>text-stroke</code>）：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"font1"</span>&gt;</span>我的镂空字体<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.font1</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">32px</span>;</span><br><span class="line">  <span class="attribute">-webkit-text-fill-color</span>: transparent;</span><br><span class="line">  <span class="attribute">-webkit-text-stroke</span>: <span class="number">1px</span> <span class="number">#000</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/6080416-57515b6a4b0c68f4.PNG?imageMogr2/auto-orient/strip|imageView2/2/w/245/format/webp" alt=""></p>
+<p><em>word-wrap</em>：文字换行。</p>
+<p>经常在渲染文本时由于连续英文字符串过长导致文本溢出（比如 url 链接等），此时可对文本设置强制边界换行。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.word_wrap</span> &#123;</span><br><span class="line">  <span class="attribute">word-wrap</span>: break-word;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://image.zhangxinxu.com/image/web/css3/2010-03-08_012239.png" alt=""></p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>httishere</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://httishere.github.io/2020/01/12/re-css_01/">https://httishere.github.io/2020/01/12/re-css_01/</a></span>
+                    </p>
+                
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY<strong>?</strong></strong></span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/css/"># css</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2020/01/06/Act_like_a_leader_00/">听《能力陷阱》-【美】埃米尼亚·伊贝拉 （一）</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© httishere | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
