@@ -1,0 +1,45 @@
+language: node_js
+node_js: stable
+cache:
+  directories:
+  - node_modules
+install:
+- npm install hexo-cli -g
+- npm install
+- npm run deploy  # hexo clean && hexo g -d
+script:
+- hexo clean
+- hexo generate
+after_script:
+- cd ./public
+- git init
+- git config user.name "httIsHere"
+- git config user.email "18457730959@163.com"
+- git add .
+- git commit -m "Update docs"
+- git push --force --quiet "https://${hexo-blog}@${GH_REF}" master:master
+branches:
+  only:
+  - master
+env:
+  global:
+  - GH_REF: https://github.com/httIsHere/httIsHere.github.io.git
+before_install:
+- openssl aes-256-cbc -K $encrypted_a35bef967b66_key -iv $encrypted_a35bef967b66_iv
+  -in id_rsa.enc -out id_rsa -d
+# 改变文件权限
+- chmod 600 ~/.ssh/id_rsa 
+# 配置 ssh
+- eval $(ssh-agent)
+- ssh-add ~/.ssh/id_rsa
+- cp .travis/ssh_config ~/.ssh/config
+# 配置 git 替换为自己的信息
+- git config --global user.name 'httishere'
+- git config --global user.email 18457730959@163.com
+
+# yuque script
+# yuque-hexo clean
+# yuque-hexo sync
+
+# hexo script
+# hexo new post xxxx
