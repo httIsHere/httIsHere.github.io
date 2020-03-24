@@ -11,7 +11,7 @@
 
 
 
-<title>微信小程序自定义组件使用canvas绘图，无法绘制以及fail canvas is empty问题 | HTTISHERE</title>
+<title>「js」微信环境判断 | HTTISHERE</title>
 
 
 
@@ -111,7 +111,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">微信小程序自定义组件使用canvas绘图，无法绘制以及fail canvas is empty问题</h1>
+            <h1 class="post-title">「js」微信环境判断</h1>
             
                 <div class="post-meta">
                     
@@ -120,7 +120,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">November 26, 2019&nbsp;&nbsp;11:55:10</a>
+                        Date: <a href="#">February 6, 2020&nbsp;&nbsp;11:10:23</a>
                         </span>
                     
                     
@@ -129,10 +129,9 @@
         </header>
 
         <div class="post-content">
-            <p>情况1：普通页面，canvas绘制，正常，生成图片正常；</p>
-<p>情况2：自定义组件引用canvas绘制，空白；<br>原因：查看文档，在自定义组件内需要手动传入当前实例的this，否则canvas指向的this为父组件所以无法找到正确canvas；<br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1574740757955-44eee736-554f-4bb3-a6a9-9cb1f1bc6e1f.png#align=left&amp;display=inline&amp;height=351&amp;name=image.png&amp;originHeight=351&amp;originWidth=885&amp;size=39059&amp;status=done&amp;style=none&amp;width=885" alt="image.png"></p>
-<p>情况3：自定义组件内，canvas绘制好了，但是<code>canvasToTempFilePath</code>报fail canvas is empty错误；<br>原因：同上，但是canvasToTempFilePath({}, this)添加this可能无法解决，因为我使用的小程序框架是Taro，在 Taro 的页面和组件类中，this 指向的是 Taro页面或组件实例。<br>所以一般我们需要获取 Taro的页面和组件所对应的小程序原生页面和组件实例，这个时候我们可以通过 this.$scope 访问到它们；<br>所以最后写成：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Taro.createCanvasContext(<span class="string">"canvas-id"</span>, <span class="keyword">this</span>.$scope);</span><br><span class="line">Taro.canvasToTempFilePath(&#123;&#125;, <span class="keyword">this</span>.$scope);</span><br></pre></td></tr></table></figure>
+            <p>通过对user-agent 参数包含的信息进行判断：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> is_wechat = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">var</span> ua = <span class="built_in">window</span>.navigator.userAgent.toLowerCase();</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    ua.match(<span class="regexp">/MicroMessenger/i</span>) == <span class="string">"micromessenger"</span> ||</span><br><span class="line">    ua.match(<span class="regexp">/_SQ_/i</span>) == <span class="string">"_sq_"</span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>问题：<br>在QQ内打开相关页面，user-agent参数如下其中包括<code>_sq_</code>，所以在QQ内会识别成微信环境。<br><img src="https://cdn.nlark.com/yuque/0/2020/png/250093/1580959388940-8a1c0ff3-5688-4d0b-af7b-fdcf5e05bc18.png#align=left&amp;display=inline&amp;height=180&amp;name=image.png&amp;originHeight=360&amp;originWidth=828&amp;size=299978&amp;status=done&amp;style=none&amp;width=414" alt="image.png"></p>
 
         </div>
 
@@ -147,7 +146,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://httishere.github.io/2019/11/26/yuque/微信小程序自定义组件使用canvas绘图，无法绘制以及fail canvas is empty问题/">https://httishere.github.io/2019/11/26/yuque/微信小程序自定义组件使用canvas绘图，无法绘制以及fail canvas is empty问题/</a></span>
+                        <span><a href="https://httishere.github.io/2020/02/06/yuque/「js」微信环境判断/">https://httishere.github.io/2020/02/06/yuque/「js」微信环境判断/</a></span>
                     </p>
                 
                 
@@ -175,10 +174,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2020/01/04/yuque/2019总结，2020要开心/">2019总结，2020要开心</a>
+                <a class="prev" rel="prev" href="/2020/02/14/yuque/「Taro」Taro CLI 与本地安装运行时框架 @tarojs!taro-weapp 版本不一致/">「Taro」Taro CLI 与本地安装运行时框架 @tarojs/taro-weapp 版本不一致</a>
             
             
-            <a class="next" rel="next" href="/2019/06/05/yuque/mpvue 引入第三方UI组件库/">mpvue 引入第三方UI组件库</a>
+            <a class="next" rel="next" href="/2020/02/02/yuque/Windows环境下docker配置安装/">Windows环境下docker配置安装</a>
             
         </section>
 

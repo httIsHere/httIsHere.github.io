@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="httishere">
+
+
+
+
+
+<title>搭建Android开发环境 | HTTISHERE</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">httishere&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">httishere&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">搭建Android开发环境</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">httishere</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">March 24, 2020&nbsp;&nbsp;9:44:21</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/android/">android</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p>为了配合React Native端开发, 且处于Windows, 所以需要搭建Android开发环境. </p>
+<p>需要安装: Node, Watchman, 命令行工具, JDK, Android Studio. </p>
+<h4 id="Java-Development-Kit"><a href="#Java-Development-Kit" class="headerlink" title="Java Development Kit"></a>Java Development Kit</h4><blockquote>
+<p>React Native 需要 Java Development Kit [JDK] 1.8（暂不支持 1.9 及更高版本）. </p>
+</blockquote>
+<p><a href="https://www.oracle.com/java/technologies/javase-jdk8-downloads.html" target="_blank" rel="noopener">JDK下载地址</a></p>
+<h4 id="Android-开发环境"><a href="#Android-开发环境" class="headerlink" title="Android 开发环境"></a>Android 开发环境</h4><blockquote>
+<p>国内用户必须必须必须有稳定的翻墙工具, 否则在下载、安装、配置过程中会不断遭遇链接超时或断开, 无法进行开发工作. 若安装过程中出现报错等99%是无法正常翻墙造成. </p>
+</blockquote>
+<p><a href="./vultr-ss">购买服务并配置可看前一篇文章</a></p>
+<ul>
+<li><h5 id="安装-Android-Studio"><a href="#安装-Android-Studio" class="headerlink" title="安装 Android Studio"></a>安装 Android Studio</h5><p>  <a href="https://developer.android.com/studio/index.html" target="_blank" rel="noopener">下载安装 Android Studio</a></p>
+<p>  安装界面中选择”Custom”选项, 确保选中了以下几项:<br>  1) Android SDK<br>  2) Android SDK Platform<br>  3) Performance (Intel ® HAXM) (<a href="https://android-developers.googleblog.com/2018/07/android-emulator-amd-processor-hyper-v.html" target="_blank" rel="noopener">AMD 处理器看这里</a>)<br>  4) Android Virtual Device</p>
+<p>  问题:</p>
+<p>  <img src="//httishere.github.io/2020/03/24/android-dev-env/HAXM-error.png" alt="HAXM安装失败"><br>  Intel Virtualization Technology（VT-x）没有开启, 所以需要进入bios进行开启Intel Virtualization Technology（VT-x）的操作.</p>
+</li>
+<li><h5 id="安装-Android-SDK"><a href="#安装-Android-SDK" class="headerlink" title="安装 Android SDK"></a>安装 Android SDK</h5><p>  Android Studio 默认会安装最新版本的 Android SDK. 目前编译 React Native 应用需要的是 Android 6.0 (Marshmallow) 版本的 SDK（注意 SDK 版本不等于终端系统版本, RN 目前支持 android 4.1 以上设备）. 可以在 Android Studio 的 SDK Manager 中选择安装各版本的 SDK. </p>
+<p>  可以在 Android Studio 的欢迎界面中找到 SDK Manager. 点击 “Configure”, 然后就能看到 “SDK Manager”. </p>
+<p>  <img src="//httishere.github.io/2020/03/24/android-dev-env/sdk-manager.png" alt="Android Studio欢迎界面"></p>
+<blockquote>
+<p>SDK Manager 还可以在 Android Studio 的 “Preferences” 菜单中找到. 具体路径是 Appearance &amp; Behavior → System Settings → Android SDK. </p>
+</blockquote>
+<p>  <img src="//httishere.github.io/2020/03/24/android-dev-env/Android-6.png" alt="Android 6.0"></p>
+<p>  在 SDK Manager 中选择 “SDK Platforms”选项卡, 然后在右下角勾选 “Show Package Details”. 展开 Android 6.0 (Marshmallow) 选项, 确保勾选了下面这些组件（重申你必须使用稳定的翻墙工具, 否则可能都看不到这个界面）: </p>
+<ul>
+<li>Android SDK Platform 28</li>
+<li><p>Intel x86 Atom_64 System Image（官方模拟器镜像文件, 使用非官方模拟器不需要安装此组件）</p>
+<p>然后点击”SDK Tools”选项卡, 同样勾中右下角的”Show Package Details”. 展开”Android SDK Build-Tools”选项, 确保选中了 React Native 所必须的 23.0.1 版本. 你可以同时安装多个其他版本, 然后还要勾选最底部的 Android Support Repository. </p>
+<p>最后点击”Apply”来下载和安装这些组件. </p>
+</li>
+</ul>
+</li>
+<li><h5 id="配置-ANDROID-HOME-环境变量"><a href="#配置-ANDROID-HOME-环境变量" class="headerlink" title="配置 ANDROID_HOME 环境变量"></a>配置 ANDROID_HOME 环境变量</h5><p>  React Native 需要通过环境变量来了解你的 Android SDK 装在什么路径, 从而正常进行编译. </p>
+<p>  具体的做法是把下面的命令加入到 ~/.bash_profile 文件中(使用bash在终端下使用<code>vi ~/.bash_profile</code>命令创建或编辑): </p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> ANDROID_HOME=<span class="variable">$HOME</span>/AppData/Local/Android/Sdk <span class="comment"># 在 Android Studio 的 "Preferences" 菜单中查看 SDK 的真实路径, 具体是Appearance &amp; Behavior → System Settings → Android SDK. </span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$ANDROID_HOME</span>/tools</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$ANDROID_HOME</span>/platform-tools</span><br></pre></td></tr></table></figure>
+<p>  保存后:</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> <span class="variable">$HOME</span>/.bash_profile <span class="comment"># 使环境变量设置立即生效</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$ANDROID_HOME</span> <span class="comment"># 检查此变量是否已正确设置</span></span><br></pre></td></tr></table></figure>
+<p>  <img src="//httishere.github.io/2020/03/24/android-dev-env/SDK-HOME.png" alt=""></p>
+</li>
+<li><h5 id="最后可以通过Androd真机或者模拟器进行调试"><a href="#最后可以通过Androd真机或者模拟器进行调试" class="headerlink" title="最后可以通过Androd真机或者模拟器进行调试"></a>最后可以通过Androd真机或者模拟器进行调试</h5><p>  1) 将真机用 usb 数据线连接到电脑, 然后遵照<a href="https://reactnative.cn/docs/0.55/running-on-device" target="_blank" rel="noopener">在设备上运行</a>这篇文档的说明操作即可.</p>
+<p>  2) 在 Android Studi 打开 “AVD Manager” 来查看可用的虚拟设备, 可点击”Create Virtual Device…”, 然后选择所需的设备类型并点击”Next”来创建新的模拟设备</p>
+</li>
+</ul>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>httishere</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://httishere.github.io/2020/03/24/android-dev-env/">https://httishere.github.io/2020/03/24/android-dev-env/</a></span>
+                    </p>
+                
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY<strong>?</strong></strong></span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/配置/"># 配置</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2020/03/24/vultr-ss/">vultr搭建shadowsock</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© httishere | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

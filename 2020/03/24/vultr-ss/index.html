@@ -11,7 +11,7 @@
 
 
 
-<title>微信小程序自定义组件使用canvas绘图，无法绘制以及fail canvas is empty问题 | HTTISHERE</title>
+<title>vultr搭建shadowsock | HTTISHERE</title>
 
 
 
@@ -107,11 +107,73 @@
             <div class="container">
     
     
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
 
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">微信小程序自定义组件使用canvas绘图，无法绘制以及fail canvas is empty问题</h1>
+            <h1 class="post-title">vultr搭建shadowsock</h1>
             
                 <div class="post-meta">
                     
@@ -120,7 +182,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">November 26, 2019&nbsp;&nbsp;11:55:10</a>
+                        Date: <a href="#">March 24, 2020&nbsp;&nbsp;9:39:08</a>
                         </span>
                     
                     
@@ -129,11 +191,19 @@
         </header>
 
         <div class="post-content">
-            <p>情况1：普通页面，canvas绘制，正常，生成图片正常；</p>
-<p>情况2：自定义组件引用canvas绘制，空白；<br>原因：查看文档，在自定义组件内需要手动传入当前实例的this，否则canvas指向的this为父组件所以无法找到正确canvas；<br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1574740757955-44eee736-554f-4bb3-a6a9-9cb1f1bc6e1f.png#align=left&amp;display=inline&amp;height=351&amp;name=image.png&amp;originHeight=351&amp;originWidth=885&amp;size=39059&amp;status=done&amp;style=none&amp;width=885" alt="image.png"></p>
-<p>情况3：自定义组件内，canvas绘制好了，但是<code>canvasToTempFilePath</code>报fail canvas is empty错误；<br>原因：同上，但是canvasToTempFilePath({}, this)添加this可能无法解决，因为我使用的小程序框架是Taro，在 Taro 的页面和组件类中，this 指向的是 Taro页面或组件实例。<br>所以一般我们需要获取 Taro的页面和组件所对应的小程序原生页面和组件实例，这个时候我们可以通过 this.$scope 访问到它们；<br>所以最后写成：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Taro.createCanvasContext(<span class="string">"canvas-id"</span>, <span class="keyword">this</span>.$scope);</span><br><span class="line">Taro.canvasToTempFilePath(&#123;&#125;, <span class="keyword">this</span>.$scope);</span><br></pre></td></tr></table></figure>
-
+            <h4 id="购买服务器"><a href="#购买服务器" class="headerlink" title="购买服务器"></a>购买服务器</h4><ul>
+<li>注册vultr, <a href="https://www.vultr.com/" target="_blank" rel="noopener">vultr官网</a>;</li>
+<li>测试速度选择节点;</li>
+<li>充值, 最低充值为10刀;</li>
+</ul>
+<p><img src="//httishere.github.io/2020/03/24/vultr-ss/vultr.png" alt="国内用户可以选择alipay"></p>
+<ul>
+<li>搭建服务器, 点击右侧加号, 依次选择Server Location, Server Type(CentOS 7*64), Server Size($5/mon), 然后点击Deploy Now, 等待安装完成;</li>
+</ul>
+<p><img src="//httishere.github.io/2020/03/24/vultr-ss/running.png" alt="安装成功"></p>
+<p>点击可查看服务器详情:</p>
+<p><img src="//httishere.github.io/2020/03/24/vultr-ss/server-detail.png" alt=""></p>
+<h4 id="远程服务器配置"><a href="#远程服务器配置" class="headerlink" title="远程服务器配置"></a>远程服务器配置</h4>
         </div>
 
         
@@ -147,7 +217,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://httishere.github.io/2019/11/26/yuque/微信小程序自定义组件使用canvas绘图，无法绘制以及fail canvas is empty问题/">https://httishere.github.io/2019/11/26/yuque/微信小程序自定义组件使用canvas绘图，无法绘制以及fail canvas is empty问题/</a></span>
+                        <span><a href="https://httishere.github.io/2020/03/24/vultr-ss/">https://httishere.github.io/2020/03/24/vultr-ss/</a></span>
                     </p>
                 
                 
@@ -165,6 +235,12 @@
                 <span>Tag(s):</span>
                 <span class="tag">
                     
+                    
+                        <a href="/tags/实用/"># 实用</a>
+                    
+                        <a href="/tags/工具/"># 工具</a>
+                    
+                        
                 </span>
             </div>
             <div>
@@ -175,10 +251,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2020/01/04/yuque/2019总结，2020要开心/">2019总结，2020要开心</a>
+                <a class="prev" rel="prev" href="/2020/03/24/android-dev-env/">搭建Android开发环境</a>
             
             
-            <a class="next" rel="next" href="/2019/06/05/yuque/mpvue 引入第三方UI组件库/">mpvue 引入第三方UI组件库</a>
+            <a class="next" rel="next" href="/2020/03/23/yuque/无标题/">无标题</a>
             
         </section>
 
