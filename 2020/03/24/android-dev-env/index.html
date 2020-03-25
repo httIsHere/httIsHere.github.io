@@ -200,21 +200,26 @@
         <div class="post-content">
             <p>为了配合React Native端开发, 且处于Windows, 所以需要搭建Android开发环境. </p>
 <p>需要安装: Node, Watchman, 命令行工具, JDK, Android Studio. </p>
-<h4 id="Java-Development-Kit"><a href="#Java-Development-Kit" class="headerlink" title="Java Development Kit"></a>Java Development Kit</h4><blockquote>
+<h3 id="Java-Development-Kit"><a href="#Java-Development-Kit" class="headerlink" title="Java Development Kit"></a>Java Development Kit</h3><blockquote>
 <p>React Native 需要 Java Development Kit [JDK] 1.8（暂不支持 1.9 及更高版本）. </p>
 </blockquote>
 <p><a href="https://www.oracle.com/java/technologies/javase-jdk8-downloads.html" target="_blank" rel="noopener">JDK下载地址</a></p>
-<h4 id="Android-开发环境"><a href="#Android-开发环境" class="headerlink" title="Android 开发环境"></a>Android 开发环境</h4><blockquote>
+<h3 id="Android-开发环境"><a href="#Android-开发环境" class="headerlink" title="Android 开发环境"></a>Android 开发环境</h3><blockquote>
 <p>国内用户必须必须必须有稳定的翻墙工具, 否则在下载、安装、配置过程中会不断遭遇链接超时或断开, 无法进行开发工作. 若安装过程中出现报错等99%是无法正常翻墙造成. </p>
 </blockquote>
 <p><a href="./vultr-ss">购买服务并配置可看前一篇文章</a></p>
 <ul>
-<li><h5 id="安装-Android-Studio"><a href="#安装-Android-Studio" class="headerlink" title="安装 Android Studio"></a>安装 Android Studio</h5><p>  <a href="https://developer.android.com/studio/index.html" target="_blank" rel="noopener">下载安装 Android Studio</a></p>
+<li><h4 id="安装-Android-Studio"><a href="#安装-Android-Studio" class="headerlink" title="安装 Android Studio"></a>安装 Android Studio</h4><p>  <a href="https://developer.android.com/studio/index.html" target="_blank" rel="noopener">下载安装 Android Studio</a></p>
 <p>  安装界面中选择”Custom”选项, 确保选中了以下几项:<br>  1) Android SDK<br>  2) Android SDK Platform<br>  3) Performance (Intel ® HAXM) (<a href="https://android-developers.googleblog.com/2018/07/android-emulator-amd-processor-hyper-v.html" target="_blank" rel="noopener">AMD 处理器看这里</a>)<br>  4) Android Virtual Device</p>
 <p>  问题:</p>
-<p>  <img src="//httishere.github.io/2020/03/24/android-dev-env/HAXM-error.png" alt="HAXM安装失败"><br>  Intel Virtualization Technology（VT-x）没有开启, 所以需要进入bios进行开启Intel Virtualization Technology（VT-x）的操作.</p>
-</li>
-<li><h5 id="安装-Android-SDK"><a href="#安装-Android-SDK" class="headerlink" title="安装 Android SDK"></a>安装 Android SDK</h5><p>  Android Studio 默认会安装最新版本的 Android SDK. 目前编译 React Native 应用需要的是 Android 6.0 (Marshmallow) 版本的 SDK（注意 SDK 版本不等于终端系统版本, RN 目前支持 android 4.1 以上设备）. 可以在 Android Studio 的 SDK Manager 中选择安装各版本的 SDK. </p>
+<p>  1) HAXM installation failed<br>  <img src="//httishere.github.io/2020/03/24/android-dev-env/HAXM-error.png" alt="HAXM安装失败"><br>  Intel Virtualization Technology（VT-x）没有开启, 所以需要进入bios进行开启Intel Virtualization Technology（VT-x）的操作.<br>  2) Unable to run Intel HAXM installer: Cannot start process, the working directory </p>
+<pre><code>Download HAXM directly from Intel website, [here](https://github.com/intel/haxm/releases/tag/v7.5.6)
+
+因为在原来的开发中使用到了docker, 所以电脑已安装Hyper-v, 但是vt-x和Hyper-v不能共存所以会导致HAXM安装失败, 所以需要开发Android时需要关闭Hyper-v. [操作方法](https://blog.csdn.net/Coco_chun/article/details/90261678)
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">bcdedit /<span class="built_in">set</span> hypervisorlaunchtype off </span><br><span class="line"></span><br><span class="line">// 之后重启电脑，这时候你再去安装haxm就可以了</span><br><span class="line"></span><br><span class="line">// 重启hyper-v </span><br><span class="line">bcdedit / <span class="built_in">set</span> hypervisorlaunchtype auto</span><br></pre></td></tr></table></figure>
+</code></pre></li>
+<li><h4 id="安装-Android-SDK"><a href="#安装-Android-SDK" class="headerlink" title="安装 Android SDK"></a>安装 Android SDK</h4><p>  Android Studio 默认会安装最新版本的 Android SDK. 目前编译 React Native 应用需要的是 Android 6.0 (Marshmallow) 版本的 SDK（注意 SDK 版本不等于终端系统版本, RN 目前支持 android 4.1 以上设备）. 可以在 Android Studio 的 SDK Manager 中选择安装各版本的 SDK. </p>
 <p>  可以在 Android Studio 的欢迎界面中找到 SDK Manager. 点击 “Configure”, 然后就能看到 “SDK Manager”. </p>
 <p>  <img src="//httishere.github.io/2020/03/24/android-dev-env/sdk-manager.png" alt="Android Studio欢迎界面"></p>
 <blockquote>
@@ -230,17 +235,18 @@
 </li>
 </ul>
 </li>
-<li><h5 id="配置-ANDROID-HOME-环境变量"><a href="#配置-ANDROID-HOME-环境变量" class="headerlink" title="配置 ANDROID_HOME 环境变量"></a>配置 ANDROID_HOME 环境变量</h5><p>  React Native 需要通过环境变量来了解你的 Android SDK 装在什么路径, 从而正常进行编译. </p>
+<li><h4 id="配置-ANDROID-HOME-环境变量"><a href="#配置-ANDROID-HOME-环境变量" class="headerlink" title="配置 ANDROID_HOME 环境变量"></a>配置 ANDROID_HOME 环境变量</h4><p>  React Native 需要通过环境变量来了解你的 Android SDK 装在什么路径, 从而正常进行编译. </p>
 <p>  具体的做法是把下面的命令加入到 ~/.bash_profile 文件中(使用bash在终端下使用<code>vi ~/.bash_profile</code>命令创建或编辑): </p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> ANDROID_HOME=<span class="variable">$HOME</span>/AppData/Local/Android/Sdk <span class="comment"># 在 Android Studio 的 "Preferences" 菜单中查看 SDK 的真实路径, 具体是Appearance &amp; Behavior → System Settings → Android SDK. </span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$ANDROID_HOME</span>/tools</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$ANDROID_HOME</span>/platform-tools</span><br></pre></td></tr></table></figure>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Windows</span></span><br><span class="line"><span class="built_in">export</span> ANDROID_HOME=<span class="variable">$HOME</span>/AppData/Local/Android/Sdk <span class="comment"># 在 Android Studio 的 "Preferences" 菜单中查看 SDK 的真实路径, 具体是Appearance &amp; Behavior → System Settings → Android SDK. </span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$ANDROID_HOME</span>/build-tools</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$ANDROID_HOME</span>/platform-tools</span><br></pre></td></tr></table></figure>
 <p>  保存后:</p>
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> <span class="variable">$HOME</span>/.bash_profile <span class="comment"># 使环境变量设置立即生效</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$ANDROID_HOME</span> <span class="comment"># 检查此变量是否已正确设置</span></span><br></pre></td></tr></table></figure>
 <p>  <img src="//httishere.github.io/2020/03/24/android-dev-env/SDK-HOME.png" alt=""></p>
 </li>
-<li><h5 id="最后可以通过Androd真机或者模拟器进行调试"><a href="#最后可以通过Androd真机或者模拟器进行调试" class="headerlink" title="最后可以通过Androd真机或者模拟器进行调试"></a>最后可以通过Androd真机或者模拟器进行调试</h5><p>  1) 将真机用 usb 数据线连接到电脑, 然后遵照<a href="https://reactnative.cn/docs/0.55/running-on-device" target="_blank" rel="noopener">在设备上运行</a>这篇文档的说明操作即可.</p>
+<li><h4 id="最后可以通过Androd真机或者模拟器进行调试"><a href="#最后可以通过Androd真机或者模拟器进行调试" class="headerlink" title="最后可以通过Androd真机或者模拟器进行调试"></a>最后可以通过Androd真机或者模拟器进行调试</h4><p>  1) 将真机用 usb 数据线连接到电脑, 然后遵照<a href="https://reactnative.cn/docs/0.55/running-on-device" target="_blank" rel="noopener">在设备上运行</a>这篇文档的说明操作即可.</p>
 <p>  2) 在 Android Studi 打开 “AVD Manager” 来查看可用的虚拟设备, 可点击”Create Virtual Device…”, 然后选择所需的设备类型并点击”Next”来创建新的模拟设备</p>
 </li>
 </ul>
+<p><a href="https://nervjs.github.io/taro/docs/react-native.html#%E6%90%AD%E5%BB%BA-android-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83" target="_blank" rel="noopener">本文教程参考: Taro 搭建Android开发环境</a></p>
 
         </div>
 
@@ -276,6 +282,8 @@
                     
                         <a href="/tags/配置/"># 配置</a>
                     
+                        <a href="/tags/React-Native/"># React Native</a>
+                    
                         
                 </span>
             </div>
@@ -286,6 +294,8 @@
             </div>
         </section>
         <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/03/24/taro-mult-dev/">Taro 多端开发</a>
             
             
             <a class="next" rel="next" href="/2020/03/24/vultr-ss/">vultr搭建shadowsock</a>
