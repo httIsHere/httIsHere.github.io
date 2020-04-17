@@ -14,7 +14,7 @@ categories: []
 ---
 <a name="u2NF7"></a>
 #### 需求：
-在小程序内存在列表等形式的页面内增加下拉刷新功能，提高用户体验感，加强界面操作与交互性；
+在小程序内存在列表等形式的页面内增加下拉刷新功能，提高用户体验感，加强界面操作与交互性；<br />
 
 <a name="gXpSi"></a>
 #### 实现方法：
@@ -37,7 +37,8 @@ categories: []
 }
 ```
 
-2、scroll-view内refresher-enabled属性开启自定义刷新<br />     基本库要求：2.10.1
+<br />2、scroll-view内refresher-enabled属性开启自定义刷新<br />     基本库要求：2.10.1<br />
+
 
 | refresher-enabled | boolean | false | 否 | 开启自定义下拉刷新 | [2.10.1](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html) |
 | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -52,7 +53,7 @@ categories: []
 
 
 <br />官方文档：[scroll-view](https://developers.weixin.qq.com/miniprogram/dev/component/scroll-view.html)<br />
-<br />3、原始scroll-view自定义下拉实现（为兼容2.10.1一下的下拉刷新<br />通过监听手指移动距离控制需要下拉模块的下拉距离，主要事件bindtouchstart，bindtouchmove和bindtouchend，bindtouchmove记录手指开始下拉时的起始位置，bindtouchmove计算下拉距离，bindtouchend判断并实现刷新方法。<br />我的自定义下拉组件（Taro框架）
+3、原始scroll-view自定义下拉实现（为兼容2.10.1一下的下拉刷新<br />通过监听手指移动距离控制需要下拉模块的下拉距离，主要事件bindtouchstart，bindtouchmove和bindtouchend，bindtouchmove记录手指开始下拉时的起始位置，bindtouchmove计算下拉距离，bindtouchend判断并实现刷新方法。<br />我的自定义下拉组件（Taro框架）<br />
 
 ```jsx
 import Taro, { Component, render } from "@tarojs/taro";
@@ -323,13 +324,10 @@ export default class Loading extends Component {
 
 <a name="fEutw"></a>
 #### 部分问题：
-1、与ios上橡皮筋效果冲突导致下拉无法触发自定义刷新<br />页面配置`disabledScroll`，禁止页面滚动，同时页面内的列表滚动需要自己再优化调整；
-
-2、scroll-view的scroll问题<br />需要设定固定高度然后纵向滚动。[我都忘了是啥问题了……
-
-3、页面下拉刷新结束后再滑动列表出现闪屏<br />在禁止页面橡皮筋效果后，如果页面内存在需滚动区域使用scroll-view效果比view更加流畅；<br />不设定固定高度不会发生闪屏但是页面滚动非常不流畅；
-
-4、使用官方提供的scroll-view自定义的动画时，当scroll-view内容不足充满一屏时下拉出现问题<br />将scroll-view设置固定高度后，将其子元素的高度设置多一像素达到隐形撑满的效果。
+1、与ios上橡皮筋效果冲突导致下拉无法触发自定义刷新<br />页面配置`disabledScroll`，禁止页面滚动，同时页面内的列表滚动需要自己再优化调整；<br />
+2、scroll-view的scroll问题<br />需要设定固定高度然后纵向滚动。[我都忘了是啥问题了……<br />
+3、页面下拉刷新结束后再滑动列表出现闪屏<br />在禁止页面橡皮筋效果后，如果页面内存在需滚动区域使用scroll-view效果比view更加流畅；<br />不设定固定高度不会发生闪屏但是页面滚动非常不流畅；<br />
+4、使用官方提供的scroll-view自定义的动画时，当scroll-view内容不足充满一屏时下拉出现问题<br />将scroll-view设置固定高度后，将其子元素的高度设置多一像素达到隐形撑满的效果。<br />
 
 ```javascript
 <ScrollView
@@ -344,7 +342,6 @@ export default class Loading extends Component {
 </ScrollView>
 ```
 
-5、scroll-view内fixed元素问题<br />ios内scroll-view内fixed元素层级会出现问题，可能出现被遮挡的问题。
-
+<br />5、scroll-view内fixed元素问题<br />ios内scroll-view内fixed元素层级会出现问题，可能出现被遮挡的问题。<br />
 6、当页面内局部需要下拉刷新时可能导致内外两个滚动条问题<br />一个是页面滚动条一个是scroll-view滚动条，由于操作的时候触发的是scroll-view部分的滚动导致页面滚动无法进行从而影响页面其他操作。<br />Q5和Q6可以合并成一个问题，当页面需要一个吸顶操作时，即滑动距离超过阈值时导航条吸顶的功能，若scroll-view将整个页面包含就会出现Q5的问题，可能导致在ios内吸顶的导航栏无法显示，若scroll-view只包含需要刷新的部分则会出现Q6的两个滚动条的问题。<br />1）在页面未触发吸顶时禁止scroll-view模块下拉，触发后放开滚动，同时会导致无法下拉。<br />2）页面滚动触发，scroll-view模块可下拉，但是滚动区域无法滚动，且下拉动画只显示一次。
 
