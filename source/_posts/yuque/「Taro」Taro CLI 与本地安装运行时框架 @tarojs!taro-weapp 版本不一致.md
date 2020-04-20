@@ -12,6 +12,10 @@ tags: []
 categories: []
 
 ---
+tags: [taro, error]
+categories: [taro]
+cover:
+---<br /><!-- more --><br />
 使用npm切换版本也可，需要提前进行reset cache，并采用全局操作。<br />
 
 ```bash
@@ -19,7 +23,7 @@ npm install -g @tarojs/cli@1.3.10
 ```
 
 <br />-------------------------------2020.03.30 更新-------------------------------<br />
-啊啊啊啊啊！成功更新项目taro版本后，可以使用yarn dev:weapp成功编译，但是在微信开发工具中出现报错。<br />![0216.PNG](https://cdn.nlark.com/yuque/0/2020/png/250093/1581935342747-e118ac34-6099-4e18-8516-77b75975450f.png#align=left&display=inline&height=319&name=0216.PNG&originHeight=319&originWidth=798&size=37866&status=done&style=none&width=798)<br />搞了几天也没有明确报错原因，所以打算还是回退本地的taro版本，但是使用npm卸载或者切换版本以及直接删除npm目录下的@taro都无效之后，使用yarn进行了下taro版本切换操作然后成功了。<br />
+啊啊啊啊啊！成功更新项目taro版本后，可以使用yarn dev:weapp成功编译，但是在微信开发工具中出现报错。<br />![0216.PNG](https://cdn.nlark.com/yuque/0/2020/png/250093/1581935342747-e118ac34-6099-4e18-8516-77b75975450f.png#align=left&display=inline&height=319&margin=%5Bobject%20Object%5D&name=0216.PNG&originHeight=319&originWidth=798&size=37866&status=done&style=none&width=798)<br />搞了几天也没有明确报错原因，所以打算还是回退本地的taro版本，但是使用npm卸载或者切换版本以及直接删除npm目录下的@taro都无效之后，使用yarn进行了下taro版本切换操作然后成功了。<br />
 
 ```bash
 yarn add @tarojs/cli@1.3.10
@@ -27,7 +31,7 @@ yarn add @tarojs/cli@1.3.10
 
 <br />想知道为什么？！！！<br />
 -------------------------------2020.02.17-------------------------------<br />
-为原先开发小程序的时候Taro还是1.3.10，现在换了电脑安装了Taro 2.0，结果编译运行项目的时候就报错了。<br />![0214.PNG](https://cdn.nlark.com/yuque/0/2020/png/250093/1581679328067-ac66632d-ef65-4dd4-9be1-c090b1a47399.png#align=left&display=inline&height=245&name=0214.PNG&originHeight=245&originWidth=1331&size=33627&status=done&style=none&width=1331)<br />
+为原先开发小程序的时候Taro还是1.3.10，现在换了电脑安装了Taro 2.0，结果编译运行项目的时候就报错了。<br />![0214.PNG](https://cdn.nlark.com/yuque/0/2020/png/250093/1581679328067-ac66632d-ef65-4dd4-9be1-c090b1a47399.png#align=left&display=inline&height=245&margin=%5Bobject%20Object%5D&name=0214.PNG&originHeight=245&originWidth=1331&size=33627&status=done&style=none&width=1331)<br />
 本地Taro版本与项目Taro版本不一致。<br />
 所以需要更新项目的Taro版本。<br />
 

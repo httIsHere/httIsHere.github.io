@@ -7,13 +7,18 @@ urlname: gkbbpw
 
 date: 2020-03-26 14:35:22 +0800
 
-tags: []
+tags: [React Native]
 
-categories: []
+categories: [React]
+
+cover: 
 
 ---
-<a name="YzgqY"></a>
+
+<!-- more -->
+<a name="eUUSe"></a>
 ### _写在前头（Taro内）_
+
 - 文字要包在 `Text` 组件里面，否则不显示。
 - `position:fixed` React Native 不支持
 - Animation 和 transform React Native 动画不支持
@@ -81,7 +86,7 @@ error: bundling failed: Error: Unable to resolve module `./components/calendar` 
 
 <a name="NyPLz"></a>
 #### 2. Application taroDemo has not been registered.
-     Hint: This error often happens when you're running the packager (local dev server) from a wrong folder. For example you have multiple apps and the packager is still running for the app you were working on before.<br /> If this is the case, simply kill the old packager instance (e.g. close the packager terminal window) and start the packager in the correct app folder (e.g. cd into app folder and run 'npm start').<br />原因：存在项目终端冲突，关闭所有终端并重启，查看项目内config/index文件是否注册应用名。<br />因为我用了taro-native-shell这个壳子，所以命名为'taroDemo'。<br />![微信图片_20200327140918.png](https://cdn.nlark.com/yuque/0/2020/png/250093/1585289424201-8a2fbe69-63c3-4df2-b98b-eb7ecef1f74e.png#align=left&display=inline&height=121&name=%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200327140918.png&originHeight=121&originWidth=423&size=4573&status=done&style=none&width=423)<br />
+     Hint: This error often happens when you're running the packager (local dev server) from a wrong folder. For example you have multiple apps and the packager is still running for the app you were working on before.<br /> If this is the case, simply kill the old packager instance (e.g. close the packager terminal window) and start the packager in the correct app folder (e.g. cd into app folder and run 'npm start').<br />原因：存在项目终端冲突，关闭所有终端并重启，查看项目内config/index文件是否注册应用名。<br />因为我用了taro-native-shell这个壳子，所以命名为'taroDemo'。<br />![微信图片_20200327140918.png](https://cdn.nlark.com/yuque/0/2020/png/250093/1585289424201-8a2fbe69-63c3-4df2-b98b-eb7ecef1f74e.png#align=left&display=inline&height=121&margin=%5Bobject%20Object%5D&name=%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200327140918.png&originHeight=121&originWidth=423&size=4573&status=done&style=none&width=423)<br />
 
 <a name="V77r0"></a>
 #### 3. Unable to load script from assets 'index.android.bundle'. Make sure your bundle is packaged correctly
@@ -93,11 +98,11 @@ error: bundling failed: Error: Unable to resolve module `./components/calendar` 
 ```bash
 netstat -aon |findstr "8081"
 ```
-![8081.png](https://cdn.nlark.com/yuque/0/2020/png/250093/1585469950756-fff03a59-91a5-411d-92db-5c69892bf6be.png#align=left&display=inline&height=76&name=8081.png&originHeight=76&originWidth=588&size=4407&status=done&style=none&width=588)<br />使用pid杀死占用8081的进程：
+![8081.png](https://cdn.nlark.com/yuque/0/2020/png/250093/1585469950756-fff03a59-91a5-411d-92db-5c69892bf6be.png#align=left&display=inline&height=76&margin=%5Bobject%20Object%5D&name=8081.png&originHeight=76&originWidth=588&size=4407&status=done&style=none&width=588)<br />使用pid杀死占用8081的进程：
 ```bash
 taskkill /pid xxx /F
 ```
-![kill-by-pid.png](https://cdn.nlark.com/yuque/0/2020/png/250093/1585470017430-a9d85a9d-e255-44e1-bad7-80d67e630b2e.png#align=left&display=inline&height=69&name=kill-by-pid.png&originHeight=69&originWidth=390&size=3185&status=done&style=none&width=390)<br />
+![kill-by-pid.png](https://cdn.nlark.com/yuque/0/2020/png/250093/1585470017430-a9d85a9d-e255-44e1-bad7-80d67e630b2e.png#align=left&display=inline&height=69&margin=%5Bobject%20Object%5D&name=kill-by-pid.png&originHeight=69&originWidth=390&size=3185&status=done&style=none&width=390)<br />
 
 <a name="6EopV"></a>
 #### 5. ReferenceError: ReferenceError: Can't find variable: Button(XXXX)
@@ -114,7 +119,7 @@ import {
 
 <a name="BjO3m"></a>
 #### 6. undefined is not a function (evaluating 'transform.forEach')
- Warning: Failed prop type: Invalid prop `transform` of type `string` supplied to `View`, expected an array.<br />transform属性详情需要以array的形式：<br />![style-transform-array.png](https://cdn.nlark.com/yuque/0/2020/png/250093/1585476684072-2a4f20ce-a78f-4cc2-b9c3-6f732cff8464.png#align=left&display=inline&height=60&name=style-transform-array.png&originHeight=60&originWidth=548&size=3017&status=done&style=none&width=548)
+ Warning: Failed prop type: Invalid prop `transform` of type `string` supplied to `View`, expected an array.<br />transform属性详情需要以array的形式：<br />![style-transform-array.png](https://cdn.nlark.com/yuque/0/2020/png/250093/1585476684072-2a4f20ce-a78f-4cc2-b9c3-6f732cff8464.png#align=left&display=inline&height=60&margin=%5Bobject%20Object%5D&name=style-transform-array.png&originHeight=60&originWidth=548&size=3017&status=done&style=none&width=548)
 
 <a name="grScl"></a>
 #### 7. Invariant Violation: View config not found for name slot
@@ -152,7 +157,7 @@ this.state.amount ?
 
 <a name="KIuKW"></a>
 #### 10. Error while updating property 'height' in shadow node of type: RCTView
-![height-value-type.png](https://cdn.nlark.com/yuque/0/2020/png/250093/1585535630906-8a344136-4f69-4d1b-9c6d-7454438b8c12.png#align=left&display=inline&height=169&name=height-value-type.png&originHeight=169&originWidth=463&size=64259&status=done&style=none&width=463)<br />在reactNative 写样式的时候  宽、高、padding等值不能是字符串。<br />
+![height-value-type.png](https://cdn.nlark.com/yuque/0/2020/png/250093/1585535630906-8a344136-4f69-4d1b-9c6d-7454438b8c12.png#align=left&display=inline&height=169&margin=%5Bobject%20Object%5D&name=height-value-type.png&originHeight=169&originWidth=463&size=64259&status=done&style=none&width=463)<br />在reactNative 写样式的时候  宽、高、padding等值不能是字符串。<br />
 
 <a name="S619d"></a>
 #### 11. Failed prop type: Invalid props.style key `transform-origin` supplied to 'Image'

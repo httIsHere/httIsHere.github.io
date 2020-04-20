@@ -12,7 +12,12 @@ tags: []
 categories: []
 
 ---
-<a name="u2NF7"></a>
+tags: [wx]
+categories: [微信小程序]
+cover:
+---<br /><!-- more --><br />
+
+<a name="GjtWv"></a>
 #### 需求：
 在小程序内存在列表等形式的页面内增加下拉刷新功能，提高用户体验感，加强界面操作与交互性；<br />
 

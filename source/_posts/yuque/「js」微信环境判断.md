@@ -12,7 +12,11 @@ tags: []
 categories: []
 
 ---
-通过对user-agent 参数包含的信息进行判断：
+tags: [js, wx]
+categories: [js]
+cover:
+---<br /><!-- more --><br />
+通过对user-agent 参数包含的信息进行判断：<br />
 
 ```javascript
 const is_wechat = () => {
@@ -24,5 +28,5 @@ const is_wechat = () => {
 };
 ```
 
-问题：<br />在QQ内打开相关页面，user-agent参数如下其中包括`_sq_`，所以在QQ内会识别成微信环境。<br />![image.png](https://cdn.nlark.com/yuque/0/2020/png/250093/1580959388940-8a1c0ff3-5688-4d0b-af7b-fdcf5e05bc18.png#align=left&display=inline&height=180&name=image.png&originHeight=360&originWidth=828&size=299978&status=done&style=none&width=414)
+<br />问题：<br />在QQ内打开相关页面，user-agent参数如下其中包括`_sq_`，所以在QQ内会识别成微信环境。<br />![image.png](https://cdn.nlark.com/yuque/0/2020/png/250093/1580959388940-8a1c0ff3-5688-4d0b-af7b-fdcf5e05bc18.png#align=left&display=inline&height=180&margin=%5Bobject%20Object%5D&name=image.png&originHeight=360&originWidth=828&size=299978&status=done&style=none&width=414)
 
