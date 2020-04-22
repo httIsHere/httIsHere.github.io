@@ -12,7 +12,11 @@ tags: []
 categories: []
 
 ---
-<a name="QFqNQ"></a>
+tags: [daily, 配置]
+categories: [Daily_QS]
+cover:
+---<br /><!-- more -->
+<a name="pRptz"></a>
 ## node
 
 
@@ -70,7 +74,7 @@ docker-compose up -d
 发生以下报错：<br />ERROR: Get [https://docker-registry.lanqb.com/v2/:](https://docker-registry.lanqb.com/v2/:) net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)<br />原因：项目镜像源错误。
 ```yaml
   maestro-api-gateway:
-    image: registry.cn-hangzhou.aliyuncs.com/duojii/nginx-php-fpm-alpine
+    image: .../nginx-php-fpm-alpine
     environment:
       WEBROOT: '/var/www/html/public'
       ERRORS: 1
@@ -86,5 +90,6 @@ docker-compose up -d
       - "8015:80"
 ```
 
-
+<br />项目依赖拉取成功后，运行项目并安装依赖。<br />
+**PS：全局安装依赖时需要增加sudo并输入密码。**
 
