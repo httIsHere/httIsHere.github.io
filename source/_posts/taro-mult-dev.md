@@ -2,11 +2,10 @@
 title: Taro 多端开发
 date: 2020-03-24 14:42:30
 tags:
-  - "taro"
+  - "Taro"
   - "微信小程序"
   - "React Native"
-categories:
-  - "taro"
+categories: [React,Taro]
 ---
 
 > 背景: 原先使用 Taro 开发了微信小程序, 现需要打包 App 应用.

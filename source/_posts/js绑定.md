@@ -2,7 +2,7 @@
 title: js绑定call, apply, bind
 date: 2019-01-23 16:01:15
 tags: 
-categories: js
+categories: Javascript
 ---
 
 > 在JavaScript内Function有3个自带的方法（call，apply，bind），均是为了改变函数体内的this指向。

@@ -5,7 +5,7 @@ tags:
   - "js"
   - "工具/插件"
 categories:
-  - "js"
+  - "Javascript"
 ---
 
 ![cover](https://assets-cdn.lanqb.com/manual-box/normal/roughViz_cover.PNG)
