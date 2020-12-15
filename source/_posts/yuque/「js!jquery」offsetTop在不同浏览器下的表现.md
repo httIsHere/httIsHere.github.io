@@ -2,9 +2,13 @@
 title: 「js/jquery」offsetTop在不同浏览器下的表现
 urlname: ouuq8y
 date: 2020-11-03 10:08:42 +0800
-tags: []
-categories: []
+tags: [daily,QS]
+categories: [Daily]
 ---
+
+> 记录日常问题
+
+<!-- more -->
 
 > `offsetTop`：元素到 offsetParent 顶部的距离。
 > `offsetParent`：距离元素最近的一个具有定位的祖宗元素（relative，absolute，fixed），若祖宗都不符合条件，offsetParent 为 body。

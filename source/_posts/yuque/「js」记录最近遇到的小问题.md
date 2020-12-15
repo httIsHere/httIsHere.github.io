@@ -2,9 +2,13 @@
 title: 「js」记录最近遇到的小问题
 urlname: ze9all
 date: 2020-12-09 13:48:59 +0800
-tags: []
-categories: []
+tags: [daily,QS]
+categories: [Daily]
 ---
+
+> 记录日常问题
+
+<!-- more -->
 
 ### Less
 
@@ -50,4 +54,13 @@ api()
     // 关闭该新标签页
     win_open.close();
   });
+```
+
+### yuque-hexo
+
+文章同步到 hexo 博客时，语雀 cdn 防盗链导致图片等资源无法访问问题。
+临时解决方案：在文章模版头部内添加 meta 进行绕过，参考[#41](https://github.com/x-cold/yuque-hexo/issues/41)。
+
+```html
+<meta name="referrer" content="no-referrer" />
 ```

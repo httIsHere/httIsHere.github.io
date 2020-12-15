@@ -9,7 +9,7 @@ cover:
 
 <!-- more -->
 
-taro@3.0.3内缺失相应的类型定义，在设置分享朋友圈自定义内容时导致自定义内容失效。
+taro@3.0.3 内缺失相应的类型定义，在设置分享朋友圈自定义内容时导致自定义内容失效。
 ![](https://cdn.nlark.com/yuque/0/2020/png/250093/1598508174868-3cf8b356-4d70-43c8-aa33-8d1205b5af1d.png#align=left&display=inline&height=117&margin=%5Bobject%20Object%5D&originHeight=117&originWidth=787&size=0&status=done&style=none&width=787)
 
 解决：

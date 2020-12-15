@@ -15,7 +15,7 @@ www.weibo.com
 Nginx
 |
 |
-路由到www.weibo.com/index.php
+路由到 www.weibo.com/index.php
 |
 |
 加载 nginx 的 fast-cgi 模块
@@ -24,7 +24,7 @@ Nginx
 fast-cgi 监听 127.0.0.1:9000 地址
 |
 |
-www.weibo.com/index.php请求到达127.0.0.1:9000
+www.weibo.com/index.php 请求到达 127.0.0.1:9000
 |
 |
 php-fpm 监听 127.0.0.1:9000

@@ -2,9 +2,13 @@
 title: 「js」记录一下滚动抽奖逻辑
 urlname: ewfvlg
 date: 2020-11-03 16:18:15 +0800
-tags: []
-categories: []
+tags: [daily]
+categories: [Daily]
 ---
+
+> 记录日常问题
+
+<!-- more -->
 
 在实现活动页的时候经常会遇到要写滚动抽奖游戏的需求，类似如下，按顺时针滚动：
 

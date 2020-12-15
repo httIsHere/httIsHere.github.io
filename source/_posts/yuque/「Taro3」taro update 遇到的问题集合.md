@@ -220,4 +220,4 @@ export default {
 
 可是是传参数据格式问题也有可能是在 componentWillMount 或者 componentDidMount 内使用 setState，造成资源浪费；
 
-### 6.this.$preload is not a function
+### 6.this.\$preload is not a function

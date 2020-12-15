@@ -183,7 +183,7 @@ this.state.amount ?
 #### 13. has been blocked by CORS policy
 
 Access to fetch at 'http://localhost:8081/rn_temp/index.delta?platform=android&dev=true&minify=false' from origin 'http://127.0.0.1:8081' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
-访问的域名不同导致, 浏览器地址栏为 127.0.0.1:8081/debugger-ui/, 真机或模拟器访问的地址为 http://localhost:8081/rn_temp/index.bundle?platform=android&dev=true。
+访问的域名不同导致, 浏览器地址栏为 127.0.0.1:8081/debugger-ui/, 真机或模拟器访问的地址为http://localhost:8081/rn_temp/index.bundle?platform=android&dev=true。
 
 #### 14.  React.createElement: type is invalid
 
@@ -225,7 +225,7 @@ $ npm install --save @tarojs/async-await
 ```
 
 在有异步操作的 页面内引入 import '@tarojs/async-await'。
-开启 async functions 支持需要安装包 `babel-plugin-transform-runtime` 和` babel-runtime`。
+开启 async functions 支持需要安装包 `babel-plugin-transform-runtime` 和`babel-runtime`。
 
 ```bash
 $ yarn add babel-plugin-transform-runtime --dev

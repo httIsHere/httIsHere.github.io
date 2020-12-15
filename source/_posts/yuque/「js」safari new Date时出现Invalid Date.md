@@ -2,7 +2,7 @@
 title: 「js」safari new Date时出现Invalid Date
 urlname: sxkg6f
 date: 2020-08-14 10:49:45 +0800
-tags: [js]
+tags: [js,daily]
 categories: [Javascript]
 cover: 
 ---

@@ -37,7 +37,7 @@ cover:
 
 原始数据类型包括：布尔值、数值、字符串、null、undefined  以及  [ES6 中的新类型 Symbol](http://es6.ruanyifeng.com/#docs/symbol)。
 
-- 布尔值，使用` boolean `定义布尔值类型：
+- 布尔值，使用`boolean`定义布尔值类型：
 
 在 TypeScript 中，boolean  是 JavaScript 中的基本类型，而  Boolean  是 JavaScript 中的构造函数。
 `new Boolean()`返回的是一个 Boolean 对象。
@@ -50,7 +50,7 @@ let createdByNewBoolean: Boolean = new Boolean(1);
 let createdByBoolean: boolean = Boolean(1); // 直接调用 Boolean 也可以返回一个 boolean 类型
 ```
 
-- 数值，使用` number `定义数值类型：
+- 数值，使用`number`定义数值类型：
 
 ```typescript
 let decLiteral: number = 6;
@@ -63,7 +63,7 @@ let notANumber: number = NaN;
 let infinityNumber: number = Infinity;
 ```
 
-- 字符串，使用` string `定义字符串类型：
+- 字符串，使用`string`定义字符串类型：
 
 ```typescript
 let myName: string = "Tom";
@@ -75,7 +75,7 @@ let sentence: string = `Hello, my name is ${myName}. I'll be ${
 } years old next month.`;
 ```
 
-- 空值，JavaScript 没有空值（Void）的概念，在 TypeScript 中，可以用` void `表示没有任何返回值的函数：
+- 空值，JavaScript 没有空值（Void）的概念，在 TypeScript 中，可以用`void`表示没有任何返回值的函数：
 
 ```typescript
 function alertName(): void {
@@ -85,7 +85,7 @@ function alertName(): void {
 let unusable: void = undefined; // 声明一个 void 类型的变量只能将它赋值为 undefined 和 null
 ```
 
-- Null & Undefined，在 TypeScript 中，可以使用` null `和` undefined `来定义这两个原始数据类型：
+- Null & Undefined，在 TypeScript 中，可以使用`null`和`undefined`来定义这两个原始数据类型：
 
 ```typescript
 let u: undefined = undefined;
@@ -100,7 +100,7 @@ let __num: number = v; // error
 
 #### 任意值
 
-` any `类型，则允许被赋值为任意类型，在任意值上访问任何属性都是允许的，也允许调用任何方法，**变量如果在声明的时候，未指定其类型，那么它会被识别为任意值类型。**
+`any`类型，则允许被赋值为任意类型，在任意值上访问任何属性都是允许的，也允许调用任何方法，**变量如果在声明的时候，未指定其类型，那么它会被识别为任意值类型。**
 
 ```typescript
 let _string: any = "string";
@@ -585,7 +585,7 @@ declare var jQuery: (selector: string) => any;
 
 - `declare var`，`declare function`，`declare class`都比较类似，与`declare var`相似的还有`declare let`和`declare const`。
 
-- `declare class`  语句也只能用来定义类型，不能用来定义具体的实现。
+* `declare class`  语句也只能用来定义类型，不能用来定义具体的实现。
 
 ```typescript
 // src/Animal.d.ts

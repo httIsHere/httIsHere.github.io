@@ -17,7 +17,7 @@ cover:
 
 情况 3：自定义组件内，canvas 绘制好了，但是`canvasToTempFilePath`报 fail canvas is empty 错误；
 原因：同上，但是 canvasToTempFilePath({}, this)添加 this 可能无法解决，因为我使用的小程序框架是 Taro，在 Taro 的页面和组件类中，this 指向的是 Taro 页面或组件实例。
-所以一般我们需要获取 Taro 的页面和组件所对应的小程序原生页面和组件实例，这个时候我们可以通过 this.$scope 访问到它们；
+所以一般我们需要获取 Taro 的页面和组件所对应的小程序原生页面和组件实例，这个时候我们可以通过 this.\$scope 访问到它们；
 所以最后写成：
 
 ```javascript

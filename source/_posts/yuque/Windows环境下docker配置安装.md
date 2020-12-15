@@ -37,7 +37,7 @@ errors：
 
 3) 设置 docker 的 shared dives（工作区），电脑需要设置开机密码
 
-4) 拉取 local-dev-env 和项目代码库，两者文件夹平级，并在 local-dev-env\dpcker-compose.yml 内增加项目配置
+4. 拉取 local-dev-env 和项目代码库，两者文件夹平级，并在 local-dev-env\dpcker-compose.yml 内增加项目配置
 
 例如：
 

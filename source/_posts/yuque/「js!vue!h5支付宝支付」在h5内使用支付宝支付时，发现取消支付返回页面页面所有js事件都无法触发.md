@@ -2,9 +2,13 @@
 title: 「js/vue/h5支付宝支付」在h5内使用支付宝支付时，发现取消支付返回页面页面所有js事件都无法触发
 urlname: zxnimu
 date: 2020-10-23 15:45:04 +0800
-tags: []
-categories: []
+tags: [daily,QS]
+categories: [Daily]
 ---
+
+> 记录日常问题
+
+<!-- more -->
 
 情况：
 

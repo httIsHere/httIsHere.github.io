@@ -876,7 +876,7 @@ return Fibre
 
 /**
  * findAndReplaceDOMText v 0.4.3
- * @author James Padolsey http://james.padolsey.com
+ *  James Padolsey http://james.padolsey.com
  * @license http://unlicense.org/UNLICENSE
  *
  * Matches the text of a DOM node against a regular expression
