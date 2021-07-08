@@ -4,10 +4,7 @@ urlname: gkbbpw
 date: 2020-03-26 14:35:22 +0800
 tags: [React Native]
 categories: [React]
-cover: 
 ---
-
-<!-- more -->
 
 ### _写在前头（Taro 内）_
 
@@ -77,7 +74,6 @@ system_android ? (
 #### 12. input 输入框未显示完全
 
 Android 输入框默认带有上下内边距，所以需要将上下 padding 设置为 0。
-หมดชีวิตที่เห็นเมื่อใดก็เป็นของเธอ
 
 ### _编译问题_
 
@@ -92,7 +88,7 @@ Hint: This error often happens when you're running the packager (local dev serve
 If this is the case, simply kill the old packager instance (e.g. close the packager terminal window) and start the packager in the correct app folder (e.g. cd into app folder and run 'npm start').
 原因：存在项目终端冲突，关闭所有终端并重启，查看项目内 config/index 文件是否注册应用名。
 因为我用了 taro-native-shell 这个壳子，所以命名为'taroDemo'。
-![微信图片_20200327140918.png](https://cdn.nlark.com/yuque/0/2020/png/250093/1585289424201-8a2fbe69-63c3-4df2-b98b-eb7ecef1f74e.png#align=left&display=inline&height=121&margin=%5Bobject%20Object%5D&name=%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200327140918.png&originHeight=121&originWidth=423&size=4573&status=done&style=none&width=423)
+![微信图片_20200327140918.png](https://cdn.nlark.com/yuque/0/2020/png/250093/1585289424201-8a2fbe69-63c3-4df2-b98b-eb7ecef1f74e.png#align=left&display=inline&height=121&id=a5pOl&margin=%5Bobject%20Object%5D&name=%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200327140918.png&originHeight=121&originWidth=423&size=4573&status=done&style=none&width=423)
 
 #### 3. Unable to load script from assets 'index.android.bundle'. Make sure your bundle is packaged correctly
 
@@ -106,14 +102,14 @@ If this is the case, simply kill the old packager instance (e.g. close the packa
 netstat -aon |findstr "8081"
 ```
 
-![8081.png](https://cdn.nlark.com/yuque/0/2020/png/250093/1585469950756-fff03a59-91a5-411d-92db-5c69892bf6be.png#align=left&display=inline&height=76&margin=%5Bobject%20Object%5D&name=8081.png&originHeight=76&originWidth=588&size=4407&status=done&style=none&width=588)
+![8081.png](https://cdn.nlark.com/yuque/0/2020/png/250093/1585469950756-fff03a59-91a5-411d-92db-5c69892bf6be.png#align=left&display=inline&height=76&id=tGxIx&margin=%5Bobject%20Object%5D&name=8081.png&originHeight=76&originWidth=588&size=4407&status=done&style=none&width=588)
 使用 pid 杀死占用 8081 的进程：
 
 ```bash
 taskkill /pid xxx /F
 ```
 
-![kill-by-pid.png](https://cdn.nlark.com/yuque/0/2020/png/250093/1585470017430-a9d85a9d-e255-44e1-bad7-80d67e630b2e.png#align=left&display=inline&height=69&margin=%5Bobject%20Object%5D&name=kill-by-pid.png&originHeight=69&originWidth=390&size=3185&status=done&style=none&width=390)
+![kill-by-pid.png](https://cdn.nlark.com/yuque/0/2020/png/250093/1585470017430-a9d85a9d-e255-44e1-bad7-80d67e630b2e.png#align=left&display=inline&height=69&id=DW2cw&margin=%5Bobject%20Object%5D&name=kill-by-pid.png&originHeight=69&originWidth=390&size=3185&status=done&style=none&width=390)
 
 #### 5. ReferenceError: ReferenceError: Can't find variable: Button(XXXX)
 
@@ -132,7 +128,7 @@ import {
 
 Warning: Failed prop type: Invalid prop `transform` of type `string` supplied to `View`, expected an array.
 transform 属性详情需要以 array 的形式：
-![style-transform-array.png](https://cdn.nlark.com/yuque/0/2020/png/250093/1585476684072-2a4f20ce-a78f-4cc2-b9c3-6f732cff8464.png#align=left&display=inline&height=60&margin=%5Bobject%20Object%5D&name=style-transform-array.png&originHeight=60&originWidth=548&size=3017&status=done&style=none&width=548)
+![style-transform-array.png](https://cdn.nlark.com/yuque/0/2020/png/250093/1585476684072-2a4f20ce-a78f-4cc2-b9c3-6f732cff8464.png#align=left&display=inline&height=60&id=pKA4n&margin=%5Bobject%20Object%5D&name=style-transform-array.png&originHeight=60&originWidth=548&size=3017&status=done&style=none&width=548)
 
 #### 7. Invariant Violation: View config not found for name slot
 
@@ -170,7 +166,7 @@ this.state.amount ?
 
 #### 10. Error while updating property 'height' in shadow node of type: RCTView
 
-![height-value-type.png](https://cdn.nlark.com/yuque/0/2020/png/250093/1585535630906-8a344136-4f69-4d1b-9c6d-7454438b8c12.png#align=left&display=inline&height=169&margin=%5Bobject%20Object%5D&name=height-value-type.png&originHeight=169&originWidth=463&size=64259&status=done&style=none&width=463)
+![height-value-type.png](https://cdn.nlark.com/yuque/0/2020/png/250093/1585535630906-8a344136-4f69-4d1b-9c6d-7454438b8c12.png#align=left&display=inline&height=169&id=UyurW&margin=%5Bobject%20Object%5D&name=height-value-type.png&originHeight=169&originWidth=463&size=64259&status=done&style=none&width=463)
 在 reactNative 写样式的时候   宽、高、padding 等值不能是字符串。
 
 #### 11. Failed prop type: Invalid props.style key `transform-origin` supplied to 'Image'
@@ -232,7 +228,7 @@ $ yarn add babel-plugin-transform-runtime --dev
 $ yarn add babel-runtime
 ```
 
-随后修改项目 [`babel` 配置](https://nervjs.github.io/taro/docs/config-detail.html#babel)，增加插件 `babel-plugin-transform-runtime`。
+随后修改项目 `[babel](https://nervjs.github.io/taro/docs/config-detail.html#babel)`[ 配置](https://nervjs.github.io/taro/docs/config-detail.html#babel)，增加插件 `babel-plugin-transform-runtime`。
 
 ```json
 babel: {

@@ -2,14 +2,9 @@
 title: Windows环境下docker配置安装
 urlname: qen7rl
 date: 2020-02-02 20:30:04 +0800
-tags: []
-categories: []
----
-
-tags: [docker, 配置]
+tags: [docker,配置]
 categories: [docker]
-cover:
-
+cover: 
 ---
 
 <!-- more -->
