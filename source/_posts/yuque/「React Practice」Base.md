@@ -6,6 +6,9 @@ tags: [React]
 categories: [React]
 ---
 
+> 「React Practice」系列教程是学习王沛老师的【React 实战进阶】课程的学习记录，demo 参考来自[https://codesandbox.io/s/6n20nrzlxz](https://codesandbox.io/s/6n20nrzlxz)。
+> **非原创，仅作为学习记录。**
+
 ### React 组件（props + state => view）
 
 - React 组件一般不提供方法，而是某种状态机；
@@ -417,3 +420,21 @@ export default () => (
   </div>
 );
 ```
+
+### 脚手架工具
+
+• create-react-app（入门，小项目，简易项目）
+• Rekit（基于 create-react-app 提供了更多功能，适合大项目）
+• Codesandbox（在线创建）
+
+### 打包和部署
+
+#### 打包（webpack->loader）
+
+• 编译 ES6 语法特性，编译 JSX；
+• 整合资源，例如图片，less/sass；
+• 优化代码体积；
+注：
+• 设置 nodejs 环境为 production；
+• 禁用开发专用代码，比如 logger；
+• 设置应用根路径；
