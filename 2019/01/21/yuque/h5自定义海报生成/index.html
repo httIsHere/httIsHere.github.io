@@ -239,20 +239,21 @@
             <!--
  * @Author: your name
  * @Date: 2021-07-08 11:08:58
- * @LastEditTime: 2021-08-19 18:35:06
+ * @LastEditTime: 2021-08-20 11:11:35
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_partial/gitalk.ejs
 -->
 <link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css">
 <div id="gitalk-container" style="margin-top: 50px;"></div>
-<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
-<!-- <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script> -->
+<!-- <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> -->
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 <script src="https://priesttomb.github.io/js/md5.min.js"></script>
 <script type="text/javascript">
+console.log(md5(location.pathname))
     new Gitalk({
-        clientID: '',
-        clientSecret: '',
+        clientID: 'c61a26564784a9cb16f3',
+        clientSecret: '25a391b4405c726bfa417a4d09a8a9d46fd41e12',
         id: window.location.pathname,
         repo: 'httIsHere.github.io',
         owner: 'httIsHere',
