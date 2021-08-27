@@ -102,6 +102,30 @@ a.hello(); //hello，有效
 #### StringToNumber
 
 在不传入第二个参数的情况下，parseInt 只支持 16 进制前缀“0x”，而且会忽略非数字字符，也不支持科学计数法。在一些古老的浏览器环境中，parseInt 还支持 0 开头的数字作为 8 进制前缀，这是很多错误的来源。所以在任何环境下，都建议传入 parseInt 的第二个参数，而 parseFloat 则直接把原字符串作为十进制来解析，它不会引入任何的其他进制。
+​
+
+简易的字符串转数字：
+
+```javascript
+function convertStringToNumber2(string, x = 10) {
+  let charts = string.split("");
+  let number = 0,
+    i = 0;
+  while (i < charts.length && charts[i] !== ".") {
+    number = number * x;
+    number += charts[i].codePointAt(0) - "0".codePointAt(0);
+    i++;
+  }
+  if (charts[i] === ".") i++;
+  let fraction = 1; // 小数
+  while (i < charts.length) {
+    fraction = fraction / x;
+    number += (charts[i].codePointAt(0) - "0".codePointAt(0)) * fraction;
+    i++;
+  }
+  return number;
+}
+```
 
 **在进行字符串到数字的类型转换时尽量使用 Number()进行转换。**
 

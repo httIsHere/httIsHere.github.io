@@ -11,7 +11,7 @@ categories: [Javascript]
 > Object：一切事物的总称。
 > 基于对象：语言和宿主的基础设施由对象来提供，并且 JavaScript 程序即是一系列互相通讯的对象集合。
 
-对象的特点（标识性、状态和行为）：
+### 对象的特点（标识性、状态和行为）：
 
 - 对象具有唯一标识性：即使完全相同的两个对象，也并非同一个对象。（一般而言，各种语言的对象唯一标识性都是用内存地址来体现的）
 - 对象有状态：对象具有状态，同一对象可能处于不同状态之下。
@@ -270,7 +270,7 @@ JavaScript 的对象机制并非简单的属性集合 + 原型，就是 JS 的�
 
 能够通过语言本身的构造器创建的对象，基本如下：
 
-![](https://cdn.nlark.com/yuque/0/2021/png/250093/1615442679231-3f4e7505-8b6f-4e26-815b-d91776d7f090.png#align=left&display=inline&height=375&margin=%5Bobject%20Object%5D&originHeight=375&originWidth=988&size=0&status=done&style=none&width=988)
+![](https://cdn.nlark.com/yuque/0/2021/png/250093/1615442679231-3f4e7505-8b6f-4e26-815b-d91776d7f090.png#height=375&id=MC6tJ&originHeight=375&originWidth=988&originalType=binary∶=1&size=0&status=done&style=none&width=988)
 
 几乎所有这些构造器的能力都是无法用纯 JavaScript 代码实现的，它们也无法用 class/extend 语法来继承。
 
@@ -290,9 +290,9 @@ new Date(); // Mon Mar 08 2021 23:16:53 GMT+0800 (中国标准时间) (对象)
 Date(); // "Mon Mar 08 2021 23:17:01 GMT+0800 (中国标准时间)" (字符串)
 ```
 
-_相关_：【面试题】为啥 new date( ) 和 date( ) 表现不一致？
+_**相关**_**：【面试题】为啥 new Date( ) 和 Date( ) 表现不一致？**
 
-在 ES6 之后 => 语法创建的函数仅仅是函数，它们无法被当作构造器使用。
+在 ES6 之后 `=>` 语法创建的函数仅仅是函数，它们无法被当作构造器使用。
 
 对于用户使用 function 语法或者 Function 构造器创建的对象来说，[[call]]和[[construct]]行为总是相似的，它们执行同一段代码。
 
@@ -304,10 +304,12 @@ var v = f(); // 把f作为函数调用
 var o = new f(); // 把f作为构造器调用
 ```
 
+![image.png](https://cdn.nlark.com/yuque/0/2021/png/250093/1630050354165-259462cf-f81a-4873-abf4-7dc171c74d83.png#clientId=ufcf22f00-d6c0-4&from=paste&height=241&id=ue6c09ac4&margin=%5Bobject%20Object%5D&name=image.png&originHeight=482&originWidth=978&originalType=binary∶=1&size=56076&status=done&style=none&taskId=u59ce1503-e718-40b6-b06c-1658c273f6b&width=489)
+
 **[[construct]]的执行过程如下**：
 
 - 以 Object.prototype 为原型创建一个新对象；
-- 以新对象为 this，执行函数的[[call]]；
+- **以新对象为 this**，执行函数的[[call]]；
 - 如果[[call]]的返回值是对象，那么，返回这个对象，否则返回第一步创建的新对象。
 
 如果我们的构造器**返回了一个新的对象**，那么 new 创建的新对象就变成了一个构造函数之外完全无法访问的对象，这一定程度上可以实现“私有”。

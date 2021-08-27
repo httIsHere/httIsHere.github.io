@@ -51,7 +51,7 @@ highlight:
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
   path: ''
-  per_page: 15
+  per_page: 20
   order_by: -date
   
 # Category & Tag
@@ -68,7 +68,7 @@ time_format: HH:mm:ss
 
 # Pagination
 ## Set per_page to 0 to disable pagination
-per_page: 15
+per_page: 20
 pagination_dir: page
 
 # Extensions
@@ -80,27 +80,28 @@ theme: Chic
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/httIsHere/httIsHere.github.io.git
+  # repo: https://github.com/httIsHere/httIsHere.github.io.git
+  repo: git@github.com:httIsHere/httIsHere.github.io.git
   branch: master
 
 # Comment
-gitment:
-  enable: true
-  mint: true
-  count: true
-  lazy: false
-  cleanly: false
-  language: 
-  github_user: httishere
-  github_repo: https://github.com/httIsHere/httIsHere.github.io.git
-  client_id: c61a26564784a9cb16f3
-  client_secret: 25a391b4405c726bfa417a4d09a8a9d46fd41e12
-  proxy_gateway: 
-  redirect_protocol: 
+# gitment:
+#   enable: true
+#   mint: true
+#   count: true
+#   lazy: false
+#   cleanly: false
+#   language: 
+#   github_user: httishere
+#   github_repo: https://github.com/httIsHere/httIsHere.github.io.git
+#   client_id: c61a26564784a9cb16f3
+#   client_secret: 25a391b4405c726bfa417a4d09a8a9d46fd41e12
+#   proxy_gateway: 
+#   redirect_protocol: 
 
 gitalk:
   enable: true
-  owner: httishere
+  owner: httIsHere
   admin: httishere
   repo: httIsHere.github.io
   ClientID: c61a26564784a9cb16f3
