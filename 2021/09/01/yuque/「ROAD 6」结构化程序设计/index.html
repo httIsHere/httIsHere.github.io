@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="referrer" content="no-referrer" />
+
+    <meta name="author" content="httishere">
+
+
+
+
+
+<title>「ROAD 6」结构化程序设计 | HTTISHERE</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+    <div class="wrapper">
+        <!--
+ * @Author: your name
+ * @Date: 2020-08-17 15:35:07
+ * @LastEditTime: 2021-08-16 16:06:34
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_partial/header.ejs
+-->
+<header>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-header header-logo">
+        <a href="/">HTTISHERE&#39;s Blog</a>
+      </div>
+      <div class="menu navbar-right">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+        <input id="switch_default" type="checkbox" class="switch_default" />
+        <label for="switch_default" class="toggleBtn"></label>
+        <a
+          target="_blank" href="https://httishere.notion.site/httishere/51826cfe4d6a4c9ca61c7c28665a85f7"
+          rel="sidebar noopener"
+          style="margin-left: 20px;"
+          >👉 HTTISHERE's PLOG</a
+        >
+      </div>
+    </div>
+  </nav>
+
+  
+  <nav class="navbar-mobile" id="nav-mobile">
+    <div class="container">
+      <div class="navbar-header">
+        <div>
+          <a href="/">HTTISHERE&#39;s Blog</a
+          ><a id="mobile-toggle-theme">·&nbsp;Light</a>
+        </div>
+        <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+      </div>
+      <div class="menu" id="mobile-menu">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+      </div>
+    </div>
+  </nav>
+</header>
+<script>
+  var mobileBtn = function f() {
+    var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+    var mobileMenu = document.getElementById("mobile-menu");
+    if (toggleMenu.classList.contains("active")) {
+      toggleMenu.classList.remove("active");
+      mobileMenu.classList.remove("active");
+    } else {
+      toggleMenu.classList.add("active");
+      mobileMenu.classList.add("active");
+    }
+  };
+  function addFav() {
+    var title = document.title;
+    var URL = document.URL;
+    try {
+      window.external.addFavorite(URL, title);
+    } catch (e) {
+      try {
+        window.sidebar.addPanel(title, URL, "");
+      } catch (e) {
+        alert("由于浏览器的安全设置\n可以使用Ctrl+D或者Command+D进行手动收藏");
+      }
+    }
+  }
+</script>
+
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">「ROAD 6」结构化程序设计</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">httishere</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">2021/09/01&nbsp;&nbsp;11:26:32</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/">大前端</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h3 id="JS-执行粒度-Realm"><a href="#JS-执行粒度-Realm" class="headerlink" title="JS 执行粒度 Realm"></a>JS 执行粒度 Realm</h3><ul>
+<li>JS Context =&gt; Realm（粒度比宏任务更大）</li>
+<li>宏任务</li>
+<li>微任务</li>
+<li>函数调用</li>
+<li>语句/声明</li>
+<li>表达式</li>
+<li>直接量/变量/this…</li>
+</ul>
+<p>如果使用 GLOBAL 变量对象是不需要用到 Realm。</p>
+<p>在 JS 内，函数表达式和对象直接量均会创建对象，使用<code>.</code>做隐式转换也会创建对象，这些对象都是有原型的，如果没有 Realm 我们就不知道它们的原型是什么了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> x = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line"><span class="comment">// vs</span></span><br><span class="line"><span class="keyword">let</span> y = &#123;&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="获取所有-GLOBAL-对象"><a href="#获取所有-GLOBAL-对象" class="headerlink" title="获取所有 GLOBAL 对象"></a>获取所有 GLOBAL 对象</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> objects = [</span><br><span class="line">  <span class="built_in">eval</span>,</span><br><span class="line">  <span class="built_in">isFinite</span>,</span><br><span class="line">  <span class="built_in">isNaN</span>,</span><br><span class="line">  <span class="built_in">parseFloat</span>,</span><br><span class="line">  <span class="built_in">parseInt</span>,</span><br><span class="line">  <span class="built_in">decodeURI</span>,</span><br><span class="line">  <span class="built_in">decodeURIComponent</span>,</span><br><span class="line">  <span class="built_in">encodeURI</span>,</span><br><span class="line">  <span class="built_in">encodeURIComponent</span>,</span><br><span class="line">  <span class="built_in">Array</span>,</span><br><span class="line">  <span class="built_in">Date</span>,</span><br><span class="line">  <span class="built_in">RegExp</span>,</span><br><span class="line">  <span class="built_in">Promise</span>,</span><br><span class="line">  <span class="built_in">Proxy</span>,</span><br><span class="line">  <span class="built_in">Map</span>,</span><br><span class="line">  <span class="built_in">WeakMap</span>,</span><br><span class="line">  <span class="built_in">Set</span>,</span><br><span class="line">  <span class="built_in">WeakSet</span>,</span><br><span class="line">  <span class="built_in">Function</span>,</span><br><span class="line">  <span class="built_in">Boolean</span>,</span><br><span class="line">  <span class="built_in">String</span>,</span><br><span class="line">  <span class="built_in">Number</span>,</span><br><span class="line">  <span class="built_in">Symbol</span>,</span><br><span class="line">  <span class="built_in">Object</span>,</span><br><span class="line">  <span class="built_in">Error</span>,</span><br><span class="line">  <span class="built_in">EvalError</span>,</span><br><span class="line">  <span class="built_in">RangeError</span>,</span><br><span class="line">  <span class="built_in">ReferenceError</span>,</span><br><span class="line">  <span class="built_in">SyntaxError</span>,</span><br><span class="line">  <span class="built_in">TypeError</span>,</span><br><span class="line">  <span class="built_in">URIError</span>,</span><br><span class="line">  <span class="built_in">ArrayBuffer</span>,</span><br><span class="line">  <span class="comment">// SharedArrayBuffer, // 所有主流浏览器均默认于2018年1月5日禁用SharedArrayBuffer</span></span><br><span class="line">  <span class="built_in">DataView</span>,</span><br><span class="line">  <span class="built_in">Float32Array</span>,</span><br><span class="line">  <span class="built_in">Float64Array</span>,</span><br><span class="line">  <span class="built_in">Int8Array</span>,</span><br><span class="line">  <span class="built_in">Int16Array</span>,</span><br><span class="line">  <span class="built_in">Int32Array</span>,</span><br><span class="line">  <span class="built_in">Uint8Array</span>,</span><br><span class="line">  <span class="built_in">Uint16Array</span>,</span><br><span class="line">  <span class="built_in">Uint32Array</span>,</span><br><span class="line">  <span class="built_in">Uint8ClampedArray</span>,</span><br><span class="line">  Atomics,</span><br><span class="line">  <span class="built_in">JSON</span>,</span><br><span class="line">  <span class="built_in">Math</span>,</span><br><span class="line">  <span class="built_in">Reflect</span>,</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> queue = [];</span><br><span class="line"><span class="keyword">var</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (objects.length) &#123;</span><br><span class="line">  <span class="keyword">let</span> current = objects.shift();</span><br><span class="line">  <span class="keyword">if</span> (set.has(current)) <span class="keyword">continue</span>;</span><br><span class="line">  set.add(current), queue.push(current);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> p <span class="keyword">of</span> <span class="built_in">Object</span>.getOwnPropertyNames(current)) &#123;</span><br><span class="line">    <span class="keyword">let</span> property = <span class="built_in">Object</span>.getOwnPropertyDescriptor(current, p);</span><br><span class="line">    <span class="keyword">if</span> (</span><br><span class="line">      property.hasOwnProperty(<span class="string">&quot;value&quot;</span>) &amp;&amp;</span><br><span class="line">      ((property.value != <span class="literal">null</span> &amp;&amp; <span class="keyword">typeof</span> property.value === <span class="string">&quot;object&quot;</span>) ||</span><br><span class="line">        <span class="keyword">typeof</span> property.value === <span class="string">&quot;object&quot;</span>) &amp;&amp;</span><br><span class="line">      property.value <span class="keyword">instanceof</span> <span class="built_in">Object</span></span><br><span class="line">    ) &#123;</span><br><span class="line">      set.add(property.value), queue.push(property.value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (property.hasOwnProperty(<span class="string">&quot;get&quot;</span>) &amp;&amp; <span class="keyword">typeof</span> property.get === <span class="string">&quot;function&quot;</span>) &#123;</span><br><span class="line">      set.add(property.get), queue.push(property.get);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (property.hasOwnProperty(<span class="string">&quot;set&quot;</span>) &amp;&amp; <span class="keyword">typeof</span> property.set === <span class="string">&quot;function&quot;</span>) &#123;</span><br><span class="line">      set.add(property.set), queue.push(property.set);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="宏任务-amp-微任务"><a href="#宏任务-amp-微任务" class="headerlink" title="宏任务&amp;微任务"></a>宏任务&amp;微任务</h3><p>两个角色：宿主环境和 JS 引擎。</p>
+<ul>
+<li><strong>宏任务：宿主发起的任务；</strong></li>
+<li><strong>微任务：JS 引擎发起的任务；</strong></li>
+</ul>
+<p>JS 是单线程执行的。</p>
+<p>宏任务内部会有一个微任务列表，在执行下一个宏任务之前，会把上一个宏任务内的微任务全部完成。</p>
+<h4 id="分析异步执⾏的顺序："><a href="#分析异步执⾏的顺序：" class="headerlink" title="分析异步执⾏的顺序："></a>分析异步执⾏的顺序：</h4><ul>
+<li>⾸先我们分析<strong>有多少个宏任务</strong>；</li>
+<li>在每个宏任务中，分析有多少个微任务；</li>
+<li>根据调⽤次序，确定宏任务中的微任务执⾏次序；</li>
+<li>根据宏任务的触发规则和调⽤次序，确定宏任务的执⾏次序；</li>
+<li>确定整个顺序。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">this</span>.a);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> resolve()).then(<span class="function">() =&gt;</span> (<span class="built_in">this</span>.a = <span class="number">3</span>));</span><br><span class="line"><span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+
+<p>思考下面代码的执行顺序：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(-<span class="number">2</span>)</span><br><span class="line">  <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> resolve());</span><br><span class="line">  <span class="built_in">console</span>.log(-<span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> (<span class="built_in">console</span>.log(<span class="number">0</span>), resolve())).then(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">  <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> resolve()).then(<span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="number">1.5</span>));</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">    <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> resolve()).then(<span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="number">3</span>))</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">4</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">5</span>)</span><br><span class="line">foo()˛</span><br></pre></td></tr></table></figure>
+
+<p>会先在一个微任务内执行完所有的同步代码。</p>
+<p>宏任务 1:</p>
+<ul>
+<li>微任务 1：0，4，5，-2（同步代码）<ul>
+<li>入队：1，-1</li>
+</ul>
+</li>
+<li>微任务 2：1<ul>
+<li>入队：1.5</li>
+</ul>
+</li>
+<li>微任务 3：-1</li>
+<li>微任务 4：1.5</li>
+</ul>
+<p>宏任务 2:</p>
+<ul>
+<li>微任务 1：2</li>
+<li>微任务 2：3</li>
+</ul>
+<h3 id="函数调用（Execution-Context）"><a href="#函数调用（Execution-Context）" class="headerlink" title="函数调用（Execution Context）"></a>函数调用（Execution Context）</h3><p><strong>执行上下文栈（Execution Context Stack）</strong>。</p>
+<p>在函数调用时会进行栈 push，函数执行完毕就会 pop。</p>
+<ul>
+<li>code evaluation state</li>
+<li>Function</li>
+<li>Script or Module</li>
+<li>Generator</li>
+<li>Realm</li>
+<li>Lexical Environment（词法环境）</li>
+<li>Variable Environment（变量环境）</li>
+</ul>
+<h4 id="Lexical-Environment"><a href="#Lexical-Environment" class="headerlink" title="Lexical Environment"></a>Lexical Environment</h4><ul>
+<li>this（箭头函数声明的时候就被绑定了？）</li>
+<li>new.target</li>
+<li>super</li>
+<li>变量</li>
+</ul>
+<h4 id="Variable-Environment"><a href="#Variable-Environment" class="headerlink" title="Variable Environment"></a>Variable Environment</h4><blockquote>
+<p>历史遗留包袱，仅仅用于处理 var 声明。</p>
+</blockquote>
+<h4 id="Environment-Record"><a href="#Environment-Record" class="headerlink" title="Environment Record"></a>Environment Record</h4><p><img src="https://gitee.com/httishere/blog-image/raw/master/img/Xnip2021-09-01_11-00-50.jpg#id=ilPmw&originHeight=430&originWidth=842&originalType=binary%E2%88%B6=1&status=done&style=none"></p>
+<p><img src="https://gitee.com/httishere/blog-image/raw/master/img/Xnip2021-09-01_11-04-45.jpg#id=ZaDKY&originHeight=276&originWidth=1084&originalType=binary%E2%88%B6=1&status=done&style=none"></p>
+<h3 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h3><p>在 js 内，逗号表达式永远只返回最后一个值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> param = <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>;</span><br><span class="line"><span class="built_in">console</span>.log(param) <span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> param2 = <span class="number">1</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;<span class="keyword">return</span> <span class="built_in">this</span>.q&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(param2) <span class="comment">// function</span></span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>httishere</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://httishere.github.io/2021/09/01/yuque/%E3%80%8CROAD%206%E3%80%8D%E7%BB%93%E6%9E%84%E5%8C%96%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">https://httishere.github.io/2021/09/01/yuque/%E3%80%8CROAD%206%E3%80%8D%E7%BB%93%E6%9E%84%E5%8C%96%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2021 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Good Good Study, Day Day Up.</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/ROAD-6/"># ROAD 6</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/09/18/yuque/%E3%80%8CDaily%E3%80%8D%E5%B8%B8%E8%A7%81%E5%9C%BA%E6%99%AF%EF%BC%9A%E6%90%9C%E7%B4%A2%E7%BB%93%E6%9E%9C%E9%A1%B5%E5%85%B3%E9%94%AE%E5%AD%97%E9%AB%98%E4%BA%AE/">「Daily」常见场景：搜索结果页关键字高亮</a>
+            
+            
+            <a class="next" rel="next" href="/2021/08/27/yuque/%E3%80%8CROAD%206%E3%80%8D%E5%AF%B9%E8%B1%A1/">「ROAD 6」对象</a>
+            
+        </section>
+        
+            <!--
+ * @Author: your name
+ * @Date: 2021-07-08 11:08:58
+ * @LastEditTime: 2021-08-20 11:11:35
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_partial/gitalk.ejs
+-->
+<link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css">
+<div id="gitalk-container" style="margin-top: 50px;"></div>
+<!-- <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> -->
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script type="text/javascript">
+console.log(md5(location.pathname))
+    new Gitalk({
+        clientID: 'c61a26564784a9cb16f3',
+        clientSecret: '25a391b4405c726bfa417a4d09a8a9d46fd41e12',
+        id: window.location.pathname,
+        repo: 'httIsHere.github.io',
+        owner: 'httIsHere',
+        admin: 'httIsHere',
+        id: md5(location.pathname),
+        distractionFreeMode: false
+    }).render('gitalk-container')
+</script>
+        
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© httishere | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
