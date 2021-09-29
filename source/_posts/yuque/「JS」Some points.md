@@ -62,7 +62,7 @@ const c = new foo(); // => undefined
 还有箭头函数其实是没有  `this`  的，箭头函数中的  `this`  只取决包裹箭头函数的第一个普通函数的  `this`。另外对箭头函数使用  `bind`  这类函数是无效的。
 对于普通函数，不管我们给函数  `bind`  几次，函数中的  `this`  永远由第一次  `bind`  决定。
 `new`  的方式优先级最高，接下来是  `bind`  这些函数，然后是  `obj.foo()`  这种调用方式，最后是  `foo`  这种调用方式，同时，箭头函数的  `this`  一旦被绑定，就不会再被任何方式所改变。
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/250093/1614046497785-d7ea7875-a854-494a-b25c-5b1fccccb258.png#align=left&display=inline&height=531&margin=%5Bobject%20Object%5D&name=image.png&originHeight=531&originWidth=744&size=35164&status=done&style=none&width=744)
+![image.png](https://cdn.nlark.com/yuque/0/2021/png/250093/1614046497785-d7ea7875-a854-494a-b25c-5b1fccccb258.png#height=531&id=ZjQd4&margin=%5Bobject%20Object%5D&name=image.png&originHeight=531&originWidth=744&originalType=binary∶=1&size=35164&status=done&style=none&width=744)
 
 #### == vs ===
 
@@ -84,8 +84,8 @@ null == undefined // => true
 对比`"" == 0;`
 满足第二条规则，"" 是字符串，0 是数值，对比 Number("") == 0, 也就是 0 == 0。
 所以得出 `[] == ![]`
-**所以在使用时尽量使用`===`。**
-\*\*
+**所以在使用时尽量使用**`**===**`**。**
+**​**
 
 #### 闭包
 
@@ -150,7 +150,7 @@ let 有自己的作用域块，所以在 for 循环表达式中使用 let 其实
 
 在一个实例对象中可以通过  `__proto__`找到一个原型对象，在该对象中定义了很多函数让我们来使用。
 原型的  `constructor`  属性指向构造函数，构造函数又通过  `prototype`  属性指回原型，但是并不是所有函数都具有这个属性，`Function.prototype.bind()`就没有这个属性。
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/250093/1614065706606-ab42b62d-2a07-45e3-9803-8567e9a5c042.png#align=left&display=inline&height=781&margin=%5Bobject%20Object%5D&name=image.png&originHeight=781&originWidth=618&size=241194&status=done&style=none&width=618)
+![image.png](https://cdn.nlark.com/yuque/0/2021/png/250093/1614065706606-ab42b62d-2a07-45e3-9803-8567e9a5c042.png#height=781&id=HgNjp&margin=%5Bobject%20Object%5D&name=image.png&originHeight=781&originWidth=618&originalType=binary∶=1&size=241194&status=done&style=none&width=618)
 其实原型链就是多个对象通过  `__proto__`  的方式连接了起来。为什么  `obj`  可以访问到  `valueOf`  函数，就是因为  `obj`  通过原型链找到了  `valueOf`  函数。
 
 - `Object` 是所有对象的原型，所有对象都可以通过 `__proto__` 找到它。
@@ -212,3 +212,88 @@ const debounce = (func, wait = 50) => {
 };
 // 不难看出如果用户调用该函数的间隔小于wait的情况下，上一次的时间还未到就被清除了，并不会执行函数
 ```
+
+```javascript
+/**
+ *
+ * @param {*} func 要进行debouce的函数
+ * @param {*} wait 等待时间,默认500ms
+ * @param {*} immediate 是否立即执行
+ */
+function debounce(func, wait = 500, immediate = false) {
+  let timeout; // 定时器
+  return function () {
+    let _this = this;
+    let args = arguments;
+
+    if (timeout) clearTimeout(timeout);
+    if (immediate) {
+      // 如果已经执行过，不再执行
+      let callNow = !timeout;
+      timeout = setTimeout(function () {
+        timeout = null;
+      }, wait);
+      if (callNow) func.apply(_this, args);
+    } else {
+      timeout = setTimeout(function () {
+        func.apply(_this, args);
+      }, wait);
+    }
+  };
+}
+```
+
+#### 节流
+
+多次触发，间隔时间段执行。
+
+```javascript
+/**
+ * @param {Function} func
+ * @param {Int} wait
+ * @param {Object} options
+ */
+function throttle(func, wait = 500, options) {
+  let timeout, context, args;
+  let previous = 0;
+  if (!options) options = { leading: false, trailing: true };
+
+  var later = function () {
+    previous = options.leading === false ? 0 : new Date().getTime();
+    timeout = null;
+    func.apply(context, args);
+    if (!timeout) context = args = null;
+  };
+
+  var throttled = function () {
+    var now = new Date().getTime();
+    if (!previous && options.leading === false) previous = now;
+    var remaining = wait - (now - previous);
+    context = this;
+    args = arguments;
+    if (remaining <= 0 || remaining > wait) {
+      if (timeout) {
+        clearTimeout(timeout);
+        timeout = null;
+      }
+      previous = now;
+      func.apply(context, args);
+      if (!timeout) context = args = null;
+    } else if (!timeout && options.trailing !== false) {
+      timeout = setTimeout(later, remaining);
+    }
+  };
+  return throttled;
+}
+```
+
+`options`
+
+- `leading`：函数在每个等待时延的开始被调用，默认值为 false；
+- `trailing`：函数在每个等待时延的结束被调用，默认值是 true；
+
+场景：
+
+- leading-false，trailing-true：默认情况，即在延时结束后才会调用函数；
+- leading-true，trailing-true：在延时开始时就调用，延时结束后也会调用；
+- leading-true, trailing-false：只在延时开始时调用；
