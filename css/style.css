@@ -627,6 +627,19 @@ header label {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.archive-item-link .category {
+  width: 100px;
+  display: inline-block;
+}
+.archive-item-link .category-item {
+  font-size: 12px;
+  color: #fff;
+  background: rgba(111,129,219,0.6);
+  border-radius: 12px;
+  padding: 2px 5px;
+  margin-left: 10px;
+  vertical-align: middle;
+}
 .archive-item-link:hover {
   color: #2d96bd;
   background-color: transparent;
