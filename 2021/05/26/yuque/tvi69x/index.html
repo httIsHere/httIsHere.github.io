@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="referrer" content="no-referrer" />
+
+    <meta name="author" content="httishere">
+
+
+
+
+
+<title>「js」WeakMap &amp; WeakSet | HTTISHERE</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-header header-logo">
+        <a href="/">ℍ𝕋𝕋𝕀𝕊ℍ𝔼ℝ𝔼&#39;𝕤 𝔹𝕝𝕠𝕘</a>
+        <!-- ℍ𝕋𝕋𝕀𝕊ℍ𝔼ℝ𝔼'𝕤 𝔹𝕝𝕠𝕘 -->
+      </div>
+      <div class="menu navbar-right">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+        <input id="switch_default" type="checkbox" class="switch_default" />
+        <label for="switch_default" class="toggleBtn"></label>
+        <a
+          target="_blank" href="https://httishere.notion.site/httishere/51826cfe4d6a4c9ca61c7c28665a85f7"
+          rel="sidebar noopener"
+          style="margin-left: 20px;"
+          >👉 HTTISHERE's PLOG</a
+        >
+      </div>
+    </div>
+  </nav>
+
+  
+  <nav class="navbar-mobile" id="nav-mobile">
+    <div class="container">
+      <div class="navbar-header">
+        <div>
+          <a href="/">ℍ𝕋𝕋𝕀𝕊ℍ𝔼ℝ𝔼&#39;𝕤 𝔹𝕝𝕠𝕘</a
+          ><a id="mobile-toggle-theme">·&nbsp;Light</a>
+        </div>
+        <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+      </div>
+      <div class="menu" id="mobile-menu">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+      </div>
+    </div>
+  </nav>
+</header>
+<script>
+  var mobileBtn = function f() {
+    var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+    var mobileMenu = document.getElementById("mobile-menu");
+    if (toggleMenu.classList.contains("active")) {
+      toggleMenu.classList.remove("active");
+      mobileMenu.classList.remove("active");
+    } else {
+      toggleMenu.classList.add("active");
+      mobileMenu.classList.add("active");
+    }
+  };
+  function addFav() {
+    var title = document.title;
+    var URL = document.URL;
+    try {
+      window.external.addFavorite(URL, title);
+    } catch (e) {
+      try {
+        window.sidebar.addPanel(title, URL, "");
+      } catch (e) {
+        alert("由于浏览器的安全设置\n可以使用Ctrl+D或者Command+D进行手动收藏");
+      }
+    }
+  }
+</script>
+
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">「js」WeakMap &amp; WeakSet</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">httishere</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">2021/05/26&nbsp;&nbsp;15:22:53</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="WeakMap"><a href="#WeakMap" class="headerlink" title="WeakMap"></a>WeakMap</h2><blockquote>
+<p>对象是<strong>一组键/值对</strong>的集合，其中的<strong>键是弱引用</strong>的。其键必须是对象，而值可以是任意的。</p>
+</blockquote>
+<p>key 是弱引用：<code>WeakMaps hold &quot;weak&quot; references to key objects</code>。</p>
+<blockquote>
+<p>在计算机程序设计中，弱引用与强引用相对，是指不能确保其引用的对象不会被垃圾回收器回收的引用。 一个对象若只被弱引用所引用，则被认为是不可访问（或弱可访问）的，并因此可能在任何时刻被回收。<br>弱引用的对象拥有更短暂的生命周期。在垃圾回收器线程扫描它所管辖的内存区域的过程中，一旦发现了<strong>只具有弱引用</strong>的对象，不管当前内存空间足够与否，都会回收它的内存</p>
+</blockquote>
+<h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">WeakMap</span>([iterable]);</span><br></pre></td></tr></table></figure>
+
+<p><code>iterable</code>是一个数组（二元数组）或者其他可迭代的且其元素是键值对的对象。每个键值对会被加到新的 WeakMap 里。null 会被当做 undefined。</p>
+<p><strong>注：WeakMap 的 key 只能是 <code>Object</code> 类型。 原始数据类型是不能作为 key 的（比如 String）。</strong></p>
+<h4 id="使用-WeakMap-的原因"><a href="#使用-WeakMap-的原因" class="headerlink" title="使用 WeakMap 的原因"></a>使用 WeakMap 的原因</h4><p>在 JavaScript 里，map API 可以通过使其四个 API 方法共用两个数组(一个存放键,一个存放值)来实现。给这种 map 设置值时会同时将键和值添加到这两个数组的末尾。从而使得键和值的索引在两个数组中相对应。当从该 map 取值的时候，需要遍历所有的键，然后使用索引从存储值的数组中检索出相应的值。</p>
+<p>但这样的实现会有两个很大的缺点，首先赋值和搜索操作都是 O(n) 的时间复杂度( n 是键值对的个数)，因为这两个操作都需要遍历全部整个数组来进行匹配。另外一个缺点是可能会导致内存泄漏，因为数组会一直引用着每个键和值。这种引用使得垃圾回收算法不能回收处理他们，即使没有其他任何引用存在了。</p>
+<p>原生的 WeakMap 持有的是每个键对象的“弱引用”，这意味着在没有其他引用存在时垃圾回收能正确进行。原生 WeakMap 的结构是特殊且有效的，其用于映射的 key 只有在其没有被回收时才是有效的。</p>
+<p>由于这样的弱引用，<code>WeakMap</code> 的 key 是<strong>不可枚举</strong>的 (没有方法能给出所有的 key)。如果 key 是可枚举的话，其列表将会受垃圾回收机制的影响，从而得到不确定的结果。因此，如果你想要这种类型对象的 key 值的列表，你应该使用 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map"><code>Map</code></a>。</p>
+<p>如果你要<strong>往对象上添加数据，又不想干扰垃圾回收机制</strong>，就可以使用 WeakMap。</p>
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><ul>
+<li><code>WeakMap.length</code>：0</li>
+<li><code>WeakMap.prototype</code>：WeakMap 构造器的原型，允许添加属性到所有的 WeakMap 对象。</li>
+</ul>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> wm = <span class="keyword">new</span> <span class="built_in">WeakMap</span>();</span><br><span class="line">wm.set(<span class="built_in">window</span>, <span class="string">&quot;foo&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="WeakMap-prototype-delete-key"><a href="#WeakMap-prototype-delete-key" class="headerlink" title="WeakMap.prototype.delete(key)"></a>WeakMap.prototype.delete(key)</h4><p>从一个 <code>WeakMap</code> 对象中删除指定的元素。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wm.delete(<span class="built_in">window</span>); <span class="comment">// 返回 true，表示删除成功。</span></span><br><span class="line">wm.has(<span class="built_in">window</span>); <span class="comment">// 返回 false，因为 window 对象已经被删除了。</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="WeakMap-prototype-get-key"><a href="#WeakMap-prototype-get-key" class="headerlink" title="WeakMap.prototype.get(key)"></a>WeakMap.prototype.get(key)</h4><p>返回  <code>WeakMap</code> 指定的元素，返回与指定键相关联的值，如果 <code>WeakMap</code> 对象找不到这个键则返回 <code>undefined</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wm.get(<span class="built_in">window</span>); <span class="comment">// 返回 &quot;foo&quot;.</span></span><br><span class="line">wm.get(<span class="string">&quot;baz&quot;</span>); <span class="comment">// 返回 undefined.</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="WeakMap-prototype-has-key"><a href="#WeakMap-prototype-has-key" class="headerlink" title="WeakMap.prototype.has(key)"></a>WeakMap.prototype.has(key)</h4><p>根据 WeakMap 对象的元素中是否存在 key 键返回一个 boolean 值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wm.has(<span class="built_in">window</span>); <span class="comment">// returns true</span></span><br><span class="line">wm.has(<span class="string">&quot;baz&quot;</span>); <span class="comment">// returns false</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="WeakMap-prototype-set-key-value"><a href="#WeakMap-prototype-set-key-value" class="headerlink" title="WeakMap.prototype.set(key, value)"></a>WeakMap.prototype.set(key, value)</h4><p>根据指定的<code>key</code>和<code>value在</code> <code>WeakMap</code>对象中添加新/更新元素。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line"><span class="comment">// Add new elements to the WeakMap</span></span><br><span class="line">wm.set(obj, <span class="string">&quot;foo&quot;</span>).set(<span class="built_in">window</span>, <span class="string">&quot;bar&quot;</span>); <span class="comment">// chainable</span></span><br><span class="line"><span class="comment">// Update an element in the WeakMap</span></span><br><span class="line">wm.set(obj, <span class="string">&quot;baz&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="WeakSet"><a href="#WeakSet" class="headerlink" title="WeakSet"></a>WeakSet</h2><blockquote>
+<p>WeakSet 允许将<em>弱保持对象</em>存储在一个集合中。</p>
+</blockquote>
+<h3 id="用法-1"><a href="#用法-1" class="headerlink" title="用法"></a>用法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">WeakSet</span>([iterable]);</span><br></pre></td></tr></table></figure>
+
+<p>iterable：传入一个<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/for...of">可迭代对象</a>作为参数, 则该对象的所有迭代值都会被自动添加进生成的 <code>WeakSet</code> 对象中。null 被认为是 undefined。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ws = <span class="keyword">new</span> <span class="built_in">WeakSet</span>();</span><br><span class="line"><span class="keyword">var</span> foo = &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> bar = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">ws.add(foo);</span><br><span class="line">ws.add(bar);</span><br><span class="line"></span><br><span class="line">ws.has(foo); <span class="comment">// true</span></span><br><span class="line">ws.has(bar); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line">ws.delete(foo); <span class="comment">// 从set中删除 foo 对象</span></span><br><span class="line">ws.has(foo); <span class="comment">// false, foo 对象已经被删除了</span></span><br><span class="line">ws.has(bar); <span class="comment">// true, bar 依然存在</span></span><br></pre></td></tr></table></figure>
+
+<p><code>WeakSet</code> 对象是一些对象值的集合, 并且其中的每个对象值都只能出现一次，在<code>WeakSet</code>的集合中是<strong>唯一的</strong>。</p>
+<h4 id="和-Set-对象的区别"><a href="#和-Set-对象的区别" class="headerlink" title="和 Set 对象的区别:"></a>和 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Set"><code>Set</code></a> 对象的区别:</h4><ul>
+<li>与<code>Set</code>相比，<code>WeakSet</code> 只能是<strong>对象的集合</strong>，而不能是任何类型的任意值。</li>
+<li><code>WeakSet</code>持弱引用：集合中对象的引用为弱引用。 如果没有其他的对<code>WeakSet</code>中对象的引用，那么这些对象会被当成垃圾回收掉。 这也意味着 WeakSet 中没有存储当前对象的列表。 正因为这样，<code>WeakSet</code> 是不可枚举的。</li>
+</ul>
+<p>WeakSet 非常适合处理这种情况：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 对 传入的subject对象 内部存储的所有内容执行回调</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">execRecursively</span>(<span class="params">fn, subject, _refs = <span class="literal">null</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!_refs) _refs = <span class="keyword">new</span> <span class="built_in">WeakSet</span>();</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 避免无限递归</span></span><br><span class="line">  <span class="keyword">if</span> (_refs.has(subject)) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">  fn(subject);</span><br><span class="line">  <span class="keyword">if</span> (<span class="string">&quot;object&quot;</span> === <span class="keyword">typeof</span> subject) &#123;</span><br><span class="line">    _refs.add(subject);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> subject) execRecursively(fn, subject[key], _refs);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> foo = &#123;</span><br><span class="line">  foo: <span class="string">&quot;Foo&quot;</span>,</span><br><span class="line">  bar: &#123;</span><br><span class="line">    bar: <span class="string">&quot;Bar&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">foo.bar.baz = foo; <span class="comment">// 循环引用!</span></span><br><span class="line">execRecursively(<span class="function">(<span class="params">obj</span>) =&gt;</span> <span class="built_in">console</span>.log(obj), foo);</span><br></pre></td></tr></table></figure>
+
+<h3 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h3><h4 id="WeakSet-prototype-add-value"><a href="#WeakSet-prototype-add-value" class="headerlink" title="WeakSet.prototype.add(value)"></a>WeakSet.prototype.add(value)</h4><h4 id="WeakSet-prototype-delete-value"><a href="#WeakSet-prototype-delete-value" class="headerlink" title="WeakSet.prototype.delete(value)"></a>WeakSet.prototype.delete(value)</h4><h4 id="WeakSet-prototype-has-value"><a href="#WeakSet-prototype-has-value" class="headerlink" title="WeakSet.prototype.has(value)"></a>WeakSet.prototype.has(value)</h4>
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>httishere</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://httishere.github.io/2021/05/26/yuque/tvi69x/">https://httishere.github.io/2021/05/26/yuque/tvi69x/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2021 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Good Good Study, Day Day Up.</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/06/25/jp-article_02/">「日本語」 卒業文章（N5）</a>
+            
+            
+            <a class="next" rel="next" href="/2021/05/25/yuque/imfakp/">「js」Proxy & Reflect</a>
+            
+        </section>
+        
+            <!--
+ * @Author: your name
+ * @Date: 2021-07-08 11:08:58
+ * @LastEditTime: 2021-08-20 11:11:35
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_partial/gitalk.ejs
+-->
+<link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css">
+<div id="gitalk-container" style="margin-top: 50px;"></div>
+<!-- <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> -->
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script type="text/javascript">
+console.log(md5(location.pathname))
+    new Gitalk({
+        clientID: 'c61a26564784a9cb16f3',
+        clientSecret: '25a391b4405c726bfa417a4d09a8a9d46fd41e12',
+        id: window.location.pathname,
+        repo: 'httIsHere.github.io',
+        owner: 'httIsHere',
+        admin: 'httIsHere',
+        id: md5(location.pathname),
+        distractionFreeMode: false
+    }).render('gitalk-container')
+</script>
+        
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© httishere | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

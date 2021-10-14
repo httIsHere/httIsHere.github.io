@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="referrer" content="no-referrer" />
+
+    <meta name="author" content="httishere">
+
+
+
+
+
+<title>「ROAD 6」浏览器原理-排版 &amp; 渲染 | HTTISHERE</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-header header-logo">
+        <a href="/">ℍ𝕋𝕋𝕀𝕊ℍ𝔼ℝ𝔼&#39;𝕤 𝔹𝕝𝕠𝕘</a>
+        <!-- ℍ𝕋𝕋𝕀𝕊ℍ𝔼ℝ𝔼'𝕤 𝔹𝕝𝕠𝕘 -->
+      </div>
+      <div class="menu navbar-right">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+        <input id="switch_default" type="checkbox" class="switch_default" />
+        <label for="switch_default" class="toggleBtn"></label>
+        <a
+          target="_blank" href="https://httishere.notion.site/httishere/51826cfe4d6a4c9ca61c7c28665a85f7"
+          rel="sidebar noopener"
+          style="margin-left: 20px;"
+          >👉 HTTISHERE's PLOG</a
+        >
+      </div>
+    </div>
+  </nav>
+
+  
+  <nav class="navbar-mobile" id="nav-mobile">
+    <div class="container">
+      <div class="navbar-header">
+        <div>
+          <a href="/">ℍ𝕋𝕋𝕀𝕊ℍ𝔼ℝ𝔼&#39;𝕤 𝔹𝕝𝕠𝕘</a
+          ><a id="mobile-toggle-theme">·&nbsp;Light</a>
+        </div>
+        <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+      </div>
+      <div class="menu" id="mobile-menu">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+      </div>
+    </div>
+  </nav>
+</header>
+<script>
+  var mobileBtn = function f() {
+    var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+    var mobileMenu = document.getElementById("mobile-menu");
+    if (toggleMenu.classList.contains("active")) {
+      toggleMenu.classList.remove("active");
+      mobileMenu.classList.remove("active");
+    } else {
+      toggleMenu.classList.add("active");
+      mobileMenu.classList.add("active");
+    }
+  };
+  function addFav() {
+    var title = document.title;
+    var URL = document.URL;
+    try {
+      window.external.addFavorite(URL, title);
+    } catch (e) {
+      try {
+        window.sidebar.addPanel(title, URL, "");
+      } catch (e) {
+        alert("由于浏览器的安全设置\n可以使用Ctrl+D或者Command+D进行手动收藏");
+      }
+    }
+  }
+</script>
+
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">「ROAD 6」浏览器原理-排版 &amp; 渲染</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">httishere</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">2021/10/12&nbsp;&nbsp;16:50:43</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/">大前端</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="排版"><a href="#排版" class="headerlink" title="排版"></a>排版</h2><blockquote>
+<p>确定元素的位置。</p>
+</blockquote>
+<h3 id="主轴和交叉轴"><a href="#主轴和交叉轴" class="headerlink" title="主轴和交叉轴"></a>主轴和交叉轴</h3><h4 id="Main-Axis"><a href="#Main-Axis" class="headerlink" title="Main Axis"></a>Main Axis</h4><p>元素的排布方向。</p>
+<h4 id="Cross-Axis"><a href="#Cross-Axis" class="headerlink" title="Cross Axis"></a>Cross Axis</h4><p>与主轴垂直的方向。</p>
+<h3 id="STEP-1-确定主轴-amp-交叉轴"><a href="#STEP-1-确定主轴-amp-交叉轴" class="headerlink" title="STEP 1: 确定主轴&amp;交叉轴"></a>STEP 1: 确定主轴&amp;交叉轴</h3><h3 id="STEP-2-收集元素进行（hang）"><a href="#STEP-2-收集元素进行（hang）" class="headerlink" title="STEP 2: 收集元素进行（hang）"></a>STEP 2: 收集元素进行（hang）</h3><ul>
+<li>分行（这个行不是 row 是主轴行的意思）<ul>
+<li>根据主轴尺寸，把元素分进行</li>
+<li>若设置了 no-wrap，则强行分配进第一行</li>
+</ul>
+</li>
+</ul>
+<h3 id="STEP-3-计算主轴"><a href="#STEP-3-计算主轴" class="headerlink" title="STEP 3: 计算主轴"></a>STEP 3: 计算主轴</h3><ul>
+<li>找出所有 flex 元素；</li>
+<li>把主轴方向的剩余尺寸按比例分配给 flex 元素；</li>
+<li>若剩余空间为负数，所有 flex 元素置为 0，等比压缩剩余元素；</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (mainSpace &lt; <span class="number">0</span>) &#123;</span><br><span class="line">  <span class="comment">// 剩余空间不足，仅在single line的情况下</span></span><br><span class="line">  <span class="keyword">let</span> scale = style[mainSize] / (style[mainSize] - mainSpace);</span><br><span class="line">  <span class="keyword">let</span> currentMain = mainBase;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; items.length; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> item = items[i],</span><br><span class="line">      itemStyle = getStyle(item);</span><br><span class="line">    <span class="keyword">if</span> (itemStyle.flex) &#123;</span><br><span class="line">      itemStyle[mainSize] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    itemStyle[mainSize] = itemStyle[mainSize] * scale;</span><br><span class="line"></span><br><span class="line">    itemStyle[mainStart] = currentMain;</span><br><span class="line">    itemStyle[mainEnd] = itemStyle[mainStart] + mainSign * itemStyle[mainSize];</span><br><span class="line">    currentMain = itemStyle[mainEnd];</span><br><span class="line">  &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// process each flex line</span></span><br><span class="line">  flexLines.forEach(<span class="function">(<span class="params">items</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> mainSpace = items.mainSpace;</span><br><span class="line">    <span class="comment">// 按flex进行分配</span></span><br><span class="line">    <span class="keyword">let</span> flexTotal = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; items.length; i++) &#123;</span><br><span class="line">      <span class="keyword">let</span> item = items[i],</span><br><span class="line">        itemStyle = getStyle(item);</span><br><span class="line">      <span class="keyword">if</span> (itemStyle.flex !== <span class="literal">undefined</span> &amp;&amp; itemStyle.flex !== <span class="literal">null</span>) &#123;</span><br><span class="line">        flexTotal += itemStyle.flex;</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (flexTotal &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="comment">// There is flexible flex items</span></span><br><span class="line">      <span class="keyword">let</span> currentMain = mainBase;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; items.length; i++) &#123;</span><br><span class="line">        <span class="keyword">let</span> item = items[i],</span><br><span class="line">          itemStyle = getStyle(item);</span><br><span class="line">        <span class="keyword">if</span> (itemStyle.flex) &#123;</span><br><span class="line">          itemStyle[mainSize] = (mainSpace / flexTotal) * itemStyle.flex;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        itemStyle[mainStart] = currentMain;</span><br><span class="line">        itemStyle[mainEnd] =</span><br><span class="line">          itemStyle[mainStart] + mainSign * itemStyle[mainSize];</span><br><span class="line">        currentMain = itemStyle[mainEnd];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 没有flex元素，但是还存在剩余空间，justify-content开始工作</span></span><br><span class="line">      <span class="keyword">let</span> currentMain, <span class="comment">// 元素排布的起点</span></span><br><span class="line">        step; <span class="comment">// 元素间距</span></span><br><span class="line">      <span class="keyword">if</span> (style.justifyContent === <span class="string">&quot;flex-start&quot;</span>) &#123;</span><br><span class="line">        currentMain = mainBase;</span><br><span class="line">        step = <span class="number">0</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (style.justifyContent === <span class="string">&quot;flex-end&quot;</span>) &#123;</span><br><span class="line">        currentMain = mainSpace * mainSign + mainBase;</span><br><span class="line">        step = <span class="number">0</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (style.justifyContent === <span class="string">&quot;space-between&quot;</span>) &#123;</span><br><span class="line">        <span class="comment">// n个元素之间有n-1个间距</span></span><br><span class="line">        step = (mainSpace / (items.length - <span class="number">1</span>)) * mainSign;</span><br><span class="line">        currentMain = mainBase;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (style.justifyContent === <span class="string">&quot;space-around&quot;</span>) &#123;</span><br><span class="line">        <span class="comment">// 左右两边是半个step，元素之间是一个step</span></span><br><span class="line">        step = (mainSpace / items.length) * mainSign;</span><br><span class="line">        currentMain = mainBase + step / <span class="number">2</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; items.length; i++) &#123;</span><br><span class="line">        <span class="keyword">let</span> item = items[i],</span><br><span class="line">          itemStyle = getStyle(item);</span><br><span class="line">        itemStyle[mainStart] = currentMain;</span><br><span class="line">        itemStyle[mainEnd] =</span><br><span class="line">          itemStyle[mainStart] + mainSign * itemStyle[mainSize];</span><br><span class="line">        currentMain = itemStyle[mainEnd] + step; <span class="comment">// 加上间距</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="STEP-4-计算交叉轴"><a href="#STEP-4-计算交叉轴" class="headerlink" title="STEP 4: 计算交叉轴"></a>STEP 4: 计算交叉轴</h3><ul>
+<li>根据每一行中最大元素的尺寸计算行高</li>
+<li>根据行高 flex-align 和 item-align，确定元素具体位置</li>
+</ul>
+<h3 id="主要代码"><a href="#主要代码" class="headerlink" title="主要代码"></a>主要代码</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @Author: httishere</span></span><br><span class="line"><span class="comment"> * @Date: 2021-09-29 11:53:07</span></span><br><span class="line"><span class="comment"> * @LastEditTime: 2021-10-12 14:10:51</span></span><br><span class="line"><span class="comment"> * @LastEditors: Please set LastEditors</span></span><br><span class="line"><span class="comment"> * @Description: 元素排版</span></span><br><span class="line"><span class="comment"> * @FilePath: /Note/toy-browser/CSS/layout.js</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getStyle</span>(<span class="params">element</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!element.style) element.style = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> prop <span class="keyword">in</span> element.computeStyle) &#123;</span><br><span class="line">    <span class="keyword">let</span> p = element.computeStyle.value;</span><br><span class="line">    <span class="comment">// copy</span></span><br><span class="line">    element.style[prop] = element.computeStyle[prop].value;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (element.style[prop].toString().match(<span class="regexp">/px$/</span>)) &#123;</span><br><span class="line">      element.style[prop] = <span class="built_in">parseInt</span>(element.style[prop]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (element.style[prop].toString().match(<span class="regexp">/^[0-9\.]+$/</span>)) &#123;</span><br><span class="line">      element.style[prop] = <span class="built_in">parseInt</span>(element.style[prop]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> element.style;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">layout</span>(<span class="params">element</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!element.computeStyle) <span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">let</span> elementStyle = getStyle(element);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (elementStyle.display !== <span class="string">&quot;flex&quot;</span>) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> items = element.children.filter(<span class="function">(<span class="params">e</span>) =&gt;</span> e.type === <span class="string">&quot;element&quot;</span>);</span><br><span class="line"></span><br><span class="line">  items.sort(<span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (a.order || <span class="number">0</span>) - (b.order || <span class="number">0</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> style = elementStyle;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// width height 处理</span></span><br><span class="line">  [<span class="string">&quot;width&quot;</span>, <span class="string">&quot;height&quot;</span>].forEach(<span class="function">(<span class="params">size</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (style[size] === <span class="string">&quot;auto&quot;</span> || style[size] === <span class="string">&quot;&quot;</span>) &#123;</span><br><span class="line">      style[size] = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 设计属性默认值</span></span><br><span class="line">  <span class="keyword">if</span> (!style.flexDirection || style.flexDirection === <span class="string">&quot;auto&quot;</span>) &#123;</span><br><span class="line">    style.flexDirection = <span class="string">&quot;row&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (!style.alignItems || style.alignItems === <span class="string">&quot;auto&quot;</span>) &#123;</span><br><span class="line">    style.alignItems = <span class="string">&quot;stretch&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (!style.justifyContent || style.justifyContent === <span class="string">&quot;auto&quot;</span>) &#123;</span><br><span class="line">    style.justifyContent = <span class="string">&quot;flex-start&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (!style.flexWrap || style.flexWrap === <span class="string">&quot;auto&quot;</span>) &#123;</span><br><span class="line">    style.flexWrap = <span class="string">&quot;nowrap&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (!style.alignContent || style.alignContent === <span class="string">&quot;auto&quot;</span>) &#123;</span><br><span class="line">    style.alignContent = <span class="string">&quot;stretch&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 使用变量进行抽象方向</span></span><br><span class="line">  <span class="comment">// base: 起点, sign: 排布方向</span></span><br><span class="line">  <span class="keyword">let</span> mainSize,</span><br><span class="line">    mainStart,</span><br><span class="line">    mainEnd,</span><br><span class="line">    mainSign,</span><br><span class="line">    mainBase, <span class="comment">// 主轴</span></span><br><span class="line">    crossSize,</span><br><span class="line">    crossStart,</span><br><span class="line">    crossEnd,</span><br><span class="line">    crossSign,</span><br><span class="line">    crossBase; <span class="comment">// 交叉轴</span></span><br><span class="line">  <span class="keyword">if</span> (style.flexDirection === <span class="string">&quot;row&quot;</span>) &#123;</span><br><span class="line">    (mainSize = <span class="string">&quot;width&quot;</span>), (mainStart = <span class="string">&quot;left&quot;</span>), (mainEnd = <span class="string">&quot;right&quot;</span>);</span><br><span class="line">    (mainSign = +<span class="number">1</span>), (mainBase = <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    (crossSize = <span class="string">&quot;height&quot;</span>), (crossStart = <span class="string">&quot;top&quot;</span>), (crossEnd = <span class="string">&quot;bottom&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (style.flexDirection === <span class="string">&quot;row-reverse&quot;</span>) &#123;</span><br><span class="line">    (mainSize = <span class="string">&quot;width&quot;</span>), (mainStart = <span class="string">&quot;right&quot;</span>), (mainEnd = <span class="string">&quot;left&quot;</span>);</span><br><span class="line">    (mainSign = -<span class="number">1</span>), (mainBase = style.width);</span><br><span class="line"></span><br><span class="line">    (crossSize = <span class="string">&quot;height&quot;</span>), (crossStart = <span class="string">&quot;top&quot;</span>), (crossEnd = <span class="string">&quot;bottom&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (style.flexDirection === <span class="string">&quot;column&quot;</span>) &#123;</span><br><span class="line">    (mainSize = <span class="string">&quot;height&quot;</span>), (mainStart = <span class="string">&quot;top&quot;</span>), (mainEnd = <span class="string">&quot;bottom&quot;</span>);</span><br><span class="line">    (mainSign = +<span class="number">1</span>), (mainBase = <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    (crossSize = <span class="string">&quot;width&quot;</span>), (crossStart = <span class="string">&quot;left&quot;</span>), (crossEnd = <span class="string">&quot;right&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (style.flexDirection === <span class="string">&quot;column-reverse&quot;</span>) &#123;</span><br><span class="line">    (mainSize = <span class="string">&quot;height&quot;</span>), (mainStart = <span class="string">&quot;bottom&quot;</span>), (mainEnd = <span class="string">&quot;top&quot;</span>);</span><br><span class="line">    (mainSign = -<span class="number">1</span>), (mainBase = style.height);</span><br><span class="line"></span><br><span class="line">    (crossSize = <span class="string">&quot;width&quot;</span>), (crossStart = <span class="string">&quot;left&quot;</span>), (crossEnd = <span class="string">&quot;right&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (style.flexWrap === <span class="string">&quot;wrap-reverse&quot;</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> tmp = crossStart;</span><br><span class="line">    crossStart = crossEnd;</span><br><span class="line">    crossEnd = tmp;</span><br><span class="line">    crossSign = -<span class="number">1</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    crossBase = <span class="number">0</span>;</span><br><span class="line">    crossSign = +<span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> isAutoMainSize = <span class="literal">false</span>; <span class="comment">// 父元素没有设置main size</span></span><br><span class="line">  <span class="keyword">if</span> (!style[mainSize]) &#123;</span><br><span class="line">    <span class="comment">// auto sizing</span></span><br><span class="line">    elementStyle[mainSize] = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 将main size标记为子元素size和</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; items.length; i++) &#123;</span><br><span class="line">      <span class="keyword">let</span> item = items[i],</span><br><span class="line">        itemStyle = getStyle(item);</span><br><span class="line">      <span class="keyword">if</span> (itemStyle[mainSize] !== <span class="literal">null</span> || itemStyle[mainSize] !== <span class="keyword">void</span> <span class="number">0</span>) &#123;</span><br><span class="line">        elementStyle[mainSize] += itemStyle[mainSize];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    isAutoMainSize = <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 元素行设置</span></span><br><span class="line">  <span class="keyword">let</span> flexLine = [],</span><br><span class="line">    flexLines = [flexLine];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> mainSpace = elementStyle[mainSize], <span class="comment">// 剩余空间</span></span><br><span class="line">    crossSpace = <span class="number">0</span>; <span class="comment">// 所占的每行的交叉轴的空间</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; items.length; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> item = items[i],</span><br><span class="line">      itemStyle = getStyle(item);</span><br><span class="line">    !itemStyle[mainSize] &amp;&amp; (itemStyle[mainSize] = <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (itemStyle.flex) &#123;</span><br><span class="line">      <span class="comment">// 子元素可伸缩，一定可以进入当前行</span></span><br><span class="line">      flexLine.push(item);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (style.flexWrap === <span class="string">&quot;nowrap&quot;</span> &amp;&amp; isAutoMainSize) &#123;</span><br><span class="line">      mainSpace -= itemStyle[mainSize];</span><br><span class="line">      <span class="keyword">if</span> (itemStyle[crossSize] !== <span class="literal">null</span> &amp;&amp; itemStyle[crossSize] !== <span class="keyword">void</span> <span class="number">0</span>) &#123;</span><br><span class="line">        crossSpace = <span class="built_in">Math</span>.max(crossSpace, itemStyle[crossSize]);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 强行塞入当前行</span></span><br><span class="line">      flexLine.push(item);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 单个子元素main size大于容器则将其缩小</span></span><br><span class="line">      <span class="keyword">if</span> (itemStyle[mainSize] &gt; style[mainSize]) &#123;</span><br><span class="line">        itemStyle[mainSize] = style[mainSize];</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// main logic</span></span><br><span class="line">      <span class="keyword">if</span> (mainSpace &lt; itemStyle[mainSize]) &#123;</span><br><span class="line">        flexLine.mainSpace = mainSpace;</span><br><span class="line">        flexLine.crossSpace = crossSpace;</span><br><span class="line">        <span class="comment">// 另起一行</span></span><br><span class="line">        flexLine = [item];</span><br><span class="line">        flexLines.push(flexLine);</span><br><span class="line">        mainSpace = style[mainSize];</span><br><span class="line">        crossSpace = <span class="number">0</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        flexLine.push(item);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (itemStyle[crossSize] !== <span class="literal">null</span> || itemStyle[crossSize] !== <span class="keyword">void</span> <span class="number">0</span>) &#123;</span><br><span class="line">        crossSpace = <span class="built_in">Math</span>.max(crossSpace, itemStyle[crossSize]);</span><br><span class="line">      &#125;</span><br><span class="line">      mainSpace -= itemStyle[mainSize];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  flexLine.mainSpace = mainSpace;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (style.flexWrap === <span class="string">&quot;nowrap&quot;</span> || isAutoMainSize) &#123;</span><br><span class="line">    flexLine.crossSpace =</span><br><span class="line">      style[crossSize] !== <span class="literal">undefined</span> ? style[crossSize] : crossSpace;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    flexLine.crossSpace = crossSpace;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(flexLine);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 计算主轴</span></span><br><span class="line">  <span class="keyword">if</span> (mainSpace &lt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="comment">// 剩余空间不足，仅在single line的情况下</span></span><br><span class="line">    <span class="keyword">let</span> scale = style[mainSize] / (style[mainSize] - mainSpace);</span><br><span class="line">    <span class="keyword">let</span> currentMain = mainBase;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; items.length; i++) &#123;</span><br><span class="line">      <span class="keyword">let</span> item = items[i],</span><br><span class="line">        itemStyle = getStyle(item);</span><br><span class="line">      <span class="keyword">if</span> (itemStyle.flex) &#123;</span><br><span class="line">        itemStyle[mainSize] = <span class="number">0</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      itemStyle[mainSize] = itemStyle[mainSize] * scale;</span><br><span class="line"></span><br><span class="line">      itemStyle[mainStart] = currentMain;</span><br><span class="line">      itemStyle[mainEnd] =</span><br><span class="line">        itemStyle[mainStart] + mainSign * itemStyle[mainSize];</span><br><span class="line">      currentMain = itemStyle[mainEnd];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// process each flex line</span></span><br><span class="line">    flexLines.forEach(<span class="function">(<span class="params">items</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> mainSpace = items.mainSpace;</span><br><span class="line">      <span class="comment">// 按flex进行分配</span></span><br><span class="line">      <span class="keyword">let</span> flexTotal = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; items.length; i++) &#123;</span><br><span class="line">        <span class="keyword">let</span> item = items[i],</span><br><span class="line">          itemStyle = getStyle(item);</span><br><span class="line">        <span class="keyword">if</span> (itemStyle.flex !== <span class="literal">undefined</span> &amp;&amp; itemStyle.flex !== <span class="literal">null</span>) &#123;</span><br><span class="line">          flexTotal += itemStyle.flex;</span><br><span class="line">          <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (flexTotal &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">// There is flexible flex items</span></span><br><span class="line">        <span class="keyword">let</span> currentMain = mainBase;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; items.length; i++) &#123;</span><br><span class="line">          <span class="keyword">let</span> item = items[i],</span><br><span class="line">            itemStyle = getStyle(item);</span><br><span class="line">          <span class="keyword">if</span> (itemStyle.flex) &#123;</span><br><span class="line">            itemStyle[mainSize] = (mainSpace / flexTotal) * itemStyle.flex;</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          itemStyle[mainStart] = currentMain;</span><br><span class="line">          itemStyle[mainEnd] =</span><br><span class="line">            itemStyle[mainStart] + mainSign * itemStyle[mainSize];</span><br><span class="line">          currentMain = itemStyle[mainEnd];</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 没有flex元素，但是还存在剩余空间，justify-content开始工作</span></span><br><span class="line">        <span class="keyword">let</span> currentMain, <span class="comment">// 元素排布的起点</span></span><br><span class="line">          step; <span class="comment">// 元素间距</span></span><br><span class="line">        <span class="keyword">if</span> (style.justifyContent === <span class="string">&quot;flex-start&quot;</span>) &#123;</span><br><span class="line">          currentMain = mainBase;</span><br><span class="line">          step = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (style.justifyContent === <span class="string">&quot;flex-end&quot;</span>) &#123;</span><br><span class="line">          currentMain = mainSpace * mainSign + mainBase;</span><br><span class="line">          step = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (style.justifyContent === <span class="string">&quot;space-between&quot;</span>) &#123;</span><br><span class="line">          <span class="comment">// n个元素之间有n-1个间距</span></span><br><span class="line">          step = (mainSpace / (items.length - <span class="number">1</span>)) * mainSign;</span><br><span class="line">          currentMain = mainBase;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (style.justifyContent === <span class="string">&quot;space-around&quot;</span>) &#123;</span><br><span class="line">          <span class="comment">// 左右两边是半个step，元素之间是一个step</span></span><br><span class="line">          step = (mainSpace / items.length) * mainSign;</span><br><span class="line">          currentMain = mainBase + step / <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; items.length; i++) &#123;</span><br><span class="line">          <span class="keyword">let</span> item = items[i],</span><br><span class="line">            itemStyle = getStyle(item);</span><br><span class="line">          itemStyle[mainStart] = currentMain;</span><br><span class="line">          itemStyle[mainEnd] =</span><br><span class="line">            itemStyle[mainStart] + mainSign * itemStyle[mainSize];</span><br><span class="line">          currentMain = itemStyle[mainEnd] + step; <span class="comment">// 加上间距</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 计算交叉轴</span></span><br><span class="line">  <span class="comment">// align-items and align-self</span></span><br><span class="line">  <span class="comment">// let crossSpace; // 实际的行高</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (!style[crossSize]) &#123;</span><br><span class="line">    <span class="comment">// auto sizing</span></span><br><span class="line">    crossSpace = <span class="number">0</span>;</span><br><span class="line">    elementStyle[crossSize] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; flexLines.length; i++) &#123;</span><br><span class="line">      elementStyle[crossSize] =</span><br><span class="line">        elementStyle[crossSize] + flexLines[i].crossSpace;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    crossSpace = style[crossSize];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; flexLines.length; i++) &#123;</span><br><span class="line">      crossSpace -= flexLines[i].crossSpace;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (style.flexWrap === <span class="string">&quot;wrap-reverse&quot;</span>) &#123;</span><br><span class="line">    crossBase = style[crossSize];</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    crossBase = <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> lineSize = style[crossSize] / flexLines.length;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> step;</span><br><span class="line">  <span class="keyword">if</span> (style.alignContent === <span class="string">&quot;flex-start&quot;</span>) &#123;</span><br><span class="line">    crossBase += <span class="number">0</span>;</span><br><span class="line">    step = <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (style.alignContent === <span class="string">&quot;flex-end&quot;</span>) &#123;</span><br><span class="line">    crossBase += crossSign * crossSpace;</span><br><span class="line">    step = <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (style.alignContent === <span class="string">&quot;center&quot;</span>) &#123;</span><br><span class="line">    crossBase + (crossSign * crossSpace) / <span class="number">2</span>;</span><br><span class="line">    step = <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (style.alignContent === <span class="string">&quot;space-between&quot;</span>) &#123;</span><br><span class="line">    crossBase += <span class="number">0</span>;</span><br><span class="line">    step = crossSpace / (flexLines.length - <span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (style.alignContent === <span class="string">&quot;space-around&quot;</span>) &#123;</span><br><span class="line">    step = crossSpace / flexLines.length;</span><br><span class="line">    crossBase += (crossSign * step) / <span class="number">2</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (style.alignContent === <span class="string">&quot;stretch&quot;</span>) &#123;</span><br><span class="line">    crossBase += <span class="number">0</span>;</span><br><span class="line">    step = <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  flexLines.forEach(<span class="function">(<span class="params">items</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> lineCrossSize =</span><br><span class="line">      style.alignContent === <span class="string">&quot;stretch&quot;</span></span><br><span class="line">        ? items.crossSpace + crossSpace / flexLines.length</span><br><span class="line">        : items.crossSpace;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; items.length; i++) &#123;</span><br><span class="line">      <span class="keyword">let</span> item = items[i],</span><br><span class="line">        itemStyle = getStyle(item);</span><br><span class="line">      <span class="keyword">let</span> align = itemStyle.alignself || style.alignItems;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 计算单个元素的位置</span></span><br><span class="line">      <span class="keyword">if</span> (itemStyle[crossSize] === <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="comment">// 强制撑高</span></span><br><span class="line">        itemStyle[crossSize] = align === <span class="string">&quot;stretch&quot;</span> ? lineCrossSize : <span class="number">0</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (align === <span class="string">&quot;flex-start&quot;</span>) &#123;</span><br><span class="line">        itemStyle[crossStart] = crossBase;</span><br><span class="line">        itemStyle[crossEnd] =</span><br><span class="line">          itemStyle[crossStart] + crossSign * itemStyle[crossSize];</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (align === <span class="string">&quot;flex-end&quot;</span>) &#123;</span><br><span class="line">        itemStyle[crossEnd] = crossBase + crossSign * lineCrossSize;</span><br><span class="line">        itemStyle[crossStart] =</span><br><span class="line">          itemStyle[crossEnd] - crossSign * itemStyle[crossSize];</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (align === <span class="string">&quot;center&quot;</span>) &#123;</span><br><span class="line">        itemStyle[crossStart] =</span><br><span class="line">          crossBase + (crossSign * (lineCrossSize - itemStyle[crossSize])) / <span class="number">2</span>;</span><br><span class="line">        itemStyle[crossEnd] =</span><br><span class="line">          itemStyle[crossStart] + crossSign * itemStyle[crossSize];</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (align === <span class="string">&quot;stretch&quot;</span>) &#123;</span><br><span class="line">        itemStyle[crossStart] = crossBase;</span><br><span class="line">        itemStyle[crossEnd] =</span><br><span class="line">          crossBase +</span><br><span class="line">          crossSign *</span><br><span class="line">            (itemStyle[crossSize] !== <span class="literal">undefined</span> &amp;&amp;</span><br><span class="line">            itemStyle[crossSize] !== <span class="keyword">void</span> <span class="number">0</span></span><br><span class="line">              ? itemStyle[crossSize]</span><br><span class="line">              : lineCrossSize);</span><br><span class="line"></span><br><span class="line">        itemStyle[crossSize] =</span><br><span class="line">          crossSign * (itemStyle[crossEnd] - itemStyle[crossStart]);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    crossBase += crossSign * (lineCrossSize + step);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(items);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  layout,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="绘制"><a href="#绘制" class="headerlink" title="绘制"></a>绘制</h2><h3 id="前提：轻量级跨平台图像编解码库"><a href="#前提：轻量级跨平台图像编解码库" class="headerlink" title="前提：轻量级跨平台图像编解码库"></a>前提：<a target="_blank" rel="noopener" href="https://www.npmjs.com/package/images">轻量级跨平台图像编解码库</a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install images</span><br></pre></td></tr></table></figure>
+
+<h3 id="STEP-1-绘制单个元素"><a href="#STEP-1-绘制单个元素" class="headerlink" title="STEP 1: 绘制单个元素"></a>STEP 1: 绘制单个元素</h3><ul>
+<li>绘制需要依赖一个图形环境</li>
+<li>采用 npm 包 images</li>
+<li>绘制在一个 viewport 上进行</li>
+<li>与绘制相关的属性：background-color，border，background-image 等</li>
+</ul>
+<h3 id="STEP-2-绘制-DOM"><a href="#STEP-2-绘制-DOM" class="headerlink" title="STEP 2: 绘制 DOM"></a>STEP 2: 绘制 DOM</h3><p>递归渲染所有的子元素。</p>
+<h3 id="主要代码-1"><a href="#主要代码-1" class="headerlink" title="主要代码"></a>主要代码</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @Author: httishere</span></span><br><span class="line"><span class="comment"> * @Date: 2021-10-12 14:13:01</span></span><br><span class="line"><span class="comment"> * @LastEditTime: 2021-10-12 14:50:14</span></span><br><span class="line"><span class="comment"> * @LastEditors: Please set LastEditors</span></span><br><span class="line"><span class="comment"> * @Description: 元素渲染</span></span><br><span class="line"><span class="comment"> * @FilePath: /Note/toy-browser/render.js</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> images = <span class="built_in">require</span>(<span class="string">&quot;images&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params">viewport, element</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(element);</span><br><span class="line">  <span class="keyword">if</span> (element.style) &#123;</span><br><span class="line">    <span class="keyword">let</span> img = images(element.style.width, element.style.height);</span><br><span class="line">    <span class="keyword">if</span> (element.style[<span class="string">&quot;background-color&quot;</span>]) &#123;</span><br><span class="line">      <span class="keyword">let</span> color = element.style[<span class="string">&quot;background-color&quot;</span>] || <span class="string">&quot;rgb(255, 255, 255)&quot;</span>;</span><br><span class="line">      color.match(<span class="regexp">/rgb\((\d+),(\d+),(\d+)\)/</span>); <span class="comment">// 暂时仅支持rgb格式</span></span><br><span class="line">      <span class="built_in">console</span>.log(<span class="built_in">Number</span>(<span class="built_in">RegExp</span>.$1), <span class="built_in">Number</span>(<span class="built_in">RegExp</span>.$2), <span class="built_in">Number</span>(<span class="built_in">RegExp</span>.$3));</span><br><span class="line">      img.fill(<span class="built_in">Number</span>(<span class="built_in">RegExp</span>.$1), <span class="built_in">Number</span>(<span class="built_in">RegExp</span>.$2), <span class="built_in">Number</span>(<span class="built_in">RegExp</span>.$3), <span class="number">1</span>);</span><br><span class="line">      <span class="comment">// 绘制</span></span><br><span class="line">      viewport.draw(img, element.style.left || <span class="number">0</span>, element.style.top || <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (element.children) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> child <span class="keyword">of</span> element.children) &#123;</span><br><span class="line">      render(viewport, child);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = render;</span><br></pre></td></tr></table></figure>
+
+<h2 id="toy-browser-项目-github-地址"><a href="#toy-browser-项目-github-地址" class="headerlink" title="toy-browser 项目(github 地址)"></a><a target="_blank" rel="noopener" href="https://github.com/httIsHere/FrontEndTrainingCamp-Note/tree/main/toy-browser">toy-browser 项目</a>(github 地址)</h2><p>————————————————————— 浏览器原理篇 END —————————————————————</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>httishere</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://httishere.github.io/2021/10/12/yuque/ir6rqt/">https://httishere.github.io/2021/10/12/yuque/ir6rqt/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2021 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Good Good Study, Day Day Up.</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/ROAD-6/"># ROAD 6</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/10/13/LeeCode-by-JS/">LeeCode题解记录（JavaScript版）</a>
+            
+            
+            <a class="next" rel="next" href="/2021/09/28/yuque/ur0kri/">「ROAD 6」浏览器原理-CSS计算</a>
+            
+        </section>
+        
+            <!--
+ * @Author: your name
+ * @Date: 2021-07-08 11:08:58
+ * @LastEditTime: 2021-08-20 11:11:35
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_partial/gitalk.ejs
+-->
+<link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css">
+<div id="gitalk-container" style="margin-top: 50px;"></div>
+<!-- <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> -->
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script type="text/javascript">
+console.log(md5(location.pathname))
+    new Gitalk({
+        clientID: 'c61a26564784a9cb16f3',
+        clientSecret: '25a391b4405c726bfa417a4d09a8a9d46fd41e12',
+        id: window.location.pathname,
+        repo: 'httIsHere.github.io',
+        owner: 'httIsHere',
+        admin: 'httIsHere',
+        id: md5(location.pathname),
+        distractionFreeMode: false
+    }).render('gitalk-container')
+</script>
+        
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© httishere | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

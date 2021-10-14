@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="referrer" content="no-referrer" />
+
+    <meta name="author" content="httishere">
+
+
+
+
+
+<title>「大前端」at rule &amp; qualified rule | HTTISHERE</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-header header-logo">
+        <a href="/">ℍ𝕋𝕋𝕀𝕊ℍ𝔼ℝ𝔼&#39;𝕤 𝔹𝕝𝕠𝕘</a>
+        <!-- ℍ𝕋𝕋𝕀𝕊ℍ𝔼ℝ𝔼'𝕤 𝔹𝕝𝕠𝕘 -->
+      </div>
+      <div class="menu navbar-right">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+        <input id="switch_default" type="checkbox" class="switch_default" />
+        <label for="switch_default" class="toggleBtn"></label>
+        <a
+          target="_blank" href="https://httishere.notion.site/httishere/51826cfe4d6a4c9ca61c7c28665a85f7"
+          rel="sidebar noopener"
+          style="margin-left: 20px;"
+          >👉 HTTISHERE's PLOG</a
+        >
+      </div>
+    </div>
+  </nav>
+
+  
+  <nav class="navbar-mobile" id="nav-mobile">
+    <div class="container">
+      <div class="navbar-header">
+        <div>
+          <a href="/">ℍ𝕋𝕋𝕀𝕊ℍ𝔼ℝ𝔼&#39;𝕤 𝔹𝕝𝕠𝕘</a
+          ><a id="mobile-toggle-theme">·&nbsp;Light</a>
+        </div>
+        <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+      </div>
+      <div class="menu" id="mobile-menu">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+      </div>
+    </div>
+  </nav>
+</header>
+<script>
+  var mobileBtn = function f() {
+    var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+    var mobileMenu = document.getElementById("mobile-menu");
+    if (toggleMenu.classList.contains("active")) {
+      toggleMenu.classList.remove("active");
+      mobileMenu.classList.remove("active");
+    } else {
+      toggleMenu.classList.add("active");
+      mobileMenu.classList.add("active");
+    }
+  };
+  function addFav() {
+    var title = document.title;
+    var URL = document.URL;
+    try {
+      window.external.addFavorite(URL, title);
+    } catch (e) {
+      try {
+        window.sidebar.addPanel(title, URL, "");
+      } catch (e) {
+        alert("由于浏览器的安全设置\n可以使用Ctrl+D或者Command+D进行手动收藏");
+      }
+    }
+  }
+</script>
+
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">「大前端」at rule &amp; qualified rule</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">httishere</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">2021/03/24&nbsp;&nbsp;14:55:19</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/css-Less/">css/Less</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="at-rule"><a href="#at-rule" class="headerlink" title="at-rule"></a>at-rule</h2><ul>
+<li><a href="/charset">@charset </a> ： <a target="_blank" rel="noopener" href="https://www.w3.org/TR/css-syntax-3/">https://www.w3.org/TR/css-syntax-3/</a></li>
+<li><a href="/import">@import </a> ： <a target="_blank" rel="noopener" href="https://www.w3.org/TR/css-cascade-4/">https://www.w3.org/TR/css-cascade-4/</a></li>
+<li><a href="/media">@media </a> ： <a target="_blank" rel="noopener" href="https://www.w3.org/TR/css3-conditional/">https://www.w3.org/TR/css3-conditional/</a></li>
+<li><a href="/page">@page </a> ： <a target="_blank" rel="noopener" href="https://www.w3.org/TR/css-page-3/">https://www.w3.org/TR/css-page-3/</a></li>
+<li><a href="/counter-style">@counter-style </a> ： <a target="_blank" rel="noopener" href="https://www.w3.org/TR/css-counter-styles-3">https://www.w3.org/TR/css-counter-styles-3</a></li>
+<li><a href="/keyframes">@keyframes </a> ： <a target="_blank" rel="noopener" href="https://www.w3.org/TR/css-animations-1/">https://www.w3.org/TR/css-animations-1/</a></li>
+<li><a href="/fontface">@fontface </a> ： <a target="_blank" rel="noopener" href="https://www.w3.org/TR/css-fonts-3/">https://www.w3.org/TR/css-fonts-3/</a></li>
+<li><a href="/supports">@supports </a> ： <a target="_blank" rel="noopener" href="https://www.w3.org/TR/css3-conditional/">https://www.w3.org/TR/css3-conditional/</a></li>
+<li><a href="/namespace">@namespace </a> ： <a target="_blank" rel="noopener" href="https://www.w3.org/TR/css-namespaces-3/">https://www.w3.org/TR/css-namespaces-3/</a></li>
+</ul>
+<h3 id="charset"><a href="#charset" class="headerlink" title="@charset "></a><a href="/charset">@charset </a></h3><blockquote>
+<p><a href="/charset">@charset </a> 用于提示 CSS 文件使用的字符编码方式，它如果被使用，必须出现在最前面。这个规则只在给出语法解析阶段前使用，并不影响页面上的展示效果。</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@charset</span> <span class="string">&quot;utf-8&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="import"><a href="#import" class="headerlink" title="@import "></a><a href="/import">@import </a></h3><blockquote>
+<p><a href="/import">@import </a> 用于引入一个 CSS 文件，除了 <a href="/charset">@charset </a> 规则不会被引入，<a href="/import">@import </a> 可以引入另一个文件的全部内容。</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@import</span> <span class="string">&quot;mystyle.css&quot;</span>;</span><br><span class="line"><span class="keyword">@import</span> url(<span class="string">&quot;mystyle.css&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">@import</span> [ &lt;url&gt; | &lt;string&gt; ] [ supports(</span><br><span class="line">    [ &lt;supports-condition&gt; | &lt;declaration&gt; ]</span><br><span class="line">  ) ]? &lt;media-query-list&gt;?;</span><br></pre></td></tr></table></figure>
+
+<h3 id="media"><a href="#media" class="headerlink" title="@media "></a><a href="/media">@media </a></h3><blockquote>
+<p><a href="/media">@media </a> 就是大名鼎鼎的 media query 使用的规则了，它能够对设备的类型进行一些判断。在 media 的区块内，是普通规则列表。</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> print &#123;</span><br><span class="line">  <span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">10pt</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="page"><a href="#page" class="headerlink" title="@page "></a><a href="/page">@page </a></h3><blockquote>
+<p><a href="/page">@page </a> 用于分页媒体访问网页时的表现设置，页面是一种特殊的盒模型结构，除了页面本身，还可以设置它周围的盒。</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@page</span> &#123;</span><br><span class="line">  <span class="attribute">size</span>: <span class="number">8.5in</span> <span class="number">11in</span>;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">10%</span>;</span><br><span class="line">  @top-left &#123;</span><br><span class="line">    <span class="selector-tag">content</span>: &quot;<span class="selector-tag">Hamlet</span>&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">@top-right</span> &#123;</span><br><span class="line">    <span class="selector-tag">content</span>: &quot;<span class="selector-tag">Page</span> &quot; <span class="selector-tag">counter</span>(<span class="selector-tag">page</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="counter-style"><a href="#counter-style" class="headerlink" title="@counter-style "></a><a href="/counter-style">@counter-style </a></h3><blockquote>
+<p>counter-style 产生一种数据，用于定义列表项的表现。_目前只有 Firefox 支持_。</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@counter-style</span> triangle &#123;</span><br><span class="line">  <span class="selector-tag">system</span>: <span class="selector-tag">cyclic</span>;</span><br><span class="line">  <span class="selector-tag">symbols</span>: ‣;</span><br><span class="line">  <span class="selector-tag">suffix</span>: &quot; &quot;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">li</span> &#123;</span><br><span class="line">  <span class="attribute">list-style</span>: triangle;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="key-frames"><a href="#key-frames" class="headerlink" title="@key-frames "></a><a href="/key-frames">@key-frames </a></h3><blockquote>
+<p><a href="/keyframes">@keyframes </a> 产生一种数据，用于定义动画关键帧。</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@keyframes</span> diagonal-slide &#123;</span><br><span class="line">  <span class="selector-tag">from</span> &#123;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-tag">to</span> &#123;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">100px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="fontface"><a href="#fontface" class="headerlink" title="@fontface "></a><a href="/fontface">@fontface </a></h3><blockquote>
+<p><a href="/fontface">@fontface </a> 用于定义一种字体，icon font 技术就是利用这个特性来实现的。</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@font-face</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: Gentium;</span><br><span class="line">  <span class="attribute">src</span>: <span class="built_in">url</span>(http://example.com/fonts/Gentium.woff);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: Gentium, serif;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="support"><a href="#support" class="headerlink" title="@support "></a><a href="/support">@support </a></h3><blockquote>
+<p>support 检查环境的特性，它与 media 比较类似。</p>
+</blockquote>
+<h3 id="namespace"><a href="#namespace" class="headerlink" title="@namespace"></a>@namespace</h3><blockquote>
+<p>用于跟 XML 命名空间配合的一个规则，表示内部的 CSS 选择器全都带上特定命名空间。</p>
+</blockquote>
+<h3 id="viewport"><a href="#viewport" class="headerlink" title="@viewport"></a>@viewport</h3><blockquote>
+<p>用于设置视口的一些特性，不过兼容性目前不是很好，多数时候被 HTML 的 meta 代替。</p>
+</blockquote>
+<h2 id="qualified-rule"><a href="#qualified-rule" class="headerlink" title="qualified rule"></a>qualified rule</h2><p>主要是由选择器和声明区块构成。声明区块又由属性和值构成。普通规则：</p>
+<ul>
+<li>选择器</li>
+<li>声明列表<ul>
+<li>属性</li>
+<li>值<ul>
+<li>值的类型</li>
+<li>函数</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h3><p>任何选择器，都是由几个符号结构连接的：空格、大于号、加号、波浪线、双竖线（空格，即为后代选择器的优先级较低）。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/250093/1616577961595-6e6e5814-08bb-42c8-b8c0-b130511a8883.png#align=left&display=inline&height=404&margin=%5Bobject%20Object%5D&originHeight=404&originWidth=410&size=0&status=done&style=none&width=410"><br><img src="https://cdn.nlark.com/yuque/0/2021/png/250093/1616577961646-8738dc24-798c-414c-a44c-b0a582c3ba35.png#align=left&display=inline&height=562&margin=%5Bobject%20Object%5D&originHeight=562&originWidth=960&size=0&status=done&style=none&width=960"></p>
+<h3 id="声明：属性和值"><a href="#声明：属性和值" class="headerlink" title="声明：属性和值"></a>声明：属性和值</h3><blockquote>
+<p>声明部分是一个由“属性: 值”组成的序列。属性是由中划线、下划线、字母等组成的标识符，CSS 还支持使用反斜杠转义。需要注意的是：属性不允许使用连续的两个中划线开头，这样的属性会被认为是 CSS 变量。</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">  <span class="attribute">--main-color</span>: <span class="number">#06c</span>;</span><br><span class="line">  <span class="attribute">--accent-color</span>: <span class="number">#006</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* The rest of the CSS file */</span></span><br><span class="line"><span class="selector-id">#foo</span> <span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="built_in">var</span>(--main-color);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中属性值是以下类型：</p>
+<ul>
+<li>CSS 范围的关键字：initial，unset，inherit，任何属性都可以的关键字。</li>
+<li>字符串：比如 content 属性。</li>
+<li>URL：使用 url() 函数的 URL 值。</li>
+<li>整数 / 实数：比如 flex 属性。</li>
+<li>维度：单位的整数 / 实数，比如 width 属性。</li>
+<li>百分比：大部分维度都支持。</li>
+<li>颜色：比如 background-color 属性。</li>
+<li>图片：比如 background-image 属性。</li>
+<li>2D 位置：比如 background-position 属性。</li>
+<li>函数：来自函数的值，比如 transform 属性。</li>
+</ul>
+<p>计算型函数：</p>
+<ul>
+<li>calc()：是基本的表达式计算，它支持加减乘除四则运算。在针对维度进行计算时，该函数允许不同单位混合运算。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">section</span> &#123;</span><br><span class="line">  <span class="attribute">float</span>: left;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">1em</span>;</span><br><span class="line">  <span class="attribute">border</span>: solid <span class="number">1px</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="built_in">calc</span>(<span class="number">100%</span> / <span class="number">3</span> - <span class="number">2</span> * <span class="number">1em</span> - <span class="number">2</span> * <span class="number">1px</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>max()</li>
+<li>min()</li>
+<li>clamp()<br>：max()、min() 和 clamp() 则是一些比较大小的函数，max() 表示取两数中较大的一个，min() 表示取两数之中较小的一个，clamp() 则是给一个值限定一个范围，超出范围外则使用范围的最大或者最小值。</li>
+<li>toggle()：在规则选中多于一个元素时生效，它会在几个值之间来回切换，比如我们要让一个列表项的样式圆点和方点间隔出现。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ul</span> &#123;</span><br><span class="line">  <span class="attribute">list-style-type</span>: <span class="built_in">toggle</span>(circle, square);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>attr()：允许 CSS 接受属性值的控制。</li>
+</ul>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>httishere</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://httishere.github.io/2021/03/24/yuque/xcwk53/">https://httishere.github.io/2021/03/24/yuque/xcwk53/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2021 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Good Good Study, Day Day Up.</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/css/"># css</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/04/01/yuque/mdsqnm/">「大前端」文法</a>
+            
+            
+            <a class="next" rel="next" href="/2021/03/11/yuque/tcffgw/">「大前端」实践</a>
+            
+        </section>
+        
+            <!--
+ * @Author: your name
+ * @Date: 2021-07-08 11:08:58
+ * @LastEditTime: 2021-08-20 11:11:35
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_partial/gitalk.ejs
+-->
+<link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css">
+<div id="gitalk-container" style="margin-top: 50px;"></div>
+<!-- <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> -->
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script type="text/javascript">
+console.log(md5(location.pathname))
+    new Gitalk({
+        clientID: 'c61a26564784a9cb16f3',
+        clientSecret: '25a391b4405c726bfa417a4d09a8a9d46fd41e12',
+        id: window.location.pathname,
+        repo: 'httIsHere.github.io',
+        owner: 'httIsHere',
+        admin: 'httIsHere',
+        id: md5(location.pathname),
+        distractionFreeMode: false
+    }).render('gitalk-container')
+</script>
+        
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© httishere | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="referrer" content="no-referrer" />
+
+    <meta name="author" content="httishere">
+
+
+
+
+
+<title>React Native 踩坑记 | HTTISHERE</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-header header-logo">
+        <a href="/">ℍ𝕋𝕋𝕀𝕊ℍ𝔼ℝ𝔼&#39;𝕤 𝔹𝕝𝕠𝕘</a>
+        <!-- ℍ𝕋𝕋𝕀𝕊ℍ𝔼ℝ𝔼'𝕤 𝔹𝕝𝕠𝕘 -->
+      </div>
+      <div class="menu navbar-right">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+        <input id="switch_default" type="checkbox" class="switch_default" />
+        <label for="switch_default" class="toggleBtn"></label>
+        <a
+          target="_blank" href="https://httishere.notion.site/httishere/51826cfe4d6a4c9ca61c7c28665a85f7"
+          rel="sidebar noopener"
+          style="margin-left: 20px;"
+          >👉 HTTISHERE's PLOG</a
+        >
+      </div>
+    </div>
+  </nav>
+
+  
+  <nav class="navbar-mobile" id="nav-mobile">
+    <div class="container">
+      <div class="navbar-header">
+        <div>
+          <a href="/">ℍ𝕋𝕋𝕀𝕊ℍ𝔼ℝ𝔼&#39;𝕤 𝔹𝕝𝕠𝕘</a
+          ><a id="mobile-toggle-theme">·&nbsp;Light</a>
+        </div>
+        <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+      </div>
+      <div class="menu" id="mobile-menu">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+      </div>
+    </div>
+  </nav>
+</header>
+<script>
+  var mobileBtn = function f() {
+    var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+    var mobileMenu = document.getElementById("mobile-menu");
+    if (toggleMenu.classList.contains("active")) {
+      toggleMenu.classList.remove("active");
+      mobileMenu.classList.remove("active");
+    } else {
+      toggleMenu.classList.add("active");
+      mobileMenu.classList.add("active");
+    }
+  };
+  function addFav() {
+    var title = document.title;
+    var URL = document.URL;
+    try {
+      window.external.addFavorite(URL, title);
+    } catch (e) {
+      try {
+        window.sidebar.addPanel(title, URL, "");
+      } catch (e) {
+        alert("由于浏览器的安全设置\n可以使用Ctrl+D或者Command+D进行手动收藏");
+      }
+    }
+  }
+</script>
+
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">React Native 踩坑记</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">httishere</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">2020/03/26&nbsp;&nbsp;14:35:22</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/React/">React</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h3 id="写在前头（Taro-内）"><a href="#写在前头（Taro-内）" class="headerlink" title="写在前头（Taro 内）"></a><em>写在前头（Taro 内）</em></h3><ul>
+<li>文字要包在 <code>Text</code> 组件里面，否则不显示。</li>
+<li><code>position:fixed</code> React Native 不支持</li>
+<li>Animation 和 transform React Native 动画不支持</li>
+<li>React Native 与 H5/小程序 的 Flex 布局相关属性的默认值有差异</li>
+</ul>
+<h3 id="RN-样式相关问题"><a href="#RN-样式相关问题" class="headerlink" title="RN 样式相关问题"></a><em>RN 样式相关问题</em></h3><h4 id="1-通配选择器会被忽略"><a href="#1-通配选择器会被忽略" class="headerlink" title="1. 通配选择器会被忽略"></a>1. 通配选择器会被忽略</h4><h4 id="2-background-size-样式属性无效"><a href="#2-background-size-样式属性无效" class="headerlink" title="2. background-size 样式属性无效"></a>2. background-size 样式属性无效</h4><h4 id="3-400-700，normal-或-bold-之外的-font-weight-值在-Android-上的-React-Native-中没有效果"><a href="#3-400-700，normal-或-bold-之外的-font-weight-值在-Android-上的-React-Native-中没有效果" class="headerlink" title="3. 400,700，normal 或 bold 之外的 font-weight 值在 Android 上的 React Native 中没有效果"></a>3. 400,700，normal 或 bold 之外的 font-weight 值在 Android 上的 React Native 中没有效果</h4><h4 id="4-设置背景图片"><a href="#4-设置背景图片" class="headerlink" title="4. 设置背景图片"></a>4. 设置背景图片</h4><p>React Native 的 Background 仅支持 backgroundColor 属性，所以需要设置背景图片时需要采用 ImageBackground 组件;</p>
+<h4 id="5-RN-阴影样式属性"><a href="#5-RN-阴影样式属性" class="headerlink" title="5. RN 阴影样式属性"></a>5. RN 阴影样式属性</h4><p>其仅支持 ios 平台，在 Android 中需要使用 elevation 属性实现，但 elevation 仅提供一个灰色阴影。<br>react-native-shadow 还需研究一下。mark</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">system_android ? (</span><br><span class="line">  &lt;BoxShadow</span><br><span class="line">    setting=&#123;&#123;</span><br><span class="line">      width: rpx2px(width),</span><br><span class="line">      height: rpx2px(height),</span><br><span class="line">      color: color,</span><br><span class="line">      border: rpx2px(border || <span class="number">0</span>) || <span class="number">2</span>,</span><br><span class="line">      radius: rpx2px(radius),</span><br><span class="line">      opacity: opacity,</span><br><span class="line">      x: rpx2px(offsetX),</span><br><span class="line">      y: rpx2px(offsetY),</span><br><span class="line">      style: &#123; <span class="attr">marginVertical</span>: <span class="number">0</span>, <span class="attr">justifyContent</span>: <span class="string">&quot;center&quot;</span> &#125;,</span><br><span class="line">    &#125;&#125;</span><br><span class="line">  &gt;</span><br><span class="line">    &#123;<span class="built_in">this</span>.props.children&#125;</span><br><span class="line">  &lt;/BoxShadow&gt;</span><br><span class="line">) : (</span><br><span class="line">  <span class="built_in">this</span>.props.children</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-box-sizing-不支持"><a href="#6-box-sizing-不支持" class="headerlink" title="6. box-sizing 不支持"></a>6. box-sizing 不支持</h4><h4 id="7-padding-失效问题"><a href="#7-padding-失效问题" class="headerlink" title="7. padding 失效问题"></a>7. padding 失效问题</h4><p>将文本内容设置为<code>flex: 1;</code></p>
+<h4 id="8-rn-的-flexBox-布局问题"><a href="#8-rn-的-flexBox-布局问题" class="headerlink" title="8. rn 的 flexBox 布局问题"></a>8. rn 的 flexBox 布局问题</h4><p>默认 flex-direction 是 column。</p>
+<h4 id="9-不支持伪元素写法"><a href="#9-不支持伪元素写法" class="headerlink" title="9. 不支持伪元素写法"></a>9. 不支持伪元素写法</h4><h4 id="10-Failed-prop-type-Invalid-props-style-key-color-supplied-to-View"><a href="#10-Failed-prop-type-Invalid-props-style-key-color-supplied-to-View" class="headerlink" title="10. Failed prop type: Invalid props.style key color supplied to View"></a>10. Failed prop type: Invalid props.style key <code>color</code> supplied to <code>View</code></h4><p>同理有类似的 Failed prop type: Invalid props.style key <code>fontSize</code> supplied to <code>View</code>。<br>不能给 View 组件添加 color，fontSize 等文字样式属性，需要指定 Text 添加样式属性。</p>
+<h4 id="11-页面实现滑动需要使用-ScrollView"><a href="#11-页面实现滑动需要使用-ScrollView" class="headerlink" title="11. 页面实现滑动需要使用 ScrollView"></a>11. 页面实现滑动需要使用 ScrollView</h4><h4 id="12-input-输入框未显示完全"><a href="#12-input-输入框未显示完全" class="headerlink" title="12. input 输入框未显示完全"></a>12. input 输入框未显示完全</h4><p>Android 输入框默认带有上下内边距，所以需要将上下 padding 设置为 0。</p>
+<h3 id="编译问题"><a href="#编译问题" class="headerlink" title="编译问题"></a><em>编译问题</em></h3><h4 id="1-react-native-编译之后报错"><a href="#1-react-native-编译之后报错" class="headerlink" title="1. react-native 编译之后报错"></a>1. react-native 编译之后报错</h4><p>error: bundling failed: Error: Unable to resolve module <code>./components/calendar</code> from <code>E:\httishere\work\manual-box-wechat-app\node_modules\taro-ui\dist\weapp\index.js</code>: The module <code>./components/calendar</code> could not be found from <code>E:\httishere\work\manual-box-wechat-app\node_modules\taro-ui\dist\weapp\index.js</code>. Indeed, none of these files exist:<br>原因：taro-ui 不支持 React Native。</p>
+<h4 id="2-Application-taroDemo-has-not-been-registered"><a href="#2-Application-taroDemo-has-not-been-registered" class="headerlink" title="2. Application taroDemo has not been registered."></a>2. Application taroDemo has not been registered.</h4><p>Hint: This error often happens when you’re running the packager (local dev server) from a wrong folder. For example you have multiple apps and the packager is still running for the app you were working on before.<br>If this is the case, simply kill the old packager instance (e.g. close the packager terminal window) and start the packager in the correct app folder (e.g. cd into app folder and run ‘npm start’).<br>原因：存在项目终端冲突，关闭所有终端并重启，查看项目内 config/index 文件是否注册应用名。<br>因为我用了 taro-native-shell 这个壳子，所以命名为’taroDemo’。<br><img src="https://cdn.nlark.com/yuque/0/2020/png/250093/1585289424201-8a2fbe69-63c3-4df2-b98b-eb7ecef1f74e.png#align=left&display=inline&height=121&id=a5pOl&margin=%5Bobject%20Object%5D&name=%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200327140918.png&originHeight=121&originWidth=423&size=4573&status=done&style=none&width=423" alt="微信图片_20200327140918.png"></p>
+<h4 id="3-Unable-to-load-script-from-assets-‘index-android-bundle’-Make-sure-your-bundle-is-packaged-correctly"><a href="#3-Unable-to-load-script-from-assets-‘index-android-bundle’-Make-sure-your-bundle-is-packaged-correctly" class="headerlink" title="3. Unable to load script from assets ‘index.android.bundle’. Make sure your bundle is packaged correctly"></a>3. Unable to load script from assets ‘index.android.bundle’. Make sure your bundle is packaged correctly</h4><p>在 android/app/arc/main 目录下新建一个 assets 文件，在 IDE 的 terminal 以命令启动<code>react-native run-android</code>。</p>
+<h4 id="4-运行-react-native-start-时发现-8081-端口被占用问题"><a href="#4-运行-react-native-start-时发现-8081-端口被占用问题" class="headerlink" title="4. 运行 react-native start 时发现 8081 端口被占用问题"></a>4. 运行 react-native start 时发现 8081 端口被占用问题</h4><p>找到占用 8081 的进程：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -aon |findstr <span class="string">&quot;8081&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/250093/1585469950756-fff03a59-91a5-411d-92db-5c69892bf6be.png#align=left&display=inline&height=76&id=tGxIx&margin=%5Bobject%20Object%5D&name=8081.png&originHeight=76&originWidth=588&size=4407&status=done&style=none&width=588" alt="8081.png"><br>使用 pid 杀死占用 8081 的进程：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taskkill /pid xxx /F</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/250093/1585470017430-a9d85a9d-e255-44e1-bad7-80d67e630b2e.png#align=left&display=inline&height=69&id=DW2cw&margin=%5Bobject%20Object%5D&name=kill-by-pid.png&originHeight=69&originWidth=390&size=3185&status=done&style=none&width=390" alt="kill-by-pid.png"></p>
+<h4 id="5-ReferenceError-ReferenceError-Can’t-find-variable-Button-XXXX"><a href="#5-ReferenceError-ReferenceError-Can’t-find-variable-Button-XXXX" class="headerlink" title="5. ReferenceError: ReferenceError: Can’t find variable: Button(XXXX)"></a>5. ReferenceError: ReferenceError: Can’t find variable: Button(XXXX)</h4><p>解决：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  Text,</span><br><span class="line">  View,</span><br><span class="line">  Button,</span><br><span class="line">  ...</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">&#x27;react-native&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-undefined-is-not-a-function-evaluating-‘transform-forEach’"><a href="#6-undefined-is-not-a-function-evaluating-‘transform-forEach’" class="headerlink" title="6. undefined is not a function (evaluating ‘transform.forEach’)"></a>6. undefined is not a function (evaluating ‘transform.forEach’)</h4><p>Warning: Failed prop type: Invalid prop <code>transform</code> of type <code>string</code> supplied to <code>View</code>, expected an array.<br>transform 属性详情需要以 array 的形式：<br><img src="https://cdn.nlark.com/yuque/0/2020/png/250093/1585476684072-2a4f20ce-a78f-4cc2-b9c3-6f732cff8464.png#align=left&display=inline&height=60&id=pKA4n&margin=%5Bobject%20Object%5D&name=style-transform-array.png&originHeight=60&originWidth=548&size=3017&status=done&style=none&width=548" alt="style-transform-array.png"></p>
+<h4 id="7-Invariant-Violation-View-config-not-found-for-name-slot"><a href="#7-Invariant-Violation-View-config-not-found-for-name-slot" class="headerlink" title="7. Invariant Violation: View config not found for name slot"></a>7. Invariant Violation: View config not found for name slot</h4><p>return 的内容内组件的首字母不是大写，所以需要将组件的首字母写成大写字母。</p>
+<h4 id="8-Error-Cannot-add-a-child-that-doesn’t-have-a-YogaNode-to-a-parent-without-a-measure-function"><a href="#8-Error-Cannot-add-a-child-that-doesn’t-have-a-YogaNode-to-a-parent-without-a-measure-function" class="headerlink" title="8. Error: Cannot add a child that doesn’t have a YogaNode to a parent without a measure function!"></a>8. Error: Cannot add a child that doesn’t have a YogaNode to a parent without a measure function!</h4><p>在 render 时不建议使用下面这种写法，建议采用三目运算符。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.state.amount &amp;&amp; (</span><br><span class="line">  &lt;View&gt;</span><br><span class="line">    &lt;Text&gt;hello world&lt;/Text&gt;</span><br><span class="line">  &lt;/View&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>换成：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.state.amount ?</span><br><span class="line">       &lt;View&gt;</span><br><span class="line">         &lt;Text&gt;</span><br><span class="line">           hello world</span><br><span class="line">         &lt;/Text&gt;</span><br><span class="line">       &lt;/View&gt; : <span class="literal">null</span></span><br><span class="line">  );</span><br></pre></td></tr></table></figure>
+
+<p>还有不要有单独的字符串暴露，应使用 Text 进行包裹。</p>
+<h4 id="9-TypeError-undefined-is-not-an-object-evaluating-‘course-posters-banner’"><a href="#9-TypeError-undefined-is-not-an-object-evaluating-‘course-posters-banner’" class="headerlink" title="9. TypeError: undefined is not an object (evaluating ‘course.posters.banner’)"></a>9. TypeError: undefined is not an object (evaluating ‘course.posters.banner’)</h4><p>需要对变量进行初始化或者值判断。</p>
+<h4 id="10-Error-while-updating-property-‘height’-in-shadow-node-of-type-RCTView"><a href="#10-Error-while-updating-property-‘height’-in-shadow-node-of-type-RCTView" class="headerlink" title="10. Error while updating property ‘height’ in shadow node of type: RCTView"></a>10. Error while updating property ‘height’ in shadow node of type: RCTView</h4><p><img src="https://cdn.nlark.com/yuque/0/2020/png/250093/1585535630906-8a344136-4f69-4d1b-9c6d-7454438b8c12.png#align=left&display=inline&height=169&id=UyurW&margin=%5Bobject%20Object%5D&name=height-value-type.png&originHeight=169&originWidth=463&size=64259&status=done&style=none&width=463" alt="height-value-type.png"><br>在 reactNative 写样式的时候   宽、高、padding 等值不能是字符串。</p>
+<h4 id="11-Failed-prop-type-Invalid-props-style-key-transform-origin-supplied-to-‘Image’"><a href="#11-Failed-prop-type-Invalid-props-style-key-transform-origin-supplied-to-‘Image’" class="headerlink" title="11. Failed prop type: Invalid props.style key transform-origin supplied to ‘Image’"></a>11. Failed prop type: Invalid props.style key <code>transform-origin</code> supplied to ‘Image’</h4><h4 id="12-Error-while-updating-property-‘transform’-of-a-view-managed-by-RCTImageView"><a href="#12-Error-while-updating-property-‘transform’-of-a-view-managed-by-RCTImageView" class="headerlink" title="12. Error while updating property ‘transform’ of a view managed by: RCTImageView"></a>12. Error while updating property ‘transform’ of a view managed by: RCTImageView</h4><p>因为我的 transform 内有 rotate 的操作，我原来是直接设置<code>rotate: rotateValue+&#39;deg&#39;</code>，但是发现会出现上述报错，后来看了相关问题需要通过插值器的方法将 int 转换成他需要的 deg。<br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/e131375eb8c4">React Native loading 旋转动画的实现</a></p>
+<h4 id="13-has-been-blocked-by-CORS-policy"><a href="#13-has-been-blocked-by-CORS-policy" class="headerlink" title="13. has been blocked by CORS policy"></a>13. has been blocked by CORS policy</h4><p>Access to fetch at ‘<a target="_blank" rel="noopener" href="http://localhost:8081/rn_temp/index.delta?platform=android&amp;dev=true&amp;minify=false&#39;">http://localhost:8081/rn_temp/index.delta?platform=android&amp;dev=true&amp;minify=false&#39;</a> from origin ‘<a href="http://127.0.0.1:8081&#39;">http://127.0.0.1:8081&#39;</a> has been blocked by CORS policy: No ‘Access-Control-Allow-Origin’ header is present on the requested resource. If an opaque response serves your needs, set the request’s mode to ‘no-cors’ to fetch the resource with CORS disabled.<br>访问的域名不同导致, 浏览器地址栏为 127.0.0.1:8081/debugger-ui/, 真机或模拟器访问的地址为<a target="_blank" rel="noopener" href="http://localhost:8081/rn_temp/index.bundle?platform=android&amp;dev=true%E3%80%82">http://localhost:8081/rn_temp/index.bundle?platform=android&amp;dev=true。</a></p>
+<h4 id="14-React-createElement-type-is-invalid"><a href="#14-React-createElement-type-is-invalid" class="headerlink" title="14.  React.createElement: type is invalid"></a>14.  React.createElement: type is invalid</h4><p>React.createElement: type is invalid – expected a string (for built-in components) or a class/function (for composite components) but got: undefined. You likely forgot to export your component from the file it’s defined in, or you might have mixed up default and named imports.<br>可能是引入子组件时出现问题，我原来子组件内 export 组件为</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">PhoneCode</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line"><span class="comment">// 调整为</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">PhoneCode</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br></pre></td></tr></table></figure>
+
+<h4 id="15-Element-type-is-invalid-expected-a-string-for-built-in-components-or-a-class-function-for-composite-components-but-got-undefined-You-likely-forgot-to-export-your-component-from-the-file-it’s-defined-in-or-you-might-have-mixed-up-default-and-named-imports"><a href="#15-Element-type-is-invalid-expected-a-string-for-built-in-components-or-a-class-function-for-composite-components-but-got-undefined-You-likely-forgot-to-export-your-component-from-the-file-it’s-defined-in-or-you-might-have-mixed-up-default-and-named-imports" class="headerlink" title="15. Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: undefined. You likely forgot to export your component from the file it’s defined in, or you might have mixed up default and named imports."></a>15. Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: undefined. You likely forgot to export your component from the file it’s defined in, or you might have mixed up default and named imports.</h4><p>存在无效元素，可以是引入的组件或工具路径错误等。</p>
+<h4 id="16-Object-freeze-can-only-be-called-on-Objects"><a href="#16-Object-freeze-can-only-be-called-on-Objects" class="headerlink" title="16. Object.freeze can only be called on Objects"></a>16. Object.freeze can only be called on Objects</h4><p>同 Q2。</p>
+<h3 id="Taro-Api-React-Native-支持度"><a href="#Taro-Api-React-Native-支持度" class="headerlink" title="Taro Api React Native 支持度"></a><em>Taro Api React Native 支持度</em></h3><h4 id="1-不支持-Taro-addInterceptor"><a href="#1-不支持-Taro-addInterceptor" class="headerlink" title="1. 不支持 Taro.addInterceptor"></a>1. 不支持 Taro.addInterceptor</h4><h4 id="2-React-Native-暂不支持-storage-的同步存取（Taro-get-set-StorageSync）"><a href="#2-React-Native-暂不支持-storage-的同步存取（Taro-get-set-StorageSync）" class="headerlink" title="2. React Native 暂不支持 storage 的同步存取（Taro.(get/set)StorageSync）"></a>2. React Native 暂不支持 storage 的同步存取（Taro.(get/set)StorageSync）</h4><p>所以需要使用 async / await + Taro.(get/set)Storage 实现，在使用时需要添加环境判断。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">regeneratorRuntime is not defined</span><br></pre></td></tr></table></figure>
+
+<p>解决:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ yarn add @tarojs/async-await</span><br><span class="line"><span class="comment"># 或者使用 npm</span></span><br><span class="line">$ npm install --save @tarojs/async-await</span><br></pre></td></tr></table></figure>
+
+<p>在有异步操作的 页面内引入 import ‘@tarojs/async-await’。<br>开启 async functions 支持需要安装包 <code>babel-plugin-transform-runtime</code> 和<code>babel-runtime</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ yarn add babel-plugin-transform-runtime --dev</span><br><span class="line">$ yarn add babel-runtime</span><br></pre></td></tr></table></figure>
+
+<p>随后修改项目 <code>[babel](https://nervjs.github.io/taro/docs/config-detail.html#babel)</code><a target="_blank" rel="noopener" href="https://nervjs.github.io/taro/docs/config-detail.html#babel"> 配置</a>，增加插件 <code>babel-plugin-transform-runtime</code>。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">babel: &#123;</span><br><span class="line">  sourceMap: true,</span><br><span class="line">  presets: [</span><br><span class="line">    [</span><br><span class="line">      &#x27;env&#x27;,</span><br><span class="line">      &#123;</span><br><span class="line">        modules: false</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  plugins: [</span><br><span class="line">    &#x27;transform-decorators-legacy&#x27;,</span><br><span class="line">    &#x27;transform-class-properties&#x27;,</span><br><span class="line">    &#x27;transform-object-rest-spread&#x27;,</span><br><span class="line">    [&#x27;transform-runtime&#x27;, &#123;</span><br><span class="line">      <span class="attr">&quot;helpers&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">      <span class="attr">&quot;polyfill&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">      <span class="attr">&quot;regenerator&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="attr">&quot;moduleName&quot;</span>: &#x27;babel-runtime&#x27;</span><br><span class="line">    &#125;]</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>写一个相关的存取事件，在需要时 async/await 进行存取。</p>
+<h3 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a><em>其他问题</em></h3><h4 id="1-真机内页面无法有效上滑"><a href="#1-真机内页面无法有效上滑" class="headerlink" title="1. 真机内页面无法有效上滑"></a>1. 真机内页面无法有效上滑</h4>
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>httishere</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://httishere.github.io/2020/03/26/yuque/gkbbpw/">https://httishere.github.io/2020/03/26/yuque/gkbbpw/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2021 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Good Good Study, Day Day Up.</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/React-Native/"># React Native</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/03/27/yuque/mf89ph/">no such file or directory, scandir '...\node_modules\node-sass\vendor</a>
+            
+            
+            <a class="next" rel="next" href="/2020/03/26/yuque/gx5dy7/">「git」bad signature fatal index file corrupt</a>
+            
+        </section>
+        
+            <!--
+ * @Author: your name
+ * @Date: 2021-07-08 11:08:58
+ * @LastEditTime: 2021-08-20 11:11:35
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_partial/gitalk.ejs
+-->
+<link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css">
+<div id="gitalk-container" style="margin-top: 50px;"></div>
+<!-- <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> -->
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script type="text/javascript">
+console.log(md5(location.pathname))
+    new Gitalk({
+        clientID: 'c61a26564784a9cb16f3',
+        clientSecret: '25a391b4405c726bfa417a4d09a8a9d46fd41e12',
+        id: window.location.pathname,
+        repo: 'httIsHere.github.io',
+        owner: 'httIsHere',
+        admin: 'httIsHere',
+        id: md5(location.pathname),
+        distractionFreeMode: false
+    }).render('gitalk-container')
+</script>
+        
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© httishere | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

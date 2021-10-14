@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="referrer" content="no-referrer" />
+
+    <meta name="author" content="httishere">
+
+
+
+
+
+<title>「大前端」链接🔗 | HTTISHERE</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-header header-logo">
+        <a href="/">ℍ𝕋𝕋𝕀𝕊ℍ𝔼ℝ𝔼&#39;𝕤 𝔹𝕝𝕠𝕘</a>
+        <!-- ℍ𝕋𝕋𝕀𝕊ℍ𝔼ℝ𝔼'𝕤 𝔹𝕝𝕠𝕘 -->
+      </div>
+      <div class="menu navbar-right">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+        <input id="switch_default" type="checkbox" class="switch_default" />
+        <label for="switch_default" class="toggleBtn"></label>
+        <a
+          target="_blank" href="https://httishere.notion.site/httishere/51826cfe4d6a4c9ca61c7c28665a85f7"
+          rel="sidebar noopener"
+          style="margin-left: 20px;"
+          >👉 HTTISHERE's PLOG</a
+        >
+      </div>
+    </div>
+  </nav>
+
+  
+  <nav class="navbar-mobile" id="nav-mobile">
+    <div class="container">
+      <div class="navbar-header">
+        <div>
+          <a href="/">ℍ𝕋𝕋𝕀𝕊ℍ𝔼ℝ𝔼&#39;𝕤 𝔹𝕝𝕠𝕘</a
+          ><a id="mobile-toggle-theme">·&nbsp;Light</a>
+        </div>
+        <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+      </div>
+      <div class="menu" id="mobile-menu">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+      </div>
+    </div>
+  </nav>
+</header>
+<script>
+  var mobileBtn = function f() {
+    var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+    var mobileMenu = document.getElementById("mobile-menu");
+    if (toggleMenu.classList.contains("active")) {
+      toggleMenu.classList.remove("active");
+      mobileMenu.classList.remove("active");
+    } else {
+      toggleMenu.classList.add("active");
+      mobileMenu.classList.add("active");
+    }
+  };
+  function addFav() {
+    var title = document.title;
+    var URL = document.URL;
+    try {
+      window.external.addFavorite(URL, title);
+    } catch (e) {
+      try {
+        window.sidebar.addPanel(title, URL, "");
+      } catch (e) {
+        alert("由于浏览器的安全设置\n可以使用Ctrl+D或者Command+D进行手动收藏");
+      }
+    }
+  }
+</script>
+
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">「大前端」链接🔗</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">httishere</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">2021/05/06&nbsp;&nbsp;11:08:25</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/css-Less/">css/Less</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p>链接是 HTML 中的一种机制，它是 HTML 文档和其它文档或者资源的连接关系，在 HTML 中，链接有两种类型。一种是超链接型标签，一种是外部资源链接。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/250093/1620270517981-020e14be-3c75-4002-bc3b-53dda82085dd.png#align=left&display=inline&height=1100&margin=%5Bobject%20Object%5D&originHeight=1100&originWidth=702&size=0&status=done&style=none&width=702"></p>
+<h3 id="link-标签"><a href="#link-标签" class="headerlink" title="link 标签"></a>link 标签</h3><p>HTML 标准并没有规定浏览器如何使用元信息，我们还讲到了元信息中有不少是被设计成“无需被浏览器识别，而是专门用于搜索引擎看的”。</p>
+<p>link 标签也是元信息的一种，在很多时候，它也是不会对浏览器产生任何效果的。</p>
+<p>link 标签会生成一个链接，它可能生成超链接，也可能生成外部资源链接。</p>
+<p>一些 link 标签会生成超链接，这些超链接又不会像 a 标签那样显示在网页中，这就是超链接型的 link 标签。这意味着多数浏览器中，这些 link 标签不产生任何作用。但是，这些 link 标签能够被搜索引擎和一些浏览器插件识别，从而产生关键性作用。</p>
+<p>另外一些 link 标签则会把外部的资源链接到文档中，也就是说，会实际下载这些资源，并且做出一些处理，比如我们常见的用 link 标签引入样式表。</p>
+<p>除了元信息的用法之外，多数外部资源型的 link 标签还能够被放在 body 中使用，从而起到把外部资源链接进文档的作用。</p>
+<p>link 标签的链接类型主要通过 <strong>rel 属性</strong>来区分，<code>&lt;link rel=&quot;xx&quot; ...&gt;</code>。</p>
+<h4 id="超链接类-link-标签"><a href="#超链接类-link-标签" class="headerlink" title="超链接类 link 标签"></a>超链接类 link 标签</h4><p>超链接型 link 标签是一种被动型链接，在用户不操作的情况下，它们不会被主动下载。</p>
+<p>link 标签具有特定的 rel 属性，会成为特定类型的 link 标签。产生超链接的 link 标签包括：具有 rel=“canonical” 的 link、具有 rel=”alternate”的 link、具有 rel=“prev” rel=”next”的 link 等等。</p>
+<ul>
+<li>canonical 型 link，<code>&lt;link rel=&quot;canonical&quot; href=&quot;...&quot;&gt;</code>：这个标签提示页面它的主 URL，在网站中常常有多个 URL 指向同一页面的情况，搜索引擎访问这类页面时会去掉重复的页面，这个 link 会提示搜索引擎保留哪一个 URL。</li>
+<li>alternate 型 link，<code>&lt;link rel=&quot;alternate&quot; href=&quot;...&quot;&gt;</code>：这个标签提示页面它的变形形式，这个所谓的变形可能是当前页面内容的不同格式、不同语言或者为不同的设备设计的版本，这种 link 通常也是提供给搜索引擎来使用的。alternate 型的 link 的一个典型应用场景是，页面提供 rss 订阅时，可以用这样的 link 来引入：<code>&lt;link rel=&quot;alternate&quot; type=&quot;application/rss+xml&quot; title=&quot;RSS&quot; href=&quot;...&quot;&gt;</code>。</li>
+<li>prev 型 link &amp; next 型 link：在互联网应用中，很多网页都属于一个序列，比如分页浏览的场景，或者图片展示的场景，每个网页是序列中的一个项。这种时候，就适合使用 prev 和 next 型的 link 标签，来告诉搜索引擎或者浏览器它的前一项和后一项，这有助于页面的批量展示。因为 next 型 link 告诉浏览器“这是很可能访问的下一个页面”，HTML 标准还建议对 next 型 link 做预处理，在本课后面的内容，我们会讲到预处理类的 link。</li>
+<li>其它超链接类的 link：表示一个跟当前文档相关联的信息，可以把这样的 link 标签视为一种带链接功能的 meta 标签。<ul>
+<li>rel=“author” 链接到本页面的作者，一般是 mailto: 协议</li>
+<li>rel=“help” 链接到本页面的帮助页</li>
+<li>rel=“license” 链接到本页面的版权信息页</li>
+<li>rel=“search” 链接到本页面的搜索页面（一般是站内提供搜索时使用）</li>
+</ul>
+</li>
+</ul>
+<h4 id="外部资源类-link-标签"><a href="#外部资源类-link-标签" class="headerlink" title="外部资源类 link 标签"></a>外部资源类 link 标签</h4><p>外部资源型 link 标签<strong>会被主动下载</strong>，并且根据 rel 类型做不同的处理。外部资源型的标签包括：具有 icon 型的 link、预处理类 link、modulepreload 型的 link、stylesheet、pingback。</p>
+<ul>
+<li>icon 型的 link：表示页面的 icon。<br>多数浏览器会读取 icon 型 link，并且把页面的 icon 展示出来。icon 型 link 是唯一一个外部资源类的元信息 link，其它元信息类 link 都是超链接，这意味着，icon 型 link 中的图标地址默认会被浏览器下载和使用。<br>如果没有指定这样的 link，多数浏览器会使用域名根目录下的 favicon.ico，即使它并不存在，所以从性能的角度考虑，建议一定要保证页面中有 icon 型的 link。<br>只有 icon 型 link 有有效的 sizes 属性，HTML 标准允许一个页面出现多个 icon 型 link，并且用 sizes 指定它适合的 icon 尺寸。</li>
+<li>预处理类 link：导航到一个网站需要经过 dns 查询域名、建立连接、传输数据、加载进内存和渲染等一系列的步骤。<br>预处理类 link 标签就是允许我们控制浏览器，提前针对一些资源去做这些操作，以提高性能（当然如果乱用的话，性能反而更差）。<ul>
+<li>dns-prefetch 型 link 提前对一个域名做 dns 查询，这样的 link 里面的 href 实际上只有域名有意义。</li>
+<li>preconnect 型 link 提前对一个服务器建立 tcp 连接。</li>
+<li>prefetch 型 link 提前取 href 指定的 url 的内容。</li>
+<li>preload 型 link 提前加载 href 指定的 url。</li>
+<li>prerender 型 link 提前渲染 href 指定的 url。</li>
+</ul>
+</li>
+<li>modulepreload 型的 link：作用是预先加载一个 JavaScript 的模块，可以保证 JS 模块不必等到执行时才加载（完成下载并放入内存，并不会执行对应的 JavaScript）。</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;modulepreload&quot;</span> <span class="attr">href</span>=<span class="string">&quot;app.js&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;modulepreload&quot;</span> <span class="attr">href</span>=<span class="string">&quot;helpers.js&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;modulepreload&quot;</span> <span class="attr">href</span>=<span class="string">&quot;irc.js&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;modulepreload&quot;</span> <span class="attr">href</span>=<span class="string">&quot;fog-machine.js&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;module&quot;</span> <span class="attr">src</span>=<span class="string">&quot;app.js&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>假设 app.js 中有 import “irc” 和 import “fog-machine”, 而 irc.js 中有 import “helpers”。这段代码使用 moduleload 型 link 来预加载了四个 js 模块。通过加入对四个 JS 文件的 link 标签，使得四个 JS 文件有机会被并行地下载，这样提高了性能。</li>
+<li>stylesheet 型 link：基本用法是从一个 CSS 文件创建一个样式表，type 属性可以没有，如果有，必须是”text/css”才会生效。</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;xxx.css&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>pingback 型 link：表示本网页被引用时，应该使用的 pingback 地址，这个机制是一份独立的标准，遵守 pingback 协议的网站在引用本页面时，会向这个 pingback url 发送一个消息。</li>
+</ul>
+<h4 id="a-标签"><a href="#a-标签" class="headerlink" title="a 标签"></a>a 标签</h4><p>a 标签是“anchor”的缩写，它是锚点的意思，anchor 标签的意思是标识文档中的特定位置。其同时充当了链接和目标点的角色，当 a 标签有 href 属性时，它是链接，当它有 name 时，它是链接的目标。具有 href 的 a 标签跟一些 link 一样，会产生超链接，也就是在用户不操作的情况下，它们不会被主动下载的被动型链接。a 标签基本解决了在页面中<strong>插入文字型和整张图片超链接</strong>的需要。</p>
+<p>重点的内容是，a 标签也可以有 rel 属性：alternate，author，help，license，next，prev，search。</p>
+<p>a 标签独有的 rel 类型：</p>
+<ul>
+<li>tag 表示本网页所属的标签；</li>
+<li>bookmark 到上级章节的链接。</li>
+</ul>
+<p>a 标签还有一些辅助的 rel 类型，用于提示浏览器或者搜索引擎做一些处理：</p>
+<ul>
+<li>nofollow 此链接不会被搜索引擎索引；</li>
+<li>noopener 此链接打开的网页无法使用 opener 来获得当前页面的窗口；</li>
+<li>noreferrer 此链接打开的网页无法使用 referrer 来获得当前页面的 url；</li>
+<li>opener 打开的网页可以使用 window.opener 来访问当前页面的 window 对象，这是 a 标签的默认行为。</li>
+</ul>
+<h3 id="area-标签：区域型的链接"><a href="#area-标签：区域型的链接" class="headerlink" title="area 标签：区域型的链接"></a>area 标签：区域型的链接</h3><p>area 是整个 html 规则中唯一支持非矩形热区的标签，它的 shape 属性支持三种类型。</p>
+<ul>
+<li>圆形：circle 或者 circ，coords 支持三个值，分别表示中心点的 x,y 坐标和圆形半径 r。</li>
+<li>矩形：rect 或者 rectangle，coords 支持两个值，分别表示两个对角顶点 x1，y1 和 x2，y2。</li>
+<li>多边形：poly 或者 polygon，coords 至少包括 6 个值，表示多边形的各个顶点。</li>
+</ul>
+<p>area 必须跟 img 和 map 标签配合使用。使用示例如下（例子来自 html 标准）：在一张图片上画热区并且产生链接，分别使用了矩形、圆形和多边形三种 area。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">  Please select a shape:</span><br><span class="line">  &lt;img</span><br><span class="line">    src=&quot;shapes.png&quot;</span><br><span class="line">    usemap=&quot;#shapes&quot;</span><br><span class="line">    alt=&quot;Four shapes are available: a red hollow box, a green circle, a blue triangle, and a yellow four-pointed star.&quot;</span><br><span class="line">  /&gt;</span><br><span class="line">  <span class="tag">&lt;<span class="name">map</span> <span class="attr">name</span>=<span class="string">&quot;shapes&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">area</span> <span class="attr">shape</span>=<span class="string">&quot;rect&quot;</span> <span class="attr">coords</span>=<span class="string">&quot;50,50,100,100&quot;</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- the hole in the red box --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">area</span> <span class="attr">shape</span>=<span class="string">&quot;rect&quot;</span> <span class="attr">coords</span>=<span class="string">&quot;25,25,125,125&quot;</span> <span class="attr">href</span>=<span class="string">&quot;red.html&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;Red box.&quot;</span> /&gt;</span></span><br><span class="line">    &lt;area</span><br><span class="line">      shape=&quot;circle&quot;</span><br><span class="line">      coords=&quot;200,75,50&quot;</span><br><span class="line">      href=&quot;green.html&quot;</span><br><span class="line">      alt=&quot;Green circle.&quot;</span><br><span class="line">    /&gt;</span><br><span class="line">    &lt;area</span><br><span class="line">      shape=&quot;poly&quot;</span><br><span class="line">      coords=&quot;325,25,262,125,388,125&quot;</span><br><span class="line">      href=&quot;blue.html&quot;</span><br><span class="line">      alt=&quot;Blue triangle.&quot;</span><br><span class="line">    /&gt;</span><br><span class="line">    &lt;area</span><br><span class="line">      shape=&quot;poly&quot;</span><br><span class="line">      coords=&quot;450,25,435,60,400,75,435,90,450,125,465,90,500,75,465,60&quot;</span><br><span class="line">      href=&quot;yellow.html&quot;</span><br><span class="line">      alt=&quot;Yellow star.&quot;</span><br><span class="line">    /&gt;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">map</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>httishere</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://httishere.github.io/2021/05/06/yuque/mbzto4/">https://httishere.github.io/2021/05/06/yuque/mbzto4/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2021 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Good Good Study, Day Day Up.</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/css/"># css</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/05/13/yuque/lqophl/">「Daily」学习方法</a>
+            
+            
+            <a class="next" rel="next" href="/2021/04/12/yuque/sclve5/">「大前端」Selector</a>
+            
+        </section>
+        
+            <!--
+ * @Author: your name
+ * @Date: 2021-07-08 11:08:58
+ * @LastEditTime: 2021-08-20 11:11:35
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_partial/gitalk.ejs
+-->
+<link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css">
+<div id="gitalk-container" style="margin-top: 50px;"></div>
+<!-- <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> -->
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script type="text/javascript">
+console.log(md5(location.pathname))
+    new Gitalk({
+        clientID: 'c61a26564784a9cb16f3',
+        clientSecret: '25a391b4405c726bfa417a4d09a8a9d46fd41e12',
+        id: window.location.pathname,
+        repo: 'httIsHere.github.io',
+        owner: 'httIsHere',
+        admin: 'httIsHere',
+        id: md5(location.pathname),
+        distractionFreeMode: false
+    }).render('gitalk-container')
+</script>
+        
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© httishere | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

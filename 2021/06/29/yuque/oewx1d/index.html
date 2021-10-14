@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="referrer" content="no-referrer" />
+
+    <meta name="author" content="httishere">
+
+
+
+
+
+<title>「Daily」interview list 2 | HTTISHERE</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-header header-logo">
+        <a href="/">ℍ𝕋𝕋𝕀𝕊ℍ𝔼ℝ𝔼&#39;𝕤 𝔹𝕝𝕠𝕘</a>
+        <!-- ℍ𝕋𝕋𝕀𝕊ℍ𝔼ℝ𝔼'𝕤 𝔹𝕝𝕠𝕘 -->
+      </div>
+      <div class="menu navbar-right">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+        <input id="switch_default" type="checkbox" class="switch_default" />
+        <label for="switch_default" class="toggleBtn"></label>
+        <a
+          target="_blank" href="https://httishere.notion.site/httishere/51826cfe4d6a4c9ca61c7c28665a85f7"
+          rel="sidebar noopener"
+          style="margin-left: 20px;"
+          >👉 HTTISHERE's PLOG</a
+        >
+      </div>
+    </div>
+  </nav>
+
+  
+  <nav class="navbar-mobile" id="nav-mobile">
+    <div class="container">
+      <div class="navbar-header">
+        <div>
+          <a href="/">ℍ𝕋𝕋𝕀𝕊ℍ𝔼ℝ𝔼&#39;𝕤 𝔹𝕝𝕠𝕘</a
+          ><a id="mobile-toggle-theme">·&nbsp;Light</a>
+        </div>
+        <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+      </div>
+      <div class="menu" id="mobile-menu">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+      </div>
+    </div>
+  </nav>
+</header>
+<script>
+  var mobileBtn = function f() {
+    var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+    var mobileMenu = document.getElementById("mobile-menu");
+    if (toggleMenu.classList.contains("active")) {
+      toggleMenu.classList.remove("active");
+      mobileMenu.classList.remove("active");
+    } else {
+      toggleMenu.classList.add("active");
+      mobileMenu.classList.add("active");
+    }
+  };
+  function addFav() {
+    var title = document.title;
+    var URL = document.URL;
+    try {
+      window.external.addFavorite(URL, title);
+    } catch (e) {
+      try {
+        window.sidebar.addPanel(title, URL, "");
+      } catch (e) {
+        alert("由于浏览器的安全设置\n可以使用Ctrl+D或者Command+D进行手动收藏");
+      }
+    }
+  }
+</script>
+
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">「Daily」interview list 2</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">httishere</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">2021/06/29&nbsp;&nbsp;10:32:37</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Daily/">Daily</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <blockquote>
+<p>目录请查看大纲。</p>
+</blockquote>
+<h4 id="为什么-0-1-0-2-0-3？如何解决这个问题？"><a href="#为什么-0-1-0-2-0-3？如何解决这个问题？" class="headerlink" title="为什么 0.1 + 0.2 != 0.3？如何解决这个问题？"></a>为什么 0.1 + 0.2 != 0.3？如何解决这个问题？</h4><p>JS 采用 IEEE 754 双精度版本（64 位），并且只要采用 IEEE 754 的语言都有该问题。<br>计算机是通过二进制来存储东西的，那么 <code>0.1</code>  在二进制中会表示为：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// (0011) 表示循环</span></span><br><span class="line"><span class="number">0.1</span> = <span class="number">2</span> ^ (-<span class="number">4</span> * <span class="number">1.10011</span>(<span class="number">0011</span>));</span><br></pre></td></tr></table></figure>
+
+<p><code>0.1</code> 在二进制中是无限循环的一些数字，很多十进制小数用二进制表示都是无限循环的。<br>但是 JS 采用的浮点数标准却会裁剪掉这些循环数字。<br>IEEE 754 双精度版本（64 位）将 64 位分为了三段：</p>
+<ul>
+<li>第一位用来表示符号</li>
+<li>接下去的 11 位用来表示指数</li>
+<li>其他的位数用来表示有效位，也就是用二进制表示 0.1 中的 10011(0011)</li>
+</ul>
+<p>于是出现精度丢失的问题，也就造成了  <code>0.1</code>不再是  <code>0.1</code>  了，而是变成了  <code>0.100000000000000002</code><br>根据双精度浮点数的定义，非整数 Number 无法使用==/===进行比较，正确的比较方法是使用 JS 提供的最小精度值：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Math</span>.abs(<span class="number">0.1</span> + <span class="number">0.2</span> - <span class="number">0.3</span>) &lt;= <span class="built_in">Number</span>.EPSILON;</span><br></pre></td></tr></table></figure>
+
+<h4 id="什么是-Virtual-DOM？为什么-Virtual-DOM-比原生-DOM-快？"><a href="#什么是-Virtual-DOM？为什么-Virtual-DOM-比原生-DOM-快？" class="headerlink" title="什么是 Virtual DOM？为什么 Virtual DOM 比原生 DOM 快？"></a>什么是 Virtual DOM？为什么 Virtual DOM 比原生 DOM 快？</h4><p><a target="_blank" rel="noopener" href="https://www.yuque.com/httishere/running/rpkxit">&gt;浏览器如何工作</a><br>首先需要了解<strong>浏览器渲染原理。</strong><br>执行 JS 有一个 JS 引擎，那么执行渲染也有一个渲染引擎。</p>
+<ul>
+<li><strong>浏览器接收到 HTML 文件并转换为 DOM 树</strong></li>
+</ul>
+<p>当我们打开一个网页时，浏览器都会去请求对应的 HTML 文件。虽然平时我们写代码时都会分为 JS、CSS、HTML 文件，也就是字符串，但是计算机硬件是不理解这些字符串的，所以在网络中传输的内容其实都是 0 和 1 这些字节数据。当浏览器接收到这些字节数据以后，它会将这些字节数据转换为字符串，也就是我们写的代码。<br>当数据转换为字符串以后，浏览器会先将这些字符串通过词法分析转换为标记（token），这一过程在词法分析中叫做标记化（tokenization）。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/250093/1624938436668-382eb8b8-055d-4baa-89a3-07daef6e9004.png#align=left&display=inline&height=214&margin=%5Bobject%20Object%5D&name=&originHeight=214&originWidth=519&size=0&status=done&style=none&width=519"><br>当结束标记化后，这些标记会紧接着转换为 Node，最后这些 Node 会根据不同 Node 之前的联系构建为一颗 DOM 树。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/250093/1624938512749-af1bcf95-18eb-47a6-98b4-a926add1d504.png#align=left&display=inline&height=274&margin=%5Bobject%20Object%5D&name=&originHeight=274&originWidth=622&size=0&status=done&style=none&width=622"><br>浏览器从网络中接收到 HTML 文件然后一系列的转换过程:<br><strong>字节数据 =&gt; 字符串 =&gt; Token =&gt; Node =&gt; Dom</strong></p>
+<ul>
+<li><strong>将 CSS 文件转换为 CSSOM 树</strong></li>
+</ul>
+<p>也是于 HTML 的转换是类似的。</p>
+<blockquote>
+<p>在这一过程中，浏览器会确定下每一个节点的样式到底是什么，并且这一过程其实是很消耗资源的。因为样式是可以自行设置的，也可以通过继承获得。在这一过程中，浏览器得<strong>递归 CSSOM 树</strong>，然后确定具体的元素到底是什么样式。</p>
+</blockquote>
+<ul>
+<li><strong>生成渲染树</strong></li>
+</ul>
+<p>生成 DOM 树和 CSSOM 树以后，就需要将这两棵树组合为渲染树。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/250093/1624947381540-b36ede66-6f55-481e-9135-69bce1d74f49.png#align=left&display=inline&height=537&margin=%5Bobject%20Object%5D&name=&originHeight=537&originWidth=1150&size=0&status=done&style=none&width=1150"><br>渲染树只会包括需要显示的节点和这些节点的样式信息，如果某个节点是 <code>display: none</code>  的，那么就不会在渲染树中显示。<br>当浏览器生成渲染树以后，就会根据渲染树来进行布局（也可以叫做回流），然后调用 GPU 绘制，合成图层，显示在屏幕上。</p>
+<p><strong>JS 操作 DOM</strong><br>DOM 是属于渲染引擎中的，而 JS 是 JS 引擎中的东西。当我们通过 JS 操作 DOM 的时候，其实这个操作涉及到了两个线程之间的通信，那么势必会带来一些性能上的损耗。操作 DOM 次数一多，也就等同于一直在进行线程之间的通信，并且操作 DOM 可能还会带来重绘回流的情况，所以也就导致了性能上的问题。</p>
+<p><strong>相较于 DOM 来说，操作 JS 对象会快很多，并且我们也可以通过 JS 来模拟 DOM 即 Virtual DOM。</strong><br>需要在数据更新时，对比新旧两个 JS 对象然后实现局部更新 DOM。</p>
+<ul>
+<li>首先从上至下，从左往右遍历对象，也就是树的深度遍历，这一步中会给每个节点添加索引，便于最后渲染差异（需要判断新旧节点的 <code>tagName</code>是否相同，如果不相同的话就代表节点被替换了。如果没有更改 <code>tagName</code>的话，就需要判断是否有子元素，有的话就进行第二步算法）；</li>
+<li>一旦节点有子元素，就去判断子元素是否有不同（需要判断原本的列表中是否有节点被移除，在新的列表中需要判断是否有新的节点加入，还需要判断节点是否有移动）；</li>
+</ul>
+<p>所以我们在使用模版的 <code>v-for</code>或者 <code>array.map</code>时会常常遇到** <code>key</code>这个属性<strong>，这个属性是用来给每一个节点打标志的，用于</strong>判断是否是同一个节点**。</p>
+<ol>
+<li>将 Virtual DOM 作为一个兼容层，让我们还能对接非 Web 端的系统，实现跨端开发。</li>
+<li>同样的，通过 Virtual DOM 我们可以渲染到其他的平台，比如实现 SSR、同构渲染等等。</li>
+<li>实现组件的高度抽象化</li>
+</ol>
+<h4 id="前端路由原理？两种实现方式有什么区别？"><a href="#前端路由原理？两种实现方式有什么区别？" class="headerlink" title="前端路由原理？两种实现方式有什么区别？"></a>前端路由原理？两种实现方式有什么区别？</h4><p>本质就是监听 URL 的变化，然后匹配路由规则，显示相应的页面，并且无须刷新页面。目前前端使用的路由就只有两种实现方式：</p>
+<ul>
+<li>Hash 模式</li>
+<li>History 模式</li>
+</ul>
+<h5 id="hash-模式（xxx-com-）"><a href="#hash-模式（xxx-com-）" class="headerlink" title="hash 模式（xxx.com/#/）"></a>hash 模式（xxx.com/#/）</h5><p>当 # 后面的哈希值发生变化时，可以通过 <code>hashchange</code>事件来监听到 URL 的变化，从而进行跳转页面，并且无论哈希值如何变化，服务端接收到的 URL 请求永远是 xxx.com。</p>
+<h5 id="history-模式"><a href="#history-模式" class="headerlink" title="history 模式"></a>history 模式</h5><p>History 模式是 HTML5 新推出的功能，主要使用<code>history.pushState</code>和<code>history.replaceState</code>改变 URL。<br>通过 History 模式改变 URL 同样不会引起页面的刷新，只会更新浏览器的历史记录。</p>
+<ol>
+<li>Hash 模式只可以更改 <code>#</code>后面的内容，History 模式可以通过 API 设置任意的同源 URL；</li>
+<li>History 模式可以通过 API 添加任意类型的数据到历史记录中，Hash 模式只能更改哈希值，也就是字符串；</li>
+<li>Hash 模式无需后端配置，并且兼容性好。History 模式在用户手动输入地址或者刷新页面的时候会发起 URL 请求，后端需要配置 index.html 页面用于匹配不到静态资源的时候；</li>
+</ol>
+<h4 id="组件内的-data-为何不使用对象，而是函数形式"><a href="#组件内的-data-为何不使用对象，而是函数形式" class="headerlink" title="组件内的 data 为何不使用对象，而是函数形式"></a>组件内的 data 为何不使用对象，而是函数形式</h4><p><strong>组件复用</strong>时所有组件实例都会<strong>共享 data</strong>，如果 data 是对象的话，就会造成一个组件修改 data 以后会影响到其他所有组件，所以需要将 data 写成函数，每次用到就调用一次函数获得新的数据。<br>当我们使用 new Vue() 的方式的时候，无论我们将 data 设置为对象还是函数都是可以的，因为 new Vue() 的方式是生成一个根组件，该组件不会复用，也就不存在共享 data 的情况了。</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>httishere</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://httishere.github.io/2021/06/29/yuque/oewx1d/">https://httishere.github.io/2021/06/29/yuque/oewx1d/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2021 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Good Good Study, Day Day Up.</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/Daily/"># Daily</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/06/29/yuque/rpkxit/">「大前端」浏览器的工作-1</a>
+            
+            
+            <a class="next" rel="next" href="/2021/06/28/yuque/ivbtri/">「CSS」flex的设计、原理和应用</a>
+            
+        </section>
+        
+            <!--
+ * @Author: your name
+ * @Date: 2021-07-08 11:08:58
+ * @LastEditTime: 2021-08-20 11:11:35
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_partial/gitalk.ejs
+-->
+<link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css">
+<div id="gitalk-container" style="margin-top: 50px;"></div>
+<!-- <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> -->
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script type="text/javascript">
+console.log(md5(location.pathname))
+    new Gitalk({
+        clientID: 'c61a26564784a9cb16f3',
+        clientSecret: '25a391b4405c726bfa417a4d09a8a9d46fd41e12',
+        id: window.location.pathname,
+        repo: 'httIsHere.github.io',
+        owner: 'httIsHere',
+        admin: 'httIsHere',
+        id: md5(location.pathname),
+        distractionFreeMode: false
+    }).render('gitalk-container')
+</script>
+        
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© httishere | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
