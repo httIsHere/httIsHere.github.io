@@ -226,7 +226,6 @@
 <p>主要分析将 DOM 树加上 CSS 规则的步骤。</p>
 </blockquote>
 <h3 id="STEP-0-环境准备"><a href="#STEP-0-环境准备" class="headerlink" title="STEP 0: 环境准备"></a>STEP 0: 环境准备</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install css</span><br></pre></td></tr></table></figure>
-
 <p><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/css">CSS</a>库</p>
 <h3 id="STEP-1-收集-CSS-规则"><a href="#STEP-1-收集-CSS-规则" class="headerlink" title="STEP 1: 收集 CSS 规则"></a>STEP 1: 收集 CSS 规则</h3><ul>
 <li>遇到 style 标签时，需要将 CSS 规则保存收集；</li>
@@ -239,7 +238,6 @@
 <li>在真实浏览器中，可能遇到写在 body 内的 style 标签，需要重新进行 CSS 计算的情况，但在这里我们进行忽略（CSS 重新计算，重排，重绘，所以需要在编写代码时需要将 style 写在所有元素最前面）；</li>
 </ul>
 <h3 id="STEP-3-获取父元素序列"><a href="#STEP-3-获取父元素序列" class="headerlink" title="STEP 3: 获取父元素序列"></a>STEP 3: 获取父元素序列</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> elements = stack.slice().reverse();</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>在 computeCSS 函数内，必须知道元素的所有父元素才能判断元素与规则是否匹配；</li>
 <li>从上一步骤的 stack 内可以获取本元素的所有元素；</li>

@@ -1,12 +1,15 @@
 <hr>
-<p>title: 234.palindrome-linked-list<br>date: 2021-10-13 16:31:14<br>tags:<br>    - LeeCode<br>categories:<br>    - LeeCode<br>hidden: true<br>cateHidden: false</p>
-<hr>
-<h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><blockquote>
+<p>title: 234.palindrome-linked-list<br>date: 2021-10-13 16:31:14<br>tags:</p>
+<pre><code>- LeeCode
+</code></pre><p>categories: </p>
+<pre><code>- LeeCode
+</code></pre><p>hidden: true</p>
+<h2 id="cateHidden-false"><a href="#cateHidden-false" class="headerlink" title="cateHidden: false"></a>cateHidden: false</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><blockquote>
 <p>Given the head of a singly linked list, return true if it is a palindrome.</p>
 </blockquote>
 <p>判断一个链表是否为回文链表。</p>
 <h3 id="题解"><a href="#题解" class="headerlink" title="`题解"></a>`题解</h3><h4 id="1-暴力解法"><a href="#1-暴力解法" class="headerlink" title="1. 暴力解法"></a>1. 暴力解法</h4><p>将链表回文判断转化成数组回文判断。</p>
-<pre><code class="js">//** 解法1：暴力解法，转成数组的回文判断 **//
+<pre><code class="lang-js">//** 解法1：暴力解法，转成数组的回文判断 **//
 var isPalindrome = function(head) {
     // 暴力，转成数组的回文判断
     if(!head.next) return true;
@@ -21,9 +24,10 @@ var isPalindrome = function(head) {
         if(nums[i] !== nums[len - i - 1]) return false;
     }
     return true;
-};</code></pre>
+};
+</code></pre>
 <h4 id="2-快慢指针"><a href="#2-快慢指针" class="headerlink" title="2. 快慢指针"></a>2. 快慢指针</h4><p>翻转链表前半段，并将链表前半段和后半段进行比较。</p>
-<pre><code class="js">var isPalindrome = function(head) {
+<pre><code class="lang-js">var isPalindrome = function(head) {
     // q: 快指针移动2格，p: 慢指针移动1格
     // q的速度是p的两倍，所以q到达链表末尾时，p到达链表中间
     // 在p的移动过程中对前半段链表进行反转
@@ -56,4 +60,5 @@ var isPalindrome = function(head) {
         p = p.next;
     }
     return true;
-};</code></pre>
+};
+</code></pre>

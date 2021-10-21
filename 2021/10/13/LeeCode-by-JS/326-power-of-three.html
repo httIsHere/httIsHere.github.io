@@ -1,0 +1,32 @@
+<hr>
+<p>title: 326.power-of-three<br>date: 2021-10-21 16:18:37<br>mathjax: true<br>tags:</p>
+<pre><code>- LeeCode
+</code></pre><p>categories: </p>
+<pre><code>- LeeCode
+</code></pre><p>hidden: true</p>
+<h2 id="cateHidden-false"><a href="#cateHidden-false" class="headerlink" title="cateHidden: false"></a>cateHidden: false</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><blockquote>
+<p>Given an integer n, return true if it is a power of three. Otherwise, return false.</p>
+<p>An integer n is a power of three, if there exists an integer x such that n == 3x.</p>
+</blockquote>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><h4 id="1-循环-（简单）"><a href="#1-循环-（简单）" class="headerlink" title="1. 循环 （简单）"></a>1. 循环 （简单）</h4><pre><code class="lang-js">var isPowerOfThree_by_loop = function(n) {
+    if(n &lt;= 0) return false;
+
+    while(n &gt; 1) {
+        if(n % 3 === 0) {
+            n = n / 3;
+        } else return false;
+    }
+    return true;
+};
+</code></pre>
+<h4 id="2-对数"><a href="#2-对数" class="headerlink" title="2. 对数"></a>2. 对数</h4><p>主要用到的是换底公式：$\log_a{b}$ = $\frac{log_c{b}}{log_c{a}}$。</p>
+<p>所以如果n是3的对数，那么$\log_3{n}$就是整数，即将其换底$\frac{log{n}}{log{3}}$为整数。</p>
+<pre><code class="lang-js">var isPowerOfThree = function(n) {
+    // 之前有个2次方的判断是：!(n &amp; (n - 1))
+    if(n &lt;= 0) return false;
+    // 对数
+    let tem = Math.log10(n) / Math.log10(3);
+    // 如果是整数
+    return (tem - Math.floor(tem)) === 0
+};
+</code></pre>

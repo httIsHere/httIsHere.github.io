@@ -1,12 +1,15 @@
 <hr>
-<p>title: 235.Lowest Common Ancestor of a Binary Search Tree<br>date: 2021-10-13 16:31:14<br>tags:<br>    - LeeCode<br>categories:<br>    - LeeCode<br>hidden: true<br>cateHidden: false</p>
-<hr>
-<h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><blockquote>
+<p>title: 235.Lowest Common Ancestor of a Binary Search Tree<br>date: 2021-10-13 16:31:14<br>tags:</p>
+<pre><code>- LeeCode
+</code></pre><p>categories: </p>
+<pre><code>- LeeCode
+</code></pre><p>hidden: true</p>
+<h2 id="cateHidden-false"><a href="#cateHidden-false" class="headerlink" title="cateHidden: false"></a>cateHidden: false</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><blockquote>
 <p>Given a binary search tree (BST), find the lowest common ancestor (LCA) of two given nodes in the BST.<br>According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between two nodes p and q as the lowest node in T that has both p and q as descendants (where we allow a node to be a descendant of itself).”</p>
 </blockquote>
 <p>查找二叉搜索树的最近公共祖先。</p>
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><h4 id="1-极其暴力"><a href="#1-极其暴力" class="headerlink" title="1. 极其暴力"></a>1. 极其暴力</h4><p>我的主要逻辑流程，将子节点的状态判断累积到父节点。</p>
-<pre><code class="js">/*
+<pre><code class="lang-js">/*
  * @lc app=leetcode id=235 lang=javascript
  *
  * [235] Lowest Common Ancestor of a Binary Search Tree
@@ -91,14 +94,16 @@ node8 = {val: 8, left: node7, right: node9};
 root = { val: 6, left: node2, right: node8}
 
 
-lowestCommonAncestor(root, p, q)</code></pre>
+lowestCommonAncestor(root, p, q)
+</code></pre>
 <h4 id="2-参考解法"><a href="#2-参考解法" class="headerlink" title="2. 参考解法"></a>2. 参考解法</h4><blockquote>
 <p>1）两个节点均在root的左子树，此时对root-&gt;left递归求解<br>2）两个节点均在root的右子树，此时对root-&gt;right递归求解；<br>3）两个节点分别位于root的左右子树，此时为root。</p>
 </blockquote>
-<pre><code class="js">var lowestCommonAncestor = function(root, p, q) {
+<pre><code class="lang-js">var lowestCommonAncestor = function(root, p, q) {
     if(!root) return root;
 
     if(p.val &lt; root.val &amp;&amp; q.val &lt; root.val) return lowestCommonAncestor(root.left, p, q);
     if(p.val &gt; root.val &amp;&amp; q.val &gt; root.val) return lowestCommonAncestor(root.right, p, q);
     return root;
-}</code></pre>
+}
+</code></pre>

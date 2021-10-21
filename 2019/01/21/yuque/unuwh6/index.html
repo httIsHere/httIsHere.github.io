@@ -158,12 +158,12 @@
 <li>层级始终置顶，会遮挡页面上其他元素；</li>
 </ul>
 <p>video 的 z-index 无论设置为多少，他始终处于最顶层。</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/250093/1548061614599-76110260-27cc-47bd-bb4c-ce56d38e8ab6.jpeg#align=left&display=inline&height=1291&originHeight=1920&originWidth=1080&size=0&width=726"></p>
-<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/250093/1548061614505-6c5062ea-dc0c-48f3-a7c9-665bf67d30de.jpeg#align=left&display=inline&height=1326&originHeight=1920&originWidth=1080&size=0&width=746"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/250093/1548061614599-76110260-27cc-47bd-bb4c-ce56d38e8ab6.jpeg#align=left&amp;display=inline&amp;height=1291&amp;originHeight=1920&amp;originWidth=1080&amp;size=0&amp;width=726" alt=""></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/250093/1548061614505-6c5062ea-dc0c-48f3-a7c9-665bf67d30de.jpeg#align=left&amp;display=inline&amp;height=1326&amp;originHeight=1920&amp;originWidth=1080&amp;size=0&amp;width=746" alt=""></p>
 <ul>
 <li>进行 x5 调试的话，播放视频将全屏；</li>
 </ul>
-<p><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1548061615110-c039680c-9765-4c56-bfb2-8f6fc70b10cc.png#align=left&display=inline&height=764&originHeight=764&originWidth=495&size=0&width=495"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1548061615110-c039680c-9765-4c56-bfb2-8f6fc70b10cc.png#align=left&amp;display=inline&amp;height=764&amp;originHeight=764&amp;originWidth=495&amp;size=0&amp;width=495" alt=""></p>
 <p>腾讯对 x5 内核的解释以及部分解决方法：<a target="_blank" rel="noopener" href="https://x5.tencent.com/tbs/guide/video.html">https://x5.tencent.com/tbs/guide/video.html</a><br>2、video 在 ios 微信内的表现</p>
 <p>加载页面时会自动播放视频：</p>
 <p>页面内有 video 但是需要触发才能播放，首次进入页面时不会播放视频但是从这个页面进入下一个页面再返回上一个页面时将自动全屏播放视频；</p>
@@ -171,8 +171,8 @@
 <p>条件：SPA，且采用 history 模式；</p>
 <p>表现：ios 微信获得<code>window.location.href</code>时获得的实际上时进入页的 url 而非当前页的真实地址，从而导致微信分享地址不正确以及微信支付唤起失败（提示 xxx 地址未注册，原因是实际获取到的地址和后台配置的不同）；</p>
 <p>粗暴解决：对于需要获得真实地址的页面进入时不使用<code>router</code>，直接使用<code>location.href</code>进入。<br>4、新的分享接口</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1548061614823-864a2252-1e4b-4079-915c-a9e2f130535b.png#align=left&display=inline&height=219&originHeight=219&originWidth=590&size=0&width=590"><br>现象：在安卓微信 6.7.3 内进行分享自定义内容无效，但分享到 QQ 是正常有效的；</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1548061614768-1604b976-9905-47de-a3d1-1c65fd807d83.png#align=left&display=inline&height=120&originHeight=120&originWidth=374&size=0&width=374"><br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1548061614843-d734ac65-2d1c-4017-bea6-cffd7c93beaa.png#align=left&display=inline&height=114&originHeight=114&originWidth=257&size=0&width=257"><br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1548061614659-7aaa7dde-3938-43d1-98c8-c67d3bc9bab4.png#align=left&display=inline&height=178&originHeight=178&originWidth=361&size=0&width=361"><br>粗暴解决：最后还是使用了旧的分享接口，但是就接口即将废弃不知道还有什么解决方法。<br>5、新版本默认背景色非<code>#FFFFFF</code>，需自己在样式中对其进行设置。<br>Finally：微信开发千万别用 SPA，会疯。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1548061614823-864a2252-1e4b-4079-915c-a9e2f130535b.png#align=left&amp;display=inline&amp;height=219&amp;originHeight=219&amp;originWidth=590&amp;size=0&amp;width=590" alt=""><br>现象：在安卓微信 6.7.3 内进行分享自定义内容无效，但分享到 QQ 是正常有效的；</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1548061614768-1604b976-9905-47de-a3d1-1c65fd807d83.png#align=left&amp;display=inline&amp;height=120&amp;originHeight=120&amp;originWidth=374&amp;size=0&amp;width=374" alt=""><br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1548061614843-d734ac65-2d1c-4017-bea6-cffd7c93beaa.png#align=left&amp;display=inline&amp;height=114&amp;originHeight=114&amp;originWidth=257&amp;size=0&amp;width=257" alt=""><br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1548061614659-7aaa7dde-3938-43d1-98c8-c67d3bc9bab4.png#align=left&amp;display=inline&amp;height=178&amp;originHeight=178&amp;originWidth=361&amp;size=0&amp;width=361" alt=""><br>粗暴解决：最后还是使用了旧的分享接口，但是就接口即将废弃不知道还有什么解决方法。<br>5、新版本默认背景色非<code>#FFFFFF</code>，需自己在样式中对其进行设置。<br>Finally：微信开发千万别用 SPA，会疯。</p>
 
         </div>
 

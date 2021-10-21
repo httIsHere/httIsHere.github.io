@@ -225,436 +225,438 @@
             <h3 id="各种选择器"><a href="#各种选择器" class="headerlink" title="各种选择器"></a>各种选择器</h3><blockquote>
 <p>指定特定元素对其进行样式加工;</p>
 </blockquote>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">选择器</th>
-<th align="center">说明</th>
-<th align="center">版本</th>
+<th style="text-align:center">选择器</th>
+<th style="text-align:center">说明</th>
+<th style="text-align:center">版本</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center"><strong>基础选择器</strong></td>
-<td align="center"></td>
-<td align="center"></td>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>基础选择器</strong></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center">tag</td>
-<td align="center">类型选择器</td>
-<td align="center">1</td>
+<td style="text-align:center">tag</td>
+<td style="text-align:center">类型选择器</td>
+<td style="text-align:center">1</td>
 </tr>
 <tr>
-<td align="center">#id</td>
-<td align="center">id 选择器</td>
-<td align="center">1</td>
+<td style="text-align:center">#id</td>
+<td style="text-align:center">id 选择器</td>
+<td style="text-align:center">1</td>
 </tr>
 <tr>
-<td align="center">.class</td>
-<td align="center">类选择器</td>
-<td align="center">1</td>
+<td style="text-align:center">.class</td>
+<td style="text-align:center">类选择器</td>
+<td style="text-align:center">1</td>
 </tr>
 <tr>
-<td align="center">*</td>
-<td align="center">通配选择器</td>
-<td align="center">2</td>
+<td style="text-align:center">*</td>
+<td style="text-align:center">通配选择器</td>
+<td style="text-align:center">2</td>
 </tr>
 <tr>
-<td align="center"><strong>层级选择器</strong></td>
-<td align="center"></td>
-<td align="center"></td>
+<td style="text-align:center"><strong>层级选择器</strong></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center">elemA elemB</td>
-<td align="center">后代元素</td>
-<td align="center">1</td>
+<td style="text-align:center">elemA elemB</td>
+<td style="text-align:center">后代元素</td>
+<td style="text-align:center">1</td>
 </tr>
 <tr>
-<td align="center">elemA&gt;elemB</td>
-<td align="center">子代元素</td>
-<td align="center">2</td>
+<td style="text-align:center">elemA&gt;elemB</td>
+<td style="text-align:center">子代元素</td>
+<td style="text-align:center">2</td>
 </tr>
 <tr>
-<td align="center">elemA+elemB</td>
-<td align="center">相邻同胞</td>
-<td align="center">2</td>
+<td style="text-align:center">elemA+elemB</td>
+<td style="text-align:center">相邻同胞</td>
+<td style="text-align:center">2</td>
 </tr>
 <tr>
-<td align="center">elemA~elemB</td>
-<td align="center">元素后面的同胞元素</td>
-<td align="center">3</td>
+<td style="text-align:center">elemA~elemB</td>
+<td style="text-align:center">元素后面的同胞元素</td>
+<td style="text-align:center">3</td>
 </tr>
 <tr>
-<td align="center"><strong>集合选择器</strong></td>
-<td align="center"></td>
-<td align="center"></td>
+<td style="text-align:center"><strong>集合选择器</strong></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center">elemA, elemB</td>
-<td align="center">并集</td>
-<td align="center">1</td>
+<td style="text-align:center">elemA, elemB</td>
+<td style="text-align:center">并集</td>
+<td style="text-align:center">1</td>
 </tr>
 <tr>
-<td align="center">elemA.class/elemA#id</td>
-<td align="center">交集</td>
-<td align="center">1</td>
+<td style="text-align:center">elemA.class/elemA#id</td>
+<td style="text-align:center">交集</td>
+<td style="text-align:center">1</td>
 </tr>
 <tr>
-<td align="center"><strong>条件选择器</strong></td>
-<td align="center"></td>
-<td align="center"></td>
+<td style="text-align:center"><strong>条件选择器</strong></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center">:lang</td>
-<td align="center">指定标记语言</td>
-<td align="center">2</td>
+<td style="text-align:center">:lang</td>
+<td style="text-align:center">指定标记语言</td>
+<td style="text-align:center">2</td>
 </tr>
 <tr>
-<td align="center">:dir()</td>
-<td align="center">指定编写方向，文字书写方向为 ltr 或 rtl</td>
-<td align="center">4</td>
+<td style="text-align:center">:dir()</td>
+<td style="text-align:center">指定编写方向，文字书写方向为 ltr 或 rtl</td>
+<td style="text-align:center">4</td>
 </tr>
 <tr>
-<td align="center">:has</td>
-<td align="center">包含指定元素，如： <code>a:has(&gt; img)</code> （只会匹配直接包含 <code>&lt;img&gt;</code>  子元素的 <code>&lt;a&gt;</code>  元素）</td>
-<td align="center">4</td>
+<td style="text-align:center">:has</td>
+<td style="text-align:center">包含指定元素，如： <code>a:has(&gt; img)</code> （只会匹配直接包含 <code>&lt;img&gt;</code>  子元素的 <code>&lt;a&gt;</code>  元素）</td>
+<td style="text-align:center">4</td>
 </tr>
 <tr>
-<td align="center">:is</td>
-<td align="center">指定条件，如：<code>:is(section, article, aside, nav) h1</code></td>
-<td align="center">4</td>
+<td style="text-align:center">:is</td>
+<td style="text-align:center">指定条件，如：<code>:is(section, article, aside, nav) h1</code></td>
+<td style="text-align:center">4</td>
 </tr>
 <tr>
-<td align="center">:not</td>
-<td align="center">非指定条件，如：<code>p:not(.fancy)</code>，类名不是 <code>.fancy</code> 的 <p> 元素</p></td>
-<td align="center">4</td>
+<td style="text-align:center">:not</td>
+<td style="text-align:center">非指定条件，如：<code>p:not(.fancy)</code>，类名不是 <code>.fancy</code> 的 <p> 元素</p></td>
+<td style="text-align:center">4</td>
 </tr>
 <tr>
-<td align="center">:where</td>
-<td align="center">指定条件，优先级总是为 0</td>
-<td align="center">4</td>
+<td style="text-align:center">:where</td>
+<td style="text-align:center">指定条件，优先级总是为 0</td>
+<td style="text-align:center">4</td>
 </tr>
 <tr>
-<td align="center">:scope</td>
-<td align="center">css 伪类，作为选择器要匹配的参考点的元素</td>
-<td align="center">4</td>
+<td style="text-align:center">:scope</td>
+<td style="text-align:center">css 伪类，作为选择器要匹配的参考点的元素</td>
+<td style="text-align:center">4</td>
 </tr>
 <tr>
-<td align="center">:any-link</td>
-<td align="center">选择器代表一个有链接锚点的元素，匹配每一个有 href 属性的 <a>、<area> 或 <link> 元素</a></td>
-<td align="center">4</td>
+<td style="text-align:center">:any-link</td>
+<td style="text-align:center">选择器代表一个有链接锚点的元素，匹配每一个有 href 属性的 <a>、<area> 或 <link> 元素</a></td>
+<td style="text-align:center">4</td>
 </tr>
 <tr>
-<td align="center">:local-link</td>
-<td align="center">所有包含<code>href</code>且属于绝对地址的<code>链接元素</code></td>
-<td align="center">4</td>
+<td style="text-align:center">:local-link</td>
+<td style="text-align:center">所有包含<code>href</code>且属于绝对地址的<code>链接元素</code></td>
+<td style="text-align:center">4</td>
 </tr>
 <tr>
-<td align="center"><strong>结构选择器</strong></td>
-<td align="center"></td>
-<td align="center"></td>
+<td style="text-align:center"><strong>结构选择器</strong></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center">:first-child</td>
-<td align="center">元素中为首的<code>元素</code></td>
-<td align="center">2</td>
+<td style="text-align:center">:first-child</td>
+<td style="text-align:center">元素中为首的<code>元素</code></td>
+<td style="text-align:center">2</td>
 </tr>
 <tr>
-<td align="center">:last-child</td>
-<td align="center">元素中为尾的<code>元素</code></td>
-<td align="center">3</td>
+<td style="text-align:center">:last-child</td>
+<td style="text-align:center">元素中为尾的<code>元素</code></td>
+<td style="text-align:center">3</td>
 </tr>
 <tr>
-<td align="center">:root</td>
-<td align="center">文档根元素</td>
-<td align="center">3</td>
+<td style="text-align:center">:root</td>
+<td style="text-align:center">文档根元素</td>
+<td style="text-align:center">3</td>
 </tr>
 <tr>
-<td align="center">:empty</td>
-<td align="center">无子元素的元素</td>
-<td align="center">3</td>
+<td style="text-align:center">:empty</td>
+<td style="text-align:center">无子元素的元素</td>
+<td style="text-align:center">3</td>
 </tr>
 <tr>
-<td align="center">:nth-child(n)</td>
-<td align="center">元素中指定顺序索引的<code>元素</code></td>
-<td align="center">3</td>
+<td style="text-align:center">:nth-child(n)</td>
+<td style="text-align:center">元素中指定顺序索引的<code>元素</code></td>
+<td style="text-align:center">3</td>
 </tr>
 <tr>
-<td align="center">:nth-last-child(n)</td>
-<td align="center">元素中指定逆序索引的<code>元素</code></td>
-<td align="center">3</td>
+<td style="text-align:center">:nth-last-child(n)</td>
+<td style="text-align:center">元素中指定逆序索引的<code>元素</code></td>
+<td style="text-align:center">3</td>
 </tr>
 <tr>
-<td align="center">:only-child</td>
-<td align="center">父元素仅有该元素的<code>元素</code></td>
-<td align="center">3</td>
+<td style="text-align:center">:only-child</td>
+<td style="text-align:center">父元素仅有该元素的<code>元素</code></td>
+<td style="text-align:center">3</td>
 </tr>
 <tr>
-<td align="center">:nth-of-type(n)</td>
-<td align="center">标签中指定顺序索引的<code>标签</code></td>
-<td align="center">3</td>
+<td style="text-align:center">:nth-of-type(n)</td>
+<td style="text-align:center">标签中指定顺序索引的<code>标签</code></td>
+<td style="text-align:center">3</td>
 </tr>
 <tr>
-<td align="center">:nth-last-of-type(n)</td>
-<td align="center">标签中指定逆序索引的<code>标签</code></td>
-<td align="center">3</td>
+<td style="text-align:center">:nth-last-of-type(n)</td>
+<td style="text-align:center">标签中指定逆序索引的<code>标签</code></td>
+<td style="text-align:center">3</td>
 </tr>
 <tr>
-<td align="center">:first-of-type</td>
-<td align="center">标签中为首的<code>标签</code></td>
-<td align="center">3</td>
+<td style="text-align:center">:first-of-type</td>
+<td style="text-align:center">标签中为首的<code>标签</code></td>
+<td style="text-align:center">3</td>
 </tr>
 <tr>
-<td align="center">:last-of-type</td>
-<td align="center">标签中为尾<code>标签</code></td>
-<td align="center">3</td>
+<td style="text-align:center">:last-of-type</td>
+<td style="text-align:center">标签中为尾<code>标签</code></td>
+<td style="text-align:center">3</td>
 </tr>
 <tr>
-<td align="center">:only-of-type</td>
-<td align="center">父元素仅有该标签的<code>标签</code></td>
-<td align="center">3</td>
+<td style="text-align:center">:only-of-type</td>
+<td style="text-align:center">父元素仅有该标签的<code>标签</code></td>
+<td style="text-align:center">3</td>
 </tr>
 <tr>
-<td align="center">状态选择器</td>
-<td align="center"></td>
-<td align="center"></td>
+<td style="text-align:center">状态选择器</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center">:active</td>
-<td align="center">鼠标激活的<code>元素</code></td>
-<td align="center">1</td>
+<td style="text-align:center">:active</td>
+<td style="text-align:center">鼠标激活的<code>元素</code></td>
+<td style="text-align:center">1</td>
 </tr>
 <tr>
-<td align="center">:hover</td>
-<td align="center">鼠标悬浮的<code>元素</code></td>
-<td align="center">1</td>
+<td style="text-align:center">:hover</td>
+<td style="text-align:center">鼠标悬浮的<code>元素</code></td>
+<td style="text-align:center">1</td>
 </tr>
 <tr>
-<td align="center">:link</td>
-<td align="center">未访问的链接元素</td>
-<td align="center">1</td>
+<td style="text-align:center">:link</td>
+<td style="text-align:center">未访问的链接元素</td>
+<td style="text-align:center">1</td>
 </tr>
 <tr>
-<td align="center">:visited</td>
-<td align="center">已访问的链接元素</td>
-<td align="center">1</td>
+<td style="text-align:center">:visited</td>
+<td style="text-align:center">已访问的链接元素</td>
+<td style="text-align:center">1</td>
 </tr>
 <tr>
-<td align="center">:target</td>
-<td align="center">当前锚点的<code>元素</code></td>
-<td align="center">3</td>
+<td style="text-align:center">:target</td>
+<td style="text-align:center">当前锚点的<code>元素</code></td>
+<td style="text-align:center">3</td>
 </tr>
 <tr>
-<td align="center">:focus</td>
-<td align="center">输入聚焦的<code>表单元素</code></td>
-<td align="center">3</td>
+<td style="text-align:center">:focus</td>
+<td style="text-align:center">输入聚焦的<code>表单元素</code></td>
+<td style="text-align:center">3</td>
 </tr>
 <tr>
-<td align="center">:required</td>
-<td align="center">输入必填的<code>表单元素</code></td>
-<td align="center">3</td>
+<td style="text-align:center">:required</td>
+<td style="text-align:center">输入必填的<code>表单元素</code></td>
+<td style="text-align:center">3</td>
 </tr>
 <tr>
-<td align="center">:valid</td>
-<td align="center">输入合法</td>
-<td align="center">3</td>
+<td style="text-align:center">:valid</td>
+<td style="text-align:center">输入合法</td>
+<td style="text-align:center">3</td>
 </tr>
 <tr>
-<td align="center">:invalid</td>
-<td align="center">输入不合法</td>
-<td align="center">3</td>
+<td style="text-align:center">:invalid</td>
+<td style="text-align:center">输入不合法</td>
+<td style="text-align:center">3</td>
 </tr>
 <tr>
-<td align="center">:in-range</td>
-<td align="center">输入范围内</td>
-<td align="center">3</td>
+<td style="text-align:center">:in-range</td>
+<td style="text-align:center">输入范围内</td>
+<td style="text-align:center">3</td>
 </tr>
 <tr>
-<td align="center">:out-of-range</td>
-<td align="center">输入范围外</td>
-<td align="center">3</td>
+<td style="text-align:center">:out-of-range</td>
+<td style="text-align:center">输入范围外</td>
+<td style="text-align:center">3</td>
 </tr>
 <tr>
-<td align="center">:checked</td>
-<td align="center">选项选中</td>
-<td align="center">3</td>
+<td style="text-align:center">:checked</td>
+<td style="text-align:center">选项选中</td>
+<td style="text-align:center">3</td>
 </tr>
 <tr>
-<td align="center">:optional</td>
-<td align="center">选项可选</td>
-<td align="center">3</td>
+<td style="text-align:center">:optional</td>
+<td style="text-align:center">选项可选</td>
+<td style="text-align:center">3</td>
 </tr>
 <tr>
-<td align="center">:enabled</td>
-<td align="center">事件启用</td>
-<td align="center">3</td>
+<td style="text-align:center">:enabled</td>
+<td style="text-align:center">事件启用</td>
+<td style="text-align:center">3</td>
 </tr>
 <tr>
-<td align="center">:disabled</td>
-<td align="center">事件禁用</td>
-<td align="center">3</td>
+<td style="text-align:center">:disabled</td>
+<td style="text-align:center">事件禁用</td>
+<td style="text-align:center">3</td>
 </tr>
 <tr>
-<td align="center">:read-only</td>
-<td align="center">只读</td>
-<td align="center">3</td>
+<td style="text-align:center">:read-only</td>
+<td style="text-align:center">只读</td>
+<td style="text-align:center">3</td>
 </tr>
 <tr>
-<td align="center">:read-write</td>
-<td align="center">可读可写</td>
-<td align="center">3</td>
+<td style="text-align:center">:read-write</td>
+<td style="text-align:center">可读可写</td>
+<td style="text-align:center">3</td>
 </tr>
 <tr>
-<td align="center">:target-within</td>
-<td align="center">内部锚点元素处于激活状态的<code>元素</code></td>
-<td align="center">4</td>
+<td style="text-align:center">:target-within</td>
+<td style="text-align:center">内部锚点元素处于激活状态的<code>元素</code></td>
+<td style="text-align:center">4</td>
 </tr>
 <tr>
-<td align="center">:focus-within</td>
-<td align="center">内部表单元素处于聚焦状态的<code>元素</code></td>
-<td align="center">4</td>
+<td style="text-align:center">:focus-within</td>
+<td style="text-align:center">内部表单元素处于聚焦状态的<code>元素</code></td>
+<td style="text-align:center">4</td>
 </tr>
 <tr>
-<td align="center">:focus-visible</td>
-<td align="center">输入聚焦的<code>表单元素</code></td>
-<td align="center">4</td>
+<td style="text-align:center">:focus-visible</td>
+<td style="text-align:center">输入聚焦的<code>表单元素</code></td>
+<td style="text-align:center">4</td>
 </tr>
 <tr>
-<td align="center">:blank</td>
-<td align="center">输入为空</td>
-<td align="center">4</td>
+<td style="text-align:center">:blank</td>
+<td style="text-align:center">输入为空</td>
+<td style="text-align:center">4</td>
 </tr>
 <tr>
-<td align="center">:user-invalid</td>
-<td align="center">输入合法</td>
-<td align="center">4</td>
+<td style="text-align:center">:user-invalid</td>
+<td style="text-align:center">输入合法</td>
+<td style="text-align:center">4</td>
 </tr>
 <tr>
-<td align="center">:indeterminate</td>
-<td align="center">选项未定</td>
-<td align="center">4</td>
+<td style="text-align:center">:indeterminate</td>
+<td style="text-align:center">选项未定</td>
+<td style="text-align:center">4</td>
 </tr>
 <tr>
-<td align="center">:placeholder-shown</td>
-<td align="center">占位显示</td>
-<td align="center">4</td>
+<td style="text-align:center">:placeholder-shown</td>
+<td style="text-align:center">占位显示</td>
+<td style="text-align:center">4</td>
 </tr>
 <tr>
-<td align="center">:current()</td>
-<td align="center">浏览中</td>
-<td align="center">4</td>
+<td style="text-align:center">:current()</td>
+<td style="text-align:center">浏览中</td>
+<td style="text-align:center">4</td>
 </tr>
 <tr>
-<td align="center">:past()</td>
-<td align="center">已浏览</td>
-<td align="center">4</td>
+<td style="text-align:center">:past()</td>
+<td style="text-align:center">已浏览</td>
+<td style="text-align:center">4</td>
 </tr>
 <tr>
-<td align="center">:future()</td>
-<td align="center">未浏览</td>
-<td align="center">4</td>
+<td style="text-align:center">:future()</td>
+<td style="text-align:center">未浏览</td>
+<td style="text-align:center">4</td>
 </tr>
 <tr>
-<td align="center">:playing</td>
-<td align="center">开始播放</td>
-<td align="center">4</td>
+<td style="text-align:center">:playing</td>
+<td style="text-align:center">开始播放</td>
+<td style="text-align:center">4</td>
 </tr>
 <tr>
-<td align="center">:paused</td>
-<td align="center">暂定播放</td>
-<td align="center">4</td>
+<td style="text-align:center">:paused</td>
+<td style="text-align:center">暂定播放</td>
+<td style="text-align:center">4</td>
 </tr>
 <tr>
-<td align="center"><strong>属性选择器</strong></td>
-<td align="center"></td>
-<td align="center"></td>
+<td style="text-align:center"><strong>属性选择器</strong></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center">[attr]</td>
-<td align="center">指定属性的<code>元素</code></td>
-<td align="center">2</td>
+<td style="text-align:center">[attr]</td>
+<td style="text-align:center">指定属性的<code>元素</code></td>
+<td style="text-align:center">2</td>
 </tr>
 <tr>
-<td align="center">[attr=val]</td>
-<td align="center">属性等于指定值的<code>元素</code></td>
-<td align="center">2</td>
+<td style="text-align:center">[attr=val]</td>
+<td style="text-align:center">属性等于指定值的<code>元素</code></td>
+<td style="text-align:center">2</td>
 </tr>
 <tr>
-<td align="center">[attr*=val]</td>
-<td align="center">属性包含指定值的<code>元素</code></td>
-<td align="center">2</td>
+<td style="text-align:center">[attr*=val]</td>
+<td style="text-align:center">属性包含指定值的<code>元素</code></td>
+<td style="text-align:center">2</td>
 </tr>
 <tr>
-<td align="center">[attr^=val]</td>
-<td align="center">属性以指定值开头的<code>元素</code></td>
-<td align="center">2</td>
+<td style="text-align:center">[attr^=val]</td>
+<td style="text-align:center">属性以指定值开头的<code>元素</code></td>
+<td style="text-align:center">2</td>
 </tr>
 <tr>
-<td align="center">[attr$=val]</td>
-<td align="center">属性以指定值结尾的<code>元素</code></td>
-<td align="center">2</td>
+<td style="text-align:center">[attr$=val]</td>
+<td style="text-align:center">属性以指定值结尾的<code>元素</code></td>
+<td style="text-align:center">2</td>
 </tr>
 <tr>
-<td align="center">[attr~=val]</td>
-<td align="center">属性包含指定值(完整单词)的<code>元素</code>(不推荐)</td>
-<td align="center">2</td>
+<td style="text-align:center">[attr~=val]</td>
+<td style="text-align:center">属性包含指定值(完整单词)的<code>元素</code>(不推荐)</td>
+<td style="text-align:center">2</td>
 </tr>
 <tr>
-<td align="center">[att</td>
-<td align="center">r=val]</td>
-<td align="center">属性以指定值(完整单词)开头的<code>元素</code>(不推荐)</td>
+<td style="text-align:center">[att</td>
+<td style="text-align:center">r=val]</td>
+<td style="text-align:center">属性以指定值(完整单词)开头的<code>元素</code>(不推荐)</td>
+<td>2</td>
 </tr>
 <tr>
-<td align="center"><strong>伪元素</strong></td>
-<td align="center"></td>
-<td align="center"></td>
+<td style="text-align:center"><strong>伪元素</strong></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center">::first-letter</td>
-<td align="center">元素的首字母，可实现首字母下沉等</td>
-<td align="center">1</td>
+<td style="text-align:center">::first-letter</td>
+<td style="text-align:center">元素的首字母，可实现首字母下沉等</td>
+<td style="text-align:center">1</td>
 </tr>
 <tr>
-<td align="center">::first-line</td>
-<td align="center">元素的<code>首行</code></td>
-<td align="center">1</td>
+<td style="text-align:center">::first-line</td>
+<td style="text-align:center">元素的<code>首行</code></td>
+<td style="text-align:center">1</td>
 </tr>
 <tr>
-<td align="center">::before</td>
-<td align="center">在元素前插入的<code>内容</code></td>
-<td align="center">2</td>
+<td style="text-align:center">::before</td>
+<td style="text-align:center">在元素前插入的<code>内容</code></td>
+<td style="text-align:center">2</td>
 </tr>
 <tr>
-<td align="center">::after</td>
-<td align="center">在元素后插入的<code>内容</code></td>
-<td align="center">2</td>
+<td style="text-align:center">::after</td>
+<td style="text-align:center">在元素后插入的<code>内容</code></td>
+<td style="text-align:center">2</td>
 </tr>
 <tr>
-<td align="center">::selection</td>
-<td align="center">鼠标选中的<code>元素</code></td>
-<td align="center">3</td>
+<td style="text-align:center">::selection</td>
+<td style="text-align:center">鼠标选中的<code>元素</code></td>
+<td style="text-align:center">3</td>
 </tr>
 <tr>
-<td align="center">::backdrop</td>
-<td align="center">全屏模式的<code>元素</code></td>
-<td align="center">4</td>
+<td style="text-align:center">::backdrop</td>
+<td style="text-align:center">全屏模式的<code>元素</code></td>
+<td style="text-align:center">4</td>
 </tr>
 <tr>
-<td align="center">::placeholder</td>
-<td align="center">表单元素的<code>占位</code></td>
-<td align="center">4</td>
+<td style="text-align:center">::placeholder</td>
+<td style="text-align:center">表单元素的<code>占位</code></td>
+<td style="text-align:center">4</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p><strong>有时候可以通过选择器在 css 层面就可以解决一下逻辑样式问题。</strong><br>**</p>
-<h3 id="自定义属性–"><a href="#自定义属性–" class="headerlink" title="自定义属性–"></a>自定义属性–</h3><blockquote>
-<p>带有前缀–的属性名，比如–example–name，表示的是带有值的自定义属性，其可以通过 var 函数在全文档范围内复用的。</p>
+<h3 id="自定义属性—"><a href="#自定义属性—" class="headerlink" title="自定义属性—"></a>自定义属性—</h3><blockquote>
+<p>带有前缀—的属性名，比如—example—name，表示的是带有值的自定义属性，其可以通过 var 函数在全文档范围内复用的。</p>
 </blockquote>
-<h4 id=""><a href="#" class="headerlink" title=""></a></h4><h4 id="用法："><a href="#用法：" class="headerlink" title="用法："></a>用法：</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">  <span class="attribute">--first-color</span>: <span class="number">#488cff</span>;</span><br><span class="line">  <span class="attribute">--second-color</span>: <span class="number">#ffff8c</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#firstParagraph</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">var</span>(--first-color);</span><br><span class="line">  <span class="attribute">color</span>: <span class="built_in">var</span>(--second-color);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h3 id=""><a href="#" class="headerlink" title="#"></a>#</h3><h4 id="用法："><a href="#用法：" class="headerlink" title="用法："></a>用法：</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">  <span class="attribute">--first-color</span>: <span class="number">#488cff</span>;</span><br><span class="line">  <span class="attribute">--second-color</span>: <span class="number">#ffff8c</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#firstParagraph</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">var</span>(--first-color);</span><br><span class="line">  <span class="attribute">color</span>: <span class="built_in">var</span>(--second-color);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="实践："><a href="#实践：" class="headerlink" title="实践："></a>实践：</h4><p>在需要多个同级子元素且不同样式时可以对其进行设置，可以减少冗余代码。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;strip-loading&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">style</span>=<span class="string">&quot;--line-index: 1;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">style</span>=<span class="string">&quot;--line-index: 2;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">style</span>=<span class="string">&quot;--line-index: 3;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">style</span>=<span class="string">&quot;--line-index: 4;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">style</span>=<span class="string">&quot;--line-index: 5;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">style</span>=<span class="string">&quot;--line-index: 6;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">li &#123; --time: calc((var(--line-index) - 1) * 200ms); border-radius: 3px; width:</span><br><span class="line">6px; height: 30px; background-color: #f66; animation: beat 1.5s ease-in-out</span><br><span class="line">var(--time) infinite; &amp; + li &#123; margin-left: 5px; &#125; &#125;</span><br></pre></td></tr></table></figure>
-
 <p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6908879198933221383#heading-12">8 个硬核技巧带你迅速提升 CSS 技术 ｜ 掘金直播总结</a>，<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS">CSS（层叠样式表）</a></p>
 
         </div>

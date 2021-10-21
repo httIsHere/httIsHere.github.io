@@ -223,7 +223,7 @@
 
         <div class="post-content">
             <p>链接是 HTML 中的一种机制，它是 HTML 文档和其它文档或者资源的连接关系，在 HTML 中，链接有两种类型。一种是超链接型标签，一种是外部资源链接。</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/250093/1620270517981-020e14be-3c75-4002-bc3b-53dda82085dd.png#align=left&display=inline&height=1100&margin=%5Bobject%20Object%5D&originHeight=1100&originWidth=702&size=0&status=done&style=none&width=702"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/250093/1620270517981-020e14be-3c75-4002-bc3b-53dda82085dd.png#align=left&amp;display=inline&amp;height=1100&amp;margin=%5Bobject%20Object%5D&amp;originHeight=1100&amp;originWidth=702&amp;size=0&amp;status=done&amp;style=none&amp;width=702" alt=""></p>
 <h3 id="link-标签"><a href="#link-标签" class="headerlink" title="link 标签"></a>link 标签</h3><p>HTML 标准并没有规定浏览器如何使用元信息，我们还讲到了元信息中有不少是被设计成“无需被浏览器识别，而是专门用于搜索引擎看的”。</p>
 <p>link 标签也是元信息的一种，在很多时候，它也是不会对浏览器产生任何效果的。</p>
 <p>link 标签会生成一个链接，它可能生成超链接，也可能生成外部资源链接。</p>
@@ -259,13 +259,11 @@
 <li>modulepreload 型的 link：作用是预先加载一个 JavaScript 的模块，可以保证 JS 模块不必等到执行时才加载（完成下载并放入内存，并不会执行对应的 JavaScript）。</li>
 </ul>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;modulepreload&quot;</span> <span class="attr">href</span>=<span class="string">&quot;app.js&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;modulepreload&quot;</span> <span class="attr">href</span>=<span class="string">&quot;helpers.js&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;modulepreload&quot;</span> <span class="attr">href</span>=<span class="string">&quot;irc.js&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;modulepreload&quot;</span> <span class="attr">href</span>=<span class="string">&quot;fog-machine.js&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;module&quot;</span> <span class="attr">src</span>=<span class="string">&quot;app.js&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>假设 app.js 中有 import “irc” 和 import “fog-machine”, 而 irc.js 中有 import “helpers”。这段代码使用 moduleload 型 link 来预加载了四个 js 模块。通过加入对四个 JS 文件的 link 标签，使得四个 JS 文件有机会被并行地下载，这样提高了性能。</li>
 <li>stylesheet 型 link：基本用法是从一个 CSS 文件创建一个样式表，type 属性可以没有，如果有，必须是”text/css”才会生效。</li>
 </ul>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;xxx.css&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>pingback 型 link：表示本网页被引用时，应该使用的 pingback 地址，这个机制是一份独立的标准，遵守 pingback 协议的网站在引用本页面时，会向这个 pingback url 发送一个消息。</li>
 </ul>

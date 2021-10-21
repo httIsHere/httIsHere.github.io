@@ -164,15 +164,13 @@
 <p>记录日常问题</p>
 </blockquote>
 <a id="more"></a>
-
 <blockquote>
 <p><code>offsetTop</code>：元素到 offsetParent 顶部的距离。<br><code>offsetParent</code>：距离元素最近的一个具有定位的祖宗元素（relative，absolute，fixed），若祖宗都不符合条件，offsetParent 为 body。</p>
 </blockquote>
 <p><code>offsetTop</code>和<code>offsetLeft</code>与<code>offsetParent</code><strong>有关</strong>。</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2020/jpeg/250093/1604374248679-1a051cdd-7d6d-4888-ba8a-5af9ace6a41b.jpeg#align=left&display=inline&height=474&margin=%5Bobject%20Object%5D&name=&originHeight=474&originWidth=797&size=0&status=done&style=none&width=797"><br>所以一旦有具有定位的祖宗元素，则当前元素获取到的<code>offsetTop</code>就会偏小。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/jpeg/250093/1604374248679-1a051cdd-7d6d-4888-ba8a-5af9ace6a41b.jpeg#align=left&amp;display=inline&amp;height=474&amp;margin=%5Bobject%20Object%5D&amp;name=&amp;originHeight=474&amp;originWidth=797&amp;size=0&amp;status=done&amp;style=none&amp;width=797" alt=""><br>所以一旦有具有定位的祖宗元素，则当前元素获取到的<code>offsetTop</code>就会偏小。</p>
 <p>为了获取正确的元素距离顶部的有效距离，需要对 offsetParent 的 offsetTop 进行计算，如果当前元素有 offsetParent 则当前元素的 offsetTop 为其 offsetTop 加上它的 offsetParent 的 offsetTop，如果 offsetParent 还有它 offsetParent 则需要一直逐级向上查询，直到 body。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">elemOffsetY</span>(<span class="params">elem</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> elem.offsetParent</span><br><span class="line">    ? elem.offsetTop + elemOffsetY(elem.offsetParent)</span><br><span class="line">    : elem.offsetTop;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/jinxi1112/article/details/90692484">关于 offsetTop 的理解</a></p>
 
         </div>

@@ -161,9 +161,8 @@
 
         <div class="post-content">
             <a id="more"></a>
-
 <p>情况 1：普通页面，canvas 绘制，正常，生成图片正常；</p>
-<p>情况 2：自定义组件引用 canvas 绘制，空白；<br>原因：查看文档，在自定义组件内需要手动传入当前实例的 this，否则 canvas 指向的 this 为父组件所以无法找到正确 canvas；<br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1574740757955-44eee736-554f-4bb3-a6a9-9cb1f1bc6e1f.png#align=left&display=inline&height=351&margin=%5Bobject%20Object%5D&name=image.png&originHeight=351&originWidth=885&size=39059&status=done&style=none&width=885" alt="image.png"></p>
+<p>情况 2：自定义组件引用 canvas 绘制，空白；<br>原因：查看文档，在自定义组件内需要手动传入当前实例的 this，否则 canvas 指向的 this 为父组件所以无法找到正确 canvas；<br><img src="https://cdn.nlark.com/yuque/0/2019/png/250093/1574740757955-44eee736-554f-4bb3-a6a9-9cb1f1bc6e1f.png#align=left&amp;display=inline&amp;height=351&amp;margin=%5Bobject%20Object%5D&amp;name=image.png&amp;originHeight=351&amp;originWidth=885&amp;size=39059&amp;status=done&amp;style=none&amp;width=885" alt="image.png"></p>
 <p>情况 3：自定义组件内，canvas 绘制好了，但是<code>canvasToTempFilePath</code>报 fail canvas is empty 错误；<br>原因：同上，但是 canvasToTempFilePath({}, this)添加 this 可能无法解决，因为我使用的小程序框架是 Taro，在 Taro 的页面和组件类中，this 指向的是 Taro 页面或组件实例。<br>所以一般我们需要获取 Taro 的页面和组件所对应的小程序原生页面和组件实例，这个时候我们可以通过 this.$scope 访问到它们；<br>所以最后写成：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Taro.createCanvasContext(<span class="string">&quot;canvas-id&quot;</span>, <span class="built_in">this</span>.$scope);</span><br><span class="line">Taro.canvasToTempFilePath(&#123;&#125;, <span class="built_in">this</span>.$scope);</span><br></pre></td></tr></table></figure>
 

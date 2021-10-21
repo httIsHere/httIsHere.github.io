@@ -161,10 +161,8 @@
 
         <div class="post-content">
             <a id="more"></a>
-
 <p>页面内有一句时间的语句：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> start_time = <span class="keyword">new</span> <span class="built_in">Date</span>(</span><br><span class="line">  <span class="string">`<span class="subst">$&#123;item.teacher_schedule.date&#125;</span> <span class="subst">$&#123;item.teacher_schedule.begin_at&#125;</span>`</span></span><br><span class="line">).getTime();</span><br></pre></td></tr></table></figure>
-
 <p>其中<code>item.teacher_schedule.date</code>的格式是<code>&#39;2020-08-14&#39;</code>，在 Safari 内会出现 Invalid Date，需要转换成<code>&#39;2020/08/14&#39;</code>的形式。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> start_time = <span class="keyword">new</span> <span class="built_in">Date</span>(</span><br><span class="line">  <span class="string">`<span class="subst">$&#123;item.teacher_schedule.date.replace(<span class="regexp">/-/g</span>, <span class="string">&quot;/&quot;</span>)&#125;</span> <span class="subst">$&#123;</span></span></span><br><span class="line"><span class="string"><span class="subst">    item.teacher_schedule.begin_at</span></span></span><br><span class="line"><span class="string"><span class="subst">  &#125;</span>`</span></span><br><span class="line">).getTime();</span><br></pre></td></tr></table></figure>
 

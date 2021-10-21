@@ -155,11 +155,9 @@
         <div class="post-content">
             <p>1、点击导致自动轮播停止：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">autoplay: &#123;</span><br><span class="line">  disableOnInteraction: false, &#x2F;&#x2F;手动滑动之后不打断播放</span><br><span class="line">  delay: 2000</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-
 <p>2、循环轮播（需要继续左滑至第一张，非返回第一张）</p>
 <p>条件：需要在 html 和图片加载完之后进行 swiper 初始化；</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var swiper &#x3D; new Swiper(&quot;.swiper-container&quot;, &#123;</span><br><span class="line">                loop: true,</span><br><span class="line">                slidesPerView: &quot;auto&quot;,</span><br><span class="line">                &#x2F;&#x2F; loopedSlides: _this.bannerList.length,</span><br><span class="line">                speed: 300,</span><br><span class="line">                autoplay: &#123;</span><br><span class="line">                  disableOnInteraction: false, &#x2F;&#x2F;手动滑动之后不打断播放</span><br><span class="line">                  delay: 2000</span><br><span class="line">                &#125;,</span><br><span class="line">                observer: true, &#x2F;&#x2F;监听，当改变swiper的样式（例如隐藏&#x2F;显示）或者修改swiper的子元素时，自动初始化swiper。</span><br><span class="line">                pagination: &#123;</span><br><span class="line">                  el: &quot;.swiper-pagination&quot;</span><br><span class="line">                &#125;</span><br><span class="line">              &#125;);</span><br></pre></td></tr></table></figure>
-
 <p>问题：会产生空白页（由于懒加载，去掉图片的懒加载就好了）。</p>
 
         </div>

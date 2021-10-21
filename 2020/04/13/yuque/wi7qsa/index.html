@@ -153,7 +153,7 @@
         </header>
 
         <div class="post-content">
-            <p><img src="https://cdn.nlark.com/yuque/0/2020/png/250093/1586762618421-4b4d86d0-4c18-444e-97be-73a9ff5fc5a2.png#align=left&display=inline&height=81&margin=%5Bobject%20Object%5D&originHeight=81&originWidth=199&size=0&status=done&style=none&width=199"></p>
+            <p><img src="https://cdn.nlark.com/yuque/0/2020/png/250093/1586762618421-4b4d86d0-4c18-444e-97be-73a9ff5fc5a2.png#align=left&amp;display=inline&amp;height=81&amp;margin=%5Bobject%20Object%5D&amp;originHeight=81&amp;originWidth=199&amp;size=0&amp;status=done&amp;style=none&amp;width=199" alt=""></p>
 <blockquote>
 <p>特性：变量、Mixin、函数。</p>
 </blockquote>
@@ -161,10 +161,10 @@
 <li>循环类名</li>
 </ol>
 <figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义循环函数</span></span><br><span class="line"><span class="selector-class">.part-title-loop</span>(<span class="variable">@n</span>, <span class="variable">@i</span>: <span class="number">0</span>) <span class="keyword">when</span> (<span class="variable">@i</span> &lt; <span class="variable">@n</span>) &#123;</span><br><span class="line">  <span class="selector-class">.part-title-</span><span class="variable">@&#123;i&#125;</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: url(<span class="string">&quot;.../trial-part-title_@&#123;i&#125;.png&quot;</span>);</span><br><span class="line">    <span class="attribute">background-size</span>: <span class="number">100%</span> <span class="number">100%</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.part-title-loop</span>(<span class="variable">@i</span>+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.part-box</span> &#123;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">0.64rem</span>;</span><br><span class="line">  <span class="selector-class">.part-title</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">12.16rem</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">1.365rem</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span> auto <span class="number">1.344rem</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 调用循环函数</span></span><br><span class="line">  <span class="selector-class">.part-title-loop</span>(<span class="number">8</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
+<ol>
 <li>使用兄弟选择器时如果采用嵌套写法可能会有问题，所以最好写在外层。</li>
 </ol>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -172,15 +172,17 @@
 <th></th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td></td>
 <td></td>
 </tr>
 <tr>
 <td></td>
-<td></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 
         </div>
 

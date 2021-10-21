@@ -226,10 +226,9 @@
 <h4 id="Member（成员访问）"><a href="#Member（成员访问）" class="headerlink" title="Member（成员访问）"></a>Member（成员访问）</h4><ul>
 <li>a.b</li>
 <li>a[b]</li>
-<li>foo<code>string</code><br><img src="https://gitee.com/httishere/blog-image/raw/master/img/Xnip2021-08-18_17-13-03.jpg#id=J2SD5&originHeight=284&originWidth=1068&originalType=binary%E2%88%B6=1&status=done&style=none"></li>
+<li>foo<code>string</code><br><img src="https://gitee.com/httishere/blog-image/raw/master/img/Xnip2021-08-18_17-13-03.jpg#id=J2SD5&amp;originHeight=284&amp;originWidth=1068&amp;originalType=binary∶=1&amp;status=done&amp;style=none" alt=""></li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">&quot;httishere&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">arguments</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo<span class="string">`hello <span class="subst">$&#123;a&#125;</span>`</span>;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>super.b</li>
 <li>Super[b]</li>
@@ -237,10 +236,9 @@
 <li>new Foo()</li>
 </ul>
 <h4 id="New"><a href="#New" class="headerlink" title="New"></a>New</h4><ul>
-<li>new Foo：优先级与上述的 new 不同，带括号的前面的 new 的优先级更高，即<code>new new Foo()</code>等价于<code>new (new Foo())</code> 而非<code>(new new Foo)()</code>。<br><img src="https://gitee.com/httishere/blog-image/raw/master/img/Xnip2021-08-18_17-26-20.jpg#id=z5XVi&originHeight=166&originWidth=532&originalType=binary%E2%88%B6=1&status=done&style=none"></li>
+<li>new Foo：优先级与上述的 new 不同，带括号的前面的 new 的优先级更高，即<code>new new Foo()</code>等价于<code>new (new Foo())</code> 而非<code>(new new Foo)()</code>。<br><img src="https://gitee.com/httishere/blog-image/raw/master/img/Xnip2021-08-18_17-26-20.jpg#id=z5XVi&amp;originHeight=166&amp;originWidth=532&amp;originalType=binary∶=1&amp;status=done&amp;style=none" alt=""></li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cls1</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(s);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cls2</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`cls2_<span class="subst">$&#123;s&#125;</span>`</span>);</span><br><span class="line">  <span class="keyword">return</span> cls1;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">new</span> <span class="keyword">new</span> cls2(<span class="string">&quot;httishere&quot;</span>)();</span><br></pre></td></tr></table></figure>
-
 <h4 id="Call"><a href="#Call" class="headerlink" title="Call"></a>Call</h4><ul>
 <li>foo()</li>
 <li>super()</li>
@@ -249,21 +247,19 @@
 </ul>
 <h4 id="右值表达式"><a href="#右值表达式" class="headerlink" title="右值表达式"></a>右值表达式</h4><ul>
 <li>a++</li>
-<li>a–</li>
+<li>a—</li>
 <li>++a</li>
-<li>–a</li>
+<li>—a</li>
 </ul>
 <h4 id="单目运算"><a href="#单目运算" class="headerlink" title="单目运算"></a>单目运算</h4><ul>
 <li>delete a</li>
 <li>void foo()：在 js 内<code>void</code>为运算符，将所有都变成 undefined，如果需要生成一个 undefined 值，可以使用<code>void 0</code>。<br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/void">void mdn</a></li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">let</span> btn = <span class="built_in">document</span>.createElement(<span class="string">&quot;button&quot;</span>);</span><br><span class="line">  <span class="built_in">document</span>.body.appendChild(btn);</span><br><span class="line">  btn.innerHTML = i;</span><br><span class="line">  <span class="keyword">void</span> (<span class="function"><span class="keyword">function</span> (<span class="params">i</span>) </span>&#123;</span><br><span class="line">    btn.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(i);</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;)(i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 实际上也可以使用以下用法</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">i</span>) </span>&#123;</span><br><span class="line">  btn.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;)(i);</span><br><span class="line"><span class="comment">// 但是，如果上一行代码末尾未加分号则会产生相应的问题</span></span><br><span class="line"><span class="comment">// 所以推荐使用void来执行立即执行函数</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>typeof a</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span>; <span class="comment">// &quot;object&quot;</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>+a</li>
 <li>-a</li>
@@ -275,7 +271,6 @@
 <li>指数运算，<code>**</code>：<code>2**3</code>即 2 的 3 次方，他是唯一的右结合运算符：</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2</span> ** (<span class="number">3</span> ** <span class="number">2</span>);</span><br><span class="line"><span class="comment">// 等价于</span></span><br><span class="line"><span class="number">2</span> ** (<span class="number">3</span> ** <span class="number">2</span>);</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>乘法类，<code>*, /, %</code></li>
 <li>加法类，<code>+, -</code></li>
