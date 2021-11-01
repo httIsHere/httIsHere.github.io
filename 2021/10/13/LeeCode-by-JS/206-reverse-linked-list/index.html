@@ -13,7 +13,7 @@
 
 
 
-<title>206.Reverse Linked List | HTTISHERE</title>
+<title>206.Reverse Linked List | HTTISHERE</title><meta name="robots" content="noindex">
 
 
 
@@ -226,7 +226,7 @@
 <p>Given the head of a singly linked list, reverse the list, and return the reversed list.</p>
 </blockquote>
 <p>翻转链表。</p>
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reverseList = <span class="function"><span class="keyword">function</span> (<span class="params">head</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!head || !head.next) <span class="keyword">return</span> head;</span><br><span class="line">  <span class="keyword">let</span> _head = head,</span><br><span class="line">    _next = head.next;</span><br><span class="line">  _head.next = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">while</span> (_next) &#123;</span><br><span class="line">    <span class="keyword">let</span> __next = _next.next; <span class="comment">// 记录下一个节点</span></span><br><span class="line">    <span class="comment">// 反转当前节点</span></span><br><span class="line">    _next.next = _head;</span><br><span class="line">    _head = _next;</span><br><span class="line">    _next = __next;</span><br><span class="line">    <span class="keyword">if</span> (!__next) &#123;</span><br><span class="line">      <span class="keyword">return</span> _head;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reverseList = <span class="function"><span class="keyword">function</span> (<span class="params">head</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!head || !head.next) <span class="keyword">return</span> head;</span><br><span class="line">  <span class="keyword">let</span> _head = head,</span><br><span class="line">    _next = head.next;</span><br><span class="line">  _head.next = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">while</span> (_next) &#123;</span><br><span class="line">    <span class="keyword">let</span> __next = _next.next; <span class="comment">// 记录下一个节点</span></span><br><span class="line">    <span class="comment">// 反转当前节点</span></span><br><span class="line">    _next.next = _head;</span><br><span class="line">    _head = _next;</span><br><span class="line">    _next = __next;</span><br><span class="line">    <span class="keyword">if</span> (!__next) &#123;</span><br><span class="line">      <span class="keyword">return</span> _head;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><!-- flag of hidden posts -->
         </div>
 
         
@@ -277,10 +277,6 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2021/10/13/LeeCode-by-JS/234-palindrome-linked-list/">234.palindrome-linked-list</a>
-            
-            
-            <a class="next" rel="next" href="/2021/10/13/LeeCode-by-JS/235-Lowest-Common-Ancestor-of-a-Binary-Search-Tree/">235.Lowest Common Ancestor of a Binary Search Tree</a>
             
         </section>
         

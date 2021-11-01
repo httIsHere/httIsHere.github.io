@@ -13,7 +13,7 @@
 
 
 
-<title>290.word-pattern | HTTISHERE</title><meta name="robots" content="noindex">
+<title>338.Counting Bits | HTTISHERE</title><meta name="robots" content="noindex">
 
 
 
@@ -40,6 +40,45 @@
 
     
     
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
         
     
 
@@ -197,7 +236,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">290.word-pattern</h1>
+            <h1 class="post-title">338.Counting Bits</h1>
             
                 <div class="post-meta">
                     
@@ -206,7 +245,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">2021/10/21&nbsp;&nbsp;14:50:02</a>
+                        Date: <a href="#">2021/11/01&nbsp;&nbsp;17:06:27</a>
                         </span>
                     
                     
@@ -223,17 +262,22 @@
 
         <div class="post-content">
             <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><blockquote>
-<p>Given a pattern and a string s, find if s follows the same pattern.</p>
-<p>Here follow means a full match, such that there is a bijection between a letter in pattern and a non-empty word in s.</p>
+<p>Given an integer n, return an array ans of length n + 1 such that for each i (0 &lt;= i &lt;= n), ans[i] is the number of 1’s in the binary representation of i.</p>
+<p>给定一个整数 n，返回一个长度为 n + 1 的数组 ans，使得对于每个 i (0 &lt;= i &lt;= n)，ans[i] 是 i 的二进制表示中 1 的数量。</p>
 </blockquote>
-<h3 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1</span></span><br><span class="line">Input: pattern = <span class="string">&quot;abba&quot;</span>, s = <span class="string">&quot;dog cat cat dog&quot;</span></span><br><span class="line">Output: <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2</span></span><br><span class="line">Input: pattern = <span class="string">&quot;abba&quot;</span>, s = <span class="string">&quot;dog cat cat fish&quot;</span></span><br><span class="line">Output: <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3</span></span><br><span class="line">Input: pattern = <span class="string">&quot;aaaa&quot;</span>, s = <span class="string">&quot;dog cat cat dog&quot;</span></span><br><span class="line">Output: <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 4</span></span><br><span class="line">Input: pattern = <span class="string">&quot;abba&quot;</span>, s = <span class="string">&quot;dog dog dog dog&quot;</span></span><br><span class="line">Output: <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>需要检查字符和单词之间的映射关系（条件是唯一1对1映射）。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> wordPattern = <span class="function"><span class="keyword">function</span>(<span class="params">pattern, s</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 和之前的字符映射类似</span></span><br><span class="line">    <span class="keyword">let</span> tep = &#123;&#125;, flag = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">let</span> _s = s.split(<span class="string">&#x27; &#x27;</span>);</span><br><span class="line">    <span class="keyword">if</span>(pattern.length !== _s.length) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; pattern.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(!tep[pattern[i]]) tep[pattern[i]] = _s[i];</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(tep[pattern[i]] !== _s[i]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="comment">// 检查是否存在映射关系</span></span><br><span class="line">        <span class="built_in">Object</span>.keys(tep).forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">if</span>(tep[item] === _s[i] &amp;&amp; item !== pattern[i]) &#123;</span><br><span class="line">                flag = <span class="literal">false</span>;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">if</span>(!flag) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Input: n = 2 </span><br><span class="line">Output: [0,1,1]</span><br><span class="line">Explanation:</span><br><span class="line">0 --&gt; 0 <span class="comment"># 0个1</span></span><br><span class="line">1 --&gt; 1 <span class="comment"># 1个1</span></span><br><span class="line">2 --&gt; 10 <span class="comment"># 1个1</span></span><br><span class="line"></span><br><span class="line">Input: n = 5</span><br><span class="line">Output: [0,1,1,2,1,2]</span><br><span class="line">Explanation:</span><br><span class="line">0 --&gt; 0 <span class="comment"># 0个1</span></span><br><span class="line">1 --&gt; 1 <span class="comment"># 1个1</span></span><br><span class="line">2 --&gt; 10 <span class="comment"># 1个1</span></span><br><span class="line">3 --&gt; 11 <span class="comment"># 2个1</span></span><br><span class="line">4 --&gt; 100 <span class="comment"># 1个1</span></span><br><span class="line">5 --&gt; 101 <span class="comment"># 2个1</span></span><br></pre></td></tr></table></figure>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><h4 id="amp-运算符（按位与）"><a href="#amp-运算符（按位与）" class="headerlink" title="&amp;运算符（按位与）"></a><code>&amp;</code>运算符（按位与）</h4><p>以特定的方式的方式组合操作数中对应的位 如果对应的位都为1，那么结果就是1， 如果任意一个位是0 则结果就是0。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1 &amp; 3的结果为1</span></span><br><span class="line">1的二进制表示为 0 0 0 0 0 0 1</span><br><span class="line">3的二进制表示为 0 0 0 0 0 1 1</span><br><span class="line">根据 &amp; 的规则 得到的结果为 0 0 0 0 0 0 0 1，十进制表示就是1</span><br></pre></td></tr></table></figure>
+<h4 id="n-1"><a href="#n-1" class="headerlink" title="n - 1"></a><code>n - 1</code></h4><p>一个二进制的数减1，就是将这个二进制<strong>最右边的那个1</strong>变成0，然后它后边的所有位置都变成1（即将最右边的那个1和后面的所有数反转）。</p>
+<p>举例：<code>0011 0100</code>，减1，(n-1)后变成：<code>0011 0011</code>。</p>
+<p>所以<code>n &amp; (n - 1)</code>会将有0的位置都变成0，所以就是在原来的基础上去掉了一个1（<strong>最右边的那个1</strong>）。</p>
+<p><code>0011 0100</code> &amp; <code>0011 0011</code> 即 <code>0011 0000</code>。</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> countBits = <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> count = <span class="number">0</span>, ans = [];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">let</span> j = i;</span><br><span class="line">        <span class="keyword">while</span>(j) &#123;</span><br><span class="line">            count++;</span><br><span class="line">            j &amp;= (j - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        ans.push(count);</span><br><span class="line">        count = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><blockquote>
 <p>Accepted</p>
-<p>36/36 cases passed (94 ms)</p>
-<p>Your runtime beats 30.47 % of javascript submissions</p>
-<p>Your memory usage beats 65.61 % of javascript submissions (38.5 MB)</p>
+<p>15/15 cases passed (92 ms)</p>
+<p>Your runtime beats 92.07 % of javascript submissions</p>
+<p>Your memory usage beats 44.7 % of javascript submissions (45.2 MB)</p>
 </blockquote>
 <!-- flag of hidden posts -->
         </div>
@@ -249,7 +293,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://httishere.github.io/2021/10/21/LeeCode-by-JS/290-word-pattern/">https://httishere.github.io/2021/10/21/LeeCode-by-JS/290-word-pattern/</a></span>
+                        <span><a href="https://httishere.github.io/2021/11/01/LeeCode-by-JS/338-Counting-Bits/">https://httishere.github.io/2021/11/01/LeeCode-by-JS/338-Counting-Bits/</a></span>
                     </p>
                 
                 
