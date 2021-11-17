@@ -3,9 +3,9 @@
   "yuqueConfig": {
     "baseUrl": "https://www.yuque.com/api/v2",
     "login": "httishere",
-    "mdNameFormat": "title",
+    "mdNameFormat": "slug",
     "token": "8Bw0MWHoOQwNR1g1O8OtyLz5P0wyFnj8rkqlmOcD",
-    "repo": "blog",
+    "repo": "running",
     "postPath": "source/_posts/yuque"
   },
   "version": "0.0.0",
@@ -27,8 +27,9 @@
     "hexo-generator-category": "^1.0.0",
     "hexo-generator-index": "^2.0.0",
     "hexo-generator-tag": "^1.0.0",
+    "hexo-hide-posts": "^0.1.1",
     "hexo-renderer-ejs": "^1.0.0",
-    "hexo-renderer-marked": "^3.3.0",
+    "hexo-renderer-kramed": "^0.1.4",
     "hexo-renderer-pug": "^1.0.0",
     "hexo-renderer-sass": "^0.4.0",
     "hexo-renderer-stylus": "^2.0.1",
@@ -37,6 +38,6 @@
   },
   "devDependencies": {
     "hexo-util": "^2.4.0",
-    "yuque-hexo": "^1.6.5"
+    "yuque-hexo": "^1.7.0"
   }
 }
