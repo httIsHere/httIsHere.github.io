@@ -13,7 +13,7 @@
 
 
 
-<title>LeeCode题解记录（JavaScript版） | HTTISHERE</title>
+<title>344.reverse-string | HTTISHERE</title><meta name="robots" content="noindex">
 
 
 
@@ -40,6 +40,45 @@
 
     
     
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
         
     
 
@@ -131,11 +170,73 @@
             <div class="container">
     
     
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
 
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">LeeCode题解记录（JavaScript版）</h1>
+            <h1 class="post-title">344.reverse-string</h1>
             
                 <div class="post-meta">
                     
@@ -144,7 +245,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">2021/10/13&nbsp;&nbsp;16:27:04</a>
+                        Date: <a href="#">2021/11/17&nbsp;&nbsp;15:45:46</a>
                         </span>
                     
                     
@@ -160,36 +261,20 @@
         </header>
 
         <div class="post-content">
-            <blockquote>
-<p><a target="_blank" rel="noopener" href="https://github.com/httIsHere/leecode-result">github地址</a></p>
+            <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><blockquote>
+<p>Write a function that reverses a string. The input string is given as an array of characters s.</p>
+<p>You must do this by modifying the input array in-place with O(1) extra memory.</p>
 </blockquote>
-<p><del>~</del><del>~</del> 2021.11 <del>~</del><del>~</del></p>
-<ul>
-<li><a href="/2021/11/01/LeeCode-by-JS/338-Counting-Bits/">[338] Counting Bits 位计算</a></li>
-<li><a href="/2021/11/02/LeeCode-by-JS/507-Perfect-Number/">[507] Perfect Number 完全数</a></li>
-<li><a href="/2021/11/17/LeeCode-by-JS/344-reverse-string">[344] Reverse String 反转字符串</a></li>
-</ul>
-<p><del>~</del><del>~</del> 2021.10 <del>~</del><del>~</del></p>
-<ul>
-<li><a href="234-palindrome-linked-list/">[234] palindrome linked list 回文链表</a></li>
-<li><a href="235-Lowest-Common-Ancestor-of-a-Binary-Search-Tree/">[235] Lowest Common Ancestor of a Binary Search Tree 二叉搜索树的最近公共祖先</a></li>
-<li><a href="237-Delete-Node-in-a-Linked-List/">[237] Delete Node in a Linked List 删除链表中的节点</a></li>
-<li><a href="242.valid-anagram/">[242] Valid Anagram 有效的字母异位词</a></li>
-<li><a href="257.Binary-Tree-Paths/">[257] Binary Tree Paths 二叉树所有路径</a></li>
-<li><a href="/2021/10/15/LeeCode-by-JS/258-Add-Digits/">[258] Add Digits 各位相加</a></li>
-<li><a href="/2021/10/15/LeeCode-by-JS/263-Ugly-Number/">[263] Ugly Number 丑数</a></li>
-<li><a href="/2021/10/18/LeeCode-by-JS/268-missing-number/">[268] Missing Number 消失的数</a></li>
-<li><a href="/2021/10/18/LeeCode-by-JS/278-first-bad-version/">[278] First Bad Version 第一个错误版本</a></li>
-<li><a href="/2021/10/21/LeeCode-by-JS/283-move-zeroes/">[283] Move Zeroes 移动零</a></li>
-<li><a href="/2021/10/21/LeeCode-by-JS/290-word-pattern/">[290] Word Pattern 单词规律</a></li>
-<li><a href="/2021/10/21/LeeCode-by-JS/292-nim-game/">[292] Nim Game Nim游戏</a></li>
-<li><a href="/2021/10/21/LeeCode-by-JS/326-power-of-three/">[326] Power of Three 3的指数次幂 (同[342] Power of Four)</a></li>
-</ul>
-<p><del>~</del><del>~</del> 2021.09 <del>~</del><del>~</del></p>
-<ul>
-<li><a href="206-reverse-linked-list/">[206] Reverse Linked List 翻转链表</a></li>
-</ul>
-
+<h3 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: s = [<span class="string">&quot;h&quot;</span>,<span class="string">&quot;e&quot;</span>,<span class="string">&quot;l&quot;</span>,<span class="string">&quot;l&quot;</span>,<span class="string">&quot;o&quot;</span>]</span><br><span class="line">Output: [<span class="string">&quot;o&quot;</span>,<span class="string">&quot;l&quot;</span>,<span class="string">&quot;l&quot;</span>,<span class="string">&quot;e&quot;</span>,<span class="string">&quot;h&quot;</span>]</span><br></pre></td></tr></table></figure>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>进行数组内的元素交换。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reverseString = <span class="function"><span class="keyword">function</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> n = <span class="built_in">Math</span>.floor(s.length / <span class="number">2</span>), l = s.length;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="keyword">let</span> temp = s[i];</span><br><span class="line">        s[i] = s[l - i - <span class="number">1</span>];</span><br><span class="line">        s[l - i - <span class="number">1</span>] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><blockquote>
+<p>Accepted</p>
+<p>477/477 cases passed (168 ms)</p>
+<p>Your runtime beats 15.06 % of javascript submissions</p>
+<p>Your memory usage beats 5.18 % of javascript submissions (50.4 MB)</p>
+</blockquote>
+<!-- flag of hidden posts -->
         </div>
 
         
@@ -203,7 +288,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://httishere.github.io/2021/10/13/LeeCode-by-JS/">https://httishere.github.io/2021/10/13/LeeCode-by-JS/</a></span>
+                        <span><a href="https://httishere.github.io/2021/11/17/LeeCode-by-JS/344-reverse-string/">https://httishere.github.io/2021/11/17/LeeCode-by-JS/344-reverse-string/</a></span>
                     </p>
                 
                 
@@ -240,8 +325,6 @@
         </section>
         <section class="post-nav">
             
-            
-            <a class="next" rel="next" href="/2021/10/12/yuque/ir6rqt/">「ROAD 6」浏览器原理-排版 & 渲染</a>
             
         </section>
         

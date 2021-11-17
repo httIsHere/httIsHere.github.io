@@ -1,0 +1,29 @@
+<hr>
+<p>title: 344.reverse-string<br>date: 2021-11-17 15:45:46<br>mathjax: true<br>tags:</p>
+<pre><code>- LeeCode
+</code></pre><p>categories: </p>
+<pre><code>- LeeCode
+</code></pre><p>hidden: true</p>
+<h2 id="cateHidden-false"><a href="#cateHidden-false" class="headerlink" title="cateHidden: false"></a>cateHidden: false</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><blockquote>
+<p>Write a function that reverses a string. The input string is given as an array of characters s.</p>
+<p>You must do this by modifying the input array in-place with O(1) extra memory.</p>
+</blockquote>
+<h3 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h3><pre><code class="lang-bash">Input: s = [&quot;h&quot;,&quot;e&quot;,&quot;l&quot;,&quot;l&quot;,&quot;o&quot;]
+Output: [&quot;o&quot;,&quot;l&quot;,&quot;l&quot;,&quot;e&quot;,&quot;h&quot;]
+</code></pre>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>进行数组内的元素交换。</p>
+<pre><code class="lang-js">var reverseString = function(s) {
+    let n = Math.floor(s.length / 2), l = s.length;
+    for(let i = 0; i &lt; n; i++) {
+        let temp = s[i];
+        s[i] = s[l - i - 1];
+        s[l - i - 1] = temp;
+    }
+};
+</code></pre>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><blockquote>
+<p>Accepted</p>
+<p>477/477 cases passed (168 ms)</p>
+<p>Your runtime beats 15.06 % of javascript submissions</p>
+<p>Your memory usage beats 5.18 % of javascript submissions (50.4 MB)</p>
+</blockquote>
