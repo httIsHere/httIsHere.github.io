@@ -1,0 +1,37 @@
+<hr>
+<p>title: 349.intersection-of-two-arrays<br>date: 2021-11-18 14:39:54<br>mathjax: true<br>tags:</p>
+<pre><code>- LeeCode
+</code></pre><p>categories: </p>
+<pre><code>- LeeCode
+</code></pre><p>hidden: true</p>
+<h2 id="cateHidden-false"><a href="#cateHidden-false" class="headerlink" title="cateHidden: false"></a>cateHidden: false</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><blockquote>
+<p>Given two integer arrays nums1 and nums2, return an array of their intersection.</p>
+<p>Each element in the result must be unique and you may return the result in any order.</p>
+</blockquote>
+<h3 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h3><pre><code class="lang-bash">Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]
+Output: [9,4]
+Explanation: [4,9] is also accepted.
+</code></pre>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>暴力循环。</p>
+<pre><code class="lang-js">var intersection = function(nums1, nums2) {
+    let intersection_arr = new Set(), result = [];
+    let set1 = new Set(nums1), set2 = new Set(nums2);
+    set1.forEach(n1 =&gt; {
+        set2.forEach(n2 =&gt; {
+            if(n1 === n2) {
+                intersection_arr.add(n1);
+            }
+        })
+    })
+    intersection_arr.forEach(n =&gt; {
+        result.push(n)
+    })
+    return result;
+};
+</code></pre>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><blockquote>
+<p>Accepted</p>
+<p>55/55 cases passed (100 ms)</p>
+<p>Your runtime beats 27.44 % of javascript submissions</p>
+<p>Your memory usage beats 42.4 % of javascript submissions (40.4 MB)</p>
+</blockquote>
