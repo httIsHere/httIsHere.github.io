@@ -16,7 +16,8 @@ top: true
 
 ~~~~~~~~~~ 2021.11 ~~~~~~~~~~
 
-- [[349] Intersection of Two Arrays 两个数组的交集](/2021/11/18/LeeCode-by-JS/349-intersection-of-two-arrays/)
+- [[367] Valid Perfect Square 有效完美平方数](/2021/11/19/LeeCode-by-JS/367-valid-perfect-square/)
+- [[349] Intersection of Two Arrays & [350] Intersection of Two Arrays II 两个数组的交集](/2021/11/18/LeeCode-by-JS/349-intersection-of-two-arrays/)
 - [[345] Reverse Vowels of a String 反转字符串内的元音字母](/2021/11/18/LeeCode-by-JS/345-reverse-vowels-of-a-string)
 - [[338] Counting Bits 位计算](/2021/11/01/LeeCode-by-JS/338-Counting-Bits/)
 - [[507] Perfect Number 完全数](/2021/11/02/LeeCode-by-JS/507-Perfect-Number/)
