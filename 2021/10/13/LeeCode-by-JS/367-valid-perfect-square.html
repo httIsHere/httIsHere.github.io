@@ -1,0 +1,31 @@
+<hr>
+<p>title: 367.valid-perfect-square<br>date: 2021-11-19 10:16:04<br>tags:</p>
+<pre><code>- LeeCode
+</code></pre><p>categories: </p>
+<pre><code>- LeeCode
+</code></pre><p>hidden: true</p>
+<h2 id="cateHidden-false"><a href="#cateHidden-false" class="headerlink" title="cateHidden: false"></a>cateHidden: false</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><blockquote>
+<p>Given a positive integer num, write a function which returns True if num is a perfect square else False.</p>
+<p>Follow up: Do not use any built-in library function such as sqrt.</p>
+</blockquote>
+<h3 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h3><pre><code class="lang-bash">Input: num = 16
+Output: true
+</code></pre>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>暴力循环。</p>
+<pre><code class="lang-js">var isPerfectSquare = function(num) {
+    if(num === 1) return true;
+    let n = Math.floor(num / 2);
+    for(let i = 1; i &lt;= n; i++) {
+        if(num === i * i) {
+            return true;
+        }
+    }
+    return false;
+};
+</code></pre>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><blockquote>
+<p>Accepted</p>
+<p>70/70 cases passed (1640 ms)</p>
+<p>Your runtime beats 19.81 % of javascript submissions</p>
+<p>Your memory usage beats 11.62 % of javascript submissions (39.1 MB)</p>
+</blockquote>
