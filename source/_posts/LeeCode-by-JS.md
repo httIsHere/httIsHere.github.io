@@ -16,6 +16,8 @@ top: true
 
 ~~~~~~~~~~ 2021.11 ~~~~~~~~~~
 
+- [[387] First Unique Character in a String 字符串中的第一个唯一字符](/2021/11/22/LeeCode-by-JS/387-first-unique-character-in-a-string/)
+- [[383] Ransom Note 赎金信](/2021/11/22/LeeCode-by-JS/383-ransom-note/)
 - [[367] Valid Perfect Square 有效完美平方数](/2021/11/19/LeeCode-by-JS/367-valid-perfect-square/)
 - [[349] Intersection of Two Arrays & [350] Intersection of Two Arrays II 两个数组的交集](/2021/11/18/LeeCode-by-JS/349-intersection-of-two-arrays/)
 - [[345] Reverse Vowels of a String 反转字符串内的元音字母](/2021/11/18/LeeCode-by-JS/345-reverse-vowels-of-a-string)
