@@ -13,7 +13,7 @@
 
 
 
-<title>前端训练目录 | HTTISHERE</title>
+<title>392.is-subsequence | HTTISHERE</title><meta name="robots" content="noindex">
 
 
 
@@ -40,6 +40,45 @@
 
     
     
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
         
     
 
@@ -131,11 +170,73 @@
             <div class="container">
     
     
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
 
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">前端训练目录</h1>
+            <h1 class="post-title">392.is-subsequence</h1>
             
                 <div class="post-meta">
                     
@@ -144,14 +245,14 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">2021/11/19&nbsp;&nbsp;16:40:36</a>
+                        Date: <a href="#">2021/11/23&nbsp;&nbsp;10:00:51</a>
                         </span>
                     
                     
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/">大前端</a>
+                                <a href="/categories/LeeCode/">LeeCode</a>
                             
                         </span>
                     
@@ -160,24 +261,21 @@
         </header>
 
         <div class="post-content">
-            <ul>
-<li><a href="/2021/03/08/yuque/snyrx5/">知识框架</a></li>
-<li><a href="/2021/08/16/yuque/genpz2/">编程语言通识与JavaScript语言设计</a><ul>
-<li><a href="/2021/08/19/yuque/whqse7/">词法类型</a></li>
-<li><a href="/2021/08/20/yuque/dpsto8/">表达式与类型转换</a></li>
-<li><a href="/2021/08/27/yuque/wkuzg2/">语句</a></li>
-<li><a href="/2021/08/27/yuque/arrmd9/">对象</a></li>
-<li><a href="/2021/09/01/yuque/un7o7p/">结构化程序设计</a></li>
-</ul>
-</li>
-<li><a href="/2021/09/27/yuque/yoo7gw/">浏览器原理</a><ul>
-<li><a href="/2021/09/27/yuque/hr55oy/">浏览器原理-HTML解析</a></li>
-<li><a href="/2021/09/28/yuque/ur0kri/">浏览器原理-CSS计算</a></li>
-<li><a href="/2021/10/12/yuque/ir6rqt/">浏览器原理-排版 &amp; 渲染</a></li>
-</ul>
-</li>
-</ul>
-
+            <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><blockquote>
+<p>Given two strings s and t, return true if s is a subsequence of t, or false otherwise.</p>
+<p>A subsequence of a string is a new string that is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (i.e., “ace” is a subsequence of “abcde” while “aec” is not).</p>
+</blockquote>
+<h3 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: s = <span class="string">&quot;abc&quot;</span>, t = <span class="string">&quot;ahbgdc&quot;</span></span><br><span class="line">Output: <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">Input: s = <span class="string">&quot;axc&quot;</span>, t = <span class="string">&quot;ahbgdc&quot;</span></span><br><span class="line">Output: <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>该题要比<a href="/2021/11/22/LeeCode-by-JS/383-ransom-note/">[383] Ransom Note 赎金信</a>多了严格顺序的要求。</p>
+<p>所以通过最后的索引位置进行判断。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> isSubsequence = <span class="function"><span class="keyword">function</span>(<span class="params">s, t</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> _s = <span class="number">0</span>; <span class="comment">// 索引</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; t.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(s[_s] === t[i]) &#123;</span><br><span class="line">                _s++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> _s &gt;= s.length;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><blockquote>
+<p>Accepted</p>
+<p>17/17 cases passed (89 ms)</p>
+<p>Your runtime beats 23.25 % of javascript submissions</p>
+<p>Your memory usage beats 68.04 % of javascript submissions (38.9 MB)</p>
+</blockquote>
+<!-- flag of hidden posts -->
         </div>
 
         
@@ -191,7 +289,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://httishere.github.io/2021/11/19/my-f-training/">https://httishere.github.io/2021/11/19/my-f-training/</a></span>
+                        <span><a href="https://httishere.github.io/2021/11/23/LeeCode-by-JS/392-is-subsequence/">https://httishere.github.io/2021/11/23/LeeCode-by-JS/392-is-subsequence/</a></span>
                     </p>
                 
                 
@@ -215,7 +313,7 @@
                 <span class="tag">
                     
                     
-                        <a href="/tags/ROAD-6/"># ROAD 6</a>
+                        <a href="/tags/LeeCode/"># LeeCode</a>
                     
                         
                 </span>
@@ -228,10 +326,6 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2021/12/03/JS-ba/birthday/"></a>
-            
-            
-            <a class="next" rel="next" href="/2021/10/13/LeeCode-by-JS/">LeeCode题解记录（JavaScript版）</a>
             
         </section>
         

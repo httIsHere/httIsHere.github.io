@@ -13,7 +13,7 @@
 
 
 
-<title>前端训练目录 | HTTISHERE</title>
+<title>HTTISHERE</title>
 
 
 
@@ -135,7 +135,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">前端训练目录</h1>
+            <h1 class="post-title"></h1>
             
                 <div class="post-meta">
                     
@@ -144,39 +144,41 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">2021/11/19&nbsp;&nbsp;16:40:36</a>
+                        Date: <a href="#">2021/12/03&nbsp;&nbsp;11:45:44</a>
                         </span>
                     
-                    
-                        <span class="post-category">
-                    Category:
-                            
-                                <a href="/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/">大前端</a>
-                            
-                        </span>
                     
                 </div>
             
         </header>
 
         <div class="post-content">
-            <ul>
-<li><a href="/2021/03/08/yuque/snyrx5/">知识框架</a></li>
-<li><a href="/2021/08/16/yuque/genpz2/">编程语言通识与JavaScript语言设计</a><ul>
-<li><a href="/2021/08/19/yuque/whqse7/">词法类型</a></li>
-<li><a href="/2021/08/20/yuque/dpsto8/">表达式与类型转换</a></li>
-<li><a href="/2021/08/27/yuque/wkuzg2/">语句</a></li>
-<li><a href="/2021/08/27/yuque/arrmd9/">对象</a></li>
-<li><a href="/2021/09/01/yuque/un7o7p/">结构化程序设计</a></li>
-</ul>
-</li>
-<li><a href="/2021/09/27/yuque/yoo7gw/">浏览器原理</a><ul>
-<li><a href="/2021/09/27/yuque/hr55oy/">浏览器原理-HTML解析</a></li>
-<li><a href="/2021/09/28/yuque/ur0kri/">浏览器原理-CSS计算</a></li>
-<li><a href="/2021/10/12/yuque/ir6rqt/">浏览器原理-排版 &amp; 渲染</a></li>
-</ul>
-</li>
-</ul>
+            /*
+ * @Author: httishere
+ * @Date: 2021-12-03 11:45:44
+ * @LastEditTime: 2021-12-03 15:14:54
+ * @LastEditors: Please set LastEditors
+ * @Description: 生日文案
+ * @FilePath: /hexo-yuque-blog/source/_posts/JS-ba/birthday.js
+ */
+function life(age) {
+  let alive = true, datetime = new Date();
+  function makeBirthdayCake() {
+    let args = [...arguments];
+    let bday_cake = args.join(", ");
+    return bday_cake;
+  }
+  if (alive && datetime.getMonth() + 1 === 12 && datetime.getDate() === 3) {
+    console.log(`我${age}啦！`)
+    age++;
+    makeBirthdayCake("flour", "eggs", "cream", "chocolate", "strawberry");
+    setTimeout(() => {
+      life(age)
+    }, 365 * 24 * 60 * 60 * 1000);
+  }
+}
+
+life(26); 
 
         </div>
 
@@ -191,7 +193,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://httishere.github.io/2021/11/19/my-f-training/">https://httishere.github.io/2021/11/19/my-f-training/</a></span>
+                        <span><a href="https://httishere.github.io/2021/12/03/JS-ba/birthday/">https://httishere.github.io/2021/12/03/JS-ba/birthday/</a></span>
                     </p>
                 
                 
@@ -214,10 +216,6 @@
                 <span>Tag(s):</span>
                 <span class="tag">
                     
-                    
-                        <a href="/tags/ROAD-6/"># ROAD 6</a>
-                    
-                        
                 </span>
             </div>
             <div>
@@ -228,10 +226,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2021/12/03/JS-ba/birthday/"></a>
             
-            
-            <a class="next" rel="next" href="/2021/10/13/LeeCode-by-JS/">LeeCode题解记录（JavaScript版）</a>
+            <a class="next" rel="next" href="/2021/11/19/my-f-training/">前端训练目录</a>
             
         </section>
         

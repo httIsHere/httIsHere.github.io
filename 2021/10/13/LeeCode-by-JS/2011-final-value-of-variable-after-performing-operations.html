@@ -1,0 +1,45 @@
+<hr>
+<p>title: 2011.final-value-of-variable-after-performing-operations<br>date: 2021-12-06 14:51:29<br>mathjax: true<br>tags:</p>
+<pre><code>- LeeCode
+</code></pre><p>categories: </p>
+<pre><code>- LeeCode
+</code></pre><p>hidden: true</p>
+<h2 id="cateHidden-false"><a href="#cateHidden-false" class="headerlink" title="cateHidden: false"></a>cateHidden: false</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><blockquote>
+<p>There is a programming language with only four operations and one variable X:</p>
+<pre><code>++X and X++ increments the value of the variable X by 1.
+--X and X-- decrements the value of the variable X by 1.
+</code></pre><p>Initially, the value of X is 0.</p>
+<p>Given an array of strings operations containing a list of operations, return the final value of X after performing all the operations.</p>
+</blockquote>
+<h3 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h3><pre><code class="lang-bash">Input: operations = [&quot;--X&quot;,&quot;X++&quot;,&quot;X++&quot;]
+Output: 1
+Explanation: The operations are performed as follows:
+Initially, X = 0.
+--X: X is decremented by 1, X =  0 - 1 = -1.
+X++: X is incremented by 1, X = -1 + 1 =  0.
+X++: X is incremented by 1, X =  0 + 1 =  1.
+</code></pre>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>不管是X—，—X还是X++，++X，只要判断中间字符的符号。</p>
+<pre><code class="lang-js">/**
+ * @param {string[]} operations
+ * @return {number}
+ */
+var finalValueAfterOperations = function(operations) {
+    let x = 0;
+    operations.forEach(item =&gt; {
+        if(item[1] === &#39;+&#39;) {
+            x++;
+        } else if(item[1] === &#39;-&#39;) {
+            x--;
+        }
+    });
+    console.log(x)
+    return x;
+};
+</code></pre>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><blockquote>
+<p>Accepted</p>
+<p>259/259 cases passed (88 ms)</p>
+<p>Your runtime beats 28.51 % of javascript submissions</p>
+<p>Your memory usage beats 11.51 % of javascript submissions (40.6 MB)</p>
+</blockquote>
