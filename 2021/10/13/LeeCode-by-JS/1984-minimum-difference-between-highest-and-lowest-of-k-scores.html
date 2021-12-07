@@ -1,0 +1,50 @@
+<hr>
+<p>title: 1984.minimum-difference-between-highest-and-lowest-of-k-scores<br>date: 2021-12-07 15:46:05<br>mathjax: true<br>tags:</p>
+<pre><code>- LeeCode
+</code></pre><p>categories: </p>
+<pre><code>- LeeCode
+</code></pre><p>hidden: true</p>
+<h2 id="cateHidden-false"><a href="#cateHidden-false" class="headerlink" title="cateHidden: false"></a>cateHidden: false</h2><h3 id="Descrption"><a href="#Descrption" class="headerlink" title="Descrption"></a>Descrption</h3><blockquote>
+<p>You are given a 0-indexed integer array nums, where nums[i] represents the score of the ith student. You are also given an integer k.</p>
+<p>Pick the scores of any k students from the array so that the difference between the highest and the lowest of the k scores is minimized.</p>
+<p>Return the minimum possible difference.</p>
+</blockquote>
+<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><pre><code class="lang-bash">Input: nums = [9,4,1,7], k = 2
+Output: 2
+Explanation: There are six ways to pick score(s) of two students:
+- [9,4,1,7]. The difference between the highest and lowest score is 9 - 4 = 5.
+- [9,4,1,7]. The difference between the highest and lowest score is 9 - 1 = 8.
+- [9,4,1,7]. The difference between the highest and lowest score is 9 - 7 = 2.
+- [9,4,1,7]. The difference between the highest and lowest score is 4 - 1 = 3.
+- [9,4,1,7]. The difference between the highest and lowest score is 7 - 4 = 3.
+- [9,4,1,7]. The difference between the highest and lowest score is 7 - 1 = 6.
+The minimum possible difference is 2.
+</code></pre>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p><strong><a href="https://leetcode.com/problems/minimum-difference-between-highest-and-lowest-of-k-scores/discuss/1612494/C%2B%2BororWell-commentedoror93-faster">参考解法</a></strong></p>
+<p>为了获取到最小的差，所以可以先对数组进行排序，那么目标范围选取是按照排序的顺序的范围内，只有同一区间内的最大和最小的差才可能是最小的。</p>
+<pre><code class="lang-js">/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var minimumDifference = function(nums, k) {
+    if(k &lt;= 1) return 0;
+    // select k students
+    let diff = -1, len = nums.length;
+    // 先排序, 不传参数，将不会按照数值大小排序，按照字符编码的顺序进行排序
+    nums.sort(function(a,b){
+        return a - b;
+    });
+    for(let i = 0; i + k &lt;= len; i++) {
+        let _diff = Math.abs(nums[i] - nums[i + k - 1]);
+        diff = diff === -1 ? _diff : (diff &lt; _diff ? diff : _diff);
+    }
+    return diff;
+};
+</code></pre>
+<h3 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h3><blockquote>
+<p>Accepted</p>
+<p>118/118 cases passed (176 ms)</p>
+<p>Your runtime beats 5.06 % of javascript submissions</p>
+<p>Your memory usage beats 11.39 % of javascript submissions (45.1 MB)</p>
+</blockquote>
