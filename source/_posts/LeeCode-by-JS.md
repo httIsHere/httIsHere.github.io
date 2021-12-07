@@ -13,9 +13,19 @@ top: true
 
 > [github地址](https://github.com/httIsHere/leecode-result)
 
+~~~~~~~~~~ 2021.12 ~~~~~~~~~~
+
+- [[1984] Minimum Difference Between Highest and Lowest of K Scores 学生分数的最小差值](/2021/12/07/LeeCode-by-JS/1984-minimum-difference-between-highest-and-lowest-of-k-scores/)
+- [[1991] Find the Middle Index in Array 寻找数组的中间位置](/2021/12/07/LeeCode-by-JS/1991-find-the-middle-index-in-array/)
+- [[1995] Count Special Quadruplets 统计特殊四元组](/2021/12/07/LeeCode-by-JS/1995-count-special-quadruplets/)
+- [[2000] Reverse Prefix of Word 反转单词前缀](/2021/12/06/LeeCode-by-JS/2000-reverse-prefix-of-word/)
+- [[2006] Count Number of Pairs With Absolute Difference K 差的绝对值为 K 的数对数目](/2021/12/06/LeeCode-by-JS/2006-count-number-of-pairs-with-absolute-difference-k/)
+- [[2011] Final Value of Variable After Performing Operations 执行操作后的最终变量值](/2021/12/06/LeeCode-by-JS/2011-final-value-of-variable-after-performing-operations/)
 
 ~~~~~~~~~~ 2021.11 ~~~~~~~~~~
 
+- [[392] Is Subsequence 是否子序列](/2021/11/23/LeeCode-by-JS/392-is-subsequence/)
+- [[389] Find the Difference 寻找不同](/2021/11/23/LeeCode-by-JS/389-find-the-difference/)
 - [[387] First Unique Character in a String 字符串中的第一个唯一字符](/2021/11/22/LeeCode-by-JS/387-first-unique-character-in-a-string/)
 - [[383] Ransom Note 赎金信](/2021/11/22/LeeCode-by-JS/383-ransom-note/)
 - [[367] Valid Perfect Square 有效完美平方数](/2021/11/19/LeeCode-by-JS/367-valid-perfect-square/)
