@@ -13,7 +13,7 @@
 
 
 
-<title>「ROAD 6」 前端训练目录 | HTTISHERE</title>
+<title>「ROAD 6」CSS-动画 | HTTISHERE</title>
 
 
 
@@ -131,11 +131,73 @@
             <div class="container">
     
     
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
 
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">「ROAD 6」 前端训练目录</h1>
+            <h1 class="post-title">「ROAD 6」CSS-动画</h1>
             
                 <div class="post-meta">
                     
@@ -144,7 +206,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">2021/11/19&nbsp;&nbsp;16:40:36</a>
+                        Date: <a href="#">2021/12/17&nbsp;&nbsp;10:54:13</a>
                         </span>
                     
                     
@@ -160,30 +222,36 @@
         </header>
 
         <div class="post-content">
-            <ul>
-<li><a href="/2021/03/08/yuque/snyrx5/">知识框架</a></li>
-<li><a href="/2021/08/16/yuque/genpz2/">编程语言通识与JavaScript语言设计</a><ul>
-<li><a href="/2021/08/19/yuque/whqse7/">词法类型</a></li>
-<li><a href="/2021/08/20/yuque/dpsto8/">表达式与类型转换</a></li>
-<li><a href="/2021/08/27/yuque/wkuzg2/">语句</a></li>
-<li><a href="/2021/08/27/yuque/arrmd9/">对象</a></li>
-<li><a href="/2021/09/01/yuque/un7o7p/">结构化程序设计</a></li>
+            <h2 id="Animation"><a href="#Animation" class="headerlink" title="Animation"></a>Animation</h2><ul>
+<li><a href="/keyframes">@keyframes </a> （关键帧）定义</li>
+<li>animation 使用</li>
 </ul>
-</li>
-<li><a href="/2021/09/27/yuque/yoo7gw/">浏览器原理</a><ul>
-<li><a href="/2021/09/27/yuque/hr55oy/">浏览器原理-HTML解析</a></li>
-<li><a href="/2021/09/28/yuque/ur0kri/">浏览器原理-CSS计算</a></li>
-<li><a href="/2021/10/12/yuque/ir6rqt/">浏览器原理-排版 &amp; 渲染</a></li>
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><ul>
+<li>animation-name: none（时间曲线）；</li>
+<li>animation-duration: 0s（动画时长）；</li>
+<li>animation-timing-function: ease（动画的时间曲线，<code>[cubic-bezier](https://cubic-bezier.com/#.17,.67,.83,.67)</code>）；</li>
+<li>animation-delay: 0s（动画开始前的延迟）；</li>
+<li>animation-iteration-count: 1（动画的播放次数）；</li>
+<li>animation-direction: normal（动画的方向）；</li>
+<li>animation-fill-mode: none；</li>
+<li>animation-play-state: running；</li>
 </ul>
-</li>
-<li>重学CSS<ul>
-<li><a href="/2021/12/13/yuque/gh2gze/">重学CSS-知识体系</a></li>
-<li><a href="/2021/12/13/yuque/nmonw0/">重学CSS-语法知识</a></li>
-<li><a href="/2021/12/14/yuque/vzq7do/">重学CSS-CSS排版</a></li>
-<li><a href="/2021/12/17/yuque/qvtbgk/">重学CSS-CSS动画</a></li>
+<h4 id="cubic-bezier-https-cubic-bezier-com-34-74-86-59"><a href="#cubic-bezier-https-cubic-bezier-com-34-74-86-59" class="headerlink" title="[cubic-bezier](https://cubic-bezier.com/#.34,.74,.86,.59)"></a><code>[cubic-bezier](https://cubic-bezier.com/#.34,.74,.86,.59)</code></h4><ul>
+<li>ease（推荐）</li>
+<li>linear</li>
+<li>ease-in</li>
+<li>ease-out</li>
+<li>ease-in-out</li>
 </ul>
-</li>
-<li><a href="/2021/12/20/yuque/iclyhn/">重学HTML</a></li>
+<h2 id="渲染与颜色"><a href="#渲染与颜色" class="headerlink" title="渲染与颜色"></a>渲染与颜色</h2><ul>
+<li>hsl</li>
+<li>rgb</li>
+</ul>
+<h2 id="形状"><a href="#形状" class="headerlink" title="形状"></a>形状</h2><ul>
+<li>border</li>
+<li>box-shadow</li>
+<li>border-radius</li>
+<li>data uri + svg</li>
 </ul>
 
         </div>
@@ -199,7 +267,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://httishere.github.io/2021/11/19/my-f-training/">https://httishere.github.io/2021/11/19/my-f-training/</a></span>
+                        <span><a href="https://httishere.github.io/2021/12/17/yuque/qvtbgk/">https://httishere.github.io/2021/12/17/yuque/qvtbgk/</a></span>
                     </p>
                 
                 
@@ -236,10 +304,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2021/12/13/yuque/gh2gze/">「ROAD 6」CSS-知识体系</a>
+                <a class="prev" rel="prev" href="/2021/12/20/yuque/iclyhn/">「ROAD 6」HTML</a>
             
             
-            <a class="next" rel="next" href="/2021/10/13/LeeCode-by-JS/">LeeCode题解记录（JavaScript版）</a>
+            <a class="next" rel="next" href="/2021/12/14/yuque/vzq7do/">「ROAD 6」CSS-排版</a>
             
         </section>
         
