@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="referrer" content="no-referrer" />
+
+    <meta name="author" content="httishere">
+
+
+
+
+
+<title>「TypeScript」类型检查机制 | HTTISHERE</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-header header-logo">
+        <a href="/">ℍ𝕋𝕋𝕀𝕊ℍ𝔼ℝ𝔼&#39;𝕤 𝔹𝕝𝕠𝕘</a>
+        <!-- ℍ𝕋𝕋𝕀𝕊ℍ𝔼ℝ𝔼'𝕤 𝔹𝕝𝕠𝕘 -->
+      </div>
+      <div class="menu navbar-right">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+        <input id="switch_default" type="checkbox" class="switch_default" />
+        <label for="switch_default" class="toggleBtn"></label>
+        <a
+          target="_blank" href="https://httishere.notion.site/httishere/51826cfe4d6a4c9ca61c7c28665a85f7"
+          rel="sidebar noopener"
+          style="margin-left: 20px;"
+          >👉 HTTISHERE's PLOG</a
+        >
+      </div>
+    </div>
+  </nav>
+
+  
+  <nav class="navbar-mobile" id="nav-mobile">
+    <div class="container">
+      <div class="navbar-header">
+        <div>
+          <a href="/">ℍ𝕋𝕋𝕀𝕊ℍ𝔼ℝ𝔼&#39;𝕤 𝔹𝕝𝕠𝕘</a
+          ><a id="mobile-toggle-theme">·&nbsp;Light</a>
+        </div>
+        <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+      </div>
+      <div class="menu" id="mobile-menu">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+      </div>
+    </div>
+  </nav>
+</header>
+<script>
+  var mobileBtn = function f() {
+    var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+    var mobileMenu = document.getElementById("mobile-menu");
+    if (toggleMenu.classList.contains("active")) {
+      toggleMenu.classList.remove("active");
+      mobileMenu.classList.remove("active");
+    } else {
+      toggleMenu.classList.add("active");
+      mobileMenu.classList.add("active");
+    }
+  };
+  function addFav() {
+    var title = document.title;
+    var URL = document.URL;
+    try {
+      window.external.addFavorite(URL, title);
+    } catch (e) {
+      try {
+        window.sidebar.addPanel(title, URL, "");
+      } catch (e) {
+        alert("由于浏览器的安全设置\n可以使用Ctrl+D或者Command+D进行手动收藏");
+      }
+    }
+  }
+</script>
+
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">「TypeScript」类型检查机制</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">httishere</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">2021/12/21&nbsp;&nbsp;16:06:07</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Typescript/">Typescript</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h3 id="类型检查机制"><a href="#类型检查机制" class="headerlink" title="类型检查机制"></a>类型检查机制</h3><p>辅助开发，提高开发效率。</p>
+<ul>
+<li>类型推断</li>
+<li>类型兼容性</li>
+<li>类型保护</li>
+</ul>
+<h4 id="类型推断"><a href="#类型推断" class="headerlink" title="类型推断"></a>类型推断</h4><p>不需要指定变量类型（韩式的返回值类型），ts 可以根据某些规则自动推断类型。</p>
+<ul>
+<li>基础类型推断</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>; <span class="comment">// 推断为Number</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>最佳通用类型推断</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>, <span class="literal">null</span>]; <span class="comment">// 会尽可能推断为符合当前所有类型的类型</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>上下文推断<br>类型断言</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onkeydown = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  event.button; <span class="comment">// 报错，因为button不是键盘事件，而是鼠标事件</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Foo &#123;</span><br><span class="line">  bar: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> foo = &#123;&#125; <span class="keyword">as</span> Foo; <span class="comment">// 但不能滥用</span></span><br></pre></td></tr></table></figure>
+<h4 id="类型兼容性"><a href="#类型兼容性" class="headerlink" title="类型兼容性"></a>类型兼容性</h4><blockquote>
+<p>兼容：当一个类型可以被赋值给另一个类型。<br>X 兼容 Y：X（目标类型） = Y（源类型）</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s: <span class="built_in">string</span> = <span class="string">&quot;&quot;</span>;</span><br><span class="line">s = <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>接口兼容性，源类型必须拥有目标类型的必要属性</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> X &#123;</span><br><span class="line">  a: <span class="built_in">any</span>;</span><br><span class="line">  b: <span class="built_in">any</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">interface</span> Y &#123;</span><br><span class="line">  a: <span class="built_in">any</span>;</span><br><span class="line">  b: <span class="built_in">any</span>;</span><br><span class="line">  c: <span class="built_in">any</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> x: X = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">1</span> &#125;;</span><br><span class="line"><span class="keyword">let</span> y: Y = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>, <span class="attr">c</span>: <span class="number">3</span> &#125;;</span><br><span class="line">x = y;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>函数兼容性<br>需要满足三个条件：</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Handler = <span class="function">(<span class="params">a: <span class="built_in">number</span>, b: <span class="built_in">number</span></span>) =&gt;</span> <span class="built_in">void</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hor</span>(<span class="params">handler: Handler</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> handler;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>目标函数的参数个数要多于源函数的参数个数，<code>let handler = (a: number) =&gt; &#123;&#125;</code>，存在可选参数/剩余参数时，固定参数可兼容可选参数和剩余参数，可选参数不兼容固定参数和剩余参数。</li>
+<li>参数类型必须匹配</li>
+<li>目标函数的返回类型必须要与源函数的返回类型或者子类型</li>
+<li>枚举兼容</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">enum</span> Fruit &#123;</span><br><span class="line">  Apple,</span><br><span class="line">  Banana,</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">enum</span> Color &#123;</span><br><span class="line">  Red,</span><br><span class="line">  Yellow,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> fruit: Fruit.Apple = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">let</span> no: <span class="built_in">number</span> = Fruit.Apple; <span class="comment">// 枚举和number可以相互兼容</span></span><br><span class="line"><span class="keyword">let</span> color: Color.Red = Fruit.Apple; <span class="comment">// 报错，不兼容</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>类兼容性<br><strong>静态成员和构造函数不参与比较</strong>。<br>如果类内存在私有成员，即便成员名称相同也不可兼容，除了父类子类之前。</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">p: <span class="built_in">number</span>, q: <span class="built_in">number</span></span>)</span> &#123;&#125;</span><br><span class="line">  id: <span class="built_in">number</span> = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> </span>&#123;</span><br><span class="line">  <span class="keyword">static</span> s = <span class="number">1</span>;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">p: <span class="built_in">number</span></span>)</span> &#123;&#125;</span><br><span class="line">  id: <span class="built_in">number</span> = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> a = <span class="keyword">new</span> A(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line"><span class="keyword">let</span> b = <span class="keyword">new</span> B(<span class="number">1</span>);</span><br><span class="line">a = b; <span class="comment">// 可兼容</span></span><br><span class="line">b = a; <span class="comment">// 可兼容</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span> <span class="keyword">extends</span> <span class="title">A</span> </span>&#123;&#125;</span><br><span class="line"><span class="keyword">let</span> c = <span class="keyword">new</span> C(<span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line">a = c;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>泛型兼容<br>只有类型参数 T 在被类型成员使用时可能会影响实例的兼容性。<br>泛型函数也是类似的，只要参数类型不被使用，那么实例就可以被兼容。</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Empty&lt;T&gt; &#123;&#125;</span><br><span class="line"><span class="keyword">let</span> obj_1: Empty&lt;<span class="built_in">number</span>&gt; = &#123;&#125;;</span><br><span class="line"><span class="keyword">let</span> obj_2: Empty&lt;<span class="built_in">string</span>&gt; = &#123;&#125;;</span><br><span class="line">obj_1 = obj_2; <span class="comment">// 兼容</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> Empty&lt;T&gt; &#123;</span><br><span class="line">  value: T;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> obj_1: Empty&lt;<span class="built_in">number</span>&gt; = &#123;&#125;;</span><br><span class="line"><span class="keyword">let</span> obj_2: Empty&lt;<span class="built_in">string</span>&gt; = &#123;&#125;;</span><br><span class="line">obj_1 = obj_2; <span class="comment">// 报错</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>结构之间兼容：成员少的兼容成员多的</p>
+<p>函数之间兼容：参数多的兼容参数少的</p>
+</blockquote>
+<h4 id="类型保护"><a href="#类型保护" class="headerlink" title="类型保护"></a>类型保护</h4><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">enum</span> Type &#123;</span><br><span class="line">  Strong,</span><br><span class="line">  Weak,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Java</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">helloJava</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;hello Java&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">JavaScript</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">helloJavaScript</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;hello JavaScript&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getLang</span>(<span class="params"><span class="keyword">type</span>: Type</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> lang = <span class="keyword">type</span> === Type.Strong ? <span class="keyword">new</span> Java() : <span class="keyword">new</span> JavaScript();</span><br><span class="line">  <span class="comment">// 需要进行类型断言</span></span><br><span class="line">  <span class="keyword">if</span> ((lang <span class="keyword">as</span> Java).helloJava) (lang <span class="keyword">as</span> Java).helloJava;</span><br><span class="line">  <span class="keyword">if</span> ((lang <span class="keyword">as</span> JavaScript).helloJavaScript)</span><br><span class="line">    (lang <span class="keyword">as</span> JavaScript).helloJavaScript;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> lang;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在多个地方进行类型断言，不利于代码的可读性。</p>
+<blockquote>
+<p><strong>类型保护</strong>：<br>TS 能在特定的区块中保证变了属于某种确定的类型。<br>可以在此区块中放心地引用此类型的属性，或者调用此类型的方法。</p>
+</blockquote>
+<ul>
+<li>使用<code>instanceOf</code></li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (lang <span class="keyword">instanceof</span> Java) &#123;</span><br><span class="line">  lang.helloJava();</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  lang.helloJavaScript();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用<code>in</code>关键字</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="string">&quot;helloJava&quot;</span> <span class="keyword">in</span> lang) &#123;</span><br><span class="line">  lang.helloJava();</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  lang.helloJavaScript();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用<code>type of</code>，判断基本类型</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getLang</span>(<span class="params">x: <span class="built_in">string</span> | <span class="built_in">number</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> x === <span class="string">&quot;string&quot;</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(x.length);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(x + <span class="number">100</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> lang;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>类型保护函数</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 类型保护函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isJava</span>(<span class="params">lang: Java | JavaScript</span>): <span class="title">lang</span> <span class="title">is</span> <span class="title">Java</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (lang <span class="keyword">as</span> Java).helloJava !== <span class="literal">undefined</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>httishere</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://httishere.github.io/2021/12/21/yuque/fh8vi3/">https://httishere.github.io/2021/12/21/yuque/fh8vi3/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2021 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Good Good Study, Day Day Up.</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/ts/"># ts</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/12/21/yuque/uht9di/">「TypeScript」高级类型</a>
+            
+            
+            <a class="next" rel="next" href="/2021/12/21/yuque/epg357/">「SASS」使用指南（同步）</a>
+            
+        </section>
+        
+            <!--
+ * @Author: your name
+ * @Date: 2021-07-08 11:08:58
+ * @LastEditTime: 2021-08-20 11:11:35
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_partial/gitalk.ejs
+-->
+<link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css">
+<div id="gitalk-container" style="margin-top: 50px;"></div>
+<!-- <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> -->
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script type="text/javascript">
+console.log(md5(location.pathname))
+    new Gitalk({
+        clientID: 'c61a26564784a9cb16f3',
+        clientSecret: '25a391b4405c726bfa417a4d09a8a9d46fd41e12',
+        id: window.location.pathname,
+        repo: 'httIsHere.github.io',
+        owner: 'httIsHere',
+        admin: 'httIsHere',
+        id: md5(location.pathname),
+        distractionFreeMode: false
+    }).render('gitalk-container')
+</script>
+        
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© httishere | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
