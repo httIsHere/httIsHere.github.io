@@ -227,7 +227,7 @@
             <blockquote>
 <p>目录请查看大纲。</p>
 </blockquote>
-<h4 id="为什么-0-1-0-2-0-3？如何解决这个问题？"><a href="#为什么-0-1-0-2-0-3？如何解决这个问题？" class="headerlink" title="为什么 0.1 + 0.2 != 0.3？如何解决这个问题？"></a>为什么 0.1 + 0.2 != 0.3？如何解决这个问题？</h4><p>JS 采用 IEEE 754 双精度版本（64 位），并且只要采用 IEEE 754 的语言都有该问题。<br>计算机是通过二进制来存储东西的，那么 <code>0.1</code>  在二进制中会表示为：</p>
+<h4 id="为什么-0-1-0-2-0-3？如何解决这个问题？"><a href="#为什么-0-1-0-2-0-3？如何解决这个问题？" class="headerlink" title="为什么 0.1 + 0.2 != 0.3？如何解决这个问题？"></a>为什么 0.1 + 0.2 != 0.3？如何解决这个问题？</h4><p>JS 采用 IEEE-754 双精度版本（64 位），并且只要采用 IEEE 754 的语言都有该问题。<br>计算机是通过二进制来存储东西的，那么 <code>0.1</code>  在二进制中会表示为：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// (0011) 表示循环</span></span><br><span class="line"><span class="number">0.1</span> = <span class="number">2</span> ^ (-<span class="number">4</span> * <span class="number">1.10011</span>(<span class="number">0011</span>));</span><br></pre></td></tr></table></figure>
 <p><code>0.1</code> 在二进制中是无限循环的一些数字，很多十进制小数用二进制表示都是无限循环的。<br>但是 JS 采用的浮点数标准却会裁剪掉这些循环数字。<br>IEEE 754 双精度版本（64 位）将 64 位分为了三段：</p>
 <ul>
@@ -235,13 +235,13 @@
 <li>接下去的 11 位用来表示指数</li>
 <li>其他的位数用来表示有效位，也就是用二进制表示 0.1 中的 10011(0011)</li>
 </ul>
-<p>于是出现精度丢失的问题，也就造成了  <code>0.1</code>不再是  <code>0.1</code>  了，而是变成了  <code>0.100000000000000002</code><br>根据双精度浮点数的定义，非整数 Number 无法使用==/===进行比较，正确的比较方法是使用 JS 提供的最小精度值：</p>
+<p>于是出现精度丢失的问题，也就造成了  <code>0.1</code>不再是  <code>0.1</code>  了，而是变成了  <code>0.100000000000000002</code><br>根据双精度浮点数的定义，非整数 Number 无法使用==/===进行比较，正确的比较方法是使用 JS 提供的<strong>最小精度值</strong>：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Math</span>.abs(<span class="number">0.1</span> + <span class="number">0.2</span> - <span class="number">0.3</span>) &lt;= <span class="built_in">Number</span>.EPSILON;</span><br></pre></td></tr></table></figure>
 <h4 id="什么是-Virtual-DOM？为什么-Virtual-DOM-比原生-DOM-快？"><a href="#什么是-Virtual-DOM？为什么-Virtual-DOM-比原生-DOM-快？" class="headerlink" title="什么是 Virtual DOM？为什么 Virtual DOM 比原生 DOM 快？"></a>什么是 Virtual DOM？为什么 Virtual DOM 比原生 DOM 快？</h4><p><a target="_blank" rel="noopener" href="https://www.yuque.com/httishere/running/rpkxit">&gt;浏览器如何工作</a><br>首先需要了解<strong>浏览器渲染原理。</strong><br>执行 JS 有一个 JS 引擎，那么执行渲染也有一个渲染引擎。</p>
 <ul>
 <li><strong>浏览器接收到 HTML 文件并转换为 DOM 树</strong></li>
 </ul>
-<p>当我们打开一个网页时，浏览器都会去请求对应的 HTML 文件。虽然平时我们写代码时都会分为 JS、CSS、HTML 文件，也就是字符串，但是计算机硬件是不理解这些字符串的，所以在网络中传输的内容其实都是 0 和 1 这些字节数据。当浏览器接收到这些字节数据以后，它会将这些字节数据转换为字符串，也就是我们写的代码。<br>当数据转换为字符串以后，浏览器会先将这些字符串通过词法分析转换为标记（token），这一过程在词法分析中叫做标记化（tokenization）。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/250093/1624938436668-382eb8b8-055d-4baa-89a3-07daef6e9004.png#align=left&amp;display=inline&amp;height=214&amp;margin=%5Bobject%20Object%5D&amp;name=&amp;originHeight=214&amp;originWidth=519&amp;size=0&amp;status=done&amp;style=none&amp;width=519" alt=""><br>当结束标记化后，这些标记会紧接着转换为 Node，最后这些 Node 会根据不同 Node 之前的联系构建为一颗 DOM 树。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/250093/1624938512749-af1bcf95-18eb-47a6-98b4-a926add1d504.png#align=left&amp;display=inline&amp;height=274&amp;margin=%5Bobject%20Object%5D&amp;name=&amp;originHeight=274&amp;originWidth=622&amp;size=0&amp;status=done&amp;style=none&amp;width=622" alt=""><br>浏览器从网络中接收到 HTML 文件然后一系列的转换过程:<br><strong>字节数据 =&gt; 字符串 =&gt; Token =&gt; Node =&gt; Dom</strong></p>
+<p>当我们打开一个网页时，浏览器都会去请求对应的 HTML 文件。虽然平时我们写代码时都会分为 JS、CSS、HTML 文件，也就是字符串，但是计算机硬件是不理解这些字符串的，所以在网络中传输的内容其实都是 0 和 1 这些字节数据。当浏览器接收到这些字节数据以后，它会将这些字节数据转换为字符串，也就是我们写的代码。<br>当数据转换为字符串以后，浏览器会先将这些字符串通过词法分析转换为标记（token），这一过程在词法分析中叫做标记化（tokenization）。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/250093/1624938436668-382eb8b8-055d-4baa-89a3-07daef6e9004.png#crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;height=214&amp;id=dnb2r&amp;margin=%5Bobject%20Object%5D&amp;name=&amp;originHeight=214&amp;originWidth=519&amp;originalType=binary∶=1&amp;rotation=0&amp;showTitle=false&amp;size=0&amp;status=done&amp;style=none&amp;title=&amp;width=519" alt=""><br>当结束标记化后，这些标记会紧接着转换为 Node，最后这些 Node 会根据不同 Node 之前的联系构建为一颗 DOM 树。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/250093/1624938512749-af1bcf95-18eb-47a6-98b4-a926add1d504.png#crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;height=274&amp;id=W0WO4&amp;margin=%5Bobject%20Object%5D&amp;name=&amp;originHeight=274&amp;originWidth=622&amp;originalType=binary∶=1&amp;rotation=0&amp;showTitle=false&amp;size=0&amp;status=done&amp;style=none&amp;title=&amp;width=622" alt=""><br>浏览器从网络中接收到 HTML 文件然后一系列的转换过程:<br><strong>字节数据 =&gt; 字符串 =&gt; Token =&gt; Node =&gt; Dom</strong></p>
 <ul>
 <li><strong>将 CSS 文件转换为 CSSOM 树</strong></li>
 </ul>
@@ -252,14 +252,14 @@
 <ul>
 <li><strong>生成渲染树</strong></li>
 </ul>
-<p>生成 DOM 树和 CSSOM 树以后，就需要将这两棵树组合为渲染树。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/250093/1624947381540-b36ede66-6f55-481e-9135-69bce1d74f49.png#align=left&amp;display=inline&amp;height=537&amp;margin=%5Bobject%20Object%5D&amp;name=&amp;originHeight=537&amp;originWidth=1150&amp;size=0&amp;status=done&amp;style=none&amp;width=1150" alt=""><br>渲染树只会包括需要显示的节点和这些节点的样式信息，如果某个节点是 <code>display: none</code>  的，那么就不会在渲染树中显示。<br>当浏览器生成渲染树以后，就会根据渲染树来进行布局（也可以叫做回流），然后调用 GPU 绘制，合成图层，显示在屏幕上。</p>
+<p>生成 DOM 树和 CSSOM 树以后，就需要将这两棵树组合为渲染树。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/250093/1624947381540-b36ede66-6f55-481e-9135-69bce1d74f49.png#crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;height=537&amp;id=RYnRP&amp;margin=%5Bobject%20Object%5D&amp;name=&amp;originHeight=537&amp;originWidth=1150&amp;originalType=binary∶=1&amp;rotation=0&amp;showTitle=false&amp;size=0&amp;status=done&amp;style=none&amp;title=&amp;width=1150" alt=""><br>渲染树只会包括需要显示的节点和这些节点的样式信息，如果某个节点是 <code>display: none</code>  的，那么就不会在渲染树中显示。<br>当浏览器生成渲染树以后，就会根据渲染树来进行布局（也可以叫做回流），然后调用 GPU 绘制，合成图层，显示在屏幕上。</p>
 <p><strong>JS 操作 DOM</strong><br>DOM 是属于渲染引擎中的，而 JS 是 JS 引擎中的东西。当我们通过 JS 操作 DOM 的时候，其实这个操作涉及到了两个线程之间的通信，那么势必会带来一些性能上的损耗。操作 DOM 次数一多，也就等同于一直在进行线程之间的通信，并且操作 DOM 可能还会带来重绘回流的情况，所以也就导致了性能上的问题。</p>
 <p><strong>相较于 DOM 来说，操作 JS 对象会快很多，并且我们也可以通过 JS 来模拟 DOM 即 Virtual DOM。</strong><br>需要在数据更新时，对比新旧两个 JS 对象然后实现局部更新 DOM。</p>
 <ul>
 <li>首先从上至下，从左往右遍历对象，也就是树的深度遍历，这一步中会给每个节点添加索引，便于最后渲染差异（需要判断新旧节点的 <code>tagName</code>是否相同，如果不相同的话就代表节点被替换了。如果没有更改 <code>tagName</code>的话，就需要判断是否有子元素，有的话就进行第二步算法）；</li>
 <li>一旦节点有子元素，就去判断子元素是否有不同（需要判断原本的列表中是否有节点被移除，在新的列表中需要判断是否有新的节点加入，还需要判断节点是否有移动）；</li>
 </ul>
-<p>所以我们在使用模版的 <code>v-for</code>或者 <code>array.map</code>时会常常遇到<strong> <code>key</code>这个属性</strong>，这个属性是用来给每一个节点打标志的，用于<strong>判断是否是同一个节点</strong>。</p>
+<p>所以我们在使用模版的 <code>v-for</code>或者 <code>array.map</code>时会常常遇到** <strong>`</strong>key<strong>`</strong>这个属性<strong>，这个属性是用来给每一个节点打标志的，用于</strong>判断是否是同一个节点**。</p>
 <ol>
 <li>将 Virtual DOM 作为一个兼容层，让我们还能对接非 Web 端的系统，实现跨端开发。</li>
 <li>同样的，通过 Virtual DOM 我们可以渲染到其他的平台，比如实现 SSR、同构渲染等等。</li>
