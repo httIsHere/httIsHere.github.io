@@ -621,6 +621,19 @@ header label {
 .post-wrap .archive-item {
   margin-left: 2rem;
 }
+.post-wrap .archive-item:hover {
+  cursor: pointer;
+}
+.post-wrap .archive-item .archive-item-extra {
+  line-height: 1;
+}
+.post-wrap .archive-item .post-count {
+  color: #999;
+  font-size: 12px;
+}
+.post-wrap .archive-item .post-count a {
+  color: #999;
+}
 .archive-item-link {
   display: inline-block;
   text-decoration: none;
@@ -754,6 +767,9 @@ header label {
 }
 .dark-theme .post-wrap .post-meta a:hover {
   color: #fff;
+}
+.post-wrap .post-meta .extra {
+  text-align: right;
 }
 .post-content {
   padding-top: 2rem;
@@ -1244,6 +1260,12 @@ header label {
   }
   .archive .archive-item .archive-item-date {
     display: none;
+  }
+  .archive .archive-item .archive-item-category-item {
+    display: none;
+  }
+  .archive .archive-item .archive-item-link {
+    width: 100%;
   }
   #dynamic-to-top {
     display: none !important;

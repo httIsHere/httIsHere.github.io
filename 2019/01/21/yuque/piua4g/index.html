@@ -133,7 +133,7 @@
             <!--
  * @Author: your name
  * @Date: 2020-08-17 15:35:07
- * @LastEditTime: 2022-01-19 10:35:42
+ * @LastEditTime: 2022-01-19 12:06:05
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_page/post.ejs
@@ -158,18 +158,26 @@
                         </span>
                     
                     
-                    
-                        <span class="post-count">
-                    Words:
-                        <a href="">185</a>  
+                     <<
+                    <div class="extra">
+                        >> 
+                        <span id="/2019/01/21/yuque/piua4g/" class="leancloud-visitors view" data-flag-title="swiper4.0自动轮播+循环轮播">
+                            <span class="post-meta-item-text">Pageviews:</span>
+                            <a href="javascript:;" class="leancloud-visitors-count">0</a>
                         </span>
-                    
-                    
-                        <span class="post-count">
-                    Time:
-                        <a href="">1min</a>  
-                        </span>
-                    
+                        
+                            <span class="post-count">
+                        Words:
+                            <a href="">185</a>  
+                            </span>
+                        
+                        
+                            <span class="post-count">
+                        Time:
+                            <a href="">1 min</a>  
+                            </span>
+                        
+                    </div>
                 </div>
             
         </header>
@@ -262,7 +270,39 @@ console.log(md5(location.pathname))
     }).render('gitalk-container')
 </script>
         
-
+        
+            <section id="comments" class="comments">
+              <style>
+                .comments{margin:30px;padding:10px;background:#fff}
+                @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+              </style>
+              <!--
+ * @Author: your name
+ * @Date: 2022-01-19 10:26:36
+ * @LastEditTime: 2022-01-19 11:55:49
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_plugins/valine.ejs
+-->
+<!-- <div class="valine_comment"></div> -->
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: '1BHDvzMyiyWmu3v3vBaR2dek-gzGzoHsz',
+      app_key: 'MaYtrzsGSwqpImuLueThWKFE',
+      placeholder: '这里留言。。',
+      notify: 'true',
+      verify: 'true',
+      visitor: 'true',
+    });
+</script>
+            </section>
+        
     </article>
 </div>
 

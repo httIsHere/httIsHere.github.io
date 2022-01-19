@@ -108,6 +108,12 @@
   .archive .archive-item .archive-item-date {
     display: none;
   }
+  .archive .archive-item .archive-item-category-item {
+    display: none;
+  }
+  .archive .archive-item .archive-item-link {
+    width: 100%;
+  }
   #dynamic-to-top {
     display: none !important;
   }
