@@ -130,7 +130,15 @@
 </script>
 
         <div class="main">
-            <div class="container">
+            <!--
+ * @Author: your name
+ * @Date: 2020-08-17 15:35:07
+ * @LastEditTime: 2022-01-19 10:35:42
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_page/post.ejs
+-->
+<div class="container">
     
     
         <div class="post-toc">
@@ -201,7 +209,7 @@
         <header class="post-header">
             <h1 class="post-title">「大前端」at rule &amp; qualified rule</h1>
             
-                <div class="post-meta">
+                <div class="post-meta" id="/2021/03/24/yuque/xcwk53/" class="leancloud-visitors view">
                     
                         Author: <a itemprop="author" rel="author" href="/">httishere</a>
                     
@@ -217,6 +225,18 @@
                             
                                 <a href="/categories/css-Less/">css/Less</a>
                             
+                        </span>
+                    
+                    
+                        <span class="post-count">
+                    Words:
+                        <a href="">1.1k</a>  
+                        </span>
+                    
+                    
+                        <span class="post-count">
+                    Time:
+                        <a href="">4min</a>  
                         </span>
                     
                 </div>
@@ -252,7 +272,7 @@
 </blockquote>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@page</span> &#123;</span><br><span class="line">  <span class="attribute">size</span>: <span class="number">8.5in</span> <span class="number">11in</span>;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">10%</span>;</span><br><span class="line">  @top-left &#123;</span><br><span class="line">    <span class="selector-tag">content</span>: &quot;<span class="selector-tag">Hamlet</span>&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">@top-right</span> &#123;</span><br><span class="line">    <span class="selector-tag">content</span>: &quot;<span class="selector-tag">Page</span> &quot; <span class="selector-tag">counter</span>(<span class="selector-tag">page</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="counter-style"><a href="#counter-style" class="headerlink" title="@counter-style "></a><a href="/counter-style">@counter-style </a></h3><blockquote>
-<p>counter-style 产生一种数据，用于定义列表项的表现。_目前只有 Firefox 支持_。</p>
+<p>counter-style 产生一种数据，用于定义列表项的表现。<em>目前只有 Firefox 支持</em>。</p>
 </blockquote>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@counter-style</span> triangle &#123;</span><br><span class="line">  <span class="selector-tag">system</span>: <span class="selector-tag">cyclic</span>;</span><br><span class="line">  <span class="selector-tag">symbols</span>: ‣;</span><br><span class="line">  <span class="selector-tag">suffix</span>: &quot; &quot;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">li</span> &#123;</span><br><span class="line">  <span class="attribute">list-style</span>: triangle;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="key-frames"><a href="#key-frames" class="headerlink" title="@key-frames "></a><a href="/key-frames">@key-frames </a></h3><blockquote>

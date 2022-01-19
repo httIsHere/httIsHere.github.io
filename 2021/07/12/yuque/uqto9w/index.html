@@ -130,7 +130,15 @@
 </script>
 
         <div class="main">
-            <div class="container">
+            <!--
+ * @Author: your name
+ * @Date: 2020-08-17 15:35:07
+ * @LastEditTime: 2022-01-19 10:35:42
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_page/post.ejs
+-->
+<div class="container">
     
     
         <div class="post-toc">
@@ -201,7 +209,7 @@
         <header class="post-header">
             <h1 class="post-title">「React Practice」React生态圈</h1>
             
-                <div class="post-meta">
+                <div class="post-meta" id="/2021/07/12/yuque/uqto9w/" class="leancloud-visitors view">
                     
                         Author: <a itemprop="author" rel="author" href="/">httishere</a>
                     
@@ -217,6 +225,18 @@
                             
                                 <a href="/categories/React/">React</a>
                             
+                        </span>
+                    
+                    
+                        <span class="post-count">
+                    Words:
+                        <a href="">1.3k</a>  
+                        </span>
+                    
+                    
+                        <span class="post-count">
+                    Time:
+                        <a href="">6min</a>  
                         </span>
                     
                 </div>
@@ -245,7 +265,7 @@
 <li>纯函数更新 store</li>
 </ul>
 <h4 id="Store"><a href="#Store" class="headerlink" title="Store"></a>Store</h4><blockquote>
-<p>_The only way to mutate the state is to emit an action, an object describing what happened._<br>The application cannot modify the state directly. Instead, “actions” are dispatched to express an intent to change the state in the store.</p>
+<p><em>The only way to mutate the state is to emit an action, an object describing what happened.</em><br>The application cannot modify the state directly. Instead, “actions” are dispatched to express an intent to change the state in the store.</p>
 </blockquote>
 <p><img src="https://cdn.nlark.com/yuque/0/2021/svg/250093/1626060713513-5424b39b-98b2-48c4-8a2b-a0f712cc7175.svg#align=left&amp;display=inline&amp;height=265&amp;margin=%5Bobject%20Object%5D&amp;name=redux-article-3-05.svg&amp;originHeight=265&amp;originWidth=800&amp;size=34830&amp;status=done&amp;style=none&amp;width=800" alt="redux-article-3-05.svg"></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> store = createStore(reducer);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 三个通用方法</span></span><br><span class="line">store.getState();</span><br><span class="line">store.dispatch(action);</span><br><span class="line">store.subscribe(listener);</span><br></pre></td></tr></table></figure>

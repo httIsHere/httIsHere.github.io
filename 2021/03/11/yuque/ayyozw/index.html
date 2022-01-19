@@ -130,7 +130,15 @@
 </script>
 
         <div class="main">
-            <div class="container">
+            <!--
+ * @Author: your name
+ * @Date: 2020-08-17 15:35:07
+ * @LastEditTime: 2022-01-19 10:35:42
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_page/post.ejs
+-->
+<div class="container">
     
     
         <div class="post-toc">
@@ -201,7 +209,7 @@
         <header class="post-header">
             <h1 class="post-title">「大前端」执行中都发生了什么</h1>
             
-                <div class="post-meta">
+                <div class="post-meta" id="/2021/03/11/yuque/ayyozw/" class="leancloud-visitors view">
                     
                         Author: <a itemprop="author" rel="author" href="/">httishere</a>
                     
@@ -219,6 +227,18 @@
                             
                         </span>
                     
+                    
+                        <span class="post-count">
+                    Words:
+                        <a href="">4.8k</a>  
+                        </span>
+                    
+                    
+                        <span class="post-count">
+                    Time:
+                        <a href="">19min</a>  
+                        </span>
+                    
                 </div>
             
         </header>
@@ -227,7 +247,7 @@
             <h2 id="Promise-or-setTimeOut"><a href="#Promise-or-setTimeOut" class="headerlink" title="Promise or setTimeOut"></a>Promise or setTimeOut</h2><p>得到一段 JS 代码时，浏览器或者 Node 环境首先要做的就是；传递给 JavaScript 引擎，并且要求它去执行。但是宿主环境当遇到一些事件时，会继续把一段代码传递给 JavaScript 引擎去执行。可能还会提供 API 给 JavaScript 引擎，比如 setTimeout 这样的 API，它会允许 JavaScript 在特定的时机执行。</p>
 <p>一个 JavaScript 引擎会常驻于内存中，它等待着我们（宿主）把 JavaScript 代码或者函数传递给它执行。</p>
 <p>在 ES5 之后，JavaScript 引入了 Promise，这样不需要浏览器的安排，JavaScript 引擎本身也可以发起任务了（宿主发起的任务称之为：<strong>宏任务</strong>，JS 引擎发起的任务称之为：<strong>微任务</strong>）。</p>
-<p>_相关：_【面试】什么是宏观任务？ 什么是微观任务？ 为什么会有宏观任务和微观任务？ JS 代码如何被执行？</p>
+<p><em>相关：</em>【面试】什么是宏观任务？ 什么是微观任务？ 为什么会有宏观任务和微观任务？ JS 代码如何被执行？</p>
 <h3 id="宏观和微观任务"><a href="#宏观和微观任务" class="headerlink" title="宏观和微观任务"></a>宏观和微观任务</h3><p>JavaScript 引擎等待宿主环境分配宏观任务，在操作系统中，通常等待的行为都是一个事件循环，所以在 Node 术语中，也会把这个部分称为事件循环。</p>
 <p>整个循环做的事情基本上就是反复“等待 - 执行”，实际中还有要判断循环是否结束、宏观任务队列等逻辑。</p>
 <p>所以<strong>宏观任务的队列就相当于事件循环</strong>。</p>
@@ -242,13 +262,13 @@
 </blockquote>
 <p>基本使用方法：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sleep</span>(<span class="params">duration</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(resolve, duration);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line">sleep(<span class="number">1000</span>).then(<span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="string">&quot;finished&quot;</span>));</span><br></pre></td></tr></table></figure>
-<p>_例 1_ Promise 函数内的执行顺序：</p>
+<p><em>例 1</em> Promise 函数内的执行顺序：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> r = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">  resolve(); <span class="comment">// 就是调用时的then函数</span></span><br><span class="line">&#125;);</span><br><span class="line">r.then(<span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="string">&quot;c&quot;</span>));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;b&quot;</span>);</span><br><span class="line"><span class="comment">// a b c</span></span><br></pre></td></tr></table></figure>
 <p>Promise 的 resolve 始终是异步操作，所以 c 无法出现在 b 之前。</p>
-<p>_例 2_ setTimeOut 和 Promise 混合：</p>
+<p><em>例 2</em> setTimeOut 和 Promise 混合：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> r = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">  resolve();</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="string">&quot;d&quot;</span>), <span class="number">0</span>);</span><br><span class="line">r.then(<span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="string">&quot;c&quot;</span>));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;b&quot;</span>);</span><br><span class="line"><span class="comment">// a b c d</span></span><br></pre></td></tr></table></figure>
 <p>Promise 产生的是 JavaScript 引擎内部的微任务，而 setTimeout 是浏览器 API，它产生宏任务，<strong>微任务始终先于宏任务</strong>（因为微观服务是包含在宏观服务中）。</p>
-<p>_例 3_ 微任务优先于宏任务：</p>
+<p><em>例 3</em> 微任务优先于宏任务：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="string">&quot;d&quot;</span>), <span class="number">0</span>);</span><br><span class="line"><span class="keyword">var</span> r = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  resolve();</span><br><span class="line">&#125;);</span><br><span class="line">r.then(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">var</span> begin = <span class="built_in">Date</span>.now();</span><br><span class="line">  <span class="keyword">while</span> (<span class="built_in">Date</span>.now() - begin &lt; <span class="number">1000</span>); <span class="comment">// 执行一个耗时 1 秒的 Promise</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;c1&quot;</span>);</span><br><span class="line">  <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">    resolve();</span><br><span class="line">  &#125;).then(<span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="string">&quot;c2&quot;</span>));</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// c1 c2 d</span></span><br></pre></td></tr></table></figure>
 <p>设置 1 秒延时，确保任务 c2 是在 d 之后被添加到任务队列，所以可以得出微任务优先的结论。</p>
 <p><strong>分析异步执行的顺序：</strong></p>
@@ -259,7 +279,7 @@
 <li>根据宏任务的触发规则和调用次序，确定宏任务的执行次序；</li>
 <li>确定整个顺序。</li>
 </ul>
-<p>_例 4_ 复杂的顺序问题</p>
+<p><em>例 4</em> 复杂的顺序问题</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sleep</span>(<span class="params">duration</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;b&quot;</span>);</span><br><span class="line">    <span class="built_in">setTimeout</span>(resolve, duration);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">sleep(<span class="number">5000</span>).then(<span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="string">&quot;c&quot;</span>));</span><br><span class="line"><span class="comment">// a b c</span></span><br></pre></td></tr></table></figure>
 <p>利用 Promise 把 setTimeout 封装成可以用于异步的函数，setTimeout 把整个代码分割成了 2 个宏观任务：</p>
 <ul>
@@ -305,7 +325,7 @@
 <li>variable environment：变量环境，当声明变量时使用。</li>
 <li>this value：this 值。</li>
 </ul>
-<p><strong>在 ES2018 中</strong>（<strong>_推荐_</strong>），执行上下文又变成了这个样子，this 值被归入 lexical environment：</p>
+<p><strong>在 ES2018 中</strong>（<strong><em>推荐</em></strong>），执行上下文又变成了这个样子，this 值被归入 lexical environment：</p>
 <ul>
 <li>lexical environment：词法环境，当获取变量或者 this 值时使用。</li>
 <li>variable environment：变量环境，当声明变量时使用。</li>
@@ -318,9 +338,9 @@
 <h4 id="var-声明与赋值"><a href="#var-声明与赋值" class="headerlink" title="var 声明与赋值"></a>var 声明与赋值</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> b = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
 <p>var 声明作用于函数执行的作用域，也就是说，var 会穿透 for 、if 等语句。</p>
 <p>在还没有 let 的时候—立即执行的函数表达式（<strong>立即执行函数，IIFE</strong>），通过创建一个函数，并且立即执行，来构造一个新的域，从而控制 var 的范围。</p>
-<p>_例 1_</p>
+<p><em>例 1</em></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> a;</span><br><span class="line">  <span class="comment">//code</span></span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> a;</span><br><span class="line">  <span class="comment">//code</span></span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用void关键字，代替立即执行函数包在外边的括号</span></span><br><span class="line"><span class="comment">// 可以避免前一行代码不带分号而带来的问题</span></span><br><span class="line"><span class="keyword">void</span> (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> a;</span><br><span class="line">  <span class="comment">//code</span></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-<p>_例 2_，有时候 var 的特性会导致声明的变量和被赋值的变量是两个 b：</p>
+<p><em>例 2</em>，有时候 var 的特性会导致声明的变量和被赋值的变量是两个 b：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> b;</span><br><span class="line"><span class="keyword">void</span> (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> env = &#123; <span class="attr">b</span>: <span class="number">1</span> &#125;;</span><br><span class="line">  b = <span class="number">2</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;In function b:&quot;</span>, b);</span><br><span class="line">  <span class="keyword">with</span> (env) &#123;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="number">3</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;In with b:&quot;</span>, b);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;Global b:&quot;</span>, b);</span><br><span class="line"><span class="comment">// In function b:2</span></span><br><span class="line"><span class="comment">// In with b:3</span></span><br><span class="line"><span class="comment">// Global b:undefined</span></span><br></pre></td></tr></table></figure>
 <p>在 Global function with 三个环境中，b 的值都不一样，而在 function 环境中，并没有出现 var b，这说明 with 内的 var b 作用到了 function 这个环境当中（with 内的 var b 得到了变量提升），所以并未改变 Global 环境内的 b。</p>
 <p>所以 with 内的 b 对 Function 和 With 两个域都起了作用，所以不推荐使用 with。</p>
@@ -344,14 +364,14 @@
 <li>普通函数：function 关键字定义的函数，<code>function foo()&#123;&#125;</code>；</li>
 <li>箭头函数：=&gt;运算符定义的函数，<code>const foo = () =&gt; &#123;&#125;</code>；</li>
 <li>方法：在 class 内定义的函数，<code>class C &#123; foo() &#123;&#125; &#125;</code>；</li>
-<li>生成器函数：用 function _ 定义的函数，<code>function_ foo()&#123;&#125;</code>；</li>
+<li>生成器函数：用 function <em> 定义的函数，`function</em> foo(){}`；</li>
 <li>类：用 class 定义的类，实际上也是函数，<code>class Foo &#123; constructor() &#123;&#125; &#125;</code>；</li>
 <li>异步函数：普通函数、箭头函数和生成器函数加上 async 关键字，</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">// code</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> foo = <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="comment">// code</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">foo</span>*(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">// code</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>对普通变量而言，这些函数并没有本质区别，都是遵循了“继承定义时环境”的规则，它们的一个行为差异在于 this 关键字。</p>
 <h3 id="this-关键字的行为"><a href="#this-关键字的行为" class="headerlink" title="this 关键字的行为"></a>this 关键字的行为</h3><p><strong>this 是执行上下文中很重要的一个组成部分。同一个函数调用方式不同，得到的 this 值也不同</strong>（this 是运行时，作用域是定义时）。</p>
-<h4 id="例-1"><a href="#例-1" class="headerlink" title="_例 1_"></a>_例 1_</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showThis</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> showThis2 = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">this</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> o = &#123;</span><br><span class="line">  showThis: showThis,</span><br><span class="line">  showThis2: showThis2,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">showThis(); <span class="comment">// global</span></span><br><span class="line">o.showThis(); <span class="comment">// o</span></span><br><span class="line">o.showThis2(); <span class="comment">// global</span></span><br></pre></td></tr></table></figure>
+<h4 id="例-1"><a href="#例-1" class="headerlink" title="例 1"></a><em>例 1</em></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showThis</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> showThis2 = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">this</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> o = &#123;</span><br><span class="line">  showThis: showThis,</span><br><span class="line">  showThis2: showThis2,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">showThis(); <span class="comment">// global</span></span><br><span class="line">o.showThis(); <span class="comment">// o</span></span><br><span class="line">o.showThis2(); <span class="comment">// global</span></span><br></pre></td></tr></table></figure>
 <p>1、</p>
 <p>普通函数的 this 值由“调用它所使用的引用”决定（谁调用，指向谁）。</p>
 <p>我们获取函数的表达式，它实际上返回的并非函数本身，而是一个 <strong>Reference 类型</strong>。</p>
@@ -363,7 +383,7 @@
 <p>箭头函数实际上是 lambda 表达式，它的返回值是一个函数, 它不是一个语句，所以它产生的函数实际上是计算出来的而不是声明出来的 当然，我们在声明函数的时候也是有计算过程的，不过如果我们使用 function 来声明闭包，那么它的 this 其实是由 this 的绑定规则所决定的 但是如果我们使用 lambda 表达式来计算一个函数，那么它的 this 就取决于 lambda 表达式被计算时的运行环境。</p>
 <p>箭头函数的 this 值不会指向外部对象， 其根源是<strong>箭头函数不会产生新的执行上下文</strong>，因此其 this 值将与外层函数保持一致，如果没有外层函数，则为 global。</p>
 <p>箭头函数的 this 指向简单来说取决包裹箭头函数的第一个普通函数的 <code>this</code>。</p>
-<h4 id="例-2"><a href="#例-2" class="headerlink" title="_例 2_"></a>_例 2_</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">showThis</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> o = <span class="keyword">new</span> C();</span><br><span class="line"><span class="keyword">var</span> showThis = o.showThis;</span><br><span class="line"></span><br><span class="line">showThis(); <span class="comment">// undefined</span></span><br><span class="line">o.showThis(); <span class="comment">// o</span></span><br></pre></td></tr></table></figure>
+<h4 id="例-2"><a href="#例-2" class="headerlink" title="例 2"></a><em>例 2</em></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">showThis</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> o = <span class="keyword">new</span> C();</span><br><span class="line"><span class="keyword">var</span> showThis = o.showThis;</span><br><span class="line"></span><br><span class="line">showThis(); <span class="comment">// undefined</span></span><br><span class="line">o.showThis(); <span class="comment">// o</span></span><br></pre></td></tr></table></figure>
 <p>所以生成器函数、异步生成器函数和异步普通函数跟普通函数行为是一致的，异步箭头函数与箭头函数行为是一致的。</p>
 <h3 id="this-关键字的机制"><a href="#this-关键字的机制" class="headerlink" title="this 关键字的机制"></a>this 关键字的机制</h3><p>函数能够引用定义时的变量，如上文分析，函数也能记住定义时的 this，因此，函数内部必定有一个机制来保存这些信息。在 JavaScript 标准中，为函数规定了用来保存定义时上下文的私有属性[[Environment]]。</p>
 <p>当一个函数执行时，会创建一条新的执行环境记录，记录的外层词法环境（outer lexical environment）会被设置成函数的[[Environment]]（也就是函数执行时会使用函数定义时的变量（在 [[Environment]] 中）。 如果这个变量不存在，则向外层查找，外层指向哪里仍然取决于函数定义之时，如果定义时外部有函数则指向外部函数，没有函数则指向 global。 函数执行之时，无论是以何种形式被调用（全局 or 嵌套函数），变量都会依照定义时的环境被查找出来。也就是说，定义时的代码结构决定了函数的“变量查找规则”，即“作用域链”）。</p>

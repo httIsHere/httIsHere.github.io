@@ -130,7 +130,15 @@
 </script>
 
         <div class="main">
-            <div class="container">
+            <!--
+ * @Author: your name
+ * @Date: 2020-08-17 15:35:07
+ * @LastEditTime: 2022-01-19 10:35:42
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_page/post.ejs
+-->
+<div class="container">
     
     
         <div class="post-toc">
@@ -201,7 +209,7 @@
         <header class="post-header">
             <h1 class="post-title">「Algorithm」复杂度分析</h1>
             
-                <div class="post-meta">
+                <div class="post-meta" id="/2021/04/07/yuque/ba0x1s/" class="leancloud-visitors view">
                     
                         Author: <a itemprop="author" rel="author" href="/">httishere</a>
                     
@@ -217,6 +225,18 @@
                             
                                 <a href="/categories/algorithm/">algorithm</a>
                             
+                        </span>
+                    
+                    
+                        <span class="post-count">
+                    Words:
+                        <a href="">4.4k</a>  
+                        </span>
+                    
+                    
+                        <span class="post-count">
+                    Time:
+                        <a href="">17min</a>  
                         </span>
                     
                 </div>
@@ -296,7 +316,7 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">i&#x3D;1;</span><br><span class="line">while (i &lt;&#x3D; n)  &#123;</span><br><span class="line">  i &#x3D; i * 2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>从代码可以看出变量 i 的取值就是一个等比数列，<code>2, 2^2, 2^3...2^x</code>，当 i&lt;= n 时结束循环，即 2^x = n，所以循环次数 x = logn，所以该段代码的时间复杂度为 T(n) = O(logn)。<br>实际上，不管是以 2 为底、以 3 为底，还是以 10 为底，我们可以把所有对数阶的时间复杂度都记为 O(logn)，因为对数之间是可以互相转换的，log3n 就等于 log32 _ log2n，所以 O(log3n) = O(C _ log2n)，其中 C=log32 是一个常量。基于我们前面的一个理论：在采用大 O 标记复杂度的时候，可以忽略系数，即 O(Cf(n)) = O(f(n))。所以，O(log2n) 就等于 O(log3n)。因此，在对数阶时间复杂度的表示方法里，我们忽略对数的“底”，统一表示为 O(logn)。<br>如果一段代码的时间复杂度是 O(logn)，我们循环执行 n 遍，时间复杂度就是 O(nlogn) 了。而且，O(nlogn) 也是一种非常常见的算法时间复杂度。比如，归并排序、快速排序的时间复杂度都是 O(nlogn)。</li>
+<li>从代码可以看出变量 i 的取值就是一个等比数列，<code>2, 2^2, 2^3...2^x</code>，当 i&lt;= n 时结束循环，即 2^x = n，所以循环次数 x = logn，所以该段代码的时间复杂度为 T(n) = O(logn)。<br>实际上，不管是以 2 为底、以 3 为底，还是以 10 为底，我们可以把所有对数阶的时间复杂度都记为 O(logn)，因为对数之间是可以互相转换的，log3n 就等于 log32 <em> log2n，所以 O(log3n) = O(C </em> log2n)，其中 C=log32 是一个常量。基于我们前面的一个理论：在采用大 O 标记复杂度的时候，可以忽略系数，即 O(Cf(n)) = O(f(n))。所以，O(log2n) 就等于 O(log3n)。因此，在对数阶时间复杂度的表示方法里，我们忽略对数的“底”，统一表示为 O(logn)。<br>如果一段代码的时间复杂度是 O(logn)，我们循环执行 n 遍，时间复杂度就是 O(nlogn) 了。而且，O(nlogn) 也是一种非常常见的算法时间复杂度。比如，归并排序、快速排序的时间复杂度都是 O(nlogn)。</li>
 <li><code>O(m+n)、O(m*n)</code><br>代码的复杂度由<strong>两个数据的规模</strong>来决定：</li>
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cal</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> sum_1 = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span> (; i &lt; m; ++i) &#123; <span class="comment">// m</span></span><br><span class="line">    sum_1 = sum_1 + i;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">int</span> sum_2 = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> j = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span> (; j &lt; n; ++j) &#123; <span class="comment">// n</span></span><br><span class="line">    sum_2 = sum_2 + j;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> sum_1 + sum_2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
