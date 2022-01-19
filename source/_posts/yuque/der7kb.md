@@ -5,15 +5,15 @@ date: '2021-05-20 16:08:21 +0800'
 tags:
   - js
 categories:
-  - Javascript
+  - JavaScript
 ---
 
 在 JavaScript 标准中，把语句分成了两种：**普通语句和声明型语句**。
 
 普通语句：
-![](https://cdn.nlark.com/yuque/0/2021/png/250093/1621498112415-48c5e3fb-b3b7-49dd-8576-3798b9f3e004.png#align=left&display=inline&height=786&margin=%5Bobject%20Object%5D&originHeight=786&originWidth=564&size=0&status=done&style=none&width=564)
+![](https://cdn.nlark.com/yuque/0/2021/png/250093/1621498112415-48c5e3fb-b3b7-49dd-8576-3798b9f3e004.png#height=786&id=pJH2G&originHeight=786&originWidth=564&originalType=binary∶=1&size=0&status=done&style=none&width=564)
 声明语句：
-![](https://cdn.nlark.com/yuque/0/2021/jpeg/250093/1621498112365-7e6e4499-1bc7-4c56-9800-157fb6196f9f.jpeg#align=left&display=inline&height=625&margin=%5Bobject%20Object%5D&originHeight=625&originWidth=1043&size=0&status=done&style=none&width=1043)
+![](https://cdn.nlark.com/yuque/0/2021/jpeg/250093/1621498112365-7e6e4499-1bc7-4c56-9800-157fb6196f9f.jpeg#height=625&id=OzISm&originHeight=625&originWidth=1043&originalType=binary∶=1&size=0&status=done&style=none&width=1043)
 
 #### 语句块
 

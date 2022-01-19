@@ -2,17 +2,12 @@
 title: 「wx」微信小程序自定义下拉刷新
 urlname: abanuu
 date: '2020-03-06 17:28:25 +0800'
-tags: []
-categories: []
----
-
-tags: [wx]
-categories: [微信小程序]
+tags:
+  - wx
+categories:
+  - 微信小程序
 cover:
-
 ---
-
-<!-- more -->
 
 #### 需求：
 
@@ -46,16 +41,17 @@ cover:
 2、scroll-view 内 refresher-enabled 属性开启自定义刷新
       基本库要求：2.10.1
 
-| refresher-enabled       | boolean     | false   | 否  | 开启自定义下拉刷新                                                                 | [2.10.1](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html) |
-| :---------------------- | :---------- | :------ | :-- | :--------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------- |
-| refresher-threshold     | number      | 45      | 否  | 设置自定义下拉刷新阈值                                                             | [2.10.1](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html) |
-| refresher-default-style | string      | "black" | 否  | 设置自定义下拉刷新默认样式，支持设置  `black/white/none`， none 表示不使用默认样式 | [2.10.1](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html) |
-| refresher-background    | string      | "#FFF"  | 否  | 设置自定义下拉刷新区域背景颜色                                                     | [2.10.1](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html) |
-| refresher-triggered     | boolean     | false   | 否  | 设置当前下拉刷新状态，true 表示下拉刷新已经被触发，false 表示下拉刷新未被触发      | [2.10.1](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html) |
-| bindrefresherpulling    | eventhandle |         | 否  | 自定义下拉刷新控件被下拉                                                           | [2.10.1](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html) |
-| bindrefresherrefresh    | eventhandle |         | 否  | 自定义下拉刷新被触发                                                               | [2.10.1](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html) |
-| bindrefresherrestore    | eventhandle |         | 否  | 自定义下拉刷新被复位                                                               | [2.10.1](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html) |
-| bindrefresherabort      | eventhandle |         | 否  | 自定义下拉刷新被中止                                                               | [2.10.1](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html) |
+| refresher-enabled          | boolean                                                                                 | false   | 否  | 开启自定义下拉刷新                                                            | [2.10.1](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html) |
+| -------------------------- | --------------------------------------------------------------------------------------- | ------- | --- | ----------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| refresher-threshold        | number                                                                                  | 45      | 否  | 设置自定义下拉刷新阈值                                                        | [2.10.1](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html) |
+| refresher-default-style    | string                                                                                  | "black" | 否  | 设置自定义下拉刷新默认样式，支持设置  `black/white/none`                      |
+| ， none 表示不使用默认样式 | [2.10.1](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html) |
+| refresher-background       | string                                                                                  | "#FFF"  | 否  | 设置自定义下拉刷新区域背景颜色                                                | [2.10.1](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html) |
+| refresher-triggered        | boolean                                                                                 | false   | 否  | 设置当前下拉刷新状态，true 表示下拉刷新已经被触发，false 表示下拉刷新未被触发 | [2.10.1](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html) |
+| bindrefresherpulling       | eventhandle                                                                             |         | 否  | 自定义下拉刷新控件被下拉                                                      | [2.10.1](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html) |
+| bindrefresherrefresh       | eventhandle                                                                             |         | 否  | 自定义下拉刷新被触发                                                          | [2.10.1](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html) |
+| bindrefresherrestore       | eventhandle                                                                             |         | 否  | 自定义下拉刷新被复位                                                          | [2.10.1](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html) |
+| bindrefresherabort         | eventhandle                                                                             |         | 否  | 自定义下拉刷新被中止                                                          | [2.10.1](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html) |
 
 官方文档：[scroll-view](https://developers.weixin.qq.com/miniprogram/dev/component/scroll-view.html)
 

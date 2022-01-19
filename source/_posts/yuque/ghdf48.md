@@ -60,10 +60,10 @@ config = {
 ```
 
 可获取到组件对象：
-![截屏2020-08-17 下午5.34.51.png](https://cdn.nlark.com/yuque/0/2020/png/250093/1597656910413-91f4cae7-7a19-492b-a433-ef8d24cc58b7.png#align=left&display=inline&height=496&margin=%5Bobject%20Object%5D&name=%E6%88%AA%E5%B1%8F2020-08-17%20%E4%B8%8B%E5%8D%885.34.51.png&originHeight=496&originWidth=604&size=75083&status=done&style=none&width=604)
+![截屏2020-08-17 下午5.34.51.png](https://cdn.nlark.com/yuque/0/2020/png/250093/1597656910413-91f4cae7-7a19-492b-a433-ef8d24cc58b7.png#height=496&id=qGmBY&margin=%5Bobject%20Object%5D&name=%E6%88%AA%E5%B1%8F2020-08-17%20%E4%B8%8B%E5%8D%885.34.51.png&originHeight=496&originWidth=604&originalType=binary∶=1&size=75083&status=done&style=none&width=604)
 
 但是在 Taro v3.0 内无法获取到该组件对象：
-![截屏2020-08-17 下午5.35.54.png](https://cdn.nlark.com/yuque/0/2020/png/250093/1597656964405-1fd8ead2-5560-4eee-b4c9-0692ffe170bd.png#align=left&display=inline&height=390&margin=%5Bobject%20Object%5D&name=%E6%88%AA%E5%B1%8F2020-08-17%20%E4%B8%8B%E5%8D%885.35.54.png&originHeight=390&originWidth=882&size=65390&status=done&style=none&width=882)
+![截屏2020-08-17 下午5.35.54.png](https://cdn.nlark.com/yuque/0/2020/png/250093/1597656964405-1fd8ead2-5560-4eee-b4c9-0692ffe170bd.png#height=390&id=MLFcM&margin=%5Bobject%20Object%5D&name=%E6%88%AA%E5%B1%8F2020-08-17%20%E4%B8%8B%E5%8D%885.35.54.png&originHeight=390&originWidth=882&originalType=binary∶=1&size=65390&status=done&style=none&width=882)
 
 现在使用 onInit 事件导入，主要代码：
 

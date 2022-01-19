@@ -5,10 +5,10 @@ date: '2021-03-11 14:04:54 +0800'
 tags:
   - js
 categories:
-  - Javascript
+  - JavaScript
 ---
 
-比较常见的语句包括变量声明、表达式、条件、循环等。
+比较常见的语句包括**变量声明、表达式、条件、循环**等。
 
 ## Completion 类型
 
@@ -56,7 +56,7 @@ JavaScript 正是依靠语句的 Completion Record 类型，方才可以在语�
 
 ### 语句的分类
 
-![](https://cdn.nlark.com/yuque/0/2021/jpeg/250093/1615445223702-799e3ef7-c111-4ed4-9e2b-47168c33f138.jpeg#align=left&display=inline&height=872&margin=%5Bobject%20Object%5D&originHeight=872&originWidth=555&size=0&status=done&style=none&width=555)
+![](https://cdn.nlark.com/yuque/0/2021/jpeg/250093/1615445223702-799e3ef7-c111-4ed4-9e2b-47168c33f138.jpeg#height=872&id=UDqtr&originHeight=872&originWidth=555&originalType=binary∶=1&size=0&status=done&style=none&width=555)
 
 #### 普通的语句
 
@@ -119,7 +119,7 @@ return 语句可能产生 return 或者 throw 类型的 Completion Record。
 
 这两类语句的配合，会产生控制代码执行顺序和执行逻辑的效果。
 
-![](https://cdn.nlark.com/yuque/0/2021/png/250093/1615445223714-4291ff93-7e23-48f4-a44b-69ab8dcc847b.png#align=left&display=inline&height=463&margin=%5Bobject%20Object%5D&originHeight=463&originWidth=840&size=0&status=done&style=none&width=840)
+![](https://cdn.nlark.com/yuque/0/2021/png/250093/1615445223714-4291ff93-7e23-48f4-a44b-69ab8dcc847b.png#height=463&id=Wljim&originHeight=463&originWidth=840&originalType=binary∶=1&size=0&status=done&style=none&width=840)
 
 穿透：如 break 只对循环、switch-case 有用，如果在 if 代码块内，break 的作用可以理解成穿透 if 代码块，去外面寻找最新的循环（switch）。
 

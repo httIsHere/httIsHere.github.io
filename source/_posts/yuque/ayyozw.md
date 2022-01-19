@@ -5,7 +5,7 @@ date: '2021-03-11 14:03:37 +0800'
 tags:
   - js
 categories:
-  - Javascript
+  - JavaScript
 ---
 
 ## Promise or setTimeOut
@@ -28,7 +28,7 @@ JavaScript 引擎等待宿主环境分配宏观任务，在操作系统中，通
 
 在宏观任务中，JavaScript 的 Promise 还会产生异步代码，JavaScript 必须保证这些异步代码在一个宏观任务中完成，因此，每个宏观任务中又包含了一个微观任务队列：
 
-![](https://cdn.nlark.com/yuque/0/2021/jpeg/250093/1615442641602-3651867b-6319-491c-a2fc-de436e5a69d1.jpeg#align=left&display=inline&height=1636&margin=%5Bobject%20Object%5D&originHeight=1636&originWidth=1398&size=0&status=done&style=none&width=1398)
+![](https://cdn.nlark.com/yuque/0/2021/jpeg/250093/1615442641602-3651867b-6319-491c-a2fc-de436e5a69d1.jpeg#height=1636&id=JNnUG&originHeight=1636&originWidth=1398&originalType=binary∶=1&size=0&status=done&style=none&width=1398)
 
 > JavaScript 语言的一大特点就是单线程，也就是说，同一个时间只能做一件事。那么，为什么 JavaScript 不能有多个线程呢 ？这样能提高效率啊。 JavaScript 的单线程，与它的用途有关。作为浏览器脚本语言，JavaScript 的主要用途是与用户互动，以及操作 DOM。这决定了它只能是单线程，否则会带来很复杂的同步问题。比如，假定 JavaScript 同时有两个线程，一个线程在某个 DOM 节点上添加内容，另一个线程删除了这个节点，这时浏览器应该以哪个线程为准？ 所以，为了避免复杂性，从一诞生，JavaScript 就是单线程，这已经成了这门语言的核心特征，将来也不会改变。
 
@@ -216,7 +216,7 @@ main();
 
 JavaScript 执行中最粗粒度的任务：传给引擎执行的代码段。
 
-![](https://cdn.nlark.com/yuque/0/2021/png/250093/1615442641578-5775739e-90d3-49da-bbd8-6e03dfc63e02.png#align=left&display=inline&height=481&margin=%5Bobject%20Object%5D&originHeight=481&originWidth=745&size=0&status=done&style=none&width=745)
+![](https://cdn.nlark.com/yuque/0/2021/png/250093/1615442641578-5775739e-90d3-49da-bbd8-6e03dfc63e02.png#height=481&id=xVwgh&originHeight=481&originWidth=745&originalType=binary∶=1&size=0&status=done&style=none&width=745)
 
 ### 闭包（closure）
 
@@ -478,7 +478,7 @@ function foo() {
 
 JavaScript 用一个栈来管理执行上下文，这个栈中的每一项又包含一个链表。
 
-![](https://cdn.nlark.com/yuque/0/2021/jpeg/250093/1615442641594-c9b94c45-2cc0-461a-9954-2dbe83168bae.jpeg#align=left&display=inline&height=489&margin=%5Bobject%20Object%5D&originHeight=489&originWidth=916&size=0&status=done&style=none&width=916)
+![](https://cdn.nlark.com/yuque/0/2021/jpeg/250093/1615442641594-c9b94c45-2cc0-461a-9954-2dbe83168bae.jpeg#height=489&id=sAp0t&originHeight=489&originWidth=916&originalType=binary∶=1&size=0&status=done&style=none&width=916)
 
 当函数调用时，会入栈一个新的执行上下文，函数调用结束时，执行上下文被出栈。
 

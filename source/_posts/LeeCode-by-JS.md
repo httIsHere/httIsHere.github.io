@@ -15,6 +15,11 @@ top: true
 
 ~~~~~~~~~~ 2021.12 ~~~~~~~~~~
 
+- [[1961] Check If String Is a Prefix of Array 检查字符串是否为数组前缀](/2021/12/16/LeeCode-by-JS/1961-check-if-string-is-a-prefix-of-array/)
+- [[1967] Number of Strings That Appear as Substrings in Word 作为子字符串出现在单词中的字符串数目](/2021/12/16/LeeCode-by-JS/1967-number-of-strings-that-appear-as-substrings-in-word/)
+- [[1971] Find if Path Exists in Graph 寻找图中是否存在路径](/2021/12/10/LeeCode-by-JS/1971-find-if-path-exists-in-graph/)
+- [[1979] Find Greatest Common Divisor of Array 找出数组的最大公约数](/2021/12/10/LeeCode-by-JS/1979-find-greatest-common-divisor-of-array/)
+- [[1974] Minimum Time to Type Word Using Special Typewriter 使用特殊打字机键入单词的最少时间](/2021/12/10/LeeCode-by-JS/1974-minimum-time-to-type-word-using-special-typewriter/)
 - [[1984] Minimum Difference Between Highest and Lowest of K Scores 学生分数的最小差值](/2021/12/07/LeeCode-by-JS/1984-minimum-difference-between-highest-and-lowest-of-k-scores/)
 - [[1991] Find the Middle Index in Array 寻找数组的中间位置](/2021/12/07/LeeCode-by-JS/1991-find-the-middle-index-in-array/)
 - [[1995] Count Special Quadruplets 统计特殊四元组](/2021/12/07/LeeCode-by-JS/1995-count-special-quadruplets/)

@@ -5,7 +5,7 @@ date: '2021-02-23 09:29:32 +0800'
 tags:
   - js
 categories:
-  - Javascript
+  - JavaScript
 ---
 
 #### 原始类型
@@ -91,7 +91,7 @@ null == undefined // => true
 
 #### 闭包
 
-函数 A 内部有一个函数 B，函数 B 可以访问到函数 A 中的变量，那么函数 B 就是闭包。
+[「JS」闭包](https://www.yuque.com/httishere/serhyu/hr2ubu?view=doc_embed)函数 A 内部有一个函数 B，函数 B 可以访问到函数 A 中的变量，那么函数 B 就是闭包。
 
 ```javascript
 function A() {

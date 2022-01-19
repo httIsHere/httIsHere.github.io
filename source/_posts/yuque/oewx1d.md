@@ -12,7 +12,7 @@ categories:
 
 #### 为什么 0.1 + 0.2 != 0.3？如何解决这个问题？
 
-JS 采用 IEEE 754 双精度版本（64 位），并且只要采用 IEEE 754 的语言都有该问题。
+JS 采用 IEEE-754 双精度版本（64 位），并且只要采用 IEEE 754 的语言都有该问题。
 计算机是通过二进制来存储东西的，那么 `0.1`  在二进制中会表示为：
 
 ```javascript
@@ -29,7 +29,7 @@ IEEE 754 双精度版本（64 位）将 64 位分为了三段：
 - 其他的位数用来表示有效位，也就是用二进制表示 0.1 中的 10011(0011)
 
 于是出现精度丢失的问题，也就造成了  `0.1`不再是  `0.1`  了，而是变成了  `0.100000000000000002`
-根据双精度浮点数的定义，非整数 Number 无法使用==/===进行比较，正确的比较方法是使用 JS 提供的最小精度值：
+根据双精度浮点数的定义，非整数 Number 无法使用==/===进行比较，正确的比较方法是使用 JS 提供的**最小精度值**：
 
 ```javascript
 Math.abs(0.1 + 0.2 - 0.3) <= Number.EPSILON;
@@ -45,9 +45,9 @@ Math.abs(0.1 + 0.2 - 0.3) <= Number.EPSILON;
 
 当我们打开一个网页时，浏览器都会去请求对应的 HTML 文件。虽然平时我们写代码时都会分为 JS、CSS、HTML 文件，也就是字符串，但是计算机硬件是不理解这些字符串的，所以在网络中传输的内容其实都是 0 和 1 这些字节数据。当浏览器接收到这些字节数据以后，它会将这些字节数据转换为字符串，也就是我们写的代码。
 当数据转换为字符串以后，浏览器会先将这些字符串通过词法分析转换为标记（token），这一过程在词法分析中叫做标记化（tokenization）。
-![](https://cdn.nlark.com/yuque/0/2021/png/250093/1624938436668-382eb8b8-055d-4baa-89a3-07daef6e9004.png#align=left&display=inline&height=214&margin=%5Bobject%20Object%5D&name=&originHeight=214&originWidth=519&size=0&status=done&style=none&width=519)
+![](https://cdn.nlark.com/yuque/0/2021/png/250093/1624938436668-382eb8b8-055d-4baa-89a3-07daef6e9004.png#crop=0&crop=0&crop=1&crop=1&height=214&id=dnb2r&margin=%5Bobject%20Object%5D&name=&originHeight=214&originWidth=519&originalType=binary∶=1&rotation=0&showTitle=false&size=0&status=done&style=none&title=&width=519)
 当结束标记化后，这些标记会紧接着转换为 Node，最后这些 Node 会根据不同 Node 之前的联系构建为一颗 DOM 树。
-![](https://cdn.nlark.com/yuque/0/2021/png/250093/1624938512749-af1bcf95-18eb-47a6-98b4-a926add1d504.png#align=left&display=inline&height=274&margin=%5Bobject%20Object%5D&name=&originHeight=274&originWidth=622&size=0&status=done&style=none&width=622)
+![](https://cdn.nlark.com/yuque/0/2021/png/250093/1624938512749-af1bcf95-18eb-47a6-98b4-a926add1d504.png#crop=0&crop=0&crop=1&crop=1&height=274&id=W0WO4&margin=%5Bobject%20Object%5D&name=&originHeight=274&originWidth=622&originalType=binary∶=1&rotation=0&showTitle=false&size=0&status=done&style=none&title=&width=622)
 浏览器从网络中接收到 HTML 文件然后一系列的转换过程:
 **字节数据 => 字符串 => Token => Node => Dom**
 
@@ -60,7 +60,7 @@ Math.abs(0.1 + 0.2 - 0.3) <= Number.EPSILON;
 - **生成渲染树**
 
 生成 DOM 树和 CSSOM 树以后，就需要将这两棵树组合为渲染树。
-![](https://cdn.nlark.com/yuque/0/2021/png/250093/1624947381540-b36ede66-6f55-481e-9135-69bce1d74f49.png#align=left&display=inline&height=537&margin=%5Bobject%20Object%5D&name=&originHeight=537&originWidth=1150&size=0&status=done&style=none&width=1150)
+![](https://cdn.nlark.com/yuque/0/2021/png/250093/1624947381540-b36ede66-6f55-481e-9135-69bce1d74f49.png#crop=0&crop=0&crop=1&crop=1&height=537&id=RYnRP&margin=%5Bobject%20Object%5D&name=&originHeight=537&originWidth=1150&originalType=binary∶=1&rotation=0&showTitle=false&size=0&status=done&style=none&title=&width=1150)
 渲染树只会包括需要显示的节点和这些节点的样式信息，如果某个节点是 `display: none`  的，那么就不会在渲染树中显示。
 当浏览器生成渲染树以后，就会根据渲染树来进行布局（也可以叫做回流），然后调用 GPU 绘制，合成图层，显示在屏幕上。
 
@@ -73,7 +73,7 @@ DOM 是属于渲染引擎中的，而 JS 是 JS 引擎中的东西。当我们�
 - 首先从上至下，从左往右遍历对象，也就是树的深度遍历，这一步中会给每个节点添加索引，便于最后渲染差异（需要判断新旧节点的 `tagName`是否相同，如果不相同的话就代表节点被替换了。如果没有更改 `tagName`的话，就需要判断是否有子元素，有的话就进行第二步算法）；
 - 一旦节点有子元素，就去判断子元素是否有不同（需要判断原本的列表中是否有节点被移除，在新的列表中需要判断是否有新的节点加入，还需要判断节点是否有移动）；
 
-所以我们在使用模版的 `v-for`或者 `array.map`时会常常遇到** `key`这个属性**，这个属性是用来给每一个节点打标志的，用于**判断是否是同一个节点**。
+所以我们在使用模版的 `v-for`或者 `array.map`时会常常遇到\*\* **`**key**`**这个属性**，这个属性是用来给每一个节点打标志的，用于**判断是否是同一个节点\*\*。
 
 1. 将 Virtual DOM 作为一个兼容层，让我们还能对接非 Web 端的系统，实现跨端开发。
 1. 同样的，通过 Virtual DOM 我们可以渲染到其他的平台，比如实现 SSR、同构渲染等等。

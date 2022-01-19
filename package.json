@@ -5,7 +5,7 @@
     "login": "httishere",
     "mdNameFormat": "slug",
     "token": "8Bw0MWHoOQwNR1g1O8OtyLz5P0wyFnj8rkqlmOcD",
-    "repo": "running",
+    "repo": "blog",
     "postPath": "source/_posts/yuque"
   },
   "version": "0.0.0",
@@ -34,6 +34,7 @@
     "hexo-renderer-sass": "^0.4.0",
     "hexo-renderer-stylus": "^2.0.1",
     "hexo-server": "^2.0.0",
+    "hexo-wordcount": "^6.0.1",
     "travis": "^0.1.1"
   },
   "devDependencies": {

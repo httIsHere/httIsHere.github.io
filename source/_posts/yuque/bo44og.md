@@ -5,7 +5,7 @@ date: '2021-05-24 09:45:19 +0800'
 tags:
   - js
 categories:
-  - Javascript
+  - JavaScript
 ---
 
 在一些通用的计算机语言设计理论中，能够出现在赋值表达式右边的叫做：右值表达式（RightHandSideExpression），而在 JavaScript 标准中，规定了在等号右边表达式叫做条件表达式（ConditionalExpression）。

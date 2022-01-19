@@ -5,7 +5,7 @@ date: '2020-09-21 17:43:47 +0800'
 tags:
   - js
 categories:
-  - Javascript
+  - JavaScript
 ---
 
 > VD 其实就是一个 JS 对象，包括 tag（标签名），props（属性），children（子元素对象）。
@@ -62,6 +62,7 @@ categories:
 ```
 
 我们在写代码时都会写到一个 render 函数，里面写的是页面的 html 模版，然后实现 VD 与实际 DOM 的映射。
+​
 
 ```jsx
 function render() {

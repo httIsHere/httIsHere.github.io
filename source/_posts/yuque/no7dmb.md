@@ -1,5 +1,5 @@
 ---
-title: 微信小程序获取当前页面options
+title: 「Taro」微信小程序获取当前页面options
 urlname: no7dmb
 date: '2020-01-06 09:57:09 +0800'
 tags: []

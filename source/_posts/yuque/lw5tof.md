@@ -5,7 +5,7 @@ date: '2020-10-13 10:04:34 +0800'
 tags:
   - js
 categories:
-  - Javascript
+  - JavaScript
 ---
 
 - forEach

@@ -1,5 +1,5 @@
 ---
-title: 前端训练目录
+title: 「ROAD 6」 前端训练目录
 date: 2021-11-19 16:40:36
 tags:
   - ROAD 6
@@ -19,3 +19,9 @@ top: true
   - [浏览器原理-HTML解析](/2021/09/27/yuque/hr55oy/)
   - [浏览器原理-CSS计算](/2021/09/28/yuque/ur0kri/)
   - [浏览器原理-排版 & 渲染](/2021/10/12/yuque/ir6rqt/)
+- 重学CSS
+  - [重学CSS-知识体系](/2021/12/13/yuque/gh2gze/)
+  - [重学CSS-语法知识](/2021/12/13/yuque/nmonw0/)
+  - [重学CSS-CSS排版](/2021/12/14/yuque/vzq7do/)
+  - [重学CSS-CSS动画](/2021/12/17/yuque/qvtbgk/)
+- [重学HTML](/2021/12/20/yuque/iclyhn/)

@@ -5,7 +5,7 @@ date: '2021-03-11 14:04:26 +0800'
 tags:
   - js
 categories:
-  - Javascript
+  - JavaScript
 ---
 
 ## 面对对象 or 基于对象

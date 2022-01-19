@@ -5,7 +5,7 @@ date: '2021-05-18 15:29:28 +0800'
 tags:
   - js
 categories:
-  - Javascript
+  - JavaScript
 ---
 
 JavaScript 有两种源文件，一种叫做脚本，一种叫做模块。
@@ -24,7 +24,7 @@ JavaScript 有两种源文件，一种叫做脚本，一种叫做模块。
 
 模块中可以包含三种内容：import 声明，export 声明和语句。
 
-![](https://cdn.nlark.com/yuque/0/2021/jpeg/250093/1621322989107-d866e463-32fb-4c31-88e7-0125ace294a7.jpeg#align=left&display=inline&height=596&margin=%5Bobject%20Object%5D&originHeight=596&originWidth=1040&size=0&status=done&style=none&width=1040)
+![](https://cdn.nlark.com/yuque/0/2021/jpeg/250093/1621322989107-d866e463-32fb-4c31-88e7-0125ace294a7.jpeg#height=596&id=yjRTx&originHeight=596&originWidth=1040&originalType=binary∶=1&size=0&status=done&style=none&width=1040)
 
 #### import 声明
 
@@ -117,7 +117,7 @@ async function* foo() {
 }
 ```
 
-![](https://cdn.nlark.com/yuque/0/2021/jpeg/250093/1621322988912-dd04d85c-a828-4f56-a49c-6fb19df8dac5.jpeg#align=left&display=inline&height=461&margin=%5Bobject%20Object%5D&originHeight=461&originWidth=914&size=0&status=done&style=none&width=914)
+![](https://cdn.nlark.com/yuque/0/2021/jpeg/250093/1621322988912-dd04d85c-a828-4f56-a49c-6fb19df8dac5.jpeg#height=461&id=YDuve&originHeight=461&originWidth=914&originalType=binary∶=1&size=0&status=done&style=none&width=914)
 
 #### 两个 JavaScript 语法的全局机制：预处理和指令序言。
 

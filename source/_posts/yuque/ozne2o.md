@@ -6,7 +6,7 @@ tags:
   - js
   - daily
 categories:
-  - Javascript
+  - JavaScript
 ---
 
 ### JSON
@@ -35,7 +35,7 @@ JSON.stringify(new Date(2006, 0, 2, 15, 4, 5));
 - 在序列化 js 对象时，**所有函数和原型成员**都会有意的在结果中**省略**。
 - **值为 undefined**的任何属性也会被跳过，最终等到的就是**所有实例属性均为有效**JSON 数据类型的表示。
 
-![](https://cdn.nlark.com/yuque/0/2021/jpeg/250093/1627265472172-53391a3c-06ff-47a3-aacb-a34a2db2c15a.jpeg#align=left&display=inline&height=147&margin=%5Bobject%20Object%5D&originHeight=147&originWidth=484&size=0&status=done&style=none&width=484)
+![](https://cdn.nlark.com/yuque/0/2021/jpeg/250093/1627265472172-53391a3c-06ff-47a3-aacb-a34a2db2c15a.jpeg#height=147&id=o22B1&originHeight=147&originWidth=484&originalType=binary∶=1&size=0&status=done&style=none&width=484)
 
 MDN:[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#:~:text=JSON.stringify () converts a value to JSON notation,stringification%2C in accord with the traditional conversion semantics](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#:~:text=JSON.stringify%20%28%29%20converts%20a%20value%20to%20JSON%20notation,stringification%2C%20in%20accord%20with%20the%20traditional%20conversion%20semantics).
 
@@ -44,7 +44,7 @@ MDN:[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Ob
 JSON.stringify 还可以接收另两个参数：
 
 - **replacer**：如果该参数是一个函数，则在序列化过程中，被序列化的值的每个属性都会经过该函数的转换和处理；如果该参数是一个数组，表示指定返回当前对象的属性；如果该参数为 null 或者未提供，则对象所有的属性都会被序列化。
-  ![](https://cdn.nlark.com/yuque/0/2021/jpeg/250093/1627265472176-5058c9e2-2ae4-43cd-922d-4111c943b16f.jpeg#align=left&display=inline&height=79&margin=%5Bobject%20Object%5D&originHeight=79&originWidth=451&size=0&status=done&style=none&width=451)
+  ![](https://cdn.nlark.com/yuque/0/2021/jpeg/250093/1627265472176-5058c9e2-2ae4-43cd-922d-4111c943b16f.jpeg#height=79&id=PDAwH&originHeight=79&originWidth=451&originalType=binary∶=1&size=0&status=done&style=none&width=451)
 - **space**：指定缩进用的空白字符串，用于美化输出（pretty-print）；如果参数是个数字，它代表有多少的空格；上限为 10。该值若小于 1，则意味着没有空格；如果该参数为字符串（当字符串长度超过 10 个字母，取其前 10 个字母），该字符串将被作为空格；如果该参数没有提供（或者为 null），将没有空格。
 
 ### JSON.parse()

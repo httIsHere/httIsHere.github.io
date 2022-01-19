@@ -5,7 +5,7 @@ date: '2021-03-08 09:43:00 +0800'
 tags:
   - js
 categories:
-  - Javascript
+  - JavaScript
 ---
 
 - 为什么有的编程规范要求用 void 0 代替 undefined？

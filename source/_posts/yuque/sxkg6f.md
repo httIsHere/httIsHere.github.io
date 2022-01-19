@@ -6,7 +6,7 @@ tags:
   - js
   - daily
 categories:
-  - Javascript
+  - JavaScript
 cover:
 ---
 

@@ -5,7 +5,7 @@ date: '2021-04-01 11:14:06 +0800'
 tags:
   - js
 categories:
-  - Javascript
+  - JavaScript
 ---
 
 文法是编译原理中对语言的写法的一种规定，一般来说，文法分成词法和语法两种。
