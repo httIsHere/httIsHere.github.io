@@ -134,15 +134,7 @@
 </script>
 
         <div class="main">
-            <!--
- * @Author: your name
- * @Date: 2020-08-17 15:35:07
- * @LastEditTime: 2022-01-19 12:06:05
- * @LastEditors: Please set LastEditors
- * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_page/post.ejs
--->
-<div class="container">
+            <div class="container">
     
     
         <div class="post-toc">
@@ -227,7 +219,7 @@
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/Javascript/">Javascript</a>
+                                <a href="/categories/JavaScript/">JavaScript</a>
                             
                         </span>
                     
@@ -264,7 +256,7 @@
 <p>整个循环做的事情基本上就是反复“等待 - 执行”，实际中还有要判断循环是否结束、宏观任务队列等逻辑。</p>
 <p>所以<strong>宏观任务的队列就相当于事件循环</strong>。</p>
 <p>在宏观任务中，JavaScript 的 Promise 还会产生异步代码，JavaScript 必须保证这些异步代码在一个宏观任务中完成，因此，每个宏观任务中又包含了一个微观任务队列：</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2021/jpeg/250093/1615442641602-3651867b-6319-491c-a2fc-de436e5a69d1.jpeg#align=left&amp;display=inline&amp;height=1636&amp;margin=%5Bobject%20Object%5D&amp;originHeight=1636&amp;originWidth=1398&amp;size=0&amp;status=done&amp;style=none&amp;width=1398" alt=""></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/jpeg/250093/1615442641602-3651867b-6319-491c-a2fc-de436e5a69d1.jpeg#height=1636&amp;id=JNnUG&amp;originHeight=1636&amp;originWidth=1398&amp;originalType=binary∶=1&amp;size=0&amp;status=done&amp;style=none&amp;width=1398" alt=""></p>
 <blockquote>
 <p>JavaScript 语言的一大特点就是单线程，也就是说，同一个时间只能做一件事。那么，为什么 JavaScript 不能有多个线程呢 ？这样能提高效率啊。 JavaScript 的单线程，与它的用途有关。作为浏览器脚本语言，JavaScript 的主要用途是与用户互动，以及操作 DOM。这决定了它只能是单线程，否则会带来很复杂的同步问题。比如，假定 JavaScript 同时有两个线程，一个线程在某个 DOM 节点上添加内容，另一个线程删除了这个节点，这时浏览器应该以哪个线程为准？ 所以，为了避免复杂性，从一诞生，JavaScript 就是单线程，这已经成了这门语言的核心特征，将来也不会改变。</p>
 </blockquote>
@@ -309,7 +301,7 @@
 <h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><p>实现一个红绿灯，把一个圆形 div 按照绿色 3 秒，黄色 1 秒，红色 2 秒循环改变背景色。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sleep</span>(<span class="params">duration</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(resolve, duration);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">changeColor</span>(<span class="params">color</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(color);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  changeColor(<span class="string">&quot;green&quot;</span>);</span><br><span class="line">  <span class="keyword">await</span> sleep(<span class="number">3000</span>);</span><br><span class="line">  changeColor(<span class="string">&quot;yellow&quot;</span>);</span><br><span class="line">  <span class="keyword">await</span> sleep(<span class="number">1000</span>);</span><br><span class="line">  changeColor(<span class="string">&quot;red&quot;</span>);</span><br><span class="line">  <span class="keyword">await</span> sleep(<span class="number">2000</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> color = <span class="string">&quot;green&quot;</span>;</span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">main</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 实现一个循环执行后执行</span></span><br><span class="line">  <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="keyword">await</span> func();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">main();</span><br></pre></td></tr></table></figure>
 <h2 id="闭包-amp-执行上下文"><a href="#闭包-amp-执行上下文" class="headerlink" title="闭包 &amp; 执行上下文"></a>闭包 &amp; 执行上下文</h2><p>JavaScript 执行中最粗粒度的任务：传给引擎执行的代码段。</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/250093/1615442641578-5775739e-90d3-49da-bbd8-6e03dfc63e02.png#align=left&amp;display=inline&amp;height=481&amp;margin=%5Bobject%20Object%5D&amp;originHeight=481&amp;originWidth=745&amp;size=0&amp;status=done&amp;style=none&amp;width=745" alt=""></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/250093/1615442641578-5775739e-90d3-49da-bbd8-6e03dfc63e02.png#height=481&amp;id=xVwgh&amp;originHeight=481&amp;originWidth=745&amp;originalType=binary∶=1&amp;size=0&amp;status=done&amp;style=none&amp;width=745" alt=""></p>
 <h3 id="闭包（closure）"><a href="#闭包（closure）" class="headerlink" title="闭包（closure）"></a>闭包（closure）</h3><p>闭包其实只是一个<strong>绑定了执行环境</strong>的<strong>函数</strong>，它携带了执行的环境。</p>
 <p>根据古典定义，闭包组成部分：</p>
 <ul>
@@ -403,7 +395,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">foo();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在别处(外部文件等)定义了foo：</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(b); <span class="comment">// 2</span></span><br><span class="line">  <span class="built_in">console</span>.log(a); <span class="comment">// error</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这里的 foo 能够访问 b（定义时词法环境），却不能访问 a（执行时的词法环境），这就是执行上下文的切换机制了。</p>
 <p>JavaScript 用一个栈来管理执行上下文，这个栈中的每一项又包含一个链表。</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2021/jpeg/250093/1615442641594-c9b94c45-2cc0-461a-9954-2dbe83168bae.jpeg#align=left&amp;display=inline&amp;height=489&amp;margin=%5Bobject%20Object%5D&amp;originHeight=489&amp;originWidth=916&amp;size=0&amp;status=done&amp;style=none&amp;width=916" alt=""></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/jpeg/250093/1615442641594-c9b94c45-2cc0-461a-9954-2dbe83168bae.jpeg#height=489&amp;id=sAp0t&amp;originHeight=489&amp;originWidth=916&amp;originalType=binary∶=1&amp;size=0&amp;status=done&amp;style=none&amp;width=916" alt=""></p>
 <p>当函数调用时，会入栈一个新的执行上下文，函数调用结束时，执行上下文被出栈。</p>
 <p>而 this 则是一个更为复杂的机制，JavaScript 标准定义了 <strong>[[thisMode]]</strong> 私有属性。[[thisMode]] 私有属性有三个取值：</p>
 <ul>

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="referrer" content="no-referrer" />
+
+    <meta name="author" content="httishere">
+
+
+
+
+
+<title>长风破浪会有时，直挂云帆济沧海 ｜ 2021总结 | HTTISHERE</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+    <div class="wrapper">
+        <!--
+ * @Author: your name
+ * @Date: 2020-08-17 15:35:07
+ * @LastEditTime: 2022-01-15 12:59:30
+ * @LastEditors: your name
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_partial/header.ejs
+-->
+<header>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-header header-logo">
+        <a href="/">ℍ𝕋𝕋𝕀𝕊ℍ𝔼ℝ𝔼&#39;𝕤 𝔹𝕝𝕠𝕘</a>
+        <!-- ℍ𝕋𝕋𝕀𝕊ℍ𝔼ℝ𝔼'𝕤 𝔹𝕝𝕠𝕘 -->
+      </div>
+      <div class="menu navbar-right">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/reading">Schedules</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+        <input id="switch_default" type="checkbox" class="switch_default" />
+        <label for="switch_default" class="toggleBtn"></label>
+      </div>
+    </div>
+  </nav>
+
+  
+  <nav class="navbar-mobile" id="nav-mobile">
+    <div class="container">
+      <div class="navbar-header">
+        <div>
+          <a href="/">ℍ𝕋𝕋𝕀𝕊ℍ𝔼ℝ𝔼&#39;𝕤 𝔹𝕝𝕠𝕘</a
+          ><a id="mobile-toggle-theme">·&nbsp;Light</a>
+        </div>
+        <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+      </div>
+      <div class="menu" id="mobile-menu">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/reading">Schedules</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+      </div>
+    </div>
+  </nav>
+</header>
+<script>
+  var mobileBtn = function f() {
+    var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+    var mobileMenu = document.getElementById("mobile-menu");
+    if (toggleMenu.classList.contains("active")) {
+      toggleMenu.classList.remove("active");
+      mobileMenu.classList.remove("active");
+    } else {
+      toggleMenu.classList.add("active");
+      mobileMenu.classList.add("active");
+    }
+  };
+  function addFav() {
+    var title = document.title;
+    var URL = document.URL;
+    try {
+      window.external.addFavorite(URL, title);
+    } catch (e) {
+      try {
+        window.sidebar.addPanel(title, URL, "");
+      } catch (e) {
+        alert("由于浏览器的安全设置\n可以使用Ctrl+D或者Command+D进行手动收藏");
+      }
+    }
+  }
+</script>
+
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">长风破浪会有时，直挂云帆济沧海 ｜ 2021总结</h1>
+            
+                <div class="post-meta" id="/2022/01/19/2021-final/" class="leancloud-visitors view">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">httishere</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">2022/01/19&nbsp;&nbsp;15:13:52</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a>
+                            
+                        </span>
+                    
+                     <<
+                    <div class="extra">
+                        >> 
+                        <span id="/2022/01/19/2021-final/" class="leancloud-visitors view" data-flag-title="长风破浪会有时，直挂云帆济沧海 ｜ 2021总结">
+                            <span class="post-meta-item-text">Pageviews:</span>
+                            <a href="javascript:;" class="leancloud-visitors-count">0</a>
+                        </span>
+                        
+                            <span class="post-count">
+                        Words:
+                            <a href="">1.3k</a>  
+                            </span>
+                        
+                        
+                            <span class="post-count">
+                        Time:
+                            <a href="">4 min</a>  
+                            </span>
+                        
+                    </div>
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p>每次要写总结的时候总是不知道为什么一点也想不起今年发生了什么事。</p>
+<p>突然要回忆居然想不起什么重要的事，最多的大概就是工作上的。</p>
+<h3 id="工作-amp-专业"><a href="#工作-amp-专业" class="headerlink" title="工作 &amp; 专业"></a>工作 &amp; 专业</h3><h4 id="第一次面试他人"><a href="#第一次面试他人" class="headerlink" title="第一次面试他人"></a>第一次面试他人</h4><p>一个字——慌，和同事一起面试实习生，哈哈哈哈，面试完就是感觉现在的学生怎么都这么厉害，想到自己刚毕业的时候真的就是啥也不会。</p>
+<h4 id="开始重学前端"><a href="#开始重学前端" class="headerlink" title="开始重学前端"></a>开始重学前端</h4><p>工作久了，有那么段时间感觉自己永远都在做着重复性的东西，或者什么新技术出来都要试一下，笔记里的东西越来越多，但是能记住的发现就没有几个。</p>
+<p>一些最简单的最底层的自从工作之后就再也没接触过了，还是要给自己重新打好基础。</p>
+<h3 id="爱好"><a href="#爱好" class="headerlink" title="爱好"></a>爱好</h3><p>又写完了一个本子，年末要买新本子的时候总是很开心。</p>
+<p>每天一部分的小开心大概就来自做手帐吧，然后开始用<code>Notion</code>做记录，没想到分享到小红书和B站之后还收获了一些粉丝，后面还要持续输出。</p>
+<h3 id="2022年的展望"><a href="#2022年的展望" class="headerlink" title="2022年的展望"></a>2022年的展望</h3><ul>
+<li>除了技术文章可以多看看技术方面的书📖，可能会有不一样的收获。</li>
+<li>多写一些自己的技术博客，总结&amp;实践。</li>
+<li>希望能走出舒适圈，技术更进一步。</li>
+<li>重拾Node，并坚持下去。</li>
+<li>保持学习。</li>
+</ul>
+<blockquote>
+<p>今年事件回顾</p>
+</blockquote>
+<ul>
+<li>一月<ul>
+<li>和几个同事一起去爬了小和山，大概是知道这是近期最后一次相聚吧，愿前程似锦。</li>
+<li>看完了《灵笼》。</li>
+<li>疫情总是反反复复。</li>
+</ul>
+</li>
+<li>二月<ul>
+<li>SECHSKIES终于出了新歌。</li>
+<li>和飞飞一起去看了电影🎬，飞飞年后回来就要离职了，难过。</li>
+<li>新年要寄回家的礼物一直没有派送，圆通❌。</li>
+<li>过年回家妹妹做了好多甜品，开心，虽然又是一个一大家子不能完全相聚的年，但还是有希望。</li>
+<li>因为家里的催婚很不开心，大概就是彼此理解却无法接受吧。</li>
+<li>大晚上开车去公园，还要让我开车吓死人咯。</li>
+<li>走亲戚的时候每个人都觉得我在杭州上班坐办公室赚得很多却没有一个人对我说一个人在外工作辛苦了。</li>
+<li>回杭那天还是给自己许了个愿，健健康康吧。</li>
+</ul>
+</li>
+<li>三月<ul>
+<li>哈哈哈，知道了利老师。</li>
+<li>终于鼓起勇气去治疗牙齿了，就知道要做根管治疗，还要去3，4次，最后花了4000多做了牙冠，害，一定要早治疗！</li>
+<li>在追创造营。</li>
+</ul>
+</li>
+<li>四月<ul>
+<li>《非正式会谈》终于开始录新一季了。</li>
+<li>虽然感冒很难受，但是为了钱！</li>
+<li>又是和妹妹去西湖的一天，天气很好但我很胖。</li>
+<li>最近的健身训练都在突破自己，每次看到自己做的重量有进步都超级开心。</li>
+<li>第一次尝试了青芒，很好吃，就是牙要掉了。</li>
+<li>创造营成团夜啦，喜欢的都出道了，哈哈哈。</li>
+</ul>
+</li>
+<li>五月<ul>
+<li>我的《新西游记》特别节目终于来了，又可以快乐了。</li>
+<li>《灵笼》的新一季也要来了！</li>
+<li>开心！！！毕业后全寝室第一次人员到齐！！！一起去台州爬了山⛰️，期待下一次的相聚。</li>
+<li>新垣结衣和星野源居然结婚了。</li>
+<li>在追《御赐小仵作》，居然还花了钱买剧。</li>
+<li>健身满一年，还需继续努力。</li>
+</ul>
+</li>
+<li>六月<ul>
+<li>不知道吃了什么居然肠胃炎了，上吐下泻，生病的晚上总是容易emo。</li>
+<li>还是反反复复，好多人都说我莫不是一个悲观主义者，其实就是。</li>
+</ul>
+</li>
+<li>七月<ul>
+<li>教育行业整顿，公司裁员。</li>
+<li>河南郑州发生了水灾，虽然很穷但是还是捐了钱，希望大家都能好好的。</li>
+<li>东京奥运会，气死人的奥运会。</li>
+<li>生日，我居然就25岁了，总感觉上大学还是昨天的事。</li>
+</ul>
+</li>
+<li>八月<ul>
+<li>还是计划着要努力存钱。</li>
+<li>臀推90kg达成。</li>
+</ul>
+</li>
+<li>九月<ul>
+<li>原来的健身房要装修，于是换到了另一家分店。</li>
+<li>又一次和妹妹去西湖，每次说要出去玩就是去西湖。</li>
+</ul>
+</li>
+<li>十月<ul>
+<li>国庆十一回家了，第一次去看了装修的新房子，我的房间真的好小啊。</li>
+<li>买了一年的专辑到了，我震惊了。</li>
+</ul>
+</li>
+<li>十一月<ul>
+<li>花了很多钱买了过年礼物，突然感觉时间过得好快呀。</li>
+<li>摔碎了一块腮红。</li>
+<li>最近手腕一直不得劲。</li>
+<li>公司体检。</li>
+</ul>
+</li>
+<li>十二月<ul>
+<li>不想回忆的令人伤心的12月。</li>
+<li>在小红书和B站乱搞，居然一下子有了几千个粉丝。</li>
+</ul>
+</li>
+</ul>
+<p>疫情还是反反复复，人类在疾病面前真的很渺小。<br>愿一直做一个善良的人。<br>愿年年身体健康，万事如意。</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>httishere</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://httishere.github.io/2022/01/19/2021-final/">https://httishere.github.io/2022/01/19/2021-final/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2021 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Good Good Study, Day Day Up.</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E9%9A%8F%E7%AC%94/"># 随笔</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2022/01/15/notion-template/">「Notion」 Templates</a>
+            
+        </section>
+        
+            <!--
+ * @Author: your name
+ * @Date: 2021-07-08 11:08:58
+ * @LastEditTime: 2021-08-20 11:11:35
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_partial/gitalk.ejs
+-->
+<link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css">
+<div id="gitalk-container" style="margin-top: 50px;"></div>
+<!-- <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> -->
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script type="text/javascript">
+console.log(md5(location.pathname))
+    new Gitalk({
+        clientID: 'c61a26564784a9cb16f3',
+        clientSecret: '25a391b4405c726bfa417a4d09a8a9d46fd41e12',
+        id: window.location.pathname,
+        repo: 'httIsHere.github.io',
+        owner: 'httIsHere',
+        admin: 'httIsHere',
+        id: md5(location.pathname),
+        distractionFreeMode: false
+    }).render('gitalk-container')
+</script>
+        
+        
+            <section id="comments" class="comments">
+              <style>
+                .comments{margin:30px;padding:10px;background:#fff}
+                @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+              </style>
+              <!--
+ * @Author: your name
+ * @Date: 2022-01-19 10:26:36
+ * @LastEditTime: 2022-01-19 11:55:49
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_plugins/valine.ejs
+-->
+<!-- <div class="valine_comment"></div> -->
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: '1BHDvzMyiyWmu3v3vBaR2dek-gzGzoHsz',
+      app_key: 'MaYtrzsGSwqpImuLueThWKFE',
+      placeholder: '这里留言。。',
+      notify: 'true',
+      verify: 'true',
+      visitor: 'true',
+    });
+</script>
+            </section>
+        
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© httishere | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

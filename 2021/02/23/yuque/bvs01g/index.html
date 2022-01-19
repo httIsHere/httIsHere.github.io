@@ -134,15 +134,7 @@
 </script>
 
         <div class="main">
-            <!--
- * @Author: your name
- * @Date: 2020-08-17 15:35:07
- * @LastEditTime: 2022-01-19 12:06:05
- * @LastEditors: Please set LastEditors
- * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_page/post.ejs
--->
-<div class="container">
+            <div class="container">
     
     
         <div class="post-toc">
@@ -227,7 +219,7 @@
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/Javascript/">Javascript</a>
+                                <a href="/categories/JavaScript/">JavaScript</a>
                             
                         </span>
                     
@@ -272,7 +264,7 @@
 <h4 id="vs"><a href="#vs" class="headerlink" title="== vs ==="></a>== vs ===</h4><p>对于  <code>==</code>  来说，如果对比双方的类型<strong>不一样</strong>的话，就会进行<strong>类型转换。</strong><br>会先判断是否在对比 <code>null</code> 和 <code>undefined</code>，是的话就会返回 <code>true</code></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> == <span class="string">&#x27;1&#x27;</span> <span class="comment">// =&gt; true</span></span><br><span class="line"><span class="literal">null</span> == <span class="literal">undefined</span> <span class="comment">// =&gt; true</span></span><br><span class="line">[] == ![] <span class="comment">// =&gt; true ???</span></span><br></pre></td></tr></table></figure>
 <p>!运算符的优先级大于 ==，所以实际上这里还涉及到!的运算。<br>这个比较简单！会将后面的值转化为布尔值。即![]变成!Boolean([]), 也就是!true,也就是 false。<br>实际上是对比 <code>[] == false;</code><br>运用上面的顺序，false 是布尔值，所以转化为数值 Number(flase), 为 0。<br>对比<code>[] == 0;</code><br>满足第三条规则[] 是对象（数组也属于对象），0 不是对象。所以 ToPrimitive([])是””<br>对比<code>&quot;&quot; == 0;</code><br>满足第二条规则，”” 是字符串，0 是数值，对比 Number(“”) == 0, 也就是 0 == 0。<br>所以得出 <code>[] == ![]</code><br><strong>所以在使用时尽量使用</strong><code>**===**</code><strong>。</strong><br><strong>​</strong></p>
-<h4 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h4><p>函数 A 内部有一个函数 B，函数 B 可以访问到函数 A 中的变量，那么函数 B 就是闭包。</p>
+<h4 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h4><p><a target="_blank" rel="noopener" href="https://www.yuque.com/httishere/serhyu/hr2ubu?view=doc_embed">「JS」闭包</a>函数 A 内部有一个函数 B，函数 B 可以访问到函数 A 中的变量，那么函数 B 就是闭包。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> a = <span class="number">1</span>;</span><br><span class="line">  <span class="built_in">window</span>.B = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line">A();</span><br><span class="line">B(); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
 <p>循环内异步事件处理：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt;= <span class="number">5</span>; i++) &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span> <span class="title">timer</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i);</span><br><span class="line">  &#125;, i * <span class="number">1000</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 6 6 6 6 6</span></span><br><span class="line"><span class="comment">// 使用let解决（推荐）</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt;= <span class="number">5</span>; i++) &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span> <span class="title">timer</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i);</span><br><span class="line">  &#125;, i * <span class="number">1000</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 1 2 3 4 5</span></span><br><span class="line"><span class="comment">// 使用闭包解决</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt;= <span class="number">5</span>; i++) &#123;</span><br><span class="line">  (<span class="function"><span class="keyword">function</span> (<span class="params">j</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span> <span class="title">timer</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(j);</span><br><span class="line">    &#125;, j * <span class="number">1000</span>);</span><br><span class="line">  &#125;)(i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 1 2 3 4 5</span></span><br></pre></td></tr></table></figure>

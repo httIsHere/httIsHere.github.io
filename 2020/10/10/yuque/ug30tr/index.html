@@ -134,15 +134,7 @@
 </script>
 
         <div class="main">
-            <!--
- * @Author: your name
- * @Date: 2020-08-17 15:35:07
- * @LastEditTime: 2022-01-19 12:06:05
- * @LastEditors: Please set LastEditors
- * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_page/post.ejs
--->
-<div class="container">
+            <div class="container">
     
     
         <div class="post-toc">
@@ -227,7 +219,7 @@
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/Javascript/">Javascript</a>
+                                <a href="/categories/JavaScript/">JavaScript</a>
                             
                         </span>
                     
@@ -272,7 +264,7 @@
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">&quot;global&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> a = <span class="string">&quot;function&quot;</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(a); <span class="comment">// function</span></span><br><span class="line">&#125;</span><br><span class="line">foo();</span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// global</span></span><br></pre></td></tr></table></figure>
 <h4 id="块级作用域"><a href="#块级作用域" class="headerlink" title="块级作用域"></a>块级作用域</h4><p>被大括号<code>&#123;&#125;</code>包裹的代码部分。<br>ES6 前没有块级作用域的概念，所以<code>&#123;&#125;</code>中并没有自己的作用域。如果我们想在 ES5 的环境下构建块级作用域，一般都是是通过立即执行函数来实现的。</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">&quot;global&quot;</span>;</span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"><span class="built_in">window</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> name = <span class="string">&quot;block&quot;</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(name); <span class="comment">// &#x27;block&#x27;</span></span><br><span class="line">&#125;)(<span class="built_in">window</span>);</span><br><span class="line"><span class="built_in">console</span>.log(name); <span class="comment">// &#x27;global&#x27;</span></span><br></pre></td></tr></table></figure>
-<p><code>let/const</code>不允许变量提升，必须<strong>“先声明再使用”</strong>。这种限制，称为<strong>“暂时性死区”</strong>。这也能让我们在代码编写阶段变得更加规范化，执行跟书写顺序保持一致。</p>
+<p><code>let/const</code>不允许变量提升，必须<strong>“先声明再使用”</strong>。这种限制，称为<strong>“暂时性死区”</strong>。这也能让我们在代码编写阶段变得更加规范化，执行跟书写顺序保持一致。<br>​</p>
 <h3 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h3><blockquote>
 <p>当代码在一个环境中执行时，会创建变量对象的一个作用域链（scope chain）。作用域链的用途，是保证对执行环境有权访问的所有变量和函数的有序访问。作用域链的前端，始终都是当前执行的代码所在环境的变量对象。如果这个环境是函数，则将其活动对象（activation object）作为变量对象。<br>——《JavaScript 高级程序设计》</p>
 </blockquote>

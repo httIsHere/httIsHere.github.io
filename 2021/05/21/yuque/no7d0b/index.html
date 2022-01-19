@@ -134,15 +134,7 @@
 </script>
 
         <div class="main">
-            <!--
- * @Author: your name
- * @Date: 2020-08-17 15:35:07
- * @LastEditTime: 2022-01-19 12:06:05
- * @LastEditors: Please set LastEditors
- * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_page/post.ejs
--->
-<div class="container">
+            <div class="container">
     
     
         <div class="post-toc">
@@ -227,7 +219,7 @@
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/Javascript/">Javascript</a>
+                                <a href="/categories/JavaScript/">JavaScript</a>
                             
                         </span>
                     
@@ -270,7 +262,7 @@
 <h4 id="MemberExpression-成员表达式"><a href="#MemberExpression-成员表达式" class="headerlink" title="MemberExpression 成员表达式"></a>MemberExpression 成员表达式</h4><p>通常是用于访问对象成员的。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a.b;</span><br><span class="line">a[<span class="string">&quot;b&quot;</span>];</span><br><span class="line"><span class="keyword">new</span>.target;</span><br><span class="line"><span class="built_in">super</span>.b;</span><br><span class="line"></span><br><span class="line">f<span class="string">`a<span class="subst">$&#123;b&#125;</span>c`</span>; <span class="comment">// 标签模版</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Cls(); <span class="comment">// 不带参数的new运算</span></span><br></pre></td></tr></table></figure>
 <p>用标识符的属性访问和用字符串的属性访问。new.target 是个新加入的语法，用于判断函数是否是被 new 调用，super 则是构造函数中，用于访问父类的属性的语法。</p>
-<p><strong>f<code>a$&#123;b&#125;c</code></strong>带函数的模板，这个带函数名的模板表示把模板的各个部分算好后传递给一个函数。</p>
+<p><strong>f</strong><code>**a$&#123;b&#125;c**</code>带函数的模板，这个带函数名的模板表示把模板的各个部分算好后传递给一个函数。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;<span class="built_in">console</span>.log(<span class="built_in">arguments</span>&#125;</span><br><span class="line">f<span class="string">`a<span class="subst">$&#123;b&#125;</span>c`</span>; <span class="comment">// Arguments[Array(2), 2, ...] =&gt; &#123;0: [&quot;a&quot;, &quot;b&quot;], 1: 2&#125;</span></span><br><span class="line">f<span class="string">`a<span class="subst">$&#123;a&#125;</span>b<span class="subst">$&#123;a&#125;</span>c`</span>; <span class="comment">// &#123;0: [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;], 1: 2, 2: 2&#125;</span></span><br><span class="line">f<span class="string">`a<span class="subst">$&#123;a&#125;</span>b<span class="subst">$&#123;a&#125;</span><span class="subst">$&#123;c&#125;</span>cc`</span>; <span class="comment">// &#123;0: [&quot;a&quot;, &quot;b&quot;, &quot;&quot;, &quot;cc&quot;], 1: 2, 2: 2, 3: 3&#125;</span></span><br></pre></td></tr></table></figure>
 <p><code>$&#123;b&#125;</code>会将其他分割成数组作为函数第一个参数，然后将<code>$&#123;&#125;</code>内的值作为之后的参数。</p>
 <p><code>new Cls();</code>另一个是带参数列表的 new 运算，注意，不带参数列表的 new 运算优先级更低，不属于 Member Expression。</p>

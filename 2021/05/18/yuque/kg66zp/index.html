@@ -134,15 +134,7 @@
 </script>
 
         <div class="main">
-            <!--
- * @Author: your name
- * @Date: 2020-08-17 15:35:07
- * @LastEditTime: 2022-01-19 12:06:05
- * @LastEditors: Please set LastEditors
- * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_page/post.ejs
--->
-<div class="container">
+            <div class="container">
     
     
         <div class="post-toc">
@@ -227,7 +219,7 @@
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/Javascript/">Javascript</a>
+                                <a href="/categories/JavaScript/">JavaScript</a>
                             
                         </span>
                     
@@ -263,7 +255,7 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;module&quot;</span> <span class="attr">src</span>=<span class="string">&quot;xxxxx.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>脚本中可以包含语句。</p>
 <p>模块中可以包含三种内容：import 声明，export 声明和语句。</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2021/jpeg/250093/1621322989107-d866e463-32fb-4c31-88e7-0125ace294a7.jpeg#align=left&amp;display=inline&amp;height=596&amp;margin=%5Bobject%20Object%5D&amp;originHeight=596&amp;originWidth=1040&amp;size=0&amp;status=done&amp;style=none&amp;width=1040" alt=""></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/jpeg/250093/1621322989107-d866e463-32fb-4c31-88e7-0125ace294a7.jpeg#height=596&amp;id=yjRTx&amp;originHeight=596&amp;originWidth=1040&amp;originalType=binary∶=1&amp;size=0&amp;status=done&amp;style=none&amp;width=1040" alt=""></p>
 <h4 id="import-声明"><a href="#import-声明" class="headerlink" title="import 声明"></a>import 声明</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;mod&quot;</span>; <span class="comment">//引入一个模块</span></span><br><span class="line"><span class="keyword">import</span> v <span class="keyword">from</span> <span class="string">&quot;mod&quot;</span>; <span class="comment">//把模块默认的导出值放入变量v</span></span><br></pre></td></tr></table></figure>
 <p>直接 import 一个模块，只是保证了这个模块代码被执行，引用它的模块是无法获得它的任何信息的。</p>
 <p>带 from 的 import 意思是引入模块中的一部分信息，可以把它们变成本地的变量。</p>
@@ -284,7 +276,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;go go go&quot;</span>);</span><br><span class="line">&#125;, <span class="number">10000</span>);</span><br></pre></td></tr></table></figure>
 <p>宏任务中可能会执行的代码包括“脚本 (script)”，“模块（module）”和“函数体（function body）”。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// normal</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">//Function body</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 异步函数体</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">//Function body</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 生成器函数体</span></span><br><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">//Function body</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 异步生成器函数体</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span>* <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">//Function body</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="https://cdn.nlark.com/yuque/0/2021/jpeg/250093/1621322988912-dd04d85c-a828-4f56-a49c-6fb19df8dac5.jpeg#align=left&amp;display=inline&amp;height=461&amp;margin=%5Bobject%20Object%5D&amp;originHeight=461&amp;originWidth=914&amp;size=0&amp;status=done&amp;style=none&amp;width=914" alt=""></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/jpeg/250093/1621322988912-dd04d85c-a828-4f56-a49c-6fb19df8dac5.jpeg#height=461&amp;id=YDuve&amp;originHeight=461&amp;originWidth=914&amp;originalType=binary∶=1&amp;size=0&amp;status=done&amp;style=none&amp;width=914" alt=""></p>
 <h4 id="两个-JavaScript-语法的全局机制：预处理和指令序言。"><a href="#两个-JavaScript-语法的全局机制：预处理和指令序言。" class="headerlink" title="两个 JavaScript 语法的全局机制：预处理和指令序言。"></a>两个 JavaScript 语法的全局机制：预处理和指令序言。</h4><h5 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h5><p>JavaScript 执行前，会对脚本、模块和函数体中的语句进行预处理。预处理过程将会提前处理 var、函数声明、class、const 和 let 这些语句，以确定其中变量的意义。</p>
 <ul>
 <li><code>var</code>声明：永远作用于脚本、模块和函数体这个级别，在预处理阶段，不关心赋值的部分，只管在当前作用域声明这个变量（变量提升）。</li>
