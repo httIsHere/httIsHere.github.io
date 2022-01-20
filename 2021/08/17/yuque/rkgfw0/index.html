@@ -219,7 +219,7 @@
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/Typescript/">Typescript</a>
+                                <a href="/categories/TypeScript/">TypeScript</a>
                             
                         </span>
                     
@@ -299,7 +299,7 @@
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> <span class="keyword">var</span> jQuery: <span class="function">(<span class="params">selector: <span class="built_in">string</span></span>) =&gt;</span> <span class="built_in">any</span>;</span><br><span class="line"></span><br><span class="line">jQuery(<span class="string">&quot;#foo&quot;</span>);</span><br></pre></td></tr></table></figure>
 <p><strong>声明语句中只能定义类型，切勿在声明语句中定义具体的实现。</strong></p>
 <h4 id="声明文件-1"><a href="#声明文件-1" class="headerlink" title="声明文件"></a>声明文件</h4><p>通常我们会把声明语句放到一个单独的文件，如<code>jQuery.d.ts</code>。</p>
-<p><strong>声明文件必需以 <code>.d.ts</code> 为后缀。</strong></p>
+<p><strong>声明文件必需以 </strong><code>**.d.ts**</code><strong> 为后缀。</strong></p>
 <p>ts 会解析项目中所有的 <code>*.ts</code> 文件，当然也包含以 <code>.d.ts</code> 结尾的文件。所以当我们将 <code>jQuery.d.ts</code> 放到项目中时，其他所有 <code>*.ts</code> 文件就都可以获得 <code>jQuery</code> 的类型定义了。</p>
 <h4 id="书写声明文件"><a href="#书写声明文件" class="headerlink" title="书写声明文件"></a>书写声明文件</h4><h5 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h5><blockquote>
 <p>通过 <code>&lt;script&gt;</code> 标签引入第三方库，注入全局变量</p>
@@ -368,7 +368,7 @@
 </ul>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>): <span class="title">string</span></span>;</span><br><span class="line"><span class="keyword">import</span> foo <span class="keyword">from</span> <span class="string">&quot;foo&quot;</span>;</span><br></pre></td></tr></table></figure>
 <ul>
-<li><strong>注：只有 <code>function</code>、<code>class</code> 和 <code>interface</code> 可以直接默认导出，其他的变量需要先定义出来，再默认导出。</strong></li>
+<li><strong>注：只有 </strong><code>**function**</code><strong>、</strong><code>**class**</code><strong> 和 </strong><code>**interface**</code><strong> 可以直接默认导出，其他的变量需要先定义出来，再默认导出。</strong></li>
 </ul>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Directions;</span><br><span class="line"></span><br><span class="line"><span class="keyword">declare</span> <span class="built_in">enum</span> Directions &#123;</span><br><span class="line">  Up,</span><br><span class="line">  Down,</span><br><span class="line">  Left,</span><br><span class="line">  Right,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>

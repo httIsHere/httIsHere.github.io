@@ -219,7 +219,7 @@
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/css-Less/">css/Less</a>
+                                <a href="/categories/CSS-Less/">CSS/Less</a>
                             
                         </span>
                     
@@ -298,7 +298,7 @@
 <ul>
 <li>树结构关系伪类选择器<br>:root 伪类表示树的根元素，在选择器是针对完整的 HTML 文档情况，我们一般用 HTML 标签即可选中根元素。但是随着 scoped css 和 shadow root 等场景出现，选择器可以针对某一子树来选择，这时候就很需要 root 伪类了。<ul>
 <li>:empty 伪类表示没有子节点的元素，这里有个例外就是子节点为空白文本节点的情况。</li>
-<li>:nth-child 和 :nth-last-child 这是两个函数型的伪类<br><img src="https://cdn.nlark.com/yuque/0/2021/png/250093/1618219519156-dc7dbf22-2a9f-47f3-bce9-fd55cc73b758.png#align=left&amp;display=inline&amp;height=188&amp;margin=%5Bobject%20Object%5D&amp;originHeight=188&amp;originWidth=619&amp;size=0&amp;status=done&amp;style=none&amp;width=619" alt=""></li>
+<li>:nth-child 和 :nth-last-child 这是两个函数型的伪类<br><img src="https://cdn.nlark.com/yuque/0/2021/png/250093/1618219519156-dc7dbf22-2a9f-47f3-bce9-fd55cc73b758.png#height=188&amp;id=IotxV&amp;originHeight=188&amp;originWidth=619&amp;originalType=binary∶=1&amp;size=0&amp;status=done&amp;style=none&amp;width=619" alt=""></li>
 <li>:nth-last-child 的区别仅仅是从后往前数。</li>
 <li>:first-child :last-child 分别表示第一个和最后一个元素。</li>
 <li>:only-child 按字面意思理解即可，选中唯一一个子元素。</li>
@@ -372,7 +372,7 @@
 <p>::first-letter 的行为又有所不同，它的位置在所有标签之内。</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &gt; <span class="selector-tag">span</span><span class="selector-id">#b</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: green;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">::first-letter</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: blue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>首字母变成了蓝色，这说明伪元素出现在 span 之内。</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/250093/1618219519144-ae05e6de-eec9-4fc8-b343-73cf6d192f4c.png#align=left&amp;display=inline&amp;height=526&amp;margin=%5Bobject%20Object%5D&amp;originHeight=526&amp;originWidth=1187&amp;size=0&amp;status=done&amp;style=none&amp;width=1187" alt=""></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/250093/1618219519144-ae05e6de-eec9-4fc8-b343-73cf6d192f4c.png#height=526&amp;id=baGPb&amp;originHeight=526&amp;originWidth=1187&amp;originalType=binary∶=1&amp;size=0&amp;status=done&amp;style=none&amp;width=1187" alt=""></p>
 <h4 id="before-amp-after"><a href="#before-amp-after" class="headerlink" title="::before &amp; ::after"></a>::before &amp; ::after</h4><p>不是把已有的内容套上一个元素，而是真正的无中生有，造出一个元素。::before 表示在元素内容之前插入一个虚拟的元素，::after 则表示在元素内容之后插入。这两个伪元素所在的 CSS 规则必须指定 content 属性才会生效。</p>
 <p>::before 和 ::after 还支持 content 为 counter。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;special&quot;</span>&gt;</span>I&#x27;m real element<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line">p.special::before &#123; display: block; content: &quot;pseudo! &quot;; &#125; body &#123; counter-reset:</span><br><span class="line">chapno; &#125; p.special::before &#123; display: block; counter-increment: chapno;</span><br><span class="line">content: counter(chapno, upper-roman) &quot;. &quot;; &#125;</span><br></pre></td></tr></table></figure>

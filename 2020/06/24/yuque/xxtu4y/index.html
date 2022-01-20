@@ -13,7 +13,7 @@
 
 
 
-<title>「ts」 typescript 学习 01（类型） | HTTISHERE</title>
+<title>「TS」 TypeScript 学习 01（类型） | HTTISHERE</title>
 
 
 
@@ -203,7 +203,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">「ts」 typescript 学习 01（类型）</h1>
+            <h1 class="post-title">「TS」 TypeScript 学习 01（类型）</h1>
             
                 <div class="post-meta" id="/2020/06/24/yuque/xxtu4y/" class="leancloud-visitors view">
                     
@@ -219,14 +219,14 @@
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/Typescript/">Typescript</a>
+                                <a href="/categories/TypeScript/">TypeScript</a>
                             
                         </span>
                     
                      <<
                     <div class="extra">
                         >> 
-                        <span id="/2020/06/24/yuque/xxtu4y/" class="leancloud-visitors view" data-flag-title="「ts」 typescript 学习 01（类型）">
+                        <span id="/2020/06/24/yuque/xxtu4y/" class="leancloud-visitors view" data-flag-title="「TS」 TypeScript 学习 01（类型）">
                             <span class="post-meta-item-text">Pageviews:</span>
                             <a href="javascript:;" class="leancloud-visitors-count">0</a>
                         </span>
@@ -346,7 +346,7 @@
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">buildName</span>(<span class="params">firstName: <span class="built_in">string</span>, lastName?: <span class="built_in">string</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (lastName) &#123;</span><br><span class="line">    <span class="keyword">return</span> firstName + <span class="string">&quot; &quot;</span> + lastName;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> firstName;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> tomcat = buildName(<span class="string">&quot;Tom&quot;</span>, <span class="string">&quot;Cat&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> tom = buildName(<span class="string">&quot;Tom&quot;</span>);</span><br></pre></td></tr></table></figure>
 <p><strong>默认参数</strong></p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">buildName</span>(<span class="params">firstName: <span class="built_in">string</span> = <span class="string">&quot;Cat&quot;</span>, lastName?: <span class="built_in">string</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (lastName) &#123;</span><br><span class="line">    <span class="keyword">return</span> firstName + <span class="string">&quot; &quot;</span> + lastName;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> firstName;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>剩余参数，使用<code>...rest</code>获取剩余参数，rest 参数只能是最后一个参数</strong></p>
+<p><strong>剩余参数，使用</strong><code>**...rest**</code><strong>获取剩余参数，rest 参数只能是最后一个参数</strong></p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">push</span>(<span class="params">array: <span class="built_in">any</span>[], ...items: <span class="built_in">any</span>[]</span>) </span>&#123;</span><br><span class="line">  items.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;</span><br><span class="line">    array.push(item);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a = [];</span><br><span class="line">push(a, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
 <p><strong>重载，重载允许一个函数接受不同数量或类型的参数时，作出不同的处理</strong></p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverse</span>(<span class="params">x: <span class="built_in">number</span></span>): <span class="title">number</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverse</span>(<span class="params">x: <span class="built_in">string</span></span>): <span class="title">string</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverse</span>(<span class="params">x: <span class="built_in">number</span> | <span class="built_in">string</span></span>): <span class="title">number</span> | <span class="title">string</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> x === <span class="string">&quot;number&quot;</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Number</span>(x.toString().split(<span class="string">&quot;&quot;</span>).reverse().join(<span class="string">&quot;&quot;</span>));</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> x === <span class="string">&quot;string&quot;</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> x.split(<span class="string">&quot;&quot;</span>).reverse().join(<span class="string">&quot;&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 重复定义了多次函数 reverse，前几次都是函数定义，最后一次是函数实现</span></span><br></pre></td></tr></table></figure>
@@ -399,7 +399,7 @@
 <p><strong>声明语句</strong><br>在使用第三方库时，一般直接使用<script>引入，然后在 js 内直接使用，但是在 ts 内编辑器就 cannot found 了，所以需要使用<code>declare var</code>来声明它的类型。</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> <span class="keyword">var</span> jQuery: <span class="function">(<span class="params">selector: <span class="built_in">string</span></span>) =&gt;</span> <span class="built_in">any</span>;</span><br><span class="line"></span><br><span class="line">jQuery(<span class="string">&quot;#foo&quot;</span>);</span><br></pre></td></tr></table></figure>
 <p><code>declare var</code>  并没有真的定义一个变量，只是定义了全局变量  <code>jQuery</code>  的类型。</p>
-<p><strong>声明文件</strong><br>通常我们会把声明语句放到一个单独的文件（<code>jQuery.d.ts</code>）中，这就是声明文件，<strong>声明文件必需以  <code>.d.ts</code>  为后缀</strong>。</p>
+<p><strong>声明文件</strong><br>通常我们会把声明语句放到一个单独的文件（<code>jQuery.d.ts</code>）中，这就是声明文件，<strong>声明文件必需以  </strong><code>**.d.ts**</code><strong>  为后缀</strong>。</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/jQuery.d.ts</span></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">var</span> jQuery: <span class="function">(<span class="params">selector: <span class="built_in">string</span></span>) =&gt;</span> <span class="built_in">any</span>;</span><br></pre></td></tr></table></figure>
 <ul>
 <li><code>declare var</code>，<code>declare function</code>，<code>declare class</code>都比较类似，与<code>declare var</code>相似的还有<code>declare let</code>和<code>declare const</code>。</li>

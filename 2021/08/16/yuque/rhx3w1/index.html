@@ -219,7 +219,7 @@
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/Typescript/">Typescript</a>
+                                <a href="/categories/TypeScript/">TypeScript</a>
                             
                         </span>
                     
@@ -261,7 +261,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="https://cdn.nlark.com/yuque/0/2021/jpeg/250093/1629201781685-ea175f59-f835-492b-b38d-86db3b3bae78.jpeg#align=left&amp;display=inline&amp;height=560&amp;margin=%5Bobject%20Object%5D&amp;originHeight=560&amp;originWidth=1030&amp;size=0&amp;status=done&amp;style=none&amp;width=1030" alt=""></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/jpeg/250093/1629201781685-ea175f59-f835-492b-b38d-86db3b3bae78.jpeg#height=560&amp;id=UL50m&amp;originHeight=560&amp;originWidth=1030&amp;originalType=binary∶=1&amp;size=0&amp;status=done&amp;style=none&amp;width=1030" alt=""></p>
 <p>项目构建问题：</p>
 <ul>
 <li><code>Cannot find module &#39;webpack-cli/bin/config-yargs&#39;</code>：安装 webpack-cli 3.* 版本；</li>
@@ -295,7 +295,7 @@
 <ul>
 <li><code>undefined</code> 和 <code>null</code> 是所有类型的子类型，即 <code>undefined</code> 类型的变量，可以赋值给 <code>number</code> 类型的变量；</li>
 <li><strong>声明一个变量为任意值之后，对它的任何操作，返回的内容的类型都是任意值</strong>；</li>
-<li>如果没有明确的指定类型，那么 TypeScript 会依照类型推论（Type Inference）的规则推断出一个类型，<strong>如果定义的时候没有赋值，不管之后有没有赋值，都会被推断成 <code>any</code> 类型</strong>；</li>
+<li>如果没有明确的指定类型，那么 TypeScript 会依照类型推论（Type Inference）的规则推断出一个类型，<strong>如果定义的时候没有赋值，不管之后有没有赋值，都会被推断成 </strong><code>**any**</code><strong> 类型</strong>；</li>
 </ul>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> myFavoriteNumber = <span class="string">&quot;seven&quot;</span>;</span><br><span class="line">myFavoriteNumber = <span class="number">7</span>; <span class="comment">// error</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> myFavoriteNumber;</span><br><span class="line">myFavoriteNumber = <span class="string">&quot;seven&quot;</span>;</span><br><span class="line">myFavoriteNumber = <span class="number">7</span>;</span><br></pre></td></tr></table></figure>
 <ul>
