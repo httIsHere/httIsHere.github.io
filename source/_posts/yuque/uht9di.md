@@ -5,7 +5,7 @@ date: '2021-12-21 16:08:22 +0800'
 tags:
   - ts
 categories:
-  - Typescript
+  - TypeScript
 ---
 
 > TS 为了保障语言的灵活性所引入的语言特性。

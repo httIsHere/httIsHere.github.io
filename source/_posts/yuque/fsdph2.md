@@ -5,7 +5,7 @@ date: '2021-01-05 16:30:50 +0800'
 tags:
   - css
 categories:
-  - css/Less
+  - CSS/Less
 ---
 
 > **边距折叠**：块的上外边距(margin-top)和下外边距(margin-bottom)有时合并(折叠)为单个边距，其大小为单个边距的最大值(或如果它们相等，则仅为其中一个)。
@@ -30,7 +30,7 @@ categories:
 <p>...会跟这个元素的上边界范围重叠。</p>
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/250093/1609837737634-ef4f99a2-e1b8-4521-9cf5-c0aefd5a510f.png#align=left&display=inline&height=455&margin=%5Bobject%20Object%5D&name=image.png&originHeight=994&originWidth=780&size=64587&status=done&style=none&width=357)->![image.png](https://cdn.nlark.com/yuque/0/2021/png/250093/1609837899326-43cca7f6-3e98-40b8-b6b8-083344f2a2d2.png#align=left&display=inline&height=454&margin=%5Bobject%20Object%5D&name=image.png&originHeight=944&originWidth=770&size=55460&status=done&style=none&width=370)
+![image.png](https://cdn.nlark.com/yuque/0/2021/png/250093/1609837737634-ef4f99a2-e1b8-4521-9cf5-c0aefd5a510f.png#height=455&id=tYuWX&margin=%5Bobject%20Object%5D&name=image.png&originHeight=994&originWidth=780&originalType=binary∶=1&size=64587&status=done&style=none&width=357)->![image.png](https://cdn.nlark.com/yuque/0/2021/png/250093/1609837899326-43cca7f6-3e98-40b8-b6b8-083344f2a2d2.png#height=454&id=wrTz1&margin=%5Bobject%20Object%5D&name=image.png&originHeight=944&originWidth=770&originalType=binary∶=1&size=55460&status=done&style=none&width=370)
 
 #### 2. 父元素与子元素发生边距折叠
 
@@ -57,7 +57,7 @@ categories:
 </section>
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/250093/1609839734048-548f3e49-b7c7-404e-97e1-3b88a5693754.png#align=left&display=inline&height=516&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1032&originWidth=628&size=83367&status=done&style=none&width=314)->![image.png](https://cdn.nlark.com/yuque/0/2021/png/250093/1609839875220-64c769e9-6d1a-4807-ad19-3394a020fa09.png#align=left&display=inline&height=519&margin=%5Bobject%20Object%5D&name=image.png&originHeight=972&originWidth=644&size=96192&status=done&style=none&width=344)
+![image.png](https://cdn.nlark.com/yuque/0/2021/png/250093/1609839734048-548f3e49-b7c7-404e-97e1-3b88a5693754.png#height=516&id=EjwH6&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1032&originWidth=628&originalType=binary∶=1&size=83367&status=done&style=none&width=314)->![image.png](https://cdn.nlark.com/yuque/0/2021/png/250093/1609839875220-64c769e9-6d1a-4807-ad19-3394a020fa09.png#height=519&id=yZUac&margin=%5Bobject%20Object%5D&name=image.png&originHeight=972&originWidth=644&originalType=binary∶=1&size=96192&status=done&style=none&width=344)
 
 #### 3. 空的块级元素的上下边距
 

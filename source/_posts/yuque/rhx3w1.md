@@ -5,7 +5,7 @@ date: '2021-08-16 21:23:46 +0800'
 tags:
   - ts
 categories:
-  - Typescript
+  - TypeScript
 ---
 
 类型检查，语言扩展，工具属性。
@@ -19,7 +19,7 @@ categories:
   - 静态类型语言：在**编译阶段**确定所有变量的类型（对类型要求严格，可以立即发现错误，运行时性能好，自文档化）；
   - 动态类型语言：在**执行阶段**确定所有变量的类型（对类型要求宽松，不能及时察觉 bug，运行时性能差，可读性差）；
 
-![](https://cdn.nlark.com/yuque/0/2021/jpeg/250093/1629201781685-ea175f59-f835-492b-b38d-86db3b3bae78.jpeg#align=left&display=inline&height=560&margin=%5Bobject%20Object%5D&originHeight=560&originWidth=1030&size=0&status=done&style=none&width=1030)
+![](https://cdn.nlark.com/yuque/0/2021/jpeg/250093/1629201781685-ea175f59-f835-492b-b38d-86db3b3bae78.jpeg#height=560&id=UL50m&originHeight=560&originWidth=1030&originalType=binary∶=1&size=0&status=done&style=none&width=1030)
 
 项目构建问题：
 
@@ -144,7 +144,7 @@ let bb: Role2 = 21;
 
 - `undefined` 和 `null` 是所有类型的子类型，即 `undefined` 类型的变量，可以赋值给 `number` 类型的变量；
 - **声明一个变量为任意值之后，对它的任何操作，返回的内容的类型都是任意值**；
-- 如果没有明确的指定类型，那么 TypeScript 会依照类型推论（Type Inference）的规则推断出一个类型，**如果定义的时候没有赋值，不管之后有没有赋值，都会被推断成 `any` 类型**；
+- 如果没有明确的指定类型，那么 TypeScript 会依照类型推论（Type Inference）的规则推断出一个类型，**如果定义的时候没有赋值，不管之后有没有赋值，都会被推断成 **`**any**`** 类型**；
 
 ```typescript
 let myFavoriteNumber = "seven";

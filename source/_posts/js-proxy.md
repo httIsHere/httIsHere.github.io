@@ -3,7 +3,7 @@ title: js内proxy检测
 date: 2019-01-24 09:44:41
 tags:
   - js
-categories: Javascript
+categories: JavaScript
 ---
 
 > let p = new Proxy(target, handler);

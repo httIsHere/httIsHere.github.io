@@ -5,7 +5,7 @@ date: '2021-08-23 17:40:03 +0800'
 tags:
   - ts
 categories:
-  - Typescript
+  - TypeScript
 ---
 
 ### 泛型

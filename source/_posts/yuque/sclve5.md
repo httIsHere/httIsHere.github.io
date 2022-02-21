@@ -5,7 +5,7 @@ date: '2021-04-12 10:44:15 +0800'
 tags:
   - css
 categories:
-  - css/Less
+  - CSS/Less
 ---
 
 选择器的基本意义是：根据一些特征，选中元素树上的一批元素。
@@ -119,7 +119,7 @@ id 选择器和 class 选择器都是针对特定属性的选择器。id 选择�
   :root 伪类表示树的根元素，在选择器是针对完整的 HTML 文档情况，我们一般用 HTML 标签即可选中根元素。但是随着 scoped css 和 shadow root 等场景出现，选择器可以针对某一子树来选择，这时候就很需要 root 伪类了。
   - :empty 伪类表示没有子节点的元素，这里有个例外就是子节点为空白文本节点的情况。
   - :nth-child 和 :nth-last-child 这是两个函数型的伪类
-    ![](https://cdn.nlark.com/yuque/0/2021/png/250093/1618219519156-dc7dbf22-2a9f-47f3-bce9-fd55cc73b758.png#align=left&display=inline&height=188&margin=%5Bobject%20Object%5D&originHeight=188&originWidth=619&size=0&status=done&style=none&width=619)
+    ![](https://cdn.nlark.com/yuque/0/2021/png/250093/1618219519156-dc7dbf22-2a9f-47f3-bce9-fd55cc73b758.png#height=188&id=IotxV&originHeight=188&originWidth=619&originalType=binary∶=1&size=0&status=done&style=none&width=619)
   - :nth-last-child 的区别仅仅是从后往前数。
   - :first-child :last-child 分别表示第一个和最后一个元素。
   - :only-child 按字面意思理解即可，选中唯一一个子元素。
@@ -259,7 +259,7 @@ div::first-letter {
 
 首字母变成了蓝色，这说明伪元素出现在 span 之内。
 
-![](https://cdn.nlark.com/yuque/0/2021/png/250093/1618219519144-ae05e6de-eec9-4fc8-b343-73cf6d192f4c.png#align=left&display=inline&height=526&margin=%5Bobject%20Object%5D&originHeight=526&originWidth=1187&size=0&status=done&style=none&width=1187)
+![](https://cdn.nlark.com/yuque/0/2021/png/250093/1618219519144-ae05e6de-eec9-4fc8-b343-73cf6d192f4c.png#height=526&id=baGPb&originHeight=526&originWidth=1187&originalType=binary∶=1&size=0&status=done&style=none&width=1187)
 
 #### ::before & ::after
 

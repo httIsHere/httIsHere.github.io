@@ -5,7 +5,7 @@ date: '2021-08-11 10:52:04 +0800'
 tags:
   - Vue
 categories:
-  - vue
+  - Vue
 ---
 
 ### [Vue.observable( object )](https://cn.vuejs.org/v2/api/#Vue-observable)

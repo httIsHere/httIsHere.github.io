@@ -5,7 +5,7 @@ date: '2021-03-24 14:55:19 +0800'
 tags:
   - css
 categories:
-  - css/Less
+  - CSS/Less
 ---
 
 ## at-rule
@@ -142,8 +142,8 @@ p {
 ### 选择器
 
 任何选择器，都是由几个符号结构连接的：空格、大于号、加号、波浪线、双竖线（空格，即为后代选择器的优先级较低）。
-![](https://cdn.nlark.com/yuque/0/2021/png/250093/1616577961595-6e6e5814-08bb-42c8-b8c0-b130511a8883.png#align=left&display=inline&height=404&margin=%5Bobject%20Object%5D&originHeight=404&originWidth=410&size=0&status=done&style=none&width=410)
-![](https://cdn.nlark.com/yuque/0/2021/png/250093/1616577961646-8738dc24-798c-414c-a44c-b0a582c3ba35.png#align=left&display=inline&height=562&margin=%5Bobject%20Object%5D&originHeight=562&originWidth=960&size=0&status=done&style=none&width=960)
+![](https://cdn.nlark.com/yuque/0/2021/png/250093/1616577961595-6e6e5814-08bb-42c8-b8c0-b130511a8883.png#height=404&id=hLLxP&originHeight=404&originWidth=410&originalType=binary∶=1&size=0&status=done&style=none&width=410)
+![](https://cdn.nlark.com/yuque/0/2021/png/250093/1616577961646-8738dc24-798c-414c-a44c-b0a582c3ba35.png#height=562&id=cUl11&originHeight=562&originWidth=960&originalType=binary∶=1&size=0&status=done&style=none&width=960)
 
 ### 声明：属性和值
 

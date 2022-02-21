@@ -1,11 +1,11 @@
 ---
-title: 「ts」 typescript 学习 01（类型）
+title: 「TS」 TypeScript 学习 01（类型）
 urlname: xxtu4y
 date: '2020-06-24 16:39:31 +0800'
 tags:
   - ts
 categories:
-  - Typescript
+  - TypeScript
 cover:
 ---
 
@@ -347,7 +347,7 @@ function buildName(firstName: string = "Cat", lastName?: string) {
 }
 ```
 
-**剩余参数，使用`...rest`获取剩余参数，rest 参数只能是最后一个参数**
+**剩余参数，使用**`**...rest**`**获取剩余参数，rest 参数只能是最后一个参数**
 
 ```typescript
 function push(array: any[], ...items: any[]) {
@@ -578,7 +578,7 @@ jQuery("#foo");
 `declare var`  并没有真的定义一个变量，只是定义了全局变量  `jQuery`  的类型。
 
 **声明文件**
-通常我们会把声明语句放到一个单独的文件（`jQuery.d.ts`）中，这就是声明文件，**声明文件必需以  `.d.ts`  为后缀**。
+通常我们会把声明语句放到一个单独的文件（`jQuery.d.ts`）中，这就是声明文件，**声明文件必需以  **`**.d.ts**`**  为后缀**。
 
 ```typescript
 // src/jQuery.d.ts

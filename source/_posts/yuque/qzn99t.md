@@ -5,7 +5,7 @@ date: '2021-08-20 14:52:43 +0800'
 tags:
   - ts
 categories:
-  - Typescript
+  - TypeScript
 ---
 
 ### 类型别名

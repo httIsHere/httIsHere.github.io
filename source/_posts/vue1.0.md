@@ -3,7 +3,7 @@ title: vue source code 1.0
 date: 2019-01-22 15:00:23 +0800
 tags: 
     - '从入门到放弃'
-categories: vue
+categories: Vue
 ---
 
 - 前置准备

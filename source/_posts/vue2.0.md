@@ -3,7 +3,7 @@ title: vue source code 2.0
 date: 2019-01-23 10:30:23 +0800
 tags: 
     - '从入门到放弃'
-categories: vue
+categories: Vue
 ---
 
 ## Vue options

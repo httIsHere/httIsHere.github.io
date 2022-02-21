@@ -5,7 +5,7 @@ date: '2021-08-17 20:44:26 +0800'
 tags:
   - ts
 categories:
-  - Typescript
+  - TypeScript
 ---
 
 ### 断言
@@ -206,7 +206,7 @@ jQuery("#foo");
 
 通常我们会把声明语句放到一个单独的文件，如`jQuery.d.ts`。
 
-**声明文件必需以 `.d.ts` 为后缀。**
+**声明文件必需以 **`**.d.ts**`** 为后缀。**
 
 ts 会解析项目中所有的 `*.ts` 文件，当然也包含以 `.d.ts` 结尾的文件。所以当我们将 `jQuery.d.ts` 放到项目中时，其他所有 `*.ts` 文件就都可以获得 `jQuery` 的类型定义了。
 
@@ -364,7 +364,7 @@ export default function foo(): string;
 import foo from "foo";
 ```
 
-- **注：只有 `function`、`class` 和 `interface` 可以直接默认导出，其他的变量需要先定义出来，再默认导出。**
+- **注：只有 **`**function**`**、**`**class**`** 和 **`**interface**`** 可以直接默认导出，其他的变量需要先定义出来，再默认导出。**
 
 ```typescript
 export default Directions;

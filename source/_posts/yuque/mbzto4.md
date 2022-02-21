@@ -5,12 +5,12 @@ date: '2021-05-06 11:08:25 +0800'
 tags:
   - css
 categories:
-  - css/Less
+  - CSS/Less
 ---
 
 链接是 HTML 中的一种机制，它是 HTML 文档和其它文档或者资源的连接关系，在 HTML 中，链接有两种类型。一种是超链接型标签，一种是外部资源链接。
 
-![](https://cdn.nlark.com/yuque/0/2021/png/250093/1620270517981-020e14be-3c75-4002-bc3b-53dda82085dd.png#align=left&display=inline&height=1100&margin=%5Bobject%20Object%5D&originHeight=1100&originWidth=702&size=0&status=done&style=none&width=702)
+![](https://cdn.nlark.com/yuque/0/2021/png/250093/1620270517981-020e14be-3c75-4002-bc3b-53dda82085dd.png#height=1100&id=pgt3Z&originHeight=1100&originWidth=702&originalType=binary∶=1&size=0&status=done&style=none&width=702)
 
 ### link 标签
 

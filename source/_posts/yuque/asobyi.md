@@ -5,7 +5,7 @@ date: '2020-12-23 16:55:21 +0800'
 tags:
   - css
 categories:
-  - css/Less
+  - CSS/Less
 ---
 
 > 全面屏内的安全区域。
@@ -19,7 +19,8 @@ env()和 constant()，是 IOS11 新增特性，Webkit 的 css 函数，用于设
 - safe-area-inset-top：安全区域距离顶部边界的距离
 - safe-area-inset-bottom ：安全距离底部边界的距离
 
-**H5 网页设置`viewport-fit=cover`的时候才生效，小程序里的 viewport-fit 默认是 cover。**
+**H5 网页设置**`**viewport-fit=cover**`**的时候才生效，小程序里的 viewport-fit 默认是 cover。**
+**​**
 
 #### 使用：
 
@@ -34,4 +35,4 @@ env()和 constant()，是 IOS11 新增特性，Webkit 的 css 函数，用于设
 
 #### 效果：
 
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/250093/1608713924335-570d46c1-fe61-4fd5-845c-e713a7afbf43.png#align=left&display=inline&height=102&margin=%5Bobject%20Object%5D&name=image.png&originHeight=203&originWidth=826&size=53434&status=done&style=none&width=413)
+![image.png](https://cdn.nlark.com/yuque/0/2020/png/250093/1608713924335-570d46c1-fe61-4fd5-845c-e713a7afbf43.png#height=102&id=eaWPE&margin=%5Bobject%20Object%5D&name=image.png&originHeight=203&originWidth=826&originalType=binary∶=1&size=53434&status=done&style=none&width=413)

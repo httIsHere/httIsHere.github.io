@@ -5,7 +5,7 @@ date: '2021-12-21 16:06:07 +0800'
 tags:
   - ts
 categories:
-  - Typescript
+  - TypeScript
 ---
 
 ### 类型检查机制

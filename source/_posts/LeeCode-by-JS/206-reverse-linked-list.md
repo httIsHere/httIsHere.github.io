@@ -3,7 +3,7 @@ title: 206.Reverse Linked List
 date: 2021-10-13 16:31:14
 tags:
     - LeeCode
-categories: 
+categories:
     - LeeCode
 hidden: true
 cateHidden: false

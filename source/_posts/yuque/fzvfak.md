@@ -5,14 +5,14 @@ date: '2019-02-12 09:42:14 +0800'
 tags:
   - css
 categories:
-  - css/Less
+  - CSS/Less
 ---
 
 > 在 css 内 position 的含义是指定位类型，取值类型可以有：static、relative、absolute、fixed、inherit 和 sticky，这里 sticky 是 CSS3 新发布的一个属性。
 
 原来在页面设计中时常会遇到所谓的“吸顶”的效果，如下图（当页面滑动至介绍部分时介绍栏需要有一个吸顶效果）：
-![image.png](https://cdn.nlark.com/yuque/0/2019/png/250093/1549936020128-7ed27eaa-85eb-4314-a859-e7d54b15cac1.png#align=left&display=inline&height=466&margin=%5Bobject%20Object%5D&name=image.png&originHeight=466&originWidth=399&size=153632&status=done&style=none&width=399)
-![image.png](https://cdn.nlark.com/yuque/0/2019/png/250093/1549936102348-7eed426c-9cd7-495a-bc71-93e85524f68e.png#align=left&display=inline&height=353&margin=%5Bobject%20Object%5D&name=image.png&originHeight=353&originWidth=398&size=161946&status=done&style=none&width=398)
+![image.png](https://cdn.nlark.com/yuque/0/2019/png/250093/1549936020128-7ed27eaa-85eb-4314-a859-e7d54b15cac1.png#height=466&id=ONAin&name=image.png&originHeight=466&originWidth=399&originalType=binary∶=1&size=153632&status=done&style=none&width=399)
+![image.png](https://cdn.nlark.com/yuque/0/2019/png/250093/1549936102348-7eed426c-9cd7-495a-bc71-93e85524f68e.png#height=353&id=QCg8K&name=image.png&originHeight=353&originWidth=398&originalType=binary∶=1&size=161946&status=done&style=none&width=398)
 
 原来的实现方式是采用 js 监听滑动并对需要吸顶的内容进行定位设置。
 但是现在使用`sticky`也可以直接实现。
@@ -28,9 +28,7 @@ categories:
 ```
 
 效果：
-![image.png](https://cdn.nlark.com/yuque/0/2019/png/250093/1549937063469-3f821c80-4e14-4035-9f6d-bdf52c1b4b0a.png#align=left&display=inline&height=363&margin=%5Bobject%20Object%5D&name=image.png&originHeight=363&originWidth=408&size=12745&status=done&style=none&width=408)
-
-![](https://cdn.nlark.com/yuque/0/2019/png/250093/1549937022077-730b8a25-40f2-41f8-a144-0871c8ffc0e8.png)
+![image.png](https://cdn.nlark.com/yuque/0/2019/png/250093/1549937063469-3f821c80-4e14-4035-9f6d-bdf52c1b4b0a.png#height=363&id=HiJ0r&name=image.png&originHeight=363&originWidth=408&originalType=binary∶=1&size=12745&status=done&style=none&width=408)
 
 完整：
 
@@ -99,7 +97,7 @@ categories:
 总结：
 比较不好的是这个属性的兼容性还不是很好，它之所以会出现，也是因为监听`scroll`事件来实现粘性布局使浏览器进入慢滚动的模式，这与浏览器想要通过硬件加速来提升滚动的体验是相悖的。
 　　这个属性使用的浏览器只有 FireFox 和 iOS 的 Safari：
-![](https://cdn.nlark.com/yuque/0/2019/png/250093/1549937196181-a18925ca-f6f3-4dab-b56f-efc03b7f0dcc.png#align=left&display=inline&height=311&margin=%5Bobject%20Object%5D&originHeight=493&originWidth=1181&size=0&status=done&style=none&width=746)
+![](https://cdn.nlark.com/yuque/0/2019/png/250093/1549937196181-a18925ca-f6f3-4dab-b56f-efc03b7f0dcc.png#height=311&id=UOf8U&originHeight=493&originWidth=1181&originalType=binary∶=1&size=0&status=done&style=none&width=746)
 
 还有要让 sticky 属性生效需要满足以下两点：
 
@@ -111,4 +109,4 @@ categories:
 　　第三点就是父元素的 overflow 属性，如果父元素的 overflow 属性并不是默认的 visible 属性，那么 sticky 元素则相对于该父元素定位。也就是如果要定位在顶部的话，此时这个效果就无效了。
 
 参考教程：[CSS 粘性定位是怎样工作的](https://segmentfault.com/a/1190000018113832) （介绍了更多相关的性质）
-          [CSS 中 position 属性介绍(新增 sticky)]()
+          CSS 中 position 属性介绍(新增 sticky)

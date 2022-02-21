@@ -5,7 +5,7 @@ date: '2021-08-11 11:29:37 +0800'
 tags:
   - Vue
 categories:
-  - vue
+  - Vue
 ---
 
 > 参考：[https://vue3js.cn/interview/vue/vue.html](https://vue3js.cn/interview/vue/vue.html)

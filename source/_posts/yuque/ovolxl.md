@@ -19,7 +19,7 @@ cover:
 > [https://nodejs.org/en/download/](https://nodejs.org/en/download/)  下载 node 安装包
 
 点击安装成功之后，在命令行输入 node -v 检查是否成功安装：
-![截屏2020-04-21下午1.37.12.png](https://cdn.nlark.com/yuque/0/2020/png/250093/1587447473899-35e0b89f-9835-4df6-bfe1-d33f4170f411.png#align=left&display=inline&height=55&margin=%5Bobject%20Object%5D&name=%E6%88%AA%E5%B1%8F2020-04-21%E4%B8%8B%E5%8D%881.37.12.png&originHeight=110&originWidth=2160&size=76268&status=done&style=none&width=1080)
+![截屏2020-04-21下午1.37.12.png](https://cdn.nlark.com/yuque/0/2020/png/250093/1587447473899-35e0b89f-9835-4df6-bfe1-d33f4170f411.png#crop=0&crop=0&crop=1&crop=1&height=55&id=eibuW&margin=%5Bobject%20Object%5D&name=%E6%88%AA%E5%B1%8F2020-04-21%E4%B8%8B%E5%8D%881.37.12.png&originHeight=110&originWidth=2160&originalType=binary∶=1&rotation=0&showTitle=false&size=76268&status=done&style=none&title=&width=1080)
 
 ## git
 
@@ -47,6 +47,8 @@ open ~/.ssh
 $ git config --global user.name "John Doe"
 $ git config --global user.email johndoe@example.com
 ```
+
+PS：输入密码部分可能会出现一个错误，参看[Support for password](https://www.yuque.com/httishere/blog/pfqy4p)。
 
 ## docker
 

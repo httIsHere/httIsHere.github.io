@@ -5,7 +5,7 @@ date: '2021-12-23 17:17:36 +0800'
 tags:
   - ts
 categories:
-  - Typescript
+  - TypeScript
 ---
 
 ## ES6 & Common

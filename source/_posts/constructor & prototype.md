@@ -3,7 +3,7 @@ title: constructor & prototype
 date: 2019-01-22 10:08:03 +0800
 tags: 
     - 'js'
-categories: Javascript
+categories: JavaScript
 ---
 
 > 定义：constructor 是一个对象的属性，这个属性存在在此对象的 prototype 中, 指向此对象的构造函数。

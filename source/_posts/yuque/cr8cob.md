@@ -5,7 +5,7 @@ date: '2021-08-17 20:03:16 +0800'
 tags:
   - ts
 categories:
-  - Typescript
+  - TypeScript
 ---
 
 ### 接口（Interface）
