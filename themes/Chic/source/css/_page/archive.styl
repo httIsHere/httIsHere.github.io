@@ -1,0 +1,82 @@
+.post-wrap
+  position relative
+  width 100%
+  max-width 880px
+  margin 0 auto
+  padding-top 2rem
+
+  .site-data
+    width 20rem
+    padding 0
+    margin 0
+    display flex
+    align-items center
+    justify-content space-between
+    padding-bottom 1rem
+    border-bottom 1px solid #eee
+    text-align center
+    float right
+    li
+      padding 0 1rem
+      list-style none
+      display inline-block
+
+  .archive-item
+    margin-left 2rem
+    &:hover 
+      cursor pointer
+    &.new
+      // padding 1rem
+      // box-shadow 0 0 .4rem 0.3618em rgba(0, 0, 0, 0.05)
+      // margin-bottom 1rem
+      // border-radius .6rem
+      // &:hover 
+      //   transition all .2s ease-in-out
+      //   transform translateY(-5px)
+    .archive-item-extra
+      line-height 1
+    .post-count
+      color #999999
+      font-size 12px
+      a
+        color #999999
+
+.archive-item-link
+    display inline-block
+    text-decoration none
+    overflow hidden
+    text-overflow ellipsis
+    white-space nowrap
+    // width 100%
+    .category
+      width 100px
+      display inline-block
+    .archive-item-category-item 
+      font-size 12px
+      color: #ffffff
+      background rgba(111, 129, 219, .6)
+      border-radius 12px
+      padding 2px 5px
+      margin-left 10px
+      vertical-align middle
+    &:hover
+      color $light-global-link-hover-color
+      background-color transparent
+    
+    .dark-theme &
+      color $dark-global-link-color
+      text-decoration none
+      transition color 0.2s ease, border-color 0.2s ease, background 0.2s ease, opacity 0.2s ease
+
+      &:hover
+        color $dark-global-link-hover-color
+        text-decoration none
+        transition color 0.2s ease, border-color 0.2s ease, background 0.2s ease, opacity 0.2s ease
+
+  .archive-item-date
+    float right
+    text-align right
+    color $light-font-secondary-color
+
+    .dark-theme & 
+      color $dark-font-secondary-color
