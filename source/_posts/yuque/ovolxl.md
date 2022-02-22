@@ -2,14 +2,12 @@
 title: MAC book 从0到开发
 urlname: ovolxl
 date: '2020-04-21 10:56:45 +0800'
-tags: []
-categories: []
----
-
-tags: [daily, 配置]
-categories: [Daily_QS]
+tags:
+  - Daily
+  - 配置
+categories:
+  - Daily
 cover:
-
 ---
 
 <!-- more -->
@@ -54,7 +52,8 @@ PS：输入密码部分可能会出现一个错误，参看[Support for password
 
 > [https://www.docker.com](https://www.docker.com)  下载安装 docker
 
-同样的等待安装完成并启动，启动成功之后，将 docker 镜像设置为国内镜像加快速度，网易镜像比较快`[http://hub-mirror.c.163.com](http://hub-mirror.c.163.com)。`
+同样的等待安装完成并启动，启动成功之后，将 docker 镜像设置为国内镜像加快速度，网易镜像比较快`http://hub-mirror.c.163.com。`
+（`Settings`->`Docker Engine`）
 
 ```json
 {
@@ -100,3 +99,31 @@ maestro-api-gateway:
 项目依赖拉取成功后，运行项目并安装依赖。
 
 **PS：全局安装依赖时需要增加 sudo 并输入密码。**
+**​**
+
+## Homebrew
+
+### ​[官网](https://brew.sh/index_zh-cn)：
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+可能会报 curl: (7) Failed to connect to raw.githubusercontent.com port 443: Operation 错误。
+
+### ​[清华镜像](https://mirror.tuna.tsinghua.edu.cn/help/homebrew/)：
+
+```bash
+export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
+export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
+```
+
+```bash
+git clone --depth=1 https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/install.git brew-install
+/bin/bash brew-install/install.sh
+rm -rf brew-install
+```
+
+最后写入：
+![截屏2022-02-22 下午12.36.21.png](https://cdn.nlark.com/yuque/0/2022/png/250093/1645504584881-dbab8e53-2f56-4887-baac-8959aa4f4947.png#clientId=u59cfee80-82f6-4&crop=0&crop=0&crop=1&crop=1&from=drop&id=uc173a06d&margin=%5Bobject%20Object%5D&name=%E6%88%AA%E5%B1%8F2022-02-22%20%E4%B8%8B%E5%8D%8812.36.21.png&originHeight=168&originWidth=1452&originalType=binary∶=1&rotation=0&showTitle=false&size=96399&status=done&style=none&taskId=uf25face1-223b-4838-a7c1-36674e63783&title=)
