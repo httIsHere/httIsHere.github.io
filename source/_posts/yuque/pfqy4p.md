@@ -1,5 +1,5 @@
 ---
-title: '「Daily」Support for password authentication was removed on August 13, 2021'
+title: 「Daily」Support for password authentication was removed
 urlname: pfqy4p
 date: '2022-02-21 12:01:55 +0800'
 tags:
