@@ -87,11 +87,11 @@ null == undefined // => true
 满足第二条规则，"" 是字符串，0 是数值，对比 Number("") == 0, 也就是 0 == 0。
 所以得出 `[] == ![]`
 **所以在使用时尽量使用**`**===**`**。**
-**​**
 
 #### 闭包
 
-[「JS」闭包](https://www.yuque.com/httishere/serhyu/hr2ubu?view=doc_embed)函数 A 内部有一个函数 B，函数 B 可以访问到函数 A 中的变量，那么函数 B 就是闭包。
+[「JS」闭包](https://www.yuque.com/httishere/serhyu/hr2ubu?view=doc_embed)
+函数 A 内部有一个函数 B，函数 B 可以访问到函数 A 中的变量，那么函数 B 就是闭包。
 
 ```javascript
 function A() {
@@ -150,7 +150,7 @@ let 有自己的作用域块，所以在 for 循环表达式中使用 let 其实
 
 #### 原型
 
-在一个实例对象中可以通过  `__proto__`找到一个原型对象，在该对象中定义了很多函数让我们来使用。
+在一个实例对象中可以通过  `__proto__ `找到一个原型对象，在该对象中定义了很多函数让我们来使用。
 原型的  `constructor`  属性指向构造函数，构造函数又通过  `prototype`  属性指回原型，但是并不是所有函数都具有这个属性，`Function.prototype.bind()`就没有这个属性。
 ![image.png](https://cdn.nlark.com/yuque/0/2021/png/250093/1614065706606-ab42b62d-2a07-45e3-9803-8567e9a5c042.png#height=781&id=HgNjp&margin=%5Bobject%20Object%5D&name=image.png&originHeight=781&originWidth=618&originalType=binary∶=1&size=241194&status=done&style=none&width=618)
 其实原型链就是多个对象通过  `__proto__`  的方式连接了起来。为什么  `obj`  可以访问到  `valueOf`  函数，就是因为  `obj`  通过原型链找到了  `valueOf`  函数。
@@ -163,9 +163,9 @@ let 有自己的作用域块，所以在 for 循环表达式中使用 let 其实
 #### new
 
 1. 新生成了一个对象
-1. 链接到原型
-1. 绑定 this
-1. 返回新对象
+2. 链接到原型
+3. 绑定 this
+4. 返回新对象
 
 #### 执行上下文
 

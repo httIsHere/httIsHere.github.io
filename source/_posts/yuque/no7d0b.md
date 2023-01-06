@@ -147,7 +147,7 @@ a += b; // *=、/=、%=、+=、-=、<<=、>>=、>>>=、&=、^=、|=、**=都可�
 1. 所有运算符的优先级
    一元(delete,~,!等)>算术>关系>位移>二进制位运算>逻辑>条件>赋值>逗号。
    [https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators)
-1. `react`源码内变量声明的意图？
+2. `react`源码内变量声明的意图？
 
 ```javascript
 var validateFormat = function () {};

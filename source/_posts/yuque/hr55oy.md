@@ -10,8 +10,6 @@ categories:
 
 > 主要分析浏览器接收到服务器端传输过来的 HTML 如何将其解析为 DOM 的步骤。
 
-​
-
 ### STEP 1: 文件拆分
 
 > parse 接受 HTML 文本作为参数，返回一棵 DOM 树。

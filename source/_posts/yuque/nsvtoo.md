@@ -62,7 +62,6 @@ categories:
 ```
 
 我们在写代码时都会写到一个 render 函数，里面写的是页面的 html 模版，然后实现 VD 与实际 DOM 的映射。
-​
 
 ```jsx
 function render() {

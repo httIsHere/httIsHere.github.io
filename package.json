@@ -5,8 +5,15 @@
     "login": "httishere",
     "mdNameFormat": "slug",
     "token": "8Bw0MWHoOQwNR1g1O8OtyLz5P0wyFnj8rkqlmOcD",
-    "repo": "blog",
+    "repo": "running",
     "postPath": "source/_posts/yuque"
+  },
+  "notionConfig": {
+    "mdNameFormat": "slug",
+    "baseUrl": "https://api.notion.com/v1/databases/",
+    "token": "secret_mzizQgl9eS2xuumn4PgfRN2mbHsIQR6NQIvnfwmeCp9",
+    "database": "a664095e020e48658a11c11a897ebe0a",
+    "postPath": "source/_posts/notion"
   },
   "version": "0.0.0",
   "private": true,
@@ -17,9 +24,14 @@
     "clean:yuque": "yuque-hexo clean",
     "sync": "yuque-hexo sync",
     "deploy": "npm run sync && hexo clean && hexo g -d",
-    "dev": "hexo clean && hexo server"
+    "dev": "hexo clean && hexo server",
+    "notion": "node notion-sdk/cleaner && node notion-sdk/sync"
   },
   "dependencies": {
+    "@notionhq/client": "^2.1.1",
+    "api": "^4.5.2",
+    "dotenv": "^16.0.1",
+    "fastify": "^4.5.3",
     "hexo": "^5.2.0",
     "hexo-asset-image": "git+https://github.com/CodeFalling/hexo-asset-image.git",
     "hexo-deployer-git": "^3.0.0",
@@ -32,9 +44,9 @@
     "hexo-renderer-kramed": "^0.1.4",
     "hexo-renderer-pug": "^1.0.0",
     "hexo-renderer-sass": "^0.4.0",
-    "hexo-renderer-stylus": "^2.0.1",
     "hexo-server": "^2.0.0",
-    "hexo-wordcount": "^6.0.1"
+    "hexo-wordcount": "^6.0.1",
+    "sass": "^1.54.9"
   },
   "devDependencies": {
     "hexo-util": "^2.4.0",

@@ -224,7 +224,7 @@ export default function withTimer(WrappedComponent) {
 
     tick() {
       this.setState({
-        time: new Date(),
+        time: new Date()
       });
     }
     render() {
@@ -238,8 +238,8 @@ import React from "react";
 import withTimer from "./withTimer.jsx";
 
 export class showTimer extends React.Component {
-  render() {
-    return <h2>{this.props.time.toLocaleString()}</h2>;
+	render() {
+  	return <h2>{this.props.time.toLocaleString()}</h2>;
   }
 }
 export default withTimer(showTimer); // 暴露被高阶包装过的组件
