@@ -1,0 +1,20 @@
+[
+  {
+    "id": "7d23c850-f4fa-4200-b859-d0d4ab0d6294",
+    "slug": "7d23c850f4",
+    "icon": {
+      "type": "emoji",
+      "emoji": "💤"
+    },
+    "cover": null,
+    "url": "https://www.notion.so/Notion-Notion-API-Notion-Hexo-7d23c850f4fa4200b859d0d4ab0d6294",
+    "title": "「Notion」利用Notion API将Notion文章整合到本地Hexo项目",
+    "format": "lake",
+    "description": null,
+    "updated_at": "2022-09-13T09:16:00.000Z",
+    "created_at": "2022-09-09T11:14:00.000Z",
+    "published_at": "2022-09-09T11:14:00.000Z",
+    "last_editor": "httishere",
+    "body": "tags: [Notion]<br />categories: [Notion-API]<br />cover: null\n\n---\n\n\n因为我的Hexo博客是拉取我在语雀上的文章还有本地写的文章，所以没有直接采用相关的Notion部署成Blog的已有API。\n\n\n还是使用将文章拉取到本地再手动部署的方式。\n\n\n> 参考：[yuque-hexo](https://github.com/x-cold/yuque-hexo)\n\n\n## **为Notion API设置访问令牌**\n\n\n需要设置一个Integration（集成），通过Notion API连接访问自己的数据库，然后生成一个访问令牌来访问Notion的API。\n\n\n在[Notion API文档](https://link.juejin.cn/?target=https%3A%2F%2Fdevelopers.notion.com%2Freference%2Fintro)页面，点击右上角的**View my integrations** 链接。点击**+ New integration**按钮。\n\n\n![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/2bb30cbc-78cb-4d91-8c36-8be0e27f8b51/%E6%88%AA%E5%B1%8F2022-09-10_20.16.22.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220913%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220913T092031Z&X-Amz-Expires=3600&X-Amz-Signature=ea0d90344d36364cd66519834a64c20e17b2c0cdc37377c2c6d614f98dccd4ae&X-Amz-SignedHeaders=host&x-id=GetObject)\n\n\n创建集成完毕后，将会在详情页看到自己的访问令牌：\n\n\n![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/ed161fa3-02ac-4d02-a177-48e4cf266616/%E6%88%AA%E5%B1%8F2022-09-10_20.17.28.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220913%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220913T092031Z&X-Amz-Expires=3600&X-Amz-Signature=7af5977d2570148dd2c45aa7f48960f8db5cc9b2a20cbbf19db5936fb524bbdf&X-Amz-SignedHeaders=host&x-id=GetObject)\n\n\n## 在Notion内创建你的博客表格\n\n\n![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/feee6e5f-9285-4fb0-8ec3-220f05122fa8/%E6%88%AA%E5%B1%8F2022-09-10_20.20.05.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220913%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220913T092031Z&X-Amz-Expires=3600&X-Amz-Signature=0cb36fb856a2014f7dc212c2af622cc95b7947ece6bcc5836dec40b809b79378&X-Amz-SignedHeaders=host&x-id=GetObject)\n\n\n我创建了一个Blog表格，并为每个文章设置了`title`，`slug(urlname)`，`tags`，`categories`，`description`，`publish`，`created_at`和`updated_at`这几个字断。\n\n\n其中`slug`是直接截取了id的一部分作为url name：\n\n\n![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/4966ec9a-06ff-416c-8724-d9526f0d186b/%E6%88%AA%E5%B1%8F2022-09-10_20.23.53.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220913%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220913T092031Z&X-Amz-Expires=3600&X-Amz-Signature=3368179cb5de0a6b2faf8e72a476e305cc8dc7d93bc44344d55d52dc2d993f62&X-Amz-SignedHeaders=host&x-id=GetObject)\n\n\n点击Blog页面右上角的**···**按钮，在`Connections`内选择我们刚刚创建的**my-blog**集成。\n\n\n事先拥有一个 [hexo](https://github.com/hexojs/hexo)项目，并在 `package.json`中配置相关信息：\n\n\n```json\n\"notionConfig\": {\n    \"mdNameFormat\": \"slug\",\n    \"baseUrl\": \"https://api.notion.com/v1/databases/\",\n    \"token\": \"your Internal Integration Token\",\n    \"database\": \"a664095e020e48658a11c11a897ebe0a\",\n    \"postPath\": \"source/_posts/notion\"\n},\n```\n\n"
+  }
+]

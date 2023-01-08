@@ -15,8 +15,8 @@ type: about
 - Email: httishere0728@gmail.com
 - 学历：杭州师范大学 ｜ 2018届 ｜ 软件工程专业
 - Github: [https://github.com/httIsHere](https://github.com/httIsHere)
-
 ---
+
 #### Q&A
 
 - 技能：前端

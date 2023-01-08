@@ -2,11 +2,10 @@
 title: 「JS」ES6新增特性
 urlname: nsgoo9
 date: '2020-10-12 11:05:43 +0800'
-<br />tags:
+tags:
   - js
 categories:
   - JavaScript
-tags: []
 ---
 
 - **表达式**：声明、解构赋值
