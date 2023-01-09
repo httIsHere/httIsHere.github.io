@@ -4,7 +4,7 @@
 
 # Site
 title: HTTISHERE
-subtitle: 
+subtitle:
 description:
 keywords:
 author: httishere
@@ -33,7 +33,7 @@ skip_render:
 new_post_name: :title.md # File name of new posts
 default_layout: post
 titlecase: false # Transform title into titlecase
-external_link: 
+external_link:
   enable: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
@@ -45,16 +45,16 @@ highlight:
   line_number: true
   auto_detect: false
   tab_replace:
-  
+
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
 # per_page: Posts displayed per page. (0 = disable pagination)
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
-  path: ''
+  path: ""
   per_page: 20
   order_by: -date
-  
+
 # Category & Tag
 default_category: uncategorized
 category_map:
@@ -77,6 +77,15 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: Chic
 
+stylus:
+  compress: false
+  sourcemaps:
+    comment: true
+    inline: true
+    sourceRoot: ""
+    basePath: .
+  plugins: "nib"
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
@@ -92,13 +101,13 @@ deploy:
 #   count: true
 #   lazy: false
 #   cleanly: false
-#   language: 
+#   language:
 #   github_user: httishere
 #   github_repo: https://github.com/httIsHere/httIsHere.github.io.git
 #   client_id: c61a26564784a9cb16f3
 #   client_secret: 25a391b4405c726bfa417a4d09a8a9d46fd41e12
-#   proxy_gateway: 
-#   redirect_protocol: 
+#   proxy_gateway:
+#   redirect_protocol:
 
 gitalk:
   enable: true
@@ -107,7 +116,7 @@ gitalk:
   repo: httIsHere.github.io
   ClientID: c61a26564784a9cb16f3
   ClientSecret: 25a391b4405c726bfa417a4d09a8a9d46fd41e12
-  labels: 'gitalk'
+  labels: "gitalk"
   distractionFreeMode: true
 
 hide_posts:

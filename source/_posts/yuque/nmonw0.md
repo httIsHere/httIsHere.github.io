@@ -14,7 +14,7 @@ categories:
 
 ### 简单选择器
 
-- -
+- \*
 - div svg|a (namespace)
 - .cls
 - `#id`

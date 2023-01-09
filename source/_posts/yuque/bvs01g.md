@@ -150,7 +150,7 @@ let 有自己的作用域块，所以在 for 循环表达式中使用 let 其实
 
 #### 原型
 
-在一个实例对象中可以通过  `__proto__ `找到一个原型对象，在该对象中定义了很多函数让我们来使用。
+在一个实例对象中可以通过  `__proto__`找到一个原型对象，在该对象中定义了很多函数让我们来使用。
 原型的  `constructor`  属性指向构造函数，构造函数又通过  `prototype`  属性指回原型，但是并不是所有函数都具有这个属性，`Function.prototype.bind()`就没有这个属性。
 ![image.png](https://cdn.nlark.com/yuque/0/2021/png/250093/1614065706606-ab42b62d-2a07-45e3-9803-8567e9a5c042.png#height=781&id=HgNjp&margin=%5Bobject%20Object%5D&name=image.png&originHeight=781&originWidth=618&originalType=binary∶=1&size=241194&status=done&style=none&width=618)
 其实原型链就是多个对象通过  `__proto__`  的方式连接了起来。为什么  `obj`  可以访问到  `valueOf`  函数，就是因为  `obj`  通过原型链找到了  `valueOf`  函数。

@@ -25,7 +25,8 @@
     "sync": "yuque-hexo sync",
     "deploy": "npm run sync && hexo clean && hexo g -d",
     "dev": "hexo clean && hexo server",
-    "notion": "node notion-sdk/cleaner && node notion-sdk/sync"
+    "clean:notion": "node notion-sdk/cleaner",
+    "sync:notion": "node notion-sdk/sync"
   },
   "dependencies": {
     "@notionhq/client": "^2.1.1",
@@ -44,8 +45,10 @@
     "hexo-renderer-kramed": "^0.1.4",
     "hexo-renderer-pug": "^1.0.0",
     "hexo-renderer-sass": "^0.4.0",
+    "hexo-renderer-stylus": "^2.1.0",
     "hexo-server": "^2.0.0",
     "hexo-wordcount": "^6.0.1",
+    "node-sass": "^6.0.1",
     "notion-to-md": "^2.5.5",
     "sass": "^1.54.9"
   },

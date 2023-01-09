@@ -80,7 +80,7 @@ changeColor();
 alert("Color is now " + color);
 ```
 
-函数` changeColor()`的作用域链包含两个对象：它自己的变量对象（其中定义着`arguments`对象）和全局环境的变量对象。
+函数`changeColor()`的作用域链包含两个对象：它自己的变量对象（其中定义着`arguments`对象）和全局环境的变量对象。
 
 #### 作用域链的变量查询
 
