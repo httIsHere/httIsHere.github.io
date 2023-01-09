@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="referrer" content="no-referrer" />
+
+    <meta name="author" content="httishere">
+
+
+
+
+
+<title>「编程训练」 TicTacToe | HTTISHERE</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+    <div class="wrapper">
+        <!--
+ * @Author: your name
+ * @Date: 2020-08-17 15:35:07
+ * @LastEditTime: 2022-01-15 12:59:30
+ * @LastEditors: your name
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_partial/header.ejs
+-->
+<header>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-header header-logo">
+        <a href="/">𝑯𝑻𝑻𝑰𝑺𝑯𝑬𝑹&#39;𝑩𝒍𝒐𝒈</a>
+        <!-- ℍ𝕋𝕋𝕀𝕊ℍ𝔼ℝ𝔼'𝕤 𝔹𝕝𝕠𝕘 -->
+      </div>
+      <div class="menu navbar-right">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/reading">Schedules</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+        <input id="switch_default" type="checkbox" class="switch_default" />
+        <label for="switch_default" class="toggleBtn"></label>
+      </div>
+    </div>
+  </nav>
+
+  
+  <nav class="navbar-mobile" id="nav-mobile">
+    <div class="container">
+      <div class="navbar-header">
+        <div>
+          <a href="/">𝑯𝑻𝑻𝑰𝑺𝑯𝑬𝑹&#39;𝑩𝒍𝒐𝒈</a
+          ><a id="mobile-toggle-theme">·&nbsp;Light</a>
+        </div>
+        <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+      </div>
+      <div class="menu" id="mobile-menu">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/reading">Schedules</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+      </div>
+    </div>
+  </nav>
+</header>
+<script>
+  var mobileBtn = function f() {
+    var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+    var mobileMenu = document.getElementById("mobile-menu");
+    if (toggleMenu.classList.contains("active")) {
+      toggleMenu.classList.remove("active");
+      mobileMenu.classList.remove("active");
+    } else {
+      toggleMenu.classList.add("active");
+      mobileMenu.classList.add("active");
+    }
+  };
+  function addFav() {
+    var title = document.title;
+    var URL = document.URL;
+    try {
+      window.external.addFavorite(URL, title);
+    } catch (e) {
+      try {
+        window.sidebar.addPanel(title, URL, "");
+      } catch (e) {
+        alert("由于浏览器的安全设置\n可以使用Ctrl+D或者Command+D进行手动收藏");
+      }
+    }
+  }
+</script>
+
+        <div class="main">
+            <div class="container">
+    
+  <article class="post-wrap">
+    <header class="post-header">
+      <h1 class="post-title">「编程训练」 TicTacToe</h1>
+      
+      <div
+        class="post-meta"
+        id="/2022/01/14/TicTacToe/"
+        class="leancloud-visitors view"
+      >
+         Author:
+        <a itemprop="author" rel="author" href="/">httishere</a>
+         
+        <span class="post-time">
+          Date:
+          <a href="#"
+            >2022/01/14&nbsp;&nbsp;13:44:02</a
+          >
+        </span>
+         
+        <span class="post-category">
+          Category: 
+          <a href="/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/">大前端</a>
+          
+        </span>
+         <<
+        <div class="extra">
+          >>
+          <span
+            id="/2022/01/14/TicTacToe/"
+            class="leancloud-visitors view"
+            data-flag-title="「编程训练」 TicTacToe"
+          >
+            <span class="post-meta-item-text">Pageviews:</span>
+            <a href="javascript:;" class="leancloud-visitors-count">0</a>
+          </span>
+          
+          <span class="post-count">
+            Words:
+            <a href="">844</a>
+          </span>
+           
+          <span class="post-count">
+            Time:
+            <a href="">5 min</a>
+          </span>
+          
+        </div>
+
+        
+      </div>
+      
+    </header>
+
+    <div class="post-content">
+      <p><img src="https://gitee.com/httishere/blog-image/raw/master/img/20220114134624.png" alt=""></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>TicTacToe<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span></span><br><span class="line"><span class="css">      <span class="selector-class">.item</span> &#123;</span></span><br><span class="line">        width: 100px;</span><br><span class="line">        height: 100px;</span><br><span class="line"><span class="css">        <span class="selector-tag">border</span>: 1<span class="selector-tag">px</span> <span class="selector-tag">solid</span> <span class="selector-id">#ffffff</span>;</span></span><br><span class="line">        text-align: center;</span><br><span class="line">        line-height: 100px;</span><br><span class="line">        font-size: 36px;</span><br><span class="line">        display: inline-block;</span><br><span class="line">        background: gray;</span><br><span class="line">        vertical-align: middle;</span><br><span class="line">      &#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span> <span class="attr">id</span>=<span class="string">&quot;box&quot;</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- &lt;div class=&quot;row&quot; id=&quot;row-0&quot;&gt;</span></span><br><span class="line"><span class="comment">            &lt;div class=&quot;item&quot; id=&quot;item-0&quot;&gt;&lt;/div&gt;</span></span><br><span class="line"><span class="comment">            &lt;div class=&quot;item&quot; id=&quot;item-1&quot;&gt;&lt;/div&gt;</span></span><br><span class="line"><span class="comment">            &lt;div class=&quot;item&quot; id=&quot;item-2&quot;&gt;&lt;/div&gt;</span></span><br><span class="line"><span class="comment">        &lt;/div&gt;</span></span><br><span class="line"><span class="comment">        &lt;div class=&quot;row&quot; id=&quot;row-1&quot;&gt;</span></span><br><span class="line"><span class="comment">            &lt;div class=&quot;item&quot; id=&quot;item-3&quot;&gt;&lt;/div&gt;</span></span><br><span class="line"><span class="comment">            &lt;div class=&quot;item&quot; id=&quot;item-4&quot;&gt;&lt;/div&gt;</span></span><br><span class="line"><span class="comment">            &lt;div class=&quot;item&quot; id=&quot;item-5&quot;&gt;&lt;/div&gt;</span></span><br><span class="line"><span class="comment">        &lt;/div&gt;</span></span><br><span class="line"><span class="comment">        &lt;div class=&quot;row&quot; id=&quot;row-2&quot;&gt;</span></span><br><span class="line"><span class="comment">            &lt;div class=&quot;item&quot; id=&quot;item-6&quot;&gt;&lt;/div&gt;</span></span><br><span class="line"><span class="comment">            &lt;div class=&quot;item&quot; id=&quot;item-7&quot;&gt;&lt;/div&gt;</span></span><br><span class="line"><span class="comment">            &lt;div class=&quot;item&quot; id=&quot;item-8&quot;&gt;&lt;/div&gt;</span></span><br><span class="line"><span class="comment">        &lt;/div&gt; --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> pattern = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>];</span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> cur_obj = <span class="number">1</span>, winner = <span class="number">0</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">showTicTacToe</span>(<span class="params">pattern</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> ele = <span class="built_in">document</span>.getElementById(<span class="string">&quot;box&quot;</span>);</span></span><br><span class="line"><span class="javascript">      ele.innerHTML = <span class="string">&#x27;&#x27;</span>;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i++) &#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> status = pattern[i] === <span class="number">2</span> ? <span class="string">&quot;❌&quot;</span> : pattern[i] === <span class="number">1</span> ? <span class="string">&quot;⭕️&quot;</span> : <span class="string">&quot;&quot;</span>;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> _item = <span class="built_in">document</span>.createElement(<span class="string">&quot;span&quot;</span>);</span></span><br><span class="line"><span class="javascript">        _item.classList.add(<span class="string">&#x27;item&#x27;</span>);</span></span><br><span class="line">        _item.innerHTML = status;</span><br><span class="line"><span class="javascript">        _item.addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function">() =&gt;</span> move(i, pattern))</span></span><br><span class="line">        ele.appendChild(_item);</span><br><span class="line"><span class="javascript">        <span class="keyword">if</span> (i % <span class="number">3</span> === <span class="number">2</span>) &#123;</span></span><br><span class="line"><span class="javascript">          ele.appendChild(<span class="built_in">document</span>.createElement(<span class="string">&quot;br&quot;</span>));</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">move</span>(<span class="params">i, pattern</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span>(pattern[i] || winner) <span class="keyword">return</span>;</span></span><br><span class="line">        pattern[i] = cur_obj;</span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> _status = pattern[i] === <span class="number">2</span> ? <span class="string">&quot;❌&quot;</span> : pattern[i] === <span class="number">1</span> ? <span class="string">&quot;⭕️&quot;</span> : <span class="string">&quot;&quot;</span>;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span>(checkTicToe(i, pattern)) &#123;</span></span><br><span class="line"><span class="javascript">            alert(<span class="string">`<span class="subst">$&#123;_status&#125;</span> is winner`</span>);</span></span><br><span class="line">            winner = pattern[i];</span><br><span class="line">        &#125;</span><br><span class="line"><span class="javascript">        <span class="comment">// 重刷</span></span></span><br><span class="line">        showTicTacToe(pattern);</span><br><span class="line"><span class="javascript">        <span class="keyword">if</span>(willWin(pattern, cur_obj)) &#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;_status&#125;</span> will win`</span>)</span></span><br><span class="line">        &#125;</span><br><span class="line">        cur_obj = 3 - cur_obj;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">computeMove</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> choice = bestChoice(pattern, cur_obj);</span></span><br><span class="line"><span class="javascript">      <span class="keyword">if</span>(choice.point) &#123;</span></span><br><span class="line">        pattern[choice.point] = cur_obj;</span><br><span class="line">        showTicTacToe(pattern);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">checkTicToe</span>(<span class="params">i, pattern</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> status = pattern[i], _status = status === <span class="number">2</span> ? <span class="string">&quot;❌&quot;</span> : status === <span class="number">1</span> ? <span class="string">&quot;⭕️&quot;</span> : <span class="string">&quot;&quot;</span>;</span></span><br><span class="line"><span class="javascript">        <span class="comment">// 根据当前落子来判断</span></span></span><br><span class="line"><span class="javascript">        <span class="comment">// 上下左右</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> flag = <span class="literal">true</span>;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> col = i % <span class="number">3</span>, row = <span class="built_in">Math</span>.floor(i / <span class="number">3</span>), sum1 = <span class="literal">true</span>, sum2 = <span class="literal">true</span>, sum3 = <span class="literal">false</span>;</span></span><br><span class="line"><span class="javascript">        <span class="comment">// 纵横</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">for</span>(<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; <span class="number">3</span>; j++) &#123;</span></span><br><span class="line">            sum1 = sum1 &amp;&amp; (pattern[j * 3 + col] === status);</span><br><span class="line">            sum2 = sum2 &amp;&amp; (pattern[row * 3 + j] === status);</span><br><span class="line">        &#125;</span><br><span class="line"><span class="javascript">        <span class="comment">// 交叉方向，需要先判断中心点只有在中心点才可能成功</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span>(pattern[<span class="number">4</span>] &amp;&amp; pattern[<span class="number">4</span>] === cur_obj) &#123;</span></span><br><span class="line"><span class="javascript">            sum3 = <span class="literal">true</span>;</span></span><br><span class="line">            sum3 = (pattern[0] === cur_obj &amp;&amp; pattern[8] === cur_obj) || (pattern[2] === cur_obj &amp;&amp; pattern[6] === cur_obj);</span><br><span class="line">        &#125;</span><br><span class="line">        flag = sum1 || sum2 || sum3;</span><br><span class="line"><span class="javascript">        <span class="keyword">return</span> flag;</span></span><br><span class="line"><span class="javascript">        <span class="comment">// 交叉</span></span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">clone</span>(<span class="params">pattern</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">return</span> <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(pattern))</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="javascript">    <span class="comment">// 辅助判断</span></span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">willWin</span>(<span class="params">pattern, cur_obj</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">for</span>(<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; <span class="number">9</span>; j++) &#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">if</span>(pattern[j] || pattern[j] === cur_obj) <span class="keyword">continue</span>;</span></span><br><span class="line">            pattern[j] = cur_obj;</span><br><span class="line"><span class="javascript">            <span class="keyword">if</span>(checkTicToe(j, pattern)) &#123;</span></span><br><span class="line">                pattern[j] = 0;</span><br><span class="line"><span class="javascript">                <span class="keyword">return</span> j.toString(); <span class="comment">// 0的特殊情况</span></span></span><br><span class="line">            &#125;</span><br><span class="line">            pattern[j] = 0;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="javascript">        <span class="keyword">return</span> <span class="literal">null</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">willLose</span>(<span class="params">pattern, cur_obj</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span>(willWin(pattern, cur_obj)) <span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> openings = <span class="keyword">new</span> <span class="built_in">Map</span>();</span></span><br><span class="line"><span class="javascript">    openings.set([<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>].toString() + <span class="string">&quot;1&quot;</span>, &#123;</span></span><br><span class="line">      point: 4,</span><br><span class="line">      result: 0</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">bestChoice</span>(<span class="params">pattern, cur_obj</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">if</span>(openings.has(pattern.toString() + <span class="string">&quot;1&quot;</span>)) <span class="keyword">return</span> openings.get(pattern.toString() + <span class="string">&quot;1&quot;</span>)</span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> point = <span class="literal">null</span></span></span><br><span class="line"><span class="javascript">      <span class="keyword">if</span>(point = willWin(pattern, cur_obj)) &#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">return</span> &#123;</span></span><br><span class="line">          point,</span><br><span class="line">          result: 1</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> result = -<span class="number">1</span>;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">for</span>(<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; <span class="number">9</span>; j++) &#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span>(pattern[j] !== <span class="number">0</span>) <span class="keyword">continue</span>;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> tmp = clone(pattern);</span></span><br><span class="line">        tmp[j] = cur_obj;</span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> oppo = bestChoice(tmp, <span class="number">3</span> - cur_obj); <span class="comment">// 对手状态</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span>(- oppo.result &gt;= result) &#123; </span></span><br><span class="line">          point = j;</span><br><span class="line">          result = - oppo.result;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="javascript">        <span class="keyword">if</span>(result === <span class="number">1</span>) <span class="keyword">break</span>;</span></span><br><span class="line">      &#125;</span><br><span class="line"><span class="javascript">      <span class="keyword">return</span> &#123;</span></span><br><span class="line">        point,</span><br><span class="line"><span class="javascript">        result: point ? result : <span class="number">0</span>, <span class="comment">// -1: lose, 1: win, 0: 平手</span></span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    showTicTacToe(pattern);</span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    <section class="post-copyright">
+      
+      <p class="copyright-item">
+        <span>Author:</span>
+        <span>httishere</span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>Permalink:</span>
+        <span><a href="https://httishere.github.io/2022/01/14/TicTacToe/">https://httishere.github.io/2022/01/14/TicTacToe/</a></span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>License:</span>
+        <span>Copyright (c) 2021 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>Slogan:</span>
+        <span>Good Good Study, Day Day Up.</span>
+      </p>
+      
+    </section>
+    
+    <section class="post-tags">
+      <div>
+        <span>Tag(s):</span>
+        <span class="tag">
+           
+          <a href="/tags/ROAD-6/"># ROAD 6</a>
+           
+        </span>
+      </div>
+      <div>
+        <a href="javascript:window.history.back();">back</a>
+        <span>· </span>
+        <a href="/">home</a>
+      </div>
+    </section>
+    <section class="post-nav">
+      
+      <a class="prev" rel="prev" href="/2022/01/15/notion-template/"
+        >「Notion」 Templates</a
+      >
+       
+      <a class="next" rel="next" href="/2021/12/23/yuque/xyp3mm/"
+        >「TypeScript」模块化&声明</a
+      >
+      
+    </section>
+     <!--
+ * @Author: your name
+ * @Date: 2021-07-08 11:08:58
+ * @LastEditTime: 2021-08-20 11:11:35
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_partial/gitalk.ejs
+-->
+<link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css">
+<div id="gitalk-container" style="margin-top: 50px;"></div>
+<!-- <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> -->
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script type="text/javascript">
+console.log(md5(location.pathname))
+    new Gitalk({
+        clientID: 'c61a26564784a9cb16f3',
+        clientSecret: '25a391b4405c726bfa417a4d09a8a9d46fd41e12',
+        id: window.location.pathname,
+        repo: 'httIsHere.github.io',
+        owner: 'httIsHere',
+        admin: 'httIsHere',
+        id: md5(location.pathname),
+        distractionFreeMode: false
+    }).render('gitalk-container')
+</script>  
+    <section id="comments" class="comments">
+      <style>
+        .comments {
+          margin: 30px;
+          padding: 10px;
+          background: #fff;
+        }
+        @media screen and (max-width: 800px) {
+          .comments {
+            margin: auto;
+            padding: 10px;
+            background: #fff;
+          }
+        }
+      </style>
+      <!--
+ * @Author: your name
+ * @Date: 2022-01-19 10:26:36
+ * @LastEditTime: 2022-01-19 11:55:49
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_plugins/valine.ejs
+-->
+<!-- <div class="valine_comment"></div> -->
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: '1BHDvzMyiyWmu3v3vBaR2dek-gzGzoHsz',
+      app_key: 'MaYtrzsGSwqpImuLueThWKFE',
+      placeholder: '这里留言。。',
+      notify: 'true',
+      verify: 'true',
+      visitor: 'true',
+    });
+</script>
+    </section>
+    
+  </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© httishere | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

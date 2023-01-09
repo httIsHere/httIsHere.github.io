@@ -1,0 +1,32 @@
+<hr>
+<p>title: 263.Ugly Number<br>date: 2021-10-15 11:55:23<br>tags:</p>
+<pre><code>- LeeCode
+</code></pre><p>categories: </p>
+<pre><code>- LeeCode
+</code></pre><p>hidden: true</p>
+<h2 id="cateHidden-false"><a href="#cateHidden-false" class="headerlink" title="cateHidden: false"></a>cateHidden: false</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><blockquote>
+<p>An ugly number is a positive integer whose prime factors are limited to 2, 3, and 5.</p>
+<p>Given an integer n, return true if n is an ugly number.<br>丑数就是只包含质因数 2, 3, 5 的正整数。</p>
+</blockquote>
+<h3 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h3><pre><code>Input: n = 6
+Output: true
+Explanation: 6 = 2 × 3
+</code></pre><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><pre><code class="lang-js">var isUgly = function(n) {
+    if(n &lt;= 0) return false;
+    // 只能被2，3和5整除
+
+    // 除掉所有2
+    while(n % 2 === 0) {
+        n /= 2;
+    }
+    // 除掉所有3
+    while(n % 3 === 0) {
+        n /= 3;
+    }
+    // 除掉所有5
+    while(n % 5 === 0) {
+        n /= 5;
+    }
+    return n === 1;
+};
+</code></pre>

@@ -1,0 +1,44 @@
+<hr>
+<p>title: 345.reverse-vowels-of-a-string<br>date: 2021-11-18 14:12:50<br>mathjax: true<br>tags:</p>
+<pre><code>- LeeCode
+</code></pre><p>categories: </p>
+<pre><code>- LeeCode
+</code></pre><p>hidden: true</p>
+<h2 id="cateHidden-false"><a href="#cateHidden-false" class="headerlink" title="cateHidden: false"></a>cateHidden: false</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><blockquote>
+<p>Given a string s, reverse only all the vowels in the string and return it.</p>
+<p>The vowels are ‘a’, ‘e’, ‘i’, ‘o’, and ‘u’, and they can appear in both cases.</p>
+</blockquote>
+<h3 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h3><pre><code class="lang-bash">Input: s = &quot;leetcode&quot;
+Output: &quot;leotcede&quot;
+</code></pre>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>使用首尾指针循环，并交换对应的元音字母。</p>
+<pre><code class="lang-js">var reverseVowels = function (s) {
+  // 列举元音字母
+  let vowels = [&quot;a&quot;, &quot;e&quot;, &quot;i&quot;, &quot;o&quot;, &quot;u&quot;, &quot;A&quot;, &quot;E&quot;, &quot;I&quot;, &quot;O&quot;, &quot;U&quot;];
+  let l = s.length， i = 0, j = l - i - 1;
+  // &amp; js字符串字符不能直接赋值，强制转换成数组
+  s = s.split(&#39;&#39;);
+  while (i &lt; j) {
+    // 当前字母是否为元音字母
+    let is_i = vowels.indexOf(s[i]) &gt; -1,
+      is_j = vowels.indexOf(s[j]) &gt; -1;
+    if (is_i &amp;&amp; is_j) {
+      let temp = s[j];
+      s[j] = s[i];
+      s[i] = temp;
+      i++, j--;
+    } else if (!is_i) {
+      i++;
+    } else if (!is_j) {
+      j--;
+    }
+  }
+  return s.join(&#39;&#39;);
+};
+</code></pre>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><blockquote>
+<p>Accepted</p>
+<p>480/480 cases passed (104 ms)</p>
+<p>Your runtime beats 47.29 % of javascript submissions</p>
+<p>Your memory usage beats 51.31 % of javascript submissions (45.3 MB)</p>
+</blockquote>

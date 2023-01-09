@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="referrer" content="no-referrer" />
+
+    <meta name="author" content="httishere">
+
+
+
+
+
+<title>「TypeScript」高级类型 | HTTISHERE</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+    <div class="wrapper">
+        <!--
+ * @Author: your name
+ * @Date: 2020-08-17 15:35:07
+ * @LastEditTime: 2022-01-15 12:59:30
+ * @LastEditors: your name
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_partial/header.ejs
+-->
+<header>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-header header-logo">
+        <a href="/">𝑯𝑻𝑻𝑰𝑺𝑯𝑬𝑹&#39;𝑩𝒍𝒐𝒈</a>
+        <!-- ℍ𝕋𝕋𝕀𝕊ℍ𝔼ℝ𝔼'𝕤 𝔹𝕝𝕠𝕘 -->
+      </div>
+      <div class="menu navbar-right">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/reading">Schedules</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+        <input id="switch_default" type="checkbox" class="switch_default" />
+        <label for="switch_default" class="toggleBtn"></label>
+      </div>
+    </div>
+  </nav>
+
+  
+  <nav class="navbar-mobile" id="nav-mobile">
+    <div class="container">
+      <div class="navbar-header">
+        <div>
+          <a href="/">𝑯𝑻𝑻𝑰𝑺𝑯𝑬𝑹&#39;𝑩𝒍𝒐𝒈</a
+          ><a id="mobile-toggle-theme">·&nbsp;Light</a>
+        </div>
+        <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+      </div>
+      <div class="menu" id="mobile-menu">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/reading">Schedules</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+      </div>
+    </div>
+  </nav>
+</header>
+<script>
+  var mobileBtn = function f() {
+    var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+    var mobileMenu = document.getElementById("mobile-menu");
+    if (toggleMenu.classList.contains("active")) {
+      toggleMenu.classList.remove("active");
+      mobileMenu.classList.remove("active");
+    } else {
+      toggleMenu.classList.add("active");
+      mobileMenu.classList.add("active");
+    }
+  };
+  function addFav() {
+    var title = document.title;
+    var URL = document.URL;
+    try {
+      window.external.addFavorite(URL, title);
+    } catch (e) {
+      try {
+        window.sidebar.addPanel(title, URL, "");
+      } catch (e) {
+        alert("由于浏览器的安全设置\n可以使用Ctrl+D或者Command+D进行手动收藏");
+      }
+    }
+  }
+</script>
+
+        <div class="main">
+            <div class="container">
+    <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>  
+  <article class="post-wrap">
+    <header class="post-header">
+      <h1 class="post-title">「TypeScript」高级类型</h1>
+      
+      <div
+        class="post-meta"
+        id="/2021/12/21/yuque/uht9di/"
+        class="leancloud-visitors view"
+      >
+         Author:
+        <a itemprop="author" rel="author" href="/">httishere</a>
+         
+        <span class="post-time">
+          Date:
+          <a href="#"
+            >2021/12/21&nbsp;&nbsp;16:08:22</a
+          >
+        </span>
+         
+        <span class="post-category">
+          Category: 
+          <a href="/categories/TypeScript/">TypeScript</a>
+          
+        </span>
+         <<
+        <div class="extra">
+          >>
+          <span
+            id="/2021/12/21/yuque/uht9di/"
+            class="leancloud-visitors view"
+            data-flag-title="「TypeScript」高级类型"
+          >
+            <span class="post-meta-item-text">Pageviews:</span>
+            <a href="javascript:;" class="leancloud-visitors-count">0</a>
+          </span>
+          
+          <span class="post-count">
+            Words:
+            <a href="">782</a>
+          </span>
+           
+          <span class="post-count">
+            Time:
+            <a href="">4 min</a>
+          </span>
+          
+        </div>
+
+        
+      </div>
+      
+    </header>
+
+    <div class="post-content">
+      <blockquote>
+<p>TS 为了保障语言的灵活性所引入的语言特性。</p>
+</blockquote>
+<h3 id="交叉类型-amp-联合类型"><a href="#交叉类型-amp-联合类型" class="headerlink" title="交叉类型&amp;联合类型"></a>交叉类型&amp;联合类型</h3><h4 id="交叉类型"><a href="#交叉类型" class="headerlink" title="交叉类型"></a>交叉类型</h4><p>使用<code>&amp;</code>连接。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Dog &#123;</span><br><span class="line">  run(): <span class="built_in">void</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">interface</span> Cat &#123;</span><br><span class="line">  jump(): <span class="built_in">void</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 必须实现所有属性，相当于并集</span></span><br><span class="line"><span class="keyword">let</span> pet: Dog &amp; Cat = &#123;</span><br><span class="line">  <span class="function"><span class="title">run</span>(<span class="params"></span>)</span> &#123;&#125;,</span><br><span class="line">  <span class="function"><span class="title">jump</span>(<span class="params"></span>)</span> &#123;&#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="联合类型"><a href="#联合类型" class="headerlink" title="联合类型"></a>联合类型</h4><p>声明的类型并不确定，可以为多个类型中的一个。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> hoc_a: <span class="built_in">number</span> | <span class="built_in">string</span> = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> hoc_a: <span class="built_in">number</span> | <span class="built_in">string</span> = <span class="string">&quot;a&quot;</span>;</span><br></pre></td></tr></table></figure>
+<h5 id="字面量联合类型"><a href="#字面量联合类型" class="headerlink" title="字面量联合类型"></a>字面量联合类型</h5><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> hoc_b: <span class="string">&quot;a&quot;</span> | <span class="string">&quot;b&quot;</span> | <span class="string">&quot;c&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> hoc_c: <span class="number">1</span> | <span class="number">2</span> | <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+<h5 id="类的联合类型"><a href="#类的联合类型" class="headerlink" title="类的联合类型"></a>类的联合类型</h5><p>其实只能访问公有的属性。</p>
+<p>可以利用共有属性设计相应的类型保护区块。</p>
+<p><img src="https://gitee.com/httishere/blog-image/raw/master/img/Xnip2021-12-22_15-52-34.jpg#id=vBFmt&amp;originHeight=561&amp;originWidth=940&amp;originalType=binary∶=1&amp;status=done&amp;style=none" alt=""></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getArea</span>(<span class="params">s: Shape</span>): <span class="title">number</span> </span>&#123;</span><br><span class="line">  <span class="keyword">switch</span> (s.kind) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;square&quot;</span>:</span><br><span class="line">      <span class="keyword">return</span> s.size * s.size;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;circle&quot;</span>:</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">Math</span>.PI * s.r * s.r;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;rectangle&quot;</span>:</span><br><span class="line">      <span class="keyword">return</span> s.width * s.height;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">return</span> (<span class="function">(<span class="params">e: <span class="built_in">never</span></span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(e);</span><br><span class="line">      &#125;)(s); <span class="comment">// never检测上述分支是否全部覆盖</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="索引类型"><a href="#索引类型" class="headerlink" title="索引类型"></a>索引类型</h3><p>实现一个从对象内获取一些属性的值的方法。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> hoc_obj = &#123;</span><br><span class="line">  a: <span class="number">1</span>,</span><br><span class="line">  b: <span class="number">2</span>,</span><br><span class="line">  c: <span class="number">3</span>,</span><br><span class="line">  d: <span class="number">4</span>,</span><br><span class="line">  e: <span class="number">5</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getValues</span>(<span class="params">obj: <span class="built_in">any</span>, keys: <span class="built_in">string</span>[]</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> keys.map(<span class="function">(<span class="params">key</span>) =&gt;</span> obj[key]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(getValues(hoc_obj, [<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>])); <span class="comment">// [1, 2]</span></span><br><span class="line"><span class="built_in">console</span>.log(getValues(hoc_obj, [<span class="string">&quot;a&quot;</span>, <span class="string">&quot;f&quot;</span>])); <span class="comment">// [1, undefined]</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>keyof T 表示类型 T 的所有公共属性的字面量的联合类型。</p>
+</blockquote>
+<p>将上面函数进行一定的改造，使其能对类型进行保护。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// keyof</span></span><br><span class="line"><span class="keyword">interface</span> Obj &#123;</span><br><span class="line">  a: <span class="built_in">number</span>;</span><br><span class="line">  b: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> key: keyof Obj;</span><br><span class="line"></span><br><span class="line"><span class="comment">// T[K]</span></span><br><span class="line"><span class="keyword">let</span> value: Obj[<span class="string">&quot;a&quot;</span>];</span><br><span class="line"><span class="comment">// T extends U</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 配合泛型约束</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getValues_1</span>&lt;<span class="title">T</span>, <span class="title">K</span> <span class="title">extends</span> <span class="title">keyof</span> <span class="title">T</span>&gt;(<span class="params">obj: T, keys: K[]</span>): <span class="title">T</span>[<span class="title">K</span>][] </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> keys.map(<span class="function">(<span class="params">key</span>) =&gt;</span> obj[key]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(getValues_1(hoc_obj, [<span class="string">&quot;a&quot;</span>, <span class="string">&quot;f&quot;</span>]));</span><br><span class="line"><span class="comment">// 不能将类型“&quot;f&quot;”分配给类型“&quot;a&quot; | &quot;b&quot; | &quot;c&quot; | &quot;d&quot; | &quot;e&quot;”</span></span><br></pre></td></tr></table></figure>
+<h3 id="映射类型"><a href="#映射类型" class="headerlink" title="映射类型"></a>映射类型</h3><p>提供从旧类型中创建新类型的方式，允许将一个类型映射成另外一个类型。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> ReadOnlyObj = Readonly&lt;Obj&gt;; <span class="comment">// 只读类型</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> PartialObj = Partial&lt;Obj&gt;; <span class="comment">// 可选类型</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> PickObj = Pick&lt;Obj, <span class="string">&quot;a&quot;</span> | <span class="string">&quot;b&quot;</span>&gt;; <span class="comment">// 选择属性</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> RecordObj = Record&lt;<span class="string">&quot;x&quot;</span> | <span class="string">&quot;y&quot;</span>, Obj&gt;; <span class="comment">// 新增类型</span></span><br></pre></td></tr></table></figure>
+<h3 id="条件类型"><a href="#条件类型" class="headerlink" title="条件类型"></a>条件类型</h3><p>由条件表达式所决定的类型。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> TypeName&lt;T&gt; = T <span class="keyword">extends</span> <span class="built_in">string</span></span><br><span class="line">  ? <span class="string">&quot;string&quot;</span></span><br><span class="line">  : T <span class="keyword">extends</span> <span class="built_in">number</span></span><br><span class="line">  ? <span class="string">&quot;number&quot;</span></span><br><span class="line">  : T <span class="keyword">extends</span> <span class="built_in">boolean</span></span><br><span class="line">  ? <span class="string">&quot;boolean&quot;</span></span><br><span class="line">  : T <span class="keyword">extends</span> <span class="literal">undefined</span></span><br><span class="line">  ? <span class="string">&quot;undefined&quot;</span></span><br><span class="line">  : T <span class="keyword">extends</span> <span class="built_in">Function</span></span><br><span class="line">  ? <span class="string">&quot;function&quot;</span></span><br><span class="line">  : <span class="string">&quot;object&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> T1 = TypeName&lt;<span class="built_in">string</span>&gt;;</span><br><span class="line"><span class="keyword">type</span> T2 = TypeName&lt;<span class="built_in">string</span>[]&gt;;</span><br><span class="line"><span class="keyword">type</span> T3 = TypeName&lt;<span class="built_in">string</span> | <span class="built_in">string</span>[]&gt;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Diff&lt;T, U&gt; = T <span class="keyword">extends</span> U ? <span class="built_in">never</span> : T;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> T4 = Diff&lt;<span class="string">&quot;a&quot;</span> | <span class="string">&quot;b&quot;</span> | <span class="string">&quot;c&quot;</span>, <span class="string">&quot;a&quot;</span> | <span class="string">&quot;e&quot;</span>&gt;; <span class="comment">// type T4 = &quot;b&quot; | &quot;c&quot;</span></span><br><span class="line"><span class="comment">// 先拆解：Diff&lt;&#x27;a&#x27;, &#x27;a&#x27; | &#x27;e&#x27;&gt; | Diff&lt;&#x27;b&#x27;, &#x27;a&#x27; | &#x27;e&#x27;&gt; | Diff&lt;&#x27;c&#x27;, &#x27;a&#x27; | &#x27;e&#x27;&gt;</span></span><br><span class="line"><span class="comment">// never | &#x27;b&#x27; | &#x27;c&#x27;</span></span><br><span class="line"><span class="comment">// &#x27;b&#x27; | &#x27;c&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> NotNull&lt;T&gt; = Diff&lt;T, <span class="literal">undefined</span> | <span class="literal">null</span>&gt;;</span><br><span class="line"><span class="keyword">type</span> T5 = NotNull&lt;<span class="built_in">string</span> | <span class="built_in">number</span> | <span class="literal">undefined</span> | <span class="literal">null</span>&gt;;</span><br></pre></td></tr></table></figure>
+<p>上述就是 TS 的两个内置类型：</p>
+<ul>
+<li>Diff -&gt; <code>Exclude&lt;T, U&gt;</code></li>
+<li>NotNull -&gt; <code>NoNullable&lt;T&gt;</code></li>
+<li><code>Extract&lt;T, U&gt;</code>，抽取相同的类型</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> T6 = Extract&lt;<span class="string">&quot;a&quot;</span> | <span class="string">&quot;b&quot;</span> | <span class="string">&quot;c&quot;</span>, <span class="string">&quot;a&quot;</span> | <span class="string">&quot;e&quot;</span>&gt;; <span class="comment">// type T6 = &quot;a&quot;</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    <section class="post-copyright">
+      
+      <p class="copyright-item">
+        <span>Author:</span>
+        <span>httishere</span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>Permalink:</span>
+        <span><a href="https://httishere.github.io/2021/12/21/yuque/uht9di/">https://httishere.github.io/2021/12/21/yuque/uht9di/</a></span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>License:</span>
+        <span>Copyright (c) 2021 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>Slogan:</span>
+        <span>Good Good Study, Day Day Up.</span>
+      </p>
+      
+    </section>
+    
+    <section class="post-tags">
+      <div>
+        <span>Tag(s):</span>
+        <span class="tag">
+           
+          <a href="/tags/ts/"># ts</a>
+           
+        </span>
+      </div>
+      <div>
+        <a href="javascript:window.history.back();">back</a>
+        <span>· </span>
+        <a href="/">home</a>
+      </div>
+    </section>
+    <section class="post-nav">
+      
+      <a class="prev" rel="prev" href="/2021/12/23/yuque/xyp3mm/"
+        >「TypeScript」模块化&声明</a
+      >
+       
+      <a class="next" rel="next" href="/2021/12/21/yuque/fh8vi3/"
+        >「TypeScript」类型检查机制</a
+      >
+      
+    </section>
+     <!--
+ * @Author: your name
+ * @Date: 2021-07-08 11:08:58
+ * @LastEditTime: 2021-08-20 11:11:35
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_partial/gitalk.ejs
+-->
+<link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css">
+<div id="gitalk-container" style="margin-top: 50px;"></div>
+<!-- <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> -->
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script type="text/javascript">
+console.log(md5(location.pathname))
+    new Gitalk({
+        clientID: 'c61a26564784a9cb16f3',
+        clientSecret: '25a391b4405c726bfa417a4d09a8a9d46fd41e12',
+        id: window.location.pathname,
+        repo: 'httIsHere.github.io',
+        owner: 'httIsHere',
+        admin: 'httIsHere',
+        id: md5(location.pathname),
+        distractionFreeMode: false
+    }).render('gitalk-container')
+</script>  
+    <section id="comments" class="comments">
+      <style>
+        .comments {
+          margin: 30px;
+          padding: 10px;
+          background: #fff;
+        }
+        @media screen and (max-width: 800px) {
+          .comments {
+            margin: auto;
+            padding: 10px;
+            background: #fff;
+          }
+        }
+      </style>
+      <!--
+ * @Author: your name
+ * @Date: 2022-01-19 10:26:36
+ * @LastEditTime: 2022-01-19 11:55:49
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_plugins/valine.ejs
+-->
+<!-- <div class="valine_comment"></div> -->
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: '1BHDvzMyiyWmu3v3vBaR2dek-gzGzoHsz',
+      app_key: 'MaYtrzsGSwqpImuLueThWKFE',
+      placeholder: '这里留言。。',
+      notify: 'true',
+      verify: 'true',
+      visitor: 'true',
+    });
+</script>
+    </section>
+    
+  </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© httishere | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

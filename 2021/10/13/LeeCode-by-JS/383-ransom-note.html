@@ -1,0 +1,43 @@
+<hr>
+<p>title: 383.ransom-note<br>date: 2021-11-22 14:05:20<br>mathjax: true<br>tags:</p>
+<pre><code>- LeeCode
+</code></pre><p>categories: </p>
+<pre><code>- LeeCode
+</code></pre><p>hidden: true</p>
+<h2 id="cateHidden-false"><a href="#cateHidden-false" class="headerlink" title="cateHidden: false"></a>cateHidden: false</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><blockquote>
+<p>Given two stings ransomNote and magazine, return true if ransomNote can be constructed from magazine and false otherwise.</p>
+<p>Each letter in magazine can only be used once in ransomNote.</p>
+</blockquote>
+<h3 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h3><pre><code class="lang-bash">Input: ransomNote = &quot;aa&quot;, magazine = &quot;ab&quot;
+Output: false
+
+Input: ransomNote = &quot;aa&quot;, magazine = &quot;aab&quot;
+Output: true
+</code></pre>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>首先收集目标字符串内的字符，再去原字符串内进行映射。</p>
+<pre><code class="lang-js">var canConstruct = function(ransomNote, magazine) {
+    // 收集ransomNote
+    let ransomNote_arr = {}, flag = true;
+    for(let i = 0; i &lt; ransomNote.length; i++) {
+        ransomNote_arr[ransomNote[i]] = ransomNote_arr[ransomNote[i]] ? ransomNote_arr[ransomNote[i]] + 1 : 1;
+    }
+    for(let i = 0; i &lt; magazine.length; i++) {
+        if(ransomNote_arr[magazine[i]]) {
+            ransomNote_arr[magazine[i]]--;
+        }
+    }
+    Object.keys(ransomNote_arr).forEach(c =&gt; {
+        if(ransomNote_arr[c]) {
+            flag = false;
+            return;
+        }
+    });
+    return flag;
+};
+</code></pre>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><blockquote>
+<p>Accepted</p>
+<p>126/126 cases passed (104 ms)</p>
+<p>Your runtime beats 55.2 % of javascript submissions</p>
+<p>Your memory usage beats 49.44 % of javascript submissions (42 MB)</p>
+</blockquote>

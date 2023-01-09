@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="referrer" content="no-referrer" />
+
+    <meta name="author" content="httishere">
+
+
+
+
+
+<title>「React Practice」Base | HTTISHERE</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+    <div class="wrapper">
+        <!--
+ * @Author: your name
+ * @Date: 2020-08-17 15:35:07
+ * @LastEditTime: 2022-01-15 12:59:30
+ * @LastEditors: your name
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_partial/header.ejs
+-->
+<header>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-header header-logo">
+        <a href="/">𝑯𝑻𝑻𝑰𝑺𝑯𝑬𝑹&#39;𝑩𝒍𝒐𝒈</a>
+        <!-- ℍ𝕋𝕋𝕀𝕊ℍ𝔼ℝ𝔼'𝕤 𝔹𝕝𝕠𝕘 -->
+      </div>
+      <div class="menu navbar-right">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/reading">Schedules</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+        <input id="switch_default" type="checkbox" class="switch_default" />
+        <label for="switch_default" class="toggleBtn"></label>
+      </div>
+    </div>
+  </nav>
+
+  
+  <nav class="navbar-mobile" id="nav-mobile">
+    <div class="container">
+      <div class="navbar-header">
+        <div>
+          <a href="/">𝑯𝑻𝑻𝑰𝑺𝑯𝑬𝑹&#39;𝑩𝒍𝒐𝒈</a
+          ><a id="mobile-toggle-theme">·&nbsp;Light</a>
+        </div>
+        <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+      </div>
+      <div class="menu" id="mobile-menu">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/reading">Schedules</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+      </div>
+    </div>
+  </nav>
+</header>
+<script>
+  var mobileBtn = function f() {
+    var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+    var mobileMenu = document.getElementById("mobile-menu");
+    if (toggleMenu.classList.contains("active")) {
+      toggleMenu.classList.remove("active");
+      mobileMenu.classList.remove("active");
+    } else {
+      toggleMenu.classList.add("active");
+      mobileMenu.classList.add("active");
+    }
+  };
+  function addFav() {
+    var title = document.title;
+    var URL = document.URL;
+    try {
+      window.external.addFavorite(URL, title);
+    } catch (e) {
+      try {
+        window.sidebar.addPanel(title, URL, "");
+      } catch (e) {
+        alert("由于浏览器的安全设置\n可以使用Ctrl+D或者Command+D进行手动收藏");
+      }
+    }
+  }
+</script>
+
+        <div class="main">
+            <div class="container">
+    <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>  
+  <article class="post-wrap">
+    <header class="post-header">
+      <h1 class="post-title">「React Practice」Base</h1>
+      
+      <div
+        class="post-meta"
+        id="/2021/07/07/yuque/ronixb/"
+        class="leancloud-visitors view"
+      >
+         Author:
+        <a itemprop="author" rel="author" href="/">httishere</a>
+         
+        <span class="post-time">
+          Date:
+          <a href="#"
+            >2021/07/07&nbsp;&nbsp;9:59:12</a
+          >
+        </span>
+         
+        <span class="post-category">
+          Category: 
+          <a href="/categories/React/">React</a>
+          
+        </span>
+         <<
+        <div class="extra">
+          >>
+          <span
+            id="/2021/07/07/yuque/ronixb/"
+            class="leancloud-visitors view"
+            data-flag-title="「React Practice」Base"
+          >
+            <span class="post-meta-item-text">Pageviews:</span>
+            <a href="javascript:;" class="leancloud-visitors-count">0</a>
+          </span>
+          
+          <span class="post-count">
+            Words:
+            <a href="">2.1k</a>
+          </span>
+           
+          <span class="post-count">
+            Time:
+            <a href="">10 min</a>
+          </span>
+          
+        </div>
+
+        
+      </div>
+      
+    </header>
+
+    <div class="post-content">
+      <blockquote>
+<p>「React Practice」系列教程是学习王沛老师的【React 实战进阶】课程的学习记录，demo 参考来自<a target="_blank" rel="noopener" href="https://codesandbox.io/s/6n20nrzlxz">https://codesandbox.io/s/6n20nrzlxz</a>。<br><strong>非原创，仅作为学习记录。</strong></p>
+</blockquote>
+<h3 id="React-组件（props-state-gt-view）"><a href="#React-组件（props-state-gt-view）" class="headerlink" title="React 组件（props + state =&gt; view）"></a>React 组件（props + state =&gt; view）</h3><ul>
+<li>React 组件一般不提供方法，而是某种状态机；</li>
+<li>React 组件可以理解为一个纯函数；</li>
+<li>单向数据绑定；</li>
+</ul>
+<h4 id="组件类型"><a href="#组件类型" class="headerlink" title="组件类型"></a>组件类型</h4><ul>
+<li>受控组件：表单元素状态由使用者维护；</li>
+<li>非受控组件：表单元素状态 DOM 自身维护；</li>
+</ul>
+<h4 id="创建组件，单一职责原则"><a href="#创建组件，单一职责原则" class="headerlink" title="创建组件，单一职责原则"></a>创建组件，单一职责原则</h4><ul>
+<li>每个组件只做一件事；</li>
+<li>如果组件变得复杂，就需要拆分成小组件（拆分复杂度，优化性能，无需重新渲染整个大组件）；</li>
+</ul>
+<h4 id="数据状态管理，DRY-原则"><a href="#数据状态管理，DRY-原则" class="headerlink" title="数据状态管理，DRY 原则"></a>数据状态管理，DRY 原则</h4><ul>
+<li>能计算得到的状态不要单独储存；</li>
+<li>组件尽量无状态，所需数据通过 props 获取；</li>
+</ul>
+<h3 id="JSX，不是模版语言，而是语法糖"><a href="#JSX，不是模版语言，而是语法糖" class="headerlink" title="JSX，不是模版语言，而是语法糖"></a>JSX，不是模版语言，而是语法糖</h3><p>在 JavaScript 代码内直接写 HTML 标记。<br>本质是<strong>动态创建组件的语法糖</strong>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> name = <span class="string">&#x27;htt&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> element = <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, &#123;name&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>; <span class="comment">// 更直观</span></span><br><span class="line"></span><br><span class="line">||</span><br><span class="line">||</span><br><span class="line">\/</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> name = <span class="string">&#x27;htt&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> element = React.createElement(<span class="string">&#x27;h1&#x27;</span>, <span class="literal">null</span>, <span class="string">&#x27;Hello, &#x27;</span>, name);</span><br></pre></td></tr></table></figure>
+<h4 id="在-JSX-内使用表达式"><a href="#在-JSX-内使用表达式" class="headerlink" title="在 JSX 内使用表达式"></a>在 JSX 内使用表达式</h4><ul>
+<li>JSX 本身也是表达式</li>
+<li>在属性中使用表达式</li>
+<li>延展属性</li>
+<li>表达式作为子元素</li>
+</ul>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>声明式创建界面的直观</li>
+<li>代码动态创建界面的灵活</li>
+<li>无需学习新的模版语言</li>
+</ul>
+<h4 id="规范：自定义组件以大写字母开头"><a href="#规范：自定义组件以大写字母开头" class="headerlink" title="规范：自定义组件以大写字母开头"></a>规范：自定义组件以大写字母开头</h4><ul>
+<li>React 认为小写的 tag 是原生 DOM 节点</li>
+<li>JSX 标记可以直接使用属性语法，例如 <code>&lt;menu.item /&gt;</code></li>
+</ul>
+<h3 id="React-生命周期"><a href="#React-生命周期" class="headerlink" title="React 生命周期"></a>React 生命周期</h3><p><img src="https://cdn.nlark.com/yuque/0/2021/png/250093/1625625250571-e908437a-78eb-4c2e-a756-c9a040c0cb03.png#align=left&amp;display=inline&amp;height=630&amp;margin=%5Bobject%20Object%5D&amp;name=image.png&amp;originHeight=1260&amp;originWidth=2254&amp;size=229873&amp;status=done&amp;style=none&amp;width=1127" alt="image.png"><br>图片来源：<a target="_blank" rel="noopener" href="https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/">https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/</a><br><code>commit</code>：React 把当前的状态映射到 DOM，实际的更新 DOM 节点。</p>
+<h4 id="挂载时："><a href="#挂载时：" class="headerlink" title="挂载时："></a>挂载时：</h4><ul>
+<li><code>constructor</code> ：用于初始化内部状态，较少使用；唯一可以直接赋值修改 state 的地方；</li>
+<li><code>getDerivedStateFromProps</code> ：当 state 需要从 props 初始化时使用；尽量不要使用：维护两者状态一致性会增加复杂度；每次 render 都会调用；典型场景：表单控件获取默认值；</li>
+<li><code>componentDidMount</code> ：UI 渲染完成后调用；只执行一次；典型场景：获取外部资源；</li>
+</ul>
+<h4 id="更新时：传入新的-props-内部-state-改变-force-update；"><a href="#更新时：传入新的-props-内部-state-改变-force-update；" class="headerlink" title="更新时：传入新的 props/内部 state 改变/force update；"></a>更新时：传入新的 props/内部 state 改变/force update；</h4><ul>
+<li><code>shouldComponentUpdate</code> ：决定 Virtual DOM 是否需要重绘，无需变化可以返回 false；一般由 PureComponent 自动实现；典型场景：性能优化；</li>
+<li><code>getSnapshotBeforeUpdate</code> ：在 render 之前调用，state 已更新；典型场景：获取 render 之前的 DOM 状态；注：getSnapshotBeforeUpdate() should be used with componentDidUpdate()；</li>
+<li><code>componentDidUpdate</code>：每次 UI 更新时调用；典型场景：页面需要根据 props 变化重新获取数据；</li>
+</ul>
+<h4 id="卸载时："><a href="#卸载时：" class="headerlink" title="卸载时："></a>卸载时：</h4><ul>
+<li><code>componentWillUnmount</code> ：组件移除时调用；典型场景：资源释放；</li>
+</ul>
+<h4 id="DEMO"><a href="#DEMO" class="headerlink" title="DEMO"></a>DEMO</h4><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Clock</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;Clock constructed&quot;</span>);</span><br><span class="line">    <span class="built_in">this</span>.state = &#123; <span class="attr">date</span>: <span class="keyword">new</span> <span class="built_in">Date</span>() &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">componentDidMount</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;Clock did mount&quot;</span>);</span><br><span class="line">    <span class="built_in">this</span>.timerID = <span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> <span class="built_in">this</span>.tick(), <span class="number">1000</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">componentWillUnmount</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;Clock will unmount&quot;</span>);</span><br><span class="line">    <span class="built_in">clearInterval</span>(<span class="built_in">this</span>.timerID);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">componentDidUpdate</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;Clock did update&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">tick</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123;</span><br><span class="line">      date: <span class="keyword">new</span> <span class="built_in">Date</span>(),</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;h2&gt;It is &#123;<span class="built_in">this</span>.state.date.toLocaleTimeString()&#125;.&lt;/h2&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; PureComponent &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> PropTypes <span class="keyword">from</span> <span class="string">&quot;prop-types&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">SnapshotSample</span> <span class="keyword">extends</span> <span class="title">PureComponent</span> </span>&#123;</span><br><span class="line">  state = &#123;</span><br><span class="line">    messages: [],</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handleNewMessage</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(<span class="function">(<span class="params">prev</span>) =&gt;</span> (&#123;</span><br><span class="line">      messages: [<span class="string">`msg <span class="subst">$&#123;prev.messages.length&#125;</span>`</span>, ...prev.messages],</span><br><span class="line">    &#125;));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">componentDidMount</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++) <span class="built_in">this</span>.handleNewMessage();</span><br><span class="line">    <span class="built_in">this</span>.interval = <span class="built_in">window</span>.setInterval(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="built_in">this</span>.state.messages.length &gt; <span class="number">200</span>) &#123;</span><br><span class="line">        <span class="built_in">window</span>.clearInterval(<span class="built_in">this</span>.interval);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="built_in">this</span>.handleNewMessage();</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="title">componentWillUnmount</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">window</span>.clearInterval(<span class="built_in">this</span>.interval);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">getSnapshotBeforeUpdate</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.rootNode.scrollHeight;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">componentDidUpdate</span>(<span class="params">prevProps, prevState, prevScrollHeight</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> scrollTop = <span class="built_in">this</span>.rootNode.scrollTop;</span><br><span class="line">    <span class="keyword">if</span> (scrollTop &lt; <span class="number">5</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="built_in">this</span>.rootNode.scrollTop =</span><br><span class="line">      scrollTop + (<span class="built_in">this</span>.rootNode.scrollHeight - prevScrollHeight);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div className=<span class="string">&quot;snapshot-sample&quot;</span> ref=&#123;<span class="function">(<span class="params">n</span>) =&gt;</span> (<span class="built_in">this</span>.rootNode = n)&#125;&gt;</span><br><span class="line">        &#123;<span class="built_in">this</span>.state.messages.map(<span class="function">(<span class="params">msg</span>) =&gt;</span> (</span><br><span class="line">          &lt;div&gt;&#123;msg&#125;&lt;/div&gt;</span><br><span class="line">        ))&#125;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Virtual-DOM，JSX-运行基础"><a href="#Virtual-DOM，JSX-运行基础" class="headerlink" title="Virtual DOM，JSX 运行基础"></a>Virtual DOM，JSX 运行基础</h3><h4 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h4><p>Diff：对前后两个 DOM 树进行<strong>广度优先分层比较</strong>，对节点进行一层一层的比较；复杂度为 <code>O(n)</code> ，否则两棵树的比较复杂度为 O(n)；<br>针对 UI 这种树结构相对稳定的场景下不会造成较大的性能问题；</p>
+<ul>
+<li>组件的 DOM 结构相对稳定；</li>
+<li>类型相同的兄弟节点可以被唯一标识（key 属性，可以提高性能）；</li>
+</ul>
+<h4 id="DEMO-1"><a href="#DEMO-1" class="headerlink" title="DEMO"></a>DEMO</h4><p><a target="_blank" rel="noopener" href="https://supnate.github.io/react-dom-diff/index.html">https://supnate.github.io/react-dom-diff/index.html</a></p>
+<h3 id="高阶组件-amp-函数作为子组件（设计模式）"><a href="#高阶组件-amp-函数作为子组件（设计模式）" class="headerlink" title="高阶组件&amp;函数作为子组件（设计模式）"></a>高阶组件&amp;函数作为子组件（设计模式）</h3><blockquote>
+<p>实现更多场景的组件复用。</p>
+</blockquote>
+<h4 id="高阶组件（HOC，Higher-Order-Component）"><a href="#高阶组件（HOC，Higher-Order-Component）" class="headerlink" title="高阶组件（HOC，Higher Order Component）"></a>高阶组件（HOC，Higher Order Component）</h4><blockquote>
+<p>接受组件作为参数，返回新的组件。</p>
+</blockquote>
+<p>可以实现一些通用函数，但自身并不包含 UI。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 高阶组件</span></span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">withTimer</span>(<span class="params">WrappedComponent</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="class"><span class="keyword">class</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    state = &#123; <span class="attr">time</span>: <span class="keyword">new</span> <span class="built_in">Date</span>() &#125;;</span><br><span class="line">    <span class="function"><span class="title">componentDidMount</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="built_in">this</span>.timerID = <span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> <span class="built_in">this</span>.tick(), <span class="number">1000</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="title">componentWillUnmount</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="built_in">clearInterval</span>(<span class="built_in">this</span>.timerID);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="title">tick</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="built_in">this</span>.setState(&#123;</span><br><span class="line">        time: <span class="keyword">new</span> <span class="built_in">Date</span>(),</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">WrappedComponent</span> <span class="attr">time</span>=<span class="string">&#123;this.state.time&#125;</span> &#123;<span class="attr">...this.props</span>&#125; /&gt;</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 需要调用的组件</span></span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> withTimer <span class="keyword">from</span> <span class="string">&quot;./withTimer.jsx&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">showTimer</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>&#123;this.props.time.toLocaleString()&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> withTimer(showTimer); <span class="comment">// 暴露被高阶包装过的组件</span></span><br></pre></td></tr></table></figure>
+<h4 id="函数作为子组件"><a href="#函数作为子组件" class="headerlink" title="函数作为子组件"></a>函数作为子组件</h4><p>用法：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyComponent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;this.props.children(&quot;HTT&quot;)&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用时</span></span><br><span class="line">&lt;MyComponent&gt;&#123;<span class="function">(<span class="params">name</span>) =&gt;</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;name&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>&#125;&lt;/MyComponent&gt;;</span><br></pre></td></tr></table></figure>
+<p>Demo：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; PureComponent &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> PropTypes <span class="keyword">from</span> <span class="string">&quot;prop-types&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">AdvancedTabSelector</span> <span class="keyword">extends</span> <span class="title">PureComponent</span> </span>&#123;</span><br><span class="line">  <span class="keyword">static</span> propTypes = &#123;</span><br><span class="line">    value: PropTypes.object,</span><br><span class="line">    options: PropTypes.array,</span><br><span class="line">    onChange: PropTypes.func,</span><br><span class="line">    children: PropTypes.func,</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> defaultProps = &#123;</span><br><span class="line">    value: <span class="literal">null</span>,</span><br><span class="line">    options: [],</span><br><span class="line">    onChange: <span class="function">() =&gt;</span> &#123;&#125;,</span><br><span class="line">    children: <span class="function">() =&gt;</span> &#123;&#125;,</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; options, value, onChange &#125; = <span class="built_in">this</span>.props;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div className=<span class="string">&quot;tab-selector&quot;</span>&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">          &#123;options.map(<span class="function">(<span class="params">opt</span>) =&gt;</span> (</span><br><span class="line">            &lt;li</span><br><span class="line">              key=&#123;opt.value&#125;</span><br><span class="line">              className=&#123;<span class="string">`tab-item <span class="subst">$&#123;</span></span></span><br><span class="line"><span class="string"><span class="subst">                opt.value === <span class="built_in">this</span>.props.value ? <span class="string">&quot;selected&quot;</span> : <span class="string">&quot;&quot;</span></span></span></span><br><span class="line"><span class="string"><span class="subst">              &#125;</span>`</span>&#125;</span><br><span class="line">              onClick=&#123;<span class="function">() =&gt;</span> <span class="built_in">this</span>.props.onChange(opt.value)&#125;</span><br><span class="line">            &gt;</span><br><span class="line">              &#123;opt.name&#125;</span><br><span class="line">            &lt;/li&gt;</span><br><span class="line">          ))&#125;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">        &#123;<span class="built_in">this</span>.props.value &amp;&amp; <span class="built_in">this</span>.props.children(<span class="built_in">this</span>.props.value)&#125;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> colors = [</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;Red&quot;</span>, <span class="attr">value</span>: <span class="string">&quot;red&quot;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;Blue&quot;</span>, <span class="attr">value</span>: <span class="string">&quot;blue&quot;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;Orange&quot;</span>, <span class="attr">value</span>: <span class="string">&quot;orange&quot;</span> &#125;,</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> animals = [</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;Tiger&quot;</span>, <span class="attr">value</span>: <span class="string">&quot;tiger&quot;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;Elephant&quot;</span>, <span class="attr">value</span>: <span class="string">&quot;elephant&quot;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;Cow&quot;</span>, <span class="attr">value</span>: <span class="string">&quot;cow&quot;</span> &#125;,</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">AdvancedTabSelectorSample</span> <span class="keyword">extends</span> <span class="title">PureComponent</span> </span>&#123;</span><br><span class="line">  state = &#123;</span><br><span class="line">    color: <span class="literal">null</span>,</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;h3&gt;Select color: &lt;/h3&gt;</span><br><span class="line">        &lt;AdvancedTabSelector</span><br><span class="line">          options=&#123;colors&#125;</span><br><span class="line">          value=&#123;<span class="built_in">this</span>.state.color&#125;</span><br><span class="line">          onChange=&#123;<span class="function">(<span class="params">c</span>) =&gt;</span> <span class="built_in">this</span>.setState(&#123; <span class="attr">color</span>: c &#125;)&#125;</span><br><span class="line">        &gt;</span><br><span class="line">          &#123;<span class="function">(<span class="params">color</span>) =&gt;</span> (</span><br><span class="line">            &lt;span</span><br><span class="line">              style=&#123;&#123;</span><br><span class="line">                display: <span class="string">&quot;inline-block&quot;</span>,</span><br><span class="line">                backgroundColor: color,</span><br><span class="line">                width: <span class="string">&quot;40px&quot;</span>,</span><br><span class="line">                height: <span class="string">&quot;40px&quot;</span>,</span><br><span class="line">              &#125;&#125;</span><br><span class="line">            /&gt;</span><br><span class="line">          )&#125;</span><br><span class="line">        &lt;/AdvancedTabSelector&gt;</span><br><span class="line"></span><br><span class="line">        &lt;h3&gt;Select animal: &lt;/h3&gt;</span><br><span class="line">        &lt;AdvancedTabSelector</span><br><span class="line">          options=&#123;animals&#125;</span><br><span class="line">          value=&#123;<span class="built_in">this</span>.state.animal&#125;</span><br><span class="line">          onChange=&#123;<span class="function">(<span class="params">c</span>) =&gt;</span> <span class="built_in">this</span>.setState(&#123; <span class="attr">animal</span>: c &#125;)&#125;</span><br><span class="line">        &gt;</span><br><span class="line">          &#123;<span class="function">(<span class="params">animal</span>) =&gt;</span> (</span><br><span class="line">            &lt;img width=<span class="string">&quot;100px&quot;</span> src=&#123;<span class="built_in">require</span>(<span class="string">`../../images/<span class="subst">$&#123;animal&#125;</span>.png`</span>)&#125; /&gt;</span><br><span class="line">          )&#125;</span><br><span class="line">        &lt;/AdvancedTabSelector&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Context-API（React-16-3-新特性，之前版本都是内部-API）"><a href="#Context-API（React-16-3-新特性，之前版本都是内部-API）" class="headerlink" title="Context API（React 16.3 新特性，之前版本都是内部 API）"></a>Context API（React 16.3 新特性，之前版本都是内部 API）</h3><ul>
+<li>根节点：Provider</li>
+<li>子节点：Consumer</li>
+</ul>
+<blockquote>
+<p>无需手动去监听组件外部状态的变化然后去重新更新组件，context api 会自动监听状态变化。</p>
+</blockquote>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> enStrings = &#123;</span><br><span class="line">  submit: <span class="string">&quot;Submit&quot;</span>,</span><br><span class="line">  cancel: <span class="string">&quot;Cancel&quot;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> cnStrings = &#123;</span><br><span class="line">  submit: <span class="string">&quot;提交&quot;</span>,</span><br><span class="line">  cancel: <span class="string">&quot;取消&quot;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> LocaleContext = React.createContext(enStrings);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 用于提供上下文数据，并切换上下文</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LocaleProvider</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  state = &#123; <span class="attr">locale</span>: cnStrings &#125;;</span><br><span class="line">  toggleLocale = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> locale = <span class="built_in">this</span>.state.locale === enStrings ? cnStrings : enStrings;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123; locale &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;LocaleContext.Provider value=&#123;<span class="built_in">this</span>.state.locale&#125;&gt;</span><br><span class="line">        &lt;button onClick=&#123;<span class="built_in">this</span>.toggleLocale&#125;&gt;切换语言&lt;/button&gt;</span><br><span class="line">        &#123;<span class="built_in">this</span>.props.children&#125;</span><br><span class="line">      &lt;/LocaleContext.Provider&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LocaledButtons</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;LocaleContext.Consumer&gt;</span><br><span class="line">        &#123;<span class="function">(<span class="params">locale</span>) =&gt;</span> (</span><br><span class="line">          &lt;div&gt;</span><br><span class="line">            &lt;button&gt;&#123;locale.cancel&#125;&lt;<span class="regexp">/button&gt; &lt;button&gt;&#123;locale.submit&#125;&lt;/</span>button&gt;</span><br><span class="line">          &lt;/div&gt;</span><br><span class="line">        )&#125;</span><br><span class="line">      &lt;/LocaleContext.Consumer&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> () =&gt; (</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;LocaleProvider&gt;</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;LocaledButtons /&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/LocaleProvider&gt;</span><br><span class="line">    &#123;<span class="comment">/* 这个组件就没有locale属性 */</span>&#125;</span><br><span class="line">    &lt;LocaledButtons /&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h3 id="脚手架工具"><a href="#脚手架工具" class="headerlink" title="脚手架工具"></a>脚手架工具</h3><p>• create-react-app（入门，小项目，简易项目）<br>• Rekit（基于 create-react-app 提供了更多功能，适合大项目）<br>• Codesandbox（在线创建）</p>
+<h3 id="打包和部署"><a href="#打包和部署" class="headerlink" title="打包和部署"></a>打包和部署</h3><h4 id="打包（webpack-gt-loader）"><a href="#打包（webpack-gt-loader）" class="headerlink" title="打包（webpack-&gt;loader）"></a>打包（webpack-&gt;loader）</h4><p>• 编译 ES6 语法特性，编译 JSX；<br>• 整合资源，例如图片，less/sass；<br>• 优化代码体积；<br>注：<br>• 设置 nodejs 环境为 production；<br>• 禁用开发专用代码，比如 logger；<br>• 设置应用根路径；</p>
+
+    </div>
+
+    
+    <section class="post-copyright">
+      
+      <p class="copyright-item">
+        <span>Author:</span>
+        <span>httishere</span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>Permalink:</span>
+        <span><a href="https://httishere.github.io/2021/07/07/yuque/ronixb/">https://httishere.github.io/2021/07/07/yuque/ronixb/</a></span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>License:</span>
+        <span>Copyright (c) 2021 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>Slogan:</span>
+        <span>Good Good Study, Day Day Up.</span>
+      </p>
+      
+    </section>
+    
+    <section class="post-tags">
+      <div>
+        <span>Tag(s):</span>
+        <span class="tag">
+           
+          <a href="/tags/React/"># React</a>
+           
+        </span>
+      </div>
+      <div>
+        <a href="javascript:window.history.back();">back</a>
+        <span>· </span>
+        <a href="/">home</a>
+      </div>
+    </section>
+    <section class="post-nav">
+      
+      <a class="prev" rel="prev" href="/2021/07/08/jp_N5/"
+        >「日本語」 N5语法汇总</a
+      >
+       
+      <a class="next" rel="next" href="/2021/06/30/yuque/igiedu/"
+        >「大前端」DOM API</a
+      >
+      
+    </section>
+     <!--
+ * @Author: your name
+ * @Date: 2021-07-08 11:08:58
+ * @LastEditTime: 2021-08-20 11:11:35
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_partial/gitalk.ejs
+-->
+<link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css">
+<div id="gitalk-container" style="margin-top: 50px;"></div>
+<!-- <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> -->
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script type="text/javascript">
+console.log(md5(location.pathname))
+    new Gitalk({
+        clientID: 'c61a26564784a9cb16f3',
+        clientSecret: '25a391b4405c726bfa417a4d09a8a9d46fd41e12',
+        id: window.location.pathname,
+        repo: 'httIsHere.github.io',
+        owner: 'httIsHere',
+        admin: 'httIsHere',
+        id: md5(location.pathname),
+        distractionFreeMode: false
+    }).render('gitalk-container')
+</script>  
+    <section id="comments" class="comments">
+      <style>
+        .comments {
+          margin: 30px;
+          padding: 10px;
+          background: #fff;
+        }
+        @media screen and (max-width: 800px) {
+          .comments {
+            margin: auto;
+            padding: 10px;
+            background: #fff;
+          }
+        }
+      </style>
+      <!--
+ * @Author: your name
+ * @Date: 2022-01-19 10:26:36
+ * @LastEditTime: 2022-01-19 11:55:49
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_plugins/valine.ejs
+-->
+<!-- <div class="valine_comment"></div> -->
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: '1BHDvzMyiyWmu3v3vBaR2dek-gzGzoHsz',
+      app_key: 'MaYtrzsGSwqpImuLueThWKFE',
+      placeholder: '这里留言。。',
+      notify: 'true',
+      verify: 'true',
+      visitor: 'true',
+    });
+</script>
+    </section>
+    
+  </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© httishere | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

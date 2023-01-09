@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="referrer" content="no-referrer" />
+
+    <meta name="author" content="httishere">
+
+
+
+
+
+<title>js内proxy检测 | HTTISHERE</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+    <div class="wrapper">
+        <!--
+ * @Author: your name
+ * @Date: 2020-08-17 15:35:07
+ * @LastEditTime: 2022-01-15 12:59:30
+ * @LastEditors: your name
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_partial/header.ejs
+-->
+<header>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-header header-logo">
+        <a href="/">𝑯𝑻𝑻𝑰𝑺𝑯𝑬𝑹&#39;𝑩𝒍𝒐𝒈</a>
+        <!-- ℍ𝕋𝕋𝕀𝕊ℍ𝔼ℝ𝔼'𝕤 𝔹𝕝𝕠𝕘 -->
+      </div>
+      <div class="menu navbar-right">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/reading">Schedules</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+        <input id="switch_default" type="checkbox" class="switch_default" />
+        <label for="switch_default" class="toggleBtn"></label>
+      </div>
+    </div>
+  </nav>
+
+  
+  <nav class="navbar-mobile" id="nav-mobile">
+    <div class="container">
+      <div class="navbar-header">
+        <div>
+          <a href="/">𝑯𝑻𝑻𝑰𝑺𝑯𝑬𝑹&#39;𝑩𝒍𝒐𝒈</a
+          ><a id="mobile-toggle-theme">·&nbsp;Light</a>
+        </div>
+        <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+      </div>
+      <div class="menu" id="mobile-menu">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/reading">Schedules</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+      </div>
+    </div>
+  </nav>
+</header>
+<script>
+  var mobileBtn = function f() {
+    var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+    var mobileMenu = document.getElementById("mobile-menu");
+    if (toggleMenu.classList.contains("active")) {
+      toggleMenu.classList.remove("active");
+      mobileMenu.classList.remove("active");
+    } else {
+      toggleMenu.classList.add("active");
+      mobileMenu.classList.add("active");
+    }
+  };
+  function addFav() {
+    var title = document.title;
+    var URL = document.URL;
+    try {
+      window.external.addFavorite(URL, title);
+    } catch (e) {
+      try {
+        window.sidebar.addPanel(title, URL, "");
+      } catch (e) {
+        alert("由于浏览器的安全设置\n可以使用Ctrl+D或者Command+D进行手动收藏");
+      }
+    }
+  }
+</script>
+
+        <div class="main">
+            <div class="container">
+    
+  <article class="post-wrap">
+    <header class="post-header">
+      <h1 class="post-title">js内proxy检测</h1>
+      
+      <div
+        class="post-meta"
+        id="/2019/01/24/js-proxy/"
+        class="leancloud-visitors view"
+      >
+         Author:
+        <a itemprop="author" rel="author" href="/">httishere</a>
+         
+        <span class="post-time">
+          Date:
+          <a href="#"
+            >2019/01/24&nbsp;&nbsp;9:44:41</a
+          >
+        </span>
+         
+        <span class="post-category">
+          Category: 
+          <a href="/categories/JavaScript/">JavaScript</a>
+          
+        </span>
+         <<
+        <div class="extra">
+          >>
+          <span
+            id="/2019/01/24/js-proxy/"
+            class="leancloud-visitors view"
+            data-flag-title="js内proxy检测"
+          >
+            <span class="post-meta-item-text">Pageviews:</span>
+            <a href="javascript:;" class="leancloud-visitors-count">0</a>
+          </span>
+          
+          <span class="post-count">
+            Words:
+            <a href="">639</a>
+          </span>
+           
+          <span class="post-count">
+            Time:
+            <a href="">2 min</a>
+          </span>
+          
+        </div>
+
+        
+      </div>
+      
+    </header>
+
+    <div class="post-content">
+      <blockquote>
+<p>let p = new Proxy(target, handler);<br>用于定义基本操作的自定义行为（如属性查找，赋值，枚举，函数调用等）。</p>
+</blockquote>
+<p>target：用<code>Proxy</code>包装的目标对象（可以是任何类型的对象，包括原生数组，函数，甚至另一个代理）；<br>handler：一个对象，其属性是当执行一个操作时定义代理的行为的函数。</p>
+<p><code>Proxy</code>构造函数获取一个<code>target</code>对象，和一个用来拦截<code>target</code>对象不同行为的<code>handler</code>对象。可以设置下面这些拦截项：</p>
+<ul>
+<li>has — 拦截 in 操作。比如，你可以用它来隐藏对象上某些属性。</li>
+<li>get — 用来拦截读取操作。比如当试图读取不存在的属性时，你可以用它来返回默认值。</li>
+<li>set — 用来拦截赋值操作。比如给属性赋值的时候你可以增加验证的逻辑，如果验证不通过可以抛出错误。</li>
+<li>apply — 用来拦截函数调用操作。比如，你可以把所有的函数调用都包裹在 try/catch 语句块中。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">const Car &#x3D; &#123;</span><br><span class="line">  maker: &#39;BMW&#39;,</span><br><span class="line">  year: 2018,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 验证属性的赋值（set：用来拦截赋值操作）</span><br><span class="line">const proxyCar &#x3D; new Proxy(Car, &#123;</span><br><span class="line">  set(obj, prop, value) &#123;</span><br><span class="line">    &#x2F;&#x2F; 为maker属性赋值时长度必须大于0</span><br><span class="line">    if (prop &#x3D;&#x3D;&#x3D; &#39;maker&#39; &amp;&amp; value.length &lt; 1) &#123;</span><br><span class="line">      throw new Error(&#39;Invalid maker&#39;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 为year赋值时数据类型必须是number</span><br><span class="line">    if (prop &#x3D;&#x3D;&#x3D; &#39;year&#39; &amp;&amp; typeof value !&#x3D;&#x3D; &#39;number&#39;) &#123;</span><br><span class="line">      throw new Error(&#39;Invalid year&#39;);</span><br><span class="line">    &#125;</span><br><span class="line">    obj[prop] &#x3D; value;</span><br><span class="line">    return true;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>这样Proxy就可以来监测对象了，比如：</p>
+<ul>
+<li>函数执行时间</li>
+<li>函数的调用者或属性的访问者</li>
+<li>统计每个函数或属性的被访问次数<br>…</li>
+</ul>
+<p>通过一个新构造函数来扩展一个已有的构造函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">function extend(sup,base) &#123;</span><br><span class="line">  var descriptor &#x3D; Object.getOwnPropertyDescriptor(</span><br><span class="line">    base.prototype,&quot;constructor&quot;</span><br><span class="line">  ); &#x2F;&#x2F; 返回指定对象上一个自有属性对应的属性描述符</span><br><span class="line">  base.prototype &#x3D; Object.create(sup.prototype);</span><br><span class="line">  var handler &#x3D; &#123;</span><br><span class="line">    construct: function(target, args) &#123;</span><br><span class="line">      var obj &#x3D; Object.create(base.prototype);</span><br><span class="line">      this.apply(target,obj,args);</span><br><span class="line">      return obj;</span><br><span class="line">    &#125;,</span><br><span class="line">    apply: function(target, that, args) &#123;</span><br><span class="line">      sup.apply(that,args);</span><br><span class="line">      base.apply(that,args);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  var proxy &#x3D; new Proxy(base,handler);</span><br><span class="line">  descriptor.value &#x3D; proxy;</span><br><span class="line">  Object.defineProperty(base.prototype, &quot;constructor&quot;, descriptor);</span><br><span class="line">  return proxy;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var Person &#x3D; function(name)&#123;</span><br><span class="line">  this.name &#x3D; name</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var Boy &#x3D; extend(Person, function(name, age) &#123;</span><br><span class="line">  this.age &#x3D; age;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">Boy.prototype.sex &#x3D; &quot;M&quot;;</span><br><span class="line"></span><br><span class="line">var Peter &#x3D; new Boy(&quot;Peter&quot;, 13);</span><br><span class="line">console.log(Peter.sex);  &#x2F;&#x2F; &quot;M&quot;</span><br><span class="line">console.log(Peter.name); &#x2F;&#x2F; &quot;Peter&quot;</span><br><span class="line">console.log(Peter.age);  &#x2F;&#x2F; 13</span><br></pre></td></tr></table></figure></p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy">Proxy | MDN</a></p>
+
+    </div>
+
+    
+    <section class="post-copyright">
+      
+      <p class="copyright-item">
+        <span>Author:</span>
+        <span>httishere</span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>Permalink:</span>
+        <span><a href="https://httishere.github.io/2019/01/24/js-proxy/">https://httishere.github.io/2019/01/24/js-proxy/</a></span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>License:</span>
+        <span>Copyright (c) 2021 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>Slogan:</span>
+        <span>Good Good Study, Day Day Up.</span>
+      </p>
+      
+    </section>
+    
+    <section class="post-tags">
+      <div>
+        <span>Tag(s):</span>
+        <span class="tag">
+           
+          <a href="/tags/js/"># js</a>
+           
+        </span>
+      </div>
+      <div>
+        <a href="javascript:window.history.back();">back</a>
+        <span>· </span>
+        <a href="/">home</a>
+      </div>
+    </section>
+    <section class="post-nav">
+      
+      <a class="prev" rel="prev" href="/2019/02/19/canvas/"
+        >canvas 基础</a
+      >
+       
+      <a class="next" rel="next" href="/2019/01/23/js%E7%BB%91%E5%AE%9A/"
+        >js绑定call, apply, bind</a
+      >
+      
+    </section>
+     <!--
+ * @Author: your name
+ * @Date: 2021-07-08 11:08:58
+ * @LastEditTime: 2021-08-20 11:11:35
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_partial/gitalk.ejs
+-->
+<link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css">
+<div id="gitalk-container" style="margin-top: 50px;"></div>
+<!-- <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> -->
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script type="text/javascript">
+console.log(md5(location.pathname))
+    new Gitalk({
+        clientID: 'c61a26564784a9cb16f3',
+        clientSecret: '25a391b4405c726bfa417a4d09a8a9d46fd41e12',
+        id: window.location.pathname,
+        repo: 'httIsHere.github.io',
+        owner: 'httIsHere',
+        admin: 'httIsHere',
+        id: md5(location.pathname),
+        distractionFreeMode: false
+    }).render('gitalk-container')
+</script>  
+    <section id="comments" class="comments">
+      <style>
+        .comments {
+          margin: 30px;
+          padding: 10px;
+          background: #fff;
+        }
+        @media screen and (max-width: 800px) {
+          .comments {
+            margin: auto;
+            padding: 10px;
+            background: #fff;
+          }
+        }
+      </style>
+      <!--
+ * @Author: your name
+ * @Date: 2022-01-19 10:26:36
+ * @LastEditTime: 2022-01-19 11:55:49
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_plugins/valine.ejs
+-->
+<!-- <div class="valine_comment"></div> -->
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: '1BHDvzMyiyWmu3v3vBaR2dek-gzGzoHsz',
+      app_key: 'MaYtrzsGSwqpImuLueThWKFE',
+      placeholder: '这里留言。。',
+      notify: 'true',
+      verify: 'true',
+      visitor: 'true',
+    });
+</script>
+    </section>
+    
+  </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© httishere | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

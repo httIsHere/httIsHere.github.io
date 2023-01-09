@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="referrer" content="no-referrer" />
+
+    <meta name="author" content="httishere">
+
+
+
+
+
+<title>「SASS」使用指南（同步） | HTTISHERE</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+    <div class="wrapper">
+        <!--
+ * @Author: your name
+ * @Date: 2020-08-17 15:35:07
+ * @LastEditTime: 2022-01-15 12:59:30
+ * @LastEditors: your name
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_partial/header.ejs
+-->
+<header>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-header header-logo">
+        <a href="/">𝑯𝑻𝑻𝑰𝑺𝑯𝑬𝑹&#39;𝑩𝒍𝒐𝒈</a>
+        <!-- ℍ𝕋𝕋𝕀𝕊ℍ𝔼ℝ𝔼'𝕤 𝔹𝕝𝕠𝕘 -->
+      </div>
+      <div class="menu navbar-right">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/reading">Schedules</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+        <input id="switch_default" type="checkbox" class="switch_default" />
+        <label for="switch_default" class="toggleBtn"></label>
+      </div>
+    </div>
+  </nav>
+
+  
+  <nav class="navbar-mobile" id="nav-mobile">
+    <div class="container">
+      <div class="navbar-header">
+        <div>
+          <a href="/">𝑯𝑻𝑻𝑰𝑺𝑯𝑬𝑹&#39;𝑩𝒍𝒐𝒈</a
+          ><a id="mobile-toggle-theme">·&nbsp;Light</a>
+        </div>
+        <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+      </div>
+      <div class="menu" id="mobile-menu">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/reading">Schedules</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+      </div>
+    </div>
+  </nav>
+</header>
+<script>
+  var mobileBtn = function f() {
+    var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+    var mobileMenu = document.getElementById("mobile-menu");
+    if (toggleMenu.classList.contains("active")) {
+      toggleMenu.classList.remove("active");
+      mobileMenu.classList.remove("active");
+    } else {
+      toggleMenu.classList.add("active");
+      mobileMenu.classList.add("active");
+    }
+  };
+  function addFav() {
+    var title = document.title;
+    var URL = document.URL;
+    try {
+      window.external.addFavorite(URL, title);
+    } catch (e) {
+      try {
+        window.sidebar.addPanel(title, URL, "");
+      } catch (e) {
+        alert("由于浏览器的安全设置\n可以使用Ctrl+D或者Command+D进行手动收藏");
+      }
+    }
+  }
+</script>
+
+        <div class="main">
+            <div class="container">
+    <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>  
+  <article class="post-wrap">
+    <header class="post-header">
+      <h1 class="post-title">「SASS」使用指南（同步）</h1>
+      
+      <div
+        class="post-meta"
+        id="/2021/12/21/yuque/epg357/"
+        class="leancloud-visitors view"
+      >
+         Author:
+        <a itemprop="author" rel="author" href="/">httishere</a>
+         
+        <span class="post-time">
+          Date:
+          <a href="#"
+            >2021/12/21&nbsp;&nbsp;9:55:41</a
+          >
+        </span>
+         
+        <span class="post-category">
+          Category: 
+          <a href="/categories/SASS/">SASS</a>
+          
+        </span>
+         <<
+        <div class="extra">
+          >>
+          <span
+            id="/2021/12/21/yuque/epg357/"
+            class="leancloud-visitors view"
+            data-flag-title="「SASS」使用指南（同步）"
+          >
+            <span class="post-meta-item-text">Pageviews:</span>
+            <a href="javascript:;" class="leancloud-visitors-count">0</a>
+          </span>
+          
+          <span class="post-count">
+            Words:
+            <a href="">770</a>
+          </span>
+           
+          <span class="post-count">
+            Time:
+            <a href="">3 min</a>
+          </span>
+          
+        </div>
+
+        
+      </div>
+      
+    </header>
+
+    <div class="post-content">
+      <blockquote>
+<p>SASS 是 CSS 开发的一种预处理工具，使得 CSS 开发更加简单可维护。</p>
+</blockquote>
+<h3 id="1-安装-amp-使用"><a href="#1-安装-amp-使用" class="headerlink" title="1. 安装&amp;使用"></a>1. 安装&amp;使用</h3><p>SASS 是 Ruby 语言写的，所以需要先安装 Ruby 再安装 SASS。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install -g sass</span><br><span class="line"></span><br><span class="line">sass test.scss</span><br></pre></td></tr></table></figure>
+<h4 id="1-1-编译风格"><a href="#1-1-编译风格" class="headerlink" title="1.1 编译风格"></a>1.1 编译风格</h4><ul>
+<li>nested：嵌套缩进的 css 代码，它是默认值。</li>
+<li>expanded：没有缩进的、扩展的 css 代码。</li>
+<li>compact：简洁格式的 css 代码。</li>
+<li>compressed：压缩后的 css 代码。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sass --style compressed test.sass test.css</span><br></pre></td></tr></table></figure>
+<h4 id="1-2-监听"><a href="#1-2-监听" class="headerlink" title="1.2 监听"></a>1.2 监听</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// watch a file</span><br><span class="line"></span><br><span class="line">sass --watch input.scss:output.css</span><br><span class="line"></span><br><span class="line">// watch a directory</span><br><span class="line"></span><br><span class="line">sass --watch app/sass:public/stylesheets</span><br></pre></td></tr></table></figure>
+<h3 id="2-用法"><a href="#2-用法" class="headerlink" title="2. 用法"></a>2. 用法</h3><h4 id="2-1-变量"><a href="#2-1-变量" class="headerlink" title="2.1 变量"></a>2.1 变量</h4><p>所有变量以<code>$</code>开头：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$blue: #0000ff;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">span</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: $blue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>变量需要嵌入字符串，则需要被<code>#&#123;&#125;</code>包裹：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$side: left;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  border-#&#123;$side&#125;-radius: 10px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-2-计算"><a href="#2-2-计算" class="headerlink" title="2.2 计算"></a>2.2 计算</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  　　　　<span class="attribute">margin</span>: (<span class="number">14px</span>/<span class="number">2</span>);</span><br><span class="line">  　　　　<span class="attribute">top</span>: <span class="number">50px</span> + <span class="number">100px</span>;</span><br><span class="line">  　　　　<span class="attribute">right</span>: $var * <span class="number">10%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-3-嵌套"><a href="#2-3-嵌套" class="headerlink" title="2.3 嵌套"></a>2.3 嵌套</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// 选择器嵌套</span><br><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">　　　　hi &#123;</span><br><span class="line">　　　　　　<span class="selector-tag">color</span><span class="selector-pseudo">:red</span>;</span><br><span class="line">　　　　&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 属性嵌套，比如<span class="selector-tag">border-color</span></span><br><span class="line">// 注意，<span class="selector-tag">border</span>后面必须加上冒号</span><br><span class="line">　　<span class="selector-tag">p</span> &#123;</span><br><span class="line">　　　　<span class="attribute">border</span>: &#123;</span><br><span class="line">　　　　　　color: red;</span><br><span class="line">　　　　&#125;</span><br><span class="line">　　&#125;</span><br><span class="line"></span><br><span class="line">// 使用&amp;引用父元素</span><br><span class="line">　　<span class="selector-tag">a</span> &#123;</span><br><span class="line">　　　　&amp;:hover &#123; color: #ffb3ff; &#125;</span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-4-注释"><a href="#2-4-注释" class="headerlink" title="2.4 注释"></a>2.4 注释</h4><ul>
+<li><code>/* comment */</code> ，会保留到编译后的文件；</li>
+<li>单行注释 <code>// comment</code>，只保留在 SASS 源文件中，编译后被省略；</li>
+<li>在/*后面加一个感叹号，表示这是”重要注释”。即使是压缩模式编译，也会保留这行注释：</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">　　<span class="comment">/*!</span></span><br><span class="line"><span class="comment">　　　　重要注释！</span></span><br><span class="line"><span class="comment">　　*/</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-代码复用"><a href="#3-代码复用" class="headerlink" title="3. 代码复用"></a>3. 代码复用</h3><h4 id="3-1-继承"><a href="#3-1-继承" class="headerlink" title="3.1 继承"></a>3.1 继承</h4><p>SASS 允许一个选择器，继承另一个选择器：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">　　<span class="selector-class">.class1</span> &#123;</span><br><span class="line">　　　　<span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#ddd</span>;</span><br><span class="line">　　&#125;</span><br><span class="line">　　<span class="selector-class">.class2</span> &#123;</span><br><span class="line">　　　　@extend .class1;</span><br><span class="line">　　　　<span class="selector-tag">font-size</span><span class="selector-pseudo">:120</span>%;</span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-2-Mixin"><a href="#3-2-Mixin" class="headerlink" title="3.2 Mixin"></a>3.2 Mixin</h4><p>Mixin 有点像 C 语言的宏（macro），是可以重用的代码块。<br>使用<code>@mixin</code>命令，定义一个代码块。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">　　<span class="keyword">@mixin</span> left &#123;</span><br><span class="line">　　　　<span class="selector-tag">float</span>: <span class="selector-tag">left</span>;</span><br><span class="line">　　　　<span class="selector-tag">margin-left</span>: 10<span class="selector-tag">px</span>;</span><br><span class="line">　　&#125;</span><br><span class="line"></span><br><span class="line">// <span class="selector-tag">mixin</span>还可以指定参数和缺省值</span><br><span class="line">　　<span class="keyword">@mixin</span> left($<span class="attribute">value:</span> <span class="number">10px</span>) &#123;</span><br><span class="line">　　　　<span class="selector-tag">float</span>: <span class="selector-tag">left</span>;</span><br><span class="line">　　　　margin-right: $value;</span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure>
+<p>使用<code>@include</code>命令，调用这个 mixin。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">　　<span class="selector-tag">div</span> &#123;</span><br><span class="line">　　　　@include left;</span><br><span class="line">　　&#125;</span><br><span class="line"></span><br><span class="line">// 加入参数</span><br><span class="line">　　<span class="selector-tag">div</span> &#123;</span><br><span class="line">　　　　@include left(20px);</span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="例子：生成浏览器前缀"><a href="#例子：生成浏览器前缀" class="headerlink" title="例子：生成浏览器前缀"></a>例子：生成浏览器前缀</h5><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">　　<span class="keyword">@mixin</span> rounded($vert, $horz, $<span class="attribute">radius:</span> <span class="number">10px</span>) &#123;</span><br><span class="line">　　　　border-#&#123;$vert&#125;-#&#123;$horz&#125;-radius: $radius;</span><br><span class="line">　　　　-moz-border-radius-#&#123;$vert&#125;#&#123;$horz&#125;: $radius;</span><br><span class="line">　　　　-webkit-border-#&#123;$vert&#125;-#&#123;$horz&#125;-radius: $radius;</span><br><span class="line">　　&#125;</span><br><span class="line"></span><br><span class="line">　　#navbar li &#123; @include rounded(top, left); &#125;</span><br><span class="line"></span><br><span class="line">　　#footer &#123; @include rounded(top, left, 5px); &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-3-颜色函数"><a href="#3-3-颜色函数" class="headerlink" title="3.3 颜色函数"></a>3.3 颜色函数</h4><p>内置的颜色函数，以便生成系列颜色：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">　　<span class="selector-tag">lighten</span>(<span class="selector-id">#cc3</span>, 10%) // <span class="selector-id">#d6d65c</span></span><br><span class="line">　　<span class="selector-tag">darken</span>(<span class="selector-id">#cc3</span>, 10%) // <span class="selector-id">#a3a329</span></span><br><span class="line">　　<span class="selector-tag">grayscale</span>(<span class="selector-id">#cc3</span>) // <span class="selector-id">#808080</span></span><br><span class="line">　　<span class="selector-tag">complement</span>(<span class="selector-id">#cc3</span>) // <span class="selector-id">#33c</span></span><br></pre></td></tr></table></figure>
+<h4 id="3-4-插入文件"><a href="#3-4-插入文件" class="headerlink" title="3.4 插入文件"></a>3.4 插入文件</h4><p><code>@import</code>命令，用来插入外部文件：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">　　<span class="keyword">@import</span> <span class="string">&quot;path/filename.scss&quot;</span>;</span><br><span class="line">　　<span class="keyword">@import</span> <span class="string">&quot;foo.css&quot;</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="4-高级用法"><a href="#4-高级用法" class="headerlink" title="4. 高级用法"></a>4. 高级用法</h3><h4 id="4-1-条件语句-if"><a href="#4-1-条件语句-if" class="headerlink" title="4.1 条件语句@if"></a>4.1 条件语句<code>@if</code></h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">　　<span class="selector-tag">p</span> &#123;</span><br><span class="line">　　　　@if 1 + 1 == 2 &#123; border: 1px solid; &#125;</span><br><span class="line">　　　　<span class="keyword">@if</span> <span class="number">5</span> &lt; <span class="number">3</span> &#123; <span class="selector-tag">border</span>: 2<span class="selector-tag">px</span> <span class="selector-tag">dotted</span>; &#125;</span><br><span class="line">　　&#125;</span><br><span class="line"></span><br><span class="line">　　<span class="keyword">@if</span> lightness($color) &gt; <span class="number">30%</span> &#123;</span><br><span class="line">　　　　<span class="selector-tag">background-color</span>: <span class="selector-id">#000</span>;</span><br><span class="line">　　&#125; <span class="keyword">@else</span> &#123;</span><br><span class="line">　　　　<span class="selector-tag">background-color</span>: <span class="selector-id">#fff</span>;</span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4-2-循环语句"><a href="#4-2-循环语句" class="headerlink" title="4.2 循环语句"></a>4.2 循环语句</h4><p>for 循环：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">　　<span class="keyword">@for</span> $i from <span class="number">1</span> to <span class="number">10</span> &#123;</span><br><span class="line">　　　　.border-#&#123;$i&#125; &#123;</span><br><span class="line">　　　　　　border: #&#123;$i&#125;px solid blue;</span><br><span class="line">　　　　&#125;</span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure>
+<p>while 循环：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">　　$i: 6;</span><br><span class="line"></span><br><span class="line">　　<span class="keyword">@while</span> $i &gt; <span class="number">0</span> &#123;</span><br><span class="line">　　　　.item-#&#123;$i&#125; &#123; width: 2em * $i; &#125;</span><br><span class="line">　　　　$i: $i - 2;</span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure>
+<p>each：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">　　<span class="keyword">@each</span> $member in a, b, c, d &#123;</span><br><span class="line">　　　　.#&#123;$member&#125; &#123;</span><br><span class="line">　　　　　　background-image: url(&quot;/image/#&#123;$member&#125;.jpg&quot;);</span><br><span class="line">　　　　&#125;</span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4-3-自定义函数"><a href="#4-3-自定义函数" class="headerlink" title="4.3 自定义函数"></a>4.3 自定义函数</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">　　<span class="keyword">@function</span> double($n) &#123;</span><br><span class="line">　　　　<span class="keyword">@return</span> $n * <span class="number">2</span>;</span><br><span class="line">　　&#125;</span><br><span class="line"></span><br><span class="line">　　<span class="selector-id">#sidebar</span> &#123;</span><br><span class="line">　　　　<span class="attribute">width</span>: <span class="built_in">double</span>(<span class="number">5px</span>);</span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2012/06/sass.html">SASS 用法指南-阮一峰</a>，<a target="_blank" rel="noopener" href="https://sass-lang.com">官方文档</a><br>相关：<a target="_blank" rel="noopener" href="https://www.yuque.com/httishere/blog/fyor46">Less 使用总结</a></p>
+
+    </div>
+
+    
+    <section class="post-copyright">
+      
+      <p class="copyright-item">
+        <span>Author:</span>
+        <span>httishere</span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>Permalink:</span>
+        <span><a href="https://httishere.github.io/2021/12/21/yuque/epg357/">https://httishere.github.io/2021/12/21/yuque/epg357/</a></span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>License:</span>
+        <span>Copyright (c) 2021 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>Slogan:</span>
+        <span>Good Good Study, Day Day Up.</span>
+      </p>
+      
+    </section>
+    
+    <section class="post-tags">
+      <div>
+        <span>Tag(s):</span>
+        <span class="tag">
+           
+          <a href="/tags/SASS/"># SASS</a>
+           
+        </span>
+      </div>
+      <div>
+        <a href="javascript:window.history.back();">back</a>
+        <span>· </span>
+        <a href="/">home</a>
+      </div>
+    </section>
+    <section class="post-nav">
+      
+      <a class="prev" rel="prev" href="/2021/12/21/yuque/fh8vi3/"
+        >「TypeScript」类型检查机制</a
+      >
+       
+      <a class="next" rel="next" href="/2021/12/20/yuque/iclyhn/"
+        >「ROAD 6」HTML</a
+      >
+      
+    </section>
+     <!--
+ * @Author: your name
+ * @Date: 2021-07-08 11:08:58
+ * @LastEditTime: 2021-08-20 11:11:35
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_partial/gitalk.ejs
+-->
+<link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css">
+<div id="gitalk-container" style="margin-top: 50px;"></div>
+<!-- <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> -->
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script type="text/javascript">
+console.log(md5(location.pathname))
+    new Gitalk({
+        clientID: 'c61a26564784a9cb16f3',
+        clientSecret: '25a391b4405c726bfa417a4d09a8a9d46fd41e12',
+        id: window.location.pathname,
+        repo: 'httIsHere.github.io',
+        owner: 'httIsHere',
+        admin: 'httIsHere',
+        id: md5(location.pathname),
+        distractionFreeMode: false
+    }).render('gitalk-container')
+</script>  
+    <section id="comments" class="comments">
+      <style>
+        .comments {
+          margin: 30px;
+          padding: 10px;
+          background: #fff;
+        }
+        @media screen and (max-width: 800px) {
+          .comments {
+            margin: auto;
+            padding: 10px;
+            background: #fff;
+          }
+        }
+      </style>
+      <!--
+ * @Author: your name
+ * @Date: 2022-01-19 10:26:36
+ * @LastEditTime: 2022-01-19 11:55:49
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_plugins/valine.ejs
+-->
+<!-- <div class="valine_comment"></div> -->
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: '1BHDvzMyiyWmu3v3vBaR2dek-gzGzoHsz',
+      app_key: 'MaYtrzsGSwqpImuLueThWKFE',
+      placeholder: '这里留言。。',
+      notify: 'true',
+      verify: 'true',
+      visitor: 'true',
+    });
+</script>
+    </section>
+    
+  </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© httishere | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

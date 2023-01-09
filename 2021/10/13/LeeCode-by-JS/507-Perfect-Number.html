@@ -1,0 +1,34 @@
+<hr>
+<p>title: 507.Perfect-Number<br>date: 2021-11-02 14:51:33<br>mathjax: true<br>tags:</p>
+<pre><code>- LeeCode
+</code></pre><p>categories: </p>
+<pre><code>- LeeCode
+</code></pre><p>hidden: true</p>
+<h2 id="cateHidden-false"><a href="#cateHidden-false" class="headerlink" title="cateHidden: false"></a>cateHidden: false</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><blockquote>
+<p>A perfect number is a positive integer that is equal to the sum of its positive divisors, excluding the number itself. A divisor of an integer x is an integer that can divide x evenly.</p>
+<p>Given an integer n, return true if n is a perfect number, otherwise return false.</p>
+</blockquote>
+<h3 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h3><pre><code class="lang-bash">Input: num = 28
+Output: true
+# Explanation: 28 = 1 + 2 + 4 + 7 + 14
+# 1, 2, 4, 7, and 14 are all divisors of 28.
+</code></pre>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>完全数刚好等于他所有质子的和。</p>
+<p>所以需要求出该数所有的质子。</p>
+<pre><code class="lang-js">var checkPerfectNumber = function (num) {
+  let sum = 0;
+  // 完全数除以自己一半，求余肯定会大于0，所以用num/2
+  for (let j = 1; j &lt;= num / 2; j++) {
+    if (num % j === 0) {
+      sum += j;
+    }
+  }
+  return sum === num;
+};
+</code></pre>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><blockquote>
+<p>Accepted</p>
+<p>98/98 cases passed (1776 ms)</p>
+<p>Your runtime beats 57.95 % of javascript submissions</p>
+<p>Your memory usage beats 47.02 % of javascript submissions (38.8 MB)</p>
+</blockquote>
