@@ -33,7 +33,7 @@
     "api": "^4.5.2",
     "dotenv": "^16.0.1",
     "fastify": "^4.5.3",
-    "hexo": "^5.2.0",
+    "hexo": "^5.4.1",
     "hexo-asset-image": "git+https://github.com/CodeFalling/hexo-asset-image.git",
     "hexo-deployer-git": "^3.0.0",
     "hexo-generator-archive": "^1.0.0",
