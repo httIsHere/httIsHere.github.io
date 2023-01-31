@@ -11,8 +11,8 @@
   "notionConfig": {
     "mdNameFormat": "slug",
     "baseUrl": "https://api.notion.com/v1/databases/",
-    "token": "secret_mzizQgl9eS2xuumn4PgfRN2mbHsIQR6NQIvnfwmeCp9",
-    "database": "a664095e020e48658a11c11a897ebe0a",
+    "token": "secret_etf62nu0PPy0xDVsXGDxNFIqwJH2lZ7mFzLhF7oCgJO",
+    "database": "fa4406508c5e481cb3932f7fc5233797",
     "postPath": "source/_posts/notion"
   },
   "version": "0.0.0",
@@ -25,6 +25,7 @@
     "sync": "yuque-hexo sync",
     "deploy": "npm run sync && hexo clean && hexo g -d",
     "dev": "hexo clean && hexo server",
+    "notion": "node notion-sdk/cleaner && node notion-sdk/sync",
     "clean:notion": "node notion-sdk/cleaner",
     "sync:notion": "node notion-sdk/sync"
   },
