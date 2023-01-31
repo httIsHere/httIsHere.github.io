@@ -7,7 +7,7 @@ type: about
 <img src="yjtp.png" class="banner">
 
 > 本站主要作为技术博客进行记录，希望每一天的自己都比前一天前一秒更优秀！
-> 欢迎来看我的[生活博客PLOG](https://httishere.notion.site/httishere/HTTISHERE-51826cfe4d6a4c9ca61c7c28665a85f7)哟～
+> 欢迎来看我的[生活博客PLOG](https://descriptive-impulse-a6e.notion.site/Hello-here-is-Tina-b10f03f2226e449887ad86b097e67e78)哟～
 
 ### HTTISHERE
 

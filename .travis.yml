@@ -14,7 +14,7 @@ after_script:
 - cd ./public
 - git init
 - git config user.name "httIsHere"
-- git config user.email "18457730959@163.com"
+- git config user.email "17816869739@163.com"
 - git add .
 - git commit -m "Update docs"
 - git push --force --quiet "https://${hexo-blog}@${GH_REF}" master:master
@@ -35,7 +35,7 @@ before_install:
 - cp .travis/ssh_config ~/.ssh/config
 # 配置 git 替换为自己的信息
 - git config --global user.name 'httishere'
-- git config --global user.email 18457730959@163.com
+- git config --global user.email 17816869739@163.com
 
 # yuque script
 # yuque-hexo clean
