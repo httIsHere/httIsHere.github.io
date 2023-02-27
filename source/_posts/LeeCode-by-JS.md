@@ -13,6 +13,10 @@ top: true
 
 > [github地址](https://github.com/httIsHere/leecode-result)
 
+~~~~~~~~~~ 2023.02 ~~~~~~~~~~
+
+- [[693] Binary Number with Alternating Bits](/2023/02/27/LeeCode-by-JS/693-Binary-Number-with-Alternating-Bits/)
+
 ~~~~~~~~~~ 2021.12 ~~~~~~~~~~
 
 - [[1961] Check If String Is a Prefix of Array 检查字符串是否为数组前缀](/2021/12/16/LeeCode-by-JS/1961-check-if-string-is-a-prefix-of-array/)
