@@ -202,7 +202,7 @@
       
       <div
         class="post-meta"
-        id="/2023/01/29/notion/bd7a8b2d9d/"
+        id="/2023/01/30/notion/052b00d243/"
         class="leancloud-visitors view"
       >
          Author:
@@ -211,7 +211,7 @@
         <span class="post-time">
           Date:
           <a href="#"
-            >2023/01/29&nbsp;&nbsp;20:52:00</a
+            >2023/01/30&nbsp;&nbsp;18:35:00</a
           >
         </span>
          
@@ -224,7 +224,7 @@
         <div class="extra">
           >>
           <span
-            id="/2023/01/29/notion/bd7a8b2d9d/"
+            id="/2023/01/30/notion/052b00d243/"
             class="leancloud-visitors view"
             data-flag-title="React Hooks 精进 2 - React基本概念 &amp; Hooks的理解"
           >
@@ -263,7 +263,7 @@
 <li>props：父子组件之间传递状态的方式</li>
 </ul>
 <p>在函数组件内可以使用<code>useState</code>这个 Hook 来保存状态，内置组件和自定义组件都可以在使用时把接收的属性 props 作为参数，当这个参数变化时组件也会自动重新渲染。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">CountLabel</span>(<span class="params">&#123; count &#125;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> color = count &gt; <span class="number">10</span> ? <span class="string">&quot;red&quot;</span> : <span class="string">&quot;blue&quot;</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">&#123;&#123;</span> <span class="attr">color</span> &#125;&#125;&gt;</span>&#123;count&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">Counter</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = React.userState(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;CountLabel count=&#123;count&#125; onClick=&#123;<span class="function">() =&gt;</span> setCount(count + <span class="number">1</span>)&#125; /&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">CountLabel</span>(<span class="params">&#123; count &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> color = count &gt; <span class="number">10</span> ? <span class="string">&quot;red&quot;</span> : <span class="string">&quot;blue&quot;</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">&#123;&#123;</span> <span class="attr">color</span> &#125;&#125;&gt;</span>&#123;count&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Counter</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = <span class="title class_">React</span>.<span class="title function_">userState</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">CountLabel</span> <span class="attr">count</span>=<span class="string">&#123;count&#125;</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> setCount(count + 1)&#125; /&gt;</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="JSX-语法的本质"><a href="#JSX-语法的本质" class="headerlink" title="JSX 语法的本质"></a>JSX 语法的本质</h3><p>JSX 并不是新的模版语言而是一个<strong>语法糖</strong>，不用 JSX 语法的话也可以使用 React.createElement 来实现。</p>
 <ol>
 <li>JSX 的表达能力等价于 JavaScript；</li>
@@ -318,7 +318,7 @@
        
       <p class="copyright-item">
         <span>Permalink:</span>
-        <span><a href="https://httishere.github.io/2023/01/29/notion/bd7a8b2d9d/">https://httishere.github.io/2023/01/29/notion/bd7a8b2d9d/</a></span>
+        <span><a href="https://httishere.github.io/2023/01/30/notion/052b00d243/">https://httishere.github.io/2023/01/30/notion/052b00d243/</a></span>
       </p>
        
       <p class="copyright-item">
@@ -350,7 +350,7 @@
     </section>
     <section class="post-nav">
        
-      <a class="next" rel="next" href="/2023/01/29/notion/1bd26126ed/"
+      <a class="next" rel="next" href="/2023/01/30/notion/6ed49a2adc/"
         >React Hooks 精进 1 - 用Hooks的角度去转变开发思路</a
       >
       

@@ -259,7 +259,7 @@
 <li>复制下一个节点给当前节点</li>
 <li>将下一个节点作为需要删除的节点</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> deleteNode = <span class="function"><span class="keyword">function</span>(<span class="params">node</span>) </span>&#123;</span><br><span class="line">    node.val = node.next.val;</span><br><span class="line">    node.next = node.next.next;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><!-- flag of hidden posts -->
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> deleteNode = <span class="keyword">function</span>(<span class="params">node</span>) &#123;</span><br><span class="line">    node.<span class="property">val</span> = node.<span class="property">next</span>.<span class="property">val</span>;</span><br><span class="line">    node.<span class="property">next</span> = node.<span class="property">next</span>.<span class="property">next</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><!-- flag of hidden posts -->
     </div>
 
     

@@ -269,7 +269,7 @@
 
   因为在原来的开发中使用到了docker, 所以电脑已安装Hyper-v, 但是vt-x和Hyper-v不能共存所以会导致HAXM安装失败, 所以需要开发Android时需要关闭Hyper-v. [操作方法](https://blog.csdn.net/Coco_chun/article/details/90261678)
 
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">bcdedit /<span class="built_in">set</span> hypervisorlaunchtype off </span><br><span class="line"></span><br><span class="line">// 之后重启电脑，这时候你再去安装haxm就可以了</span><br><span class="line"></span><br><span class="line">// 重启hyper-v </span><br><span class="line">bcdedit / <span class="built_in">set</span> hypervisorlaunchtype auto</span><br></pre></td></tr></table></figure>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">bcdedit /set hypervisorlaunchtype off </span><br><span class="line"></span><br><span class="line">// 之后重启电脑，这时候你再去安装haxm就可以了</span><br><span class="line"></span><br><span class="line">// 重启hyper-v </span><br><span class="line">bcdedit / <span class="built_in">set</span> hypervisorlaunchtype auto</span><br></pre></td></tr></table></figure>
 </code></pre></li>
 </ul>
 <ul>
