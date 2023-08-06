@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="referrer" content="no-referrer" />
+
+    <meta name="author" content="httishere">
+
+
+
+
+
+<title>React Hooks 精进 13 - Hooks给Form带来的新变化 | HTTISHERE</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+    <div class="wrapper">
+        <!--
+ * @Author: your name
+ * @Date: 2020-08-17 15:35:07
+ * @LastEditTime: 2022-01-15 12:59:30
+ * @LastEditors: your name
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_partial/header.ejs
+-->
+<header>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-header header-logo">
+        <a href="/">𝑯𝑻𝑻𝑰𝑺𝑯𝑬𝑹&#39;𝑩𝒍𝒐𝒈</a>
+        <!-- ℍ𝕋𝕋𝕀𝕊ℍ𝔼ℝ𝔼'𝕤 𝔹𝕝𝕠𝕘 -->
+      </div>
+      <div class="menu navbar-right">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/reading">Schedules</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+        <input id="switch_default" type="checkbox" class="switch_default" />
+        <label for="switch_default" class="toggleBtn"></label>
+      </div>
+    </div>
+  </nav>
+
+  
+  <nav class="navbar-mobile" id="nav-mobile">
+    <div class="container">
+      <div class="navbar-header">
+        <div>
+          <a href="/">𝑯𝑻𝑻𝑰𝑺𝑯𝑬𝑹&#39;𝑩𝒍𝒐𝒈</a
+          ><a id="mobile-toggle-theme">·&nbsp;Light</a>
+        </div>
+        <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+      </div>
+      <div class="menu" id="mobile-menu">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/reading">Schedules</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+      </div>
+    </div>
+  </nav>
+</header>
+<script>
+  var mobileBtn = function f() {
+    var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+    var mobileMenu = document.getElementById("mobile-menu");
+    if (toggleMenu.classList.contains("active")) {
+      toggleMenu.classList.remove("active");
+      mobileMenu.classList.remove("active");
+    } else {
+      toggleMenu.classList.add("active");
+      mobileMenu.classList.add("active");
+    }
+  };
+  function addFav() {
+    var title = document.title;
+    var URL = document.URL;
+    try {
+      window.external.addFavorite(URL, title);
+    } catch (e) {
+      try {
+        window.sidebar.addPanel(title, URL, "");
+      } catch (e) {
+        alert("由于浏览器的安全设置\n可以使用Ctrl+D或者Command+D进行手动收藏");
+      }
+    }
+  }
+</script>
+
+        <div class="main">
+            <div class="container">
+    <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>  
+  <article class="post-wrap">
+    <header class="post-header">
+      <h1 class="post-title">React Hooks 精进 13 - Hooks给Form带来的新变化</h1>
+      
+      <div
+        class="post-meta"
+        id="/2023/08/06/notion/cd92524243e3431/"
+        class="leancloud-visitors view"
+      >
+         Author:
+        <a itemprop="author" rel="author" href="/">httishere</a>
+         
+        <span class="post-time">
+          Date:
+          <a href="#"
+            >2023/08/06&nbsp;&nbsp;15:20:00</a
+          >
+        </span>
+         
+        <span class="post-category">
+          Category: 
+          <a href="/categories/React/">React</a>
+          
+        </span>
+         <<
+        <div class="extra">
+          >>
+          <span
+            id="/2023/08/06/notion/cd92524243e3431/"
+            class="leancloud-visitors view"
+            data-flag-title="React Hooks 精进 13 - Hooks给Form带来的新变化"
+          >
+            <span class="post-meta-item-text">Pageviews:</span>
+            <a href="javascript:;" class="leancloud-visitors-count">0</a>
+          </span>
+          
+          <span class="post-count">
+            Words:
+            <a href="">621</a>
+          </span>
+           
+          <span class="post-count">
+            Time:
+            <a href="">2 min</a>
+          </span>
+          
+        </div>
+
+        
+      </div>
+      
+    </header>
+
+    <div class="post-content">
+      <h1 id="在表单中使用-React-组件：受控组件和非受控组件"><a href="#在表单中使用-React-组件：受控组件和非受控组件" class="headerlink" title="在表单中使用 React 组件：受控组件和非受控组件"></a>在表单中使用 React 组件：受控组件和非受控组件</h1><p>非受控组件：表单元素的值不是由副组件决定的，是完全内部的状态</p>
+<p>通过非受控组件的方式，可以避免某些程度上的组件重复渲染导致的性能问题，但是无法对外有交互。</p>
+<h1 id="使用-Hooks-简化表单处理"><a href="#使用-Hooks-简化表单处理" class="headerlink" title="使用 Hooks 简化表单处理"></a>使用 Hooks 简化表单处理</h1><p>维护表单组件的状态逻辑，核心在于：<strong>字段名，value 值，onChange 事件</strong>。</p>
+<p>这就是很多组件库里的 useForm 这个功能，可以通过提供字段名去取值和设值，就不需要繁琐地为每个表单元素设置状态。</p>
+<p>核心原理：<strong>把表单的状态管理单独提取出来</strong>， 成为一个可重用的 Hook。</p>
+<h2 id="处理表单验证"><a href="#处理表单验证" class="headerlink" title="处理表单验证"></a>处理表单验证</h2><ul>
+<li>如何定义错误状态</li>
+<li>如何设置错误状态</li>
+</ul>
+<p>可以传递 validators 对象给 useForm 这个 Hook，然后在 hook 内在 setFieldValue 时对其进行验证，并在返回时返回错误信息给调用者。</p>
+<p><strong>关键就是在于把表单状态逻辑和 UI 展示逻辑给予 Hooks 进行分离。</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useState, useMemo, useCallback &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">useForm</span> = (<span class="params">initialValues = &#123;&#125;, validators</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> [values, setValues] = <span class="title function_">useState</span>(initialValues);</span><br><span class="line">  <span class="keyword">const</span> [errors, setErrors] = <span class="title function_">useState</span>(&#123;&#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> setFieldValue = <span class="title function_">useCallback</span>(</span><br><span class="line">    <span class="function">(<span class="params">name, value</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="title function_">setValues</span>(<span class="function">(<span class="params">values</span>) =&gt;</span> (&#123;</span><br><span class="line">        ...values,</span><br><span class="line">        [name]: value,</span><br><span class="line">      &#125;));</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (validators[name]) &#123;</span><br><span class="line">        <span class="keyword">const</span> errMsg = validators[name](value);</span><br><span class="line">        <span class="title function_">setErrors</span>(<span class="function">(<span class="params">errors</span>) =&gt;</span> (&#123;</span><br><span class="line">          ...errors,</span><br><span class="line">          [name]: errMsg || <span class="literal">null</span>,</span><br><span class="line">        &#125;));</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    [validators]</span><br><span class="line">  );</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &#123; values, errors, setFieldValue &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> validators = <span class="title function_">useMemo</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (value.<span class="property">length</span> &lt; <span class="number">2</span>) <span class="keyword">return</span> <span class="string">&quot;Name length should be no less than 2.&quot;</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">email</span>: <span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (!value.<span class="title function_">includes</span>(<span class="string">&quot;@&quot;</span>)) <span class="keyword">return</span> <span class="string">&quot;Invalid email address&quot;</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;, []);</span><br><span class="line">  <span class="keyword">const</span> &#123; values, errors, setFieldValue &#125; = <span class="title function_">useForm</span>(&#123;&#125;, validators);</span><br><span class="line">  <span class="keyword">const</span> handleSubmit = <span class="title function_">useCallback</span>(</span><br><span class="line">    <span class="function">(<span class="params">evt</span>) =&gt;</span> &#123;</span><br><span class="line">      evt.<span class="title function_">preventDefault</span>();</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(values);</span><br><span class="line">    &#125;,</span><br><span class="line">    [values]</span><br><span class="line">  );</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">form</span> <span class="attr">onSubmit</span>=<span class="string">&#123;handleSubmit&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">label</span>&gt;</span>Name: <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">input</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">value</span>=<span class="string">&#123;values.name</span> || <span class="attr">null</span>&#125;</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">onChange</span>=<span class="string">&#123;(evt)</span> =&gt;</span> setFieldValue(&quot;name&quot;, evt.target.value)&#125;</span></span><br><span class="line"><span class="language-xml">        /&gt;</span></span><br><span class="line"><span class="language-xml">        &#123;errors.name &amp;&amp; <span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">&#123;&#123;</span> <span class="attr">color:</span> &quot;<span class="attr">red</span>&quot; &#125;&#125;&gt;</span>&#123;errors.name&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span>&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">label</span>&gt;</span>Email:<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">input</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">value</span>=<span class="string">&#123;values.email</span> || <span class="attr">null</span>&#125;</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">onChange</span>=<span class="string">&#123;(evt)</span> =&gt;</span> setFieldValue(&quot;email&quot;, evt.target.value)&#125;</span></span><br><span class="line"><span class="language-xml">        /&gt;</span></span><br><span class="line"><span class="language-xml">        &#123;errors.email &amp;&amp; <span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">&#123;&#123;</span> <span class="attr">color:</span> &quot;<span class="attr">red</span>&quot; &#125;&#125;&gt;</span>&#123;errors.email&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span>&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span>Submit<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h1><ol>
+<li><p>如何在自定义的 useForm Hook 中提供 reset 的 API？</p>
+<p>就是返回一个置空的函数。</p>
+</li>
+<li><p>在自定义的 useForm 内如何实现支持异步验证？</p>
+</li>
+</ol>
+
+    </div>
+
+    
+    <section class="post-copyright">
+      
+      <p class="copyright-item">
+        <span>Author:</span>
+        <span>httishere</span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>Permalink:</span>
+        <span><a href="https://httishere.github.io/2023/08/06/notion/cd92524243e3431/">https://httishere.github.io/2023/08/06/notion/cd92524243e3431/</a></span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>License:</span>
+        <span>Copyright (c) 2021 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>Slogan:</span>
+        <span>Good Good Study, Day Day Up.</span>
+      </p>
+      
+    </section>
+    
+    <section class="post-tags">
+      <div>
+        <span>Tag(s):</span>
+        <span class="tag">
+           
+          <a href="/tags/React/"># React</a>
+           
+        </span>
+      </div>
+      <div>
+        <a href="javascript:window.history.back();">back</a>
+        <span>· </span>
+        <a href="/">home</a>
+      </div>
+    </section>
+    <section class="post-nav">
+       
+      <a class="next" rel="next" href="/2023/08/06/notion/77392cbf81de473/"
+        >React Hooks 精进 12 - 项目结构：按领域组织文件夹结构</a
+      >
+      
+    </section>
+     <!--
+ * @Author: your name
+ * @Date: 2021-07-08 11:08:58
+ * @LastEditTime: 2021-08-20 11:11:35
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_partial/gitalk.ejs
+-->
+<link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css">
+<div id="gitalk-container" style="margin-top: 50px;"></div>
+<!-- <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> -->
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script type="text/javascript">
+console.log(md5(location.pathname))
+    new Gitalk({
+        clientID: 'c61a26564784a9cb16f3',
+        clientSecret: '25a391b4405c726bfa417a4d09a8a9d46fd41e12',
+        id: window.location.pathname,
+        repo: 'httIsHere.github.io',
+        owner: 'httIsHere',
+        admin: 'httIsHere',
+        id: md5(location.pathname),
+        distractionFreeMode: false
+    }).render('gitalk-container')
+</script>  
+    <section id="comments" class="comments">
+      <style>
+        .comments {
+          margin: 30px;
+          padding: 10px;
+          background: #fff;
+        }
+        @media screen and (max-width: 800px) {
+          .comments {
+            margin: auto;
+            padding: 10px;
+            background: #fff;
+          }
+        }
+      </style>
+      <!--
+ * @Author: your name
+ * @Date: 2022-01-19 10:26:36
+ * @LastEditTime: 2022-01-19 11:55:49
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_plugins/valine.ejs
+-->
+<!-- <div class="valine_comment"></div> -->
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: '1BHDvzMyiyWmu3v3vBaR2dek-gzGzoHsz',
+      app_key: 'MaYtrzsGSwqpImuLueThWKFE',
+      placeholder: '这里留言。。',
+      notify: 'true',
+      verify: 'true',
+      visitor: 'true',
+    });
+</script>
+    </section>
+    
+  </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© httishere | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

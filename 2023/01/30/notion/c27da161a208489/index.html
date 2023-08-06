@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="referrer" content="no-referrer" />
+
+    <meta name="author" content="httishere">
+
+
+
+
+
+<title>汪汪周刊 001期： 新年再出发 | HTTISHERE</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+    <div class="wrapper">
+        <!--
+ * @Author: your name
+ * @Date: 2020-08-17 15:35:07
+ * @LastEditTime: 2022-01-15 12:59:30
+ * @LastEditors: your name
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_partial/header.ejs
+-->
+<header>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-header header-logo">
+        <a href="/">𝑯𝑻𝑻𝑰𝑺𝑯𝑬𝑹&#39;𝑩𝒍𝒐𝒈</a>
+        <!-- ℍ𝕋𝕋𝕀𝕊ℍ𝔼ℝ𝔼'𝕤 𝔹𝕝𝕠𝕘 -->
+      </div>
+      <div class="menu navbar-right">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/reading">Schedules</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+        <input id="switch_default" type="checkbox" class="switch_default" />
+        <label for="switch_default" class="toggleBtn"></label>
+      </div>
+    </div>
+  </nav>
+
+  
+  <nav class="navbar-mobile" id="nav-mobile">
+    <div class="container">
+      <div class="navbar-header">
+        <div>
+          <a href="/">𝑯𝑻𝑻𝑰𝑺𝑯𝑬𝑹&#39;𝑩𝒍𝒐𝒈</a
+          ><a id="mobile-toggle-theme">·&nbsp;Light</a>
+        </div>
+        <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+      </div>
+      <div class="menu" id="mobile-menu">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/reading">Schedules</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+      </div>
+    </div>
+  </nav>
+</header>
+<script>
+  var mobileBtn = function f() {
+    var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+    var mobileMenu = document.getElementById("mobile-menu");
+    if (toggleMenu.classList.contains("active")) {
+      toggleMenu.classList.remove("active");
+      mobileMenu.classList.remove("active");
+    } else {
+      toggleMenu.classList.add("active");
+      mobileMenu.classList.add("active");
+    }
+  };
+  function addFav() {
+    var title = document.title;
+    var URL = document.URL;
+    try {
+      window.external.addFavorite(URL, title);
+    } catch (e) {
+      try {
+        window.sidebar.addPanel(title, URL, "");
+      } catch (e) {
+        alert("由于浏览器的安全设置\n可以使用Ctrl+D或者Command+D进行手动收藏");
+      }
+    }
+  }
+</script>
+
+        <div class="main">
+            <div class="container">
+    <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>  
+  <article class="post-wrap">
+    <header class="post-header">
+      <h1 class="post-title">汪汪周刊 001期： 新年再出发</h1>
+      
+      <div
+        class="post-meta"
+        id="/2023/01/30/notion/c27da161a208489/"
+        class="leancloud-visitors view"
+      >
+         Author:
+        <a itemprop="author" rel="author" href="/">httishere</a>
+         
+        <span class="post-time">
+          Date:
+          <a href="#"
+            >2023/01/30&nbsp;&nbsp;18:35:00</a
+          >
+        </span>
+         
+        <span class="post-category">
+          Category: 
+          <a href="/categories/%E5%91%A8%E5%88%8A/">周刊</a>
+          
+        </span>
+         <<
+        <div class="extra">
+          >>
+          <span
+            id="/2023/01/30/notion/c27da161a208489/"
+            class="leancloud-visitors view"
+            data-flag-title="汪汪周刊 001期： 新年再出发"
+          >
+            <span class="post-meta-item-text">Pageviews:</span>
+            <a href="javascript:;" class="leancloud-visitors-count">0</a>
+          </span>
+          
+          <span class="post-count">
+            Words:
+            <a href="">765</a>
+          </span>
+           
+          <span class="post-count">
+            Time:
+            <a href="">2 min</a>
+          </span>
+          
+        </div>
+
+        
+        <img class="post-cover" src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/6db8f3a0-318c-4fe3-a023-b2ca401fcb80/%E8%93%9D%E7%B2%89%E8%89%B2%E8%B7%B3%E8%9A%A4%E5%B8%82%E5%9C%BA%E7%9F%A2%E9%87%8F%E6%B4%BB%E5%8A%A8%E5%AE%A3%E4%BC%A0%E4%B8%AD%E6%96%87%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%B0%81%E9%9D%A2.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230806%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230806T075038Z&X-Amz-Expires=3600&X-Amz-Signature=16f0bdd3042bc2b424def25f022ec85761ffd48e4b3e7648e6c6324fb952f8f6&X-Amz-SignedHeaders=host&x-id=GetObject" alt="" />
+        
+      </div>
+      
+    </header>
+
+    <div class="post-content">
+      <p><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/560bd117-80ad-4b0e-bac7-73a9319fe47e/IMG_5974.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230806%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20230806T075040Z&amp;X-Amz-Expires=3600&amp;X-Amz-Signature=6462c4af3c35bb9af279b5c77461b9131d8fbe475476c17393a86884c41f21df&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject" alt="IMG_5974.jpg"></p>
+<h3 id="Hello，大家好，这里是阿汪同学。"><a href="#Hello，大家好，这里是阿汪同学。" class="headerlink" title="Hello，大家好，这里是阿汪同学。"></a>Hello，大家好，这里是阿汪同学。</h3><h3 id="本期关键词：-蔓越莓曲奇"><a href="#本期关键词：-蔓越莓曲奇" class="headerlink" title="本期关键词： 蔓越莓曲奇"></a>本期关键词： 蔓越莓曲奇</h3><h1 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h1><p>我以前也有想过做一些平时的学习分享，但是基本都没有坚持下来，再者去年的特殊情况使我的工作学习都进入了一个停滞状态，新的一年我想重新出发，和大家一起共同成长。</p>
+<p>同时想通过做这个周刊分享来提高自己的文笔和逻辑能力。</p>
+<p>‼️ <strong>本周刊非纯技术周刊，包括各方面的分享</strong>。</p>
+<h1 id="有趣的"><a href="#有趣的" class="headerlink" title="有趣的"></a>有趣的</h1><ul>
+<li><p>回顾自己的 github：<a target="_blank" rel="noopener" href="https://wrapped.run/#">https://wrapped.run/</a></p>
+<pre><code>    看我去年那少得可怜的commits。
+</code></pre></li>
+</ul>
+<pre><code>![0fed55c5a8c4a8d94a40ff6e9e614d39.png](https://i.hd-r.cn/0fed55c5a8c4a8d94a40ff6e9e614d39.png)
+</code></pre><ul>
+<li><p>ChatGPT</p>
+<pre><code>    &gt; **ChatGPT: OptimizingLanguage Modelsfor Dialogue**
+</code></pre></li>
+</ul>
+<pre><code>    We’ve trained a model called ChatGPT which interacts in a conversational way. The dialogue format makes it possible for ChatGPT to answer followup questions, admit its mistakes, challenge incorrect premises, and reject inappropriate requests. ChatGPT is a sibling model to [InstructGPT](https://openai.com/blog/instruction-following/), which is trained to follow an instruction in a prompt and provide a detailed response.
+
+
+ChatGPT是一款基于GPT-3模型的聊天机器人平台，它拥有智能的自然语言处理功能，能够帮助开发者快速构建出自定义的聊天机器人，并且支持多种语言的交互，可以帮助开发者更快地将技术成果推向市场。
+
+- 但是目前ChatGPT被部分地区和学校禁用。
+</code></pre><ul>
+<li><p>双缝干涉实验</p>
+<pre><code>    因为我不是专业的怕形容不好，但是可以看一下相关的视频或者解说，非常有意思。
+</code></pre></li>
+</ul>
+<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><ul>
+<li>最近觉得不错的免费图床：<a target="_blank" rel="noopener" href="https://www.hd-r.cn/">https://www.hd-r.cn/</a>，不会很大程度地压缩图片，速度快，无需注册</li>
+<li><p>快速生成自定义的 Notion 封面：<a target="_blank" rel="noopener" href="https://notioncovergenerator.com/">https://notioncovergenerator.com/</a>，Create CustomNotion Coversfree in minutes!</p>
+<pre><code>    ![1ea04e31af95dc545128439559ac21a2.png](https://i.hd-r.cn/1ea04e31af95dc545128439559ac21a2.png)
+</code></pre></li>
+<li><p><a target="_blank" rel="noopener" href="https://splitbee.io/"><strong>Splitbee</strong></a>，轻量级访客分析工具，我的组件库也是用了这个工具，可以充分了解大家更喜欢哪个组件便于我去更新迭代更多大家喜爱的内容。</p>
+<pre><code>    ![3c8eff422fa2e74af5045b0250a70440.png](https://i.hd-r.cn/3c8eff422fa2e74af5045b0250a70440.png)
+</code></pre></li>
+</ul>
+<h1 id="专业技术领域"><a href="#专业技术领域" class="headerlink" title="专业技术领域"></a>专业技术领域</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.bitsrc.io/react-form-validation-5aa06193bec4"><strong>Best Way to Handle Form Validation: React Hook Form and Zod</strong></a> <strong><code>英文</code></strong></li>
+<li><a target="_blank" rel="noopener" href="https://www.macarthur.me/posts/options-for-removing-event-listeners"><strong>You’ve Got Options for Removing Event Listeners</strong></a> <strong><code>英文</code></strong></li>
+<li>模块联邦作者 Zack Jackson 近几周在投入  <a target="_blank" rel="noopener" href="https://twitter.com/ScriptedAlchemy/status/1619951813687660544">Rust Webpack</a> ，30 天内会<a target="_blank" rel="noopener" href="https://twitter.com/ScriptedAlchemy/status/1621220073192189952">开源</a>。 - 在工作项目内也使用了模块联邦，还需要再多看看源码。</li>
+</ul>
+<h1 id="Widverse-·-汪汪汪世界"><a href="#Widverse-·-汪汪汪世界" class="headerlink" title="Widverse · 汪汪汪世界"></a>Widverse · 汪汪汪世界</h1><blockquote>
+<p>Widverse 是我开发的组件库，支持嵌入 Notion，FlowUs，Wolai，github 等。</p>
+</blockquote>
+<ul>
+<li>本周比较忙碌所以暂无更新。</li>
+</ul>
+<h1 id="最后的碎碎念"><a href="#最后的碎碎念" class="headerlink" title="最后的碎碎念"></a>最后的碎碎念</h1><ul>
+<li>每次回家都要玩烘焙，买一堆烘焙材料，结果每次都要在返杭前疯狂的消耗材料不然就得浪费。</li>
+<li>这周正式回杭州啦，从去年开始已经居家办公 7 个月了，现在特别想正式回归职场。</li>
+<li>说好的年后开始减肥却每天还在大吃大喝，住院的护士问我是不是胖了让我控制体重，害，减肥太难了。</li>
+</ul>
+<h1 id="话题"><a href="#话题" class="headerlink" title="话题"></a>话题</h1><p>你相信有平行世界吗？</p>
+<p>如果有你觉得平行世界的你是个怎么样的人？</p>
+<p><img src="https://i.hd-r.cn/9f144b95fa5e7e2b4105f7bbd6a511e4.jpg" alt="9f144b95fa5e7e2b4105f7bbd6a511e4.jpg"></p>
+
+    </div>
+
+    
+    <section class="post-copyright">
+      
+      <p class="copyright-item">
+        <span>Author:</span>
+        <span>httishere</span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>Permalink:</span>
+        <span><a href="https://httishere.github.io/2023/01/30/notion/c27da161a208489/">https://httishere.github.io/2023/01/30/notion/c27da161a208489/</a></span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>License:</span>
+        <span>Copyright (c) 2021 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>Slogan:</span>
+        <span>Good Good Study, Day Day Up.</span>
+      </p>
+      
+    </section>
+    
+    <section class="post-tags">
+      <div>
+        <span>Tag(s):</span>
+        <span class="tag">
+           
+          <a href="/tags/%E6%AF%8F%E5%91%A8%E5%88%86%E4%BA%AB/"># 每周分享</a>
+           
+        </span>
+      </div>
+      <div>
+        <a href="javascript:window.history.back();">back</a>
+        <span>· </span>
+        <a href="/">home</a>
+      </div>
+    </section>
+    <section class="post-nav">
+      
+      <a class="prev" rel="prev" href="/2023/01/30/notion/6ed49a2adc864d8/"
+        >React Hooks 精进 1 - 用Hooks的角度去转变开发思路</a
+      >
+       
+      <a class="next" rel="next" href="/2023/01/30/notion/ce50450a16/"
+        >心之所向，行之所往 ｜ 2022总结</a
+      >
+      
+    </section>
+     <!--
+ * @Author: your name
+ * @Date: 2021-07-08 11:08:58
+ * @LastEditTime: 2021-08-20 11:11:35
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_partial/gitalk.ejs
+-->
+<link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css">
+<div id="gitalk-container" style="margin-top: 50px;"></div>
+<!-- <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> -->
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script type="text/javascript">
+console.log(md5(location.pathname))
+    new Gitalk({
+        clientID: 'c61a26564784a9cb16f3',
+        clientSecret: '25a391b4405c726bfa417a4d09a8a9d46fd41e12',
+        id: window.location.pathname,
+        repo: 'httIsHere.github.io',
+        owner: 'httIsHere',
+        admin: 'httIsHere',
+        id: md5(location.pathname),
+        distractionFreeMode: false
+    }).render('gitalk-container')
+</script>  
+    <section id="comments" class="comments">
+      <style>
+        .comments {
+          margin: 30px;
+          padding: 10px;
+          background: #fff;
+        }
+        @media screen and (max-width: 800px) {
+          .comments {
+            margin: auto;
+            padding: 10px;
+            background: #fff;
+          }
+        }
+      </style>
+      <!--
+ * @Author: your name
+ * @Date: 2022-01-19 10:26:36
+ * @LastEditTime: 2022-01-19 11:55:49
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_plugins/valine.ejs
+-->
+<!-- <div class="valine_comment"></div> -->
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: '1BHDvzMyiyWmu3v3vBaR2dek-gzGzoHsz',
+      app_key: 'MaYtrzsGSwqpImuLueThWKFE',
+      placeholder: '这里留言。。',
+      notify: 'true',
+      verify: 'true',
+      visitor: 'true',
+    });
+</script>
+    </section>
+    
+  </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© httishere | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
