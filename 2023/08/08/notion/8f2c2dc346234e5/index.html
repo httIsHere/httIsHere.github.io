@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="referrer" content="no-referrer" />
+
+    <meta name="author" content="httishere">
+
+
+
+
+
+<title>React Hooks 精进 14 - 浮动层的使用 &amp; 路由管理 | HTTISHERE</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+    <div class="wrapper">
+        <!--
+ * @Author: your name
+ * @Date: 2020-08-17 15:35:07
+ * @LastEditTime: 2022-01-15 12:59:30
+ * @LastEditors: your name
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_partial/header.ejs
+-->
+<header>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-header header-logo">
+        <a href="/">𝑯𝑻𝑻𝑰𝑺𝑯𝑬𝑹&#39;𝑩𝒍𝒐𝒈</a>
+        <!-- ℍ𝕋𝕋𝕀𝕊ℍ𝔼ℝ𝔼'𝕤 𝔹𝕝𝕠𝕘 -->
+      </div>
+      <div class="menu navbar-right">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/reading">Schedules</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+        <input id="switch_default" type="checkbox" class="switch_default" />
+        <label for="switch_default" class="toggleBtn"></label>
+      </div>
+    </div>
+  </nav>
+
+  
+  <nav class="navbar-mobile" id="nav-mobile">
+    <div class="container">
+      <div class="navbar-header">
+        <div>
+          <a href="/">𝑯𝑻𝑻𝑰𝑺𝑯𝑬𝑹&#39;𝑩𝒍𝒐𝒈</a
+          ><a id="mobile-toggle-theme">·&nbsp;Light</a>
+        </div>
+        <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+      </div>
+      <div class="menu" id="mobile-menu">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/reading">Schedules</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+      </div>
+    </div>
+  </nav>
+</header>
+<script>
+  var mobileBtn = function f() {
+    var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+    var mobileMenu = document.getElementById("mobile-menu");
+    if (toggleMenu.classList.contains("active")) {
+      toggleMenu.classList.remove("active");
+      mobileMenu.classList.remove("active");
+    } else {
+      toggleMenu.classList.add("active");
+      mobileMenu.classList.add("active");
+    }
+  };
+  function addFav() {
+    var title = document.title;
+    var URL = document.URL;
+    try {
+      window.external.addFavorite(URL, title);
+    } catch (e) {
+      try {
+        window.sidebar.addPanel(title, URL, "");
+      } catch (e) {
+        alert("由于浏览器的安全设置\n可以使用Ctrl+D或者Command+D进行手动收藏");
+      }
+    }
+  }
+</script>
+
+        <div class="main">
+            <div class="container">
+    <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>  
+  <article class="post-wrap">
+    <header class="post-header">
+      <h1 class="post-title">React Hooks 精进 14 - 浮动层的使用 &amp; 路由管理</h1>
+      
+      <div
+        class="post-meta"
+        id="/2023/08/08/notion/8f2c2dc346234e5/"
+        class="leancloud-visitors view"
+      >
+         Author:
+        <a itemprop="author" rel="author" href="/">httishere</a>
+         
+        <span class="post-time">
+          Date:
+          <a href="#"
+            >2023/08/08&nbsp;&nbsp;19:53:00</a
+          >
+        </span>
+         
+        <span class="post-category">
+          Category: 
+          <a href="/categories/React/">React</a>
+          
+        </span>
+         <<
+        <div class="extra">
+          >>
+          <span
+            id="/2023/08/08/notion/8f2c2dc346234e5/"
+            class="leancloud-visitors view"
+            data-flag-title="React Hooks 精进 14 - 浮动层的使用 &amp; 路由管理"
+          >
+            <span class="post-meta-item-text">Pageviews:</span>
+            <a href="javascript:;" class="leancloud-visitors-count">0</a>
+          </span>
+          
+          <span class="post-count">
+            Words:
+            <a href="">1.8k</a>
+          </span>
+           
+          <span class="post-count">
+            Time:
+            <a href="">8 min</a>
+          </span>
+          
+        </div>
+
+        
+      </div>
+      
+    </header>
+
+    <div class="post-content">
+      <h1 id="浮动层的使用"><a href="#浮动层的使用" class="headerlink" title="浮动层的使用"></a>浮动层的使用</h1><p>通常的对话框使用：</p>
+<ul>
+<li>对话框需要在父组件中声明，才能在子组件中控制是否显示。</li>
+<li>给对话框传递参数智能由 props 传入，意味着所有状态管理需要在更高级别的组件上。</li>
+</ul>
+<h2 id="处理对话框的误区"><a href="#处理对话框的误区" class="headerlink" title="处理对话框的误区"></a>处理对话框的误区</h2><p>当这里是一个左右分栏布局的页面，在左侧的菜单栏由右侧列表的操作按钮，此时左侧组件和右侧组件共享一个对话框，那么此时就需要在 layout 这个层级上去设置对话框。</p>
+<p>但是这种处理方式会有以下两个问题：</p>
+<ul>
+<li>语义隔离不明确：是两个本不相关的功能产生依赖</li>
+<li>难以扩展</li>
+</ul>
+<p>需要思考的问题就是：<strong>一个实现业务逻辑的 Modal 究竟应该在哪个组件中去声明？又该如何进行交互？从而使让对话框相关的业务逻辑能够更加模块化</strong>。</p>
+<h2 id="思路：使用全局状态管理所有对话框"><a href="#思路：使用全局状态管理所有对话框" class="headerlink" title="思路：使用全局状态管理所有对话框"></a>思路：使用全局状态管理所有对话框</h2><p>对话框本质：独立于其他界面的独立功能。</p>
+<p>所以我们可以给对话框定义一个全局唯一的 ID，通过 ID 去显示/隐藏对话框并为之传递参数。</p>
+<p>预期的操作方式：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> modal = <span class="title function_">useNiceModal</span>(<span class="string">&quot;user-info-modal&quot;</span>);</span><br><span class="line">modal.<span class="title function_">show</span>(args);</span><br><span class="line">modal.<span class="title function_">hide</span>();</span><br></pre></td></tr></table></figure>
+<h2 id="实现：创建组件和相关-API"><a href="#实现：创建组件和相关-API" class="headerlink" title="实现：创建组件和相关 API"></a>实现：创建组件和相关 API</h2><h3 id="首先是全局状态的管理（以-Redux-为例）"><a href="#首先是全局状态的管理（以-Redux-为例）" class="headerlink" title="首先是全局状态的管理（以 Redux 为例）"></a>首先是全局状态的管理（以 Redux 为例）</h3><p>创建一个可以处理所有对话框状态的 reducer。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">modalReducer</span> = (<span class="params">state = &#123; hiding: &#123;&#125; &#125;, action</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">switch</span> (action.<span class="property">type</span>) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;nice-modal/show&quot;</span>:</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        ...state,</span><br><span class="line">        [action.<span class="property">payload</span>.<span class="property">modalId</span>]: action.<span class="property">payload</span>.<span class="property">args</span> || <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">hiding</span>: &#123;</span><br><span class="line">          ...state.<span class="property">hiding</span>,</span><br><span class="line">          [action.<span class="property">payload</span>.<span class="property">modalId</span>]: <span class="literal">false</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;nice-modal/hide&quot;</span>:</span><br><span class="line">      <span class="keyword">return</span> action.<span class="property">payload</span>.<span class="property">force</span></span><br><span class="line">        ? &#123;</span><br><span class="line">            ...state,</span><br><span class="line">            [action.<span class="property">payload</span>.<span class="property">modalId</span>]: <span class="literal">false</span>,</span><br><span class="line">            <span class="attr">hiding</span>: &#123; [action.<span class="property">payload</span>.<span class="property">modalId</span>]: <span class="literal">false</span> &#125;,</span><br><span class="line">          &#125;</span><br><span class="line">        : &#123; ...state, <span class="attr">hiding</span>: &#123; [action.<span class="property">payload</span>.<span class="property">modalId</span>]: <span class="literal">true</span> &#125; &#125;;</span><br><span class="line">    <span class="attr">default</span>:</span><br><span class="line">      <span class="keyword">return</span> state;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// action creators</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">showModal</span>(<span class="params">modalId, args</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&quot;nice-modal/show&quot;</span>,</span><br><span class="line">    <span class="attr">payload</span>: &#123;</span><br><span class="line">      modalId,</span><br><span class="line">      args,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">hideModal</span>(<span class="params">modalId, force</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&quot;nice-modal/hide&quot;</span>,</span><br><span class="line">    <span class="attr">payload</span>: &#123;</span><br><span class="line">      modalId,</span><br><span class="line">      force,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>创建一个 Hook，保证逻辑重用：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> modalCallbacks = &#123;&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">useNiceModal</span> = (<span class="params">modalId</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> dispatch = <span class="title function_">useDispatch</span>();</span><br><span class="line">  <span class="keyword">const</span> show = <span class="title function_">useCallback</span>(</span><br><span class="line">    <span class="function">(<span class="params">args</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">        modalCallbacks[modalId] = resolve;</span><br><span class="line">        <span class="title function_">dispatch</span>(<span class="title function_">showModal</span>(modalId, args));</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    [dispatch, modalId]</span><br><span class="line">  );</span><br><span class="line">  <span class="keyword">const</span> resolve = <span class="title function_">useCallback</span>(</span><br><span class="line">    <span class="function">(<span class="params">args</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (modalCallbacks[modalId]) &#123;</span><br><span class="line">        modalCallbacks[modalId](args);</span><br><span class="line">        <span class="keyword">delete</span> modalCallbacks[modalId];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    [modalId]</span><br><span class="line">  );</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> hide = <span class="title function_">useCallback</span>(</span><br><span class="line">    <span class="function">(<span class="params">force</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="title function_">dispatch</span>(<span class="title function_">hideModal</span>(modalId, force));</span><br><span class="line">      <span class="keyword">delete</span> modalCallbacks[modalId];</span><br><span class="line">    &#125;,</span><br><span class="line">    [dispatch, modalId]</span><br><span class="line">  );</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> args = <span class="title function_">useSelector</span>(<span class="function">(<span class="params">s</span>) =&gt;</span> s[modalId]);</span><br><span class="line">  <span class="keyword">const</span> hiding = <span class="title function_">useSelector</span>(<span class="function">(<span class="params">s</span>) =&gt;</span> s.<span class="property">hiding</span>[modalId]);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">useMemo</span>(</span><br><span class="line">    <span class="function">() =&gt;</span> (&#123; args, hiding, <span class="attr">visible</span>: !!args, show, hide, resolve &#125;),</span><br><span class="line">    [args, hide, show, resolve, hiding]</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 封装一个通用对话框</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">NiceModal</span>(<span class="params">&#123; id, children, ...rest &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> modal = <span class="title function_">useNiceModal</span>(id);</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Modal</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">      <span class="attr">onCancel</span>=<span class="string">&#123;()</span> =&gt;</span> modal.hide()&#125;</span></span><br><span class="line"><span class="language-xml">      onOk=&#123;() =&gt; modal.hide()&#125;</span></span><br><span class="line"><span class="language-xml">      afterClose=&#123;() =&gt; modal.hide(true)&#125;</span></span><br><span class="line"><span class="language-xml">      visible=&#123;!modal.hiding&#125;</span></span><br><span class="line"><span class="language-xml">      &#123;...rest&#125;</span></span><br><span class="line"><span class="language-xml">    &gt;</span></span><br><span class="line"><span class="language-xml">      &#123;children&#125;</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">Modal</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后可以使用容器模式，在对话框关闭时直接返回 null 从而以保证性能。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">createNiceModal</span> = (<span class="params">modalId, Comp</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; visible, args &#125; = <span class="title function_">useNiceModal</span>(modalId);</span><br><span class="line">    <span class="keyword">if</span> (!visible) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">Comp</span> &#123;<span class="attr">...args</span>&#125; &#123;<span class="attr">...props</span>&#125; /&gt;</span></span>;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>最后就是调用操作：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Button</span> &#125; <span class="keyword">from</span> <span class="string">&quot;antd&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; createStore &#125; <span class="keyword">from</span> <span class="string">&quot;redux&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Provider</span> &#125; <span class="keyword">from</span> <span class="string">&quot;react-redux&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">NiceModal</span>, &#123;</span><br><span class="line">  createNiceModal,</span><br><span class="line">  useNiceModal,</span><br><span class="line">  modalReducer,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">&quot;./NiceModal&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// redux store</span></span><br><span class="line"><span class="keyword">const</span> store = <span class="title function_">createStore</span>(modalReducer);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">MyModal</span> = <span class="title function_">createNiceModal</span>(<span class="string">&quot;my-modal&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">NiceModal</span> <span class="attr">id</span>=<span class="string">&quot;my-modal&quot;</span> <span class="attr">title</span>=<span class="string">&quot;Nice Modal&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      Hello NiceModal!</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">NiceModal</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">MyModalExample</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> modal = <span class="title function_">useNiceModal</span>(<span class="string">&quot;my-modal&quot;</span>);</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Button</span> <span class="attr">type</span>=<span class="string">&quot;primary&quot;</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> modal.show()&#125;&gt;</span></span><br><span class="line"><span class="language-xml">        Show Modal</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">MyModal</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Provider</span> <span class="attr">store</span>=<span class="string">&#123;store&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Nice Modal<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">MyModalExample</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">Provider</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="处理对话框的返回值"><a href="#处理对话框的返回值" class="headerlink" title="处理对话框的返回值"></a>处理对话框的返回值</h3><ul>
+<li>对话框可能需要返回值给调用者</li>
+</ul>
+<p>所以可以利用 Promise 来完成：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> modal = <span class="title function_">useNiceModal</span>(<span class="string">&quot;my-modal&quot;</span>);</span><br><span class="line">modal.<span class="title function_">show</span>(args).<span class="title function_">then</span>(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在useNiceModal内</span></span><br><span class="line"><span class="keyword">const</span> show = <span class="title function_">useCallback</span>(</span><br><span class="line">  <span class="function">(<span class="params">args</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">      modalCallbacks[modalId] = resolve;</span><br><span class="line">      <span class="title function_">dispatch</span>(<span class="title function_">showModal</span>(modalId, args));</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">  [dispatch, modalId]</span><br><span class="line">);</span><br><span class="line"><span class="keyword">const</span> resolve = <span class="title function_">useCallback</span>(</span><br><span class="line">  <span class="function">(<span class="params">args</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (modalCallbacks[modalId]) &#123;</span><br><span class="line">      modalCallbacks[modalId](args);</span><br><span class="line">      <span class="keyword">delete</span> modalCallbacks[modalId];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  [modalId]</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h2 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h2><p>如果是基于 Context 该如何实现 NiceModal？</p>
+<h1 id="路由管理"><a href="#路由管理" class="headerlink" title="路由管理"></a>路由管理</h1><ul>
+<li>路由提供了按页面去组织整个应用程序的能力</li>
+<li>URL（Uniform Resource Locator），表明 URL 是用于唯一的定位某个资源的</li>
+</ul>
+<h2 id="路由的工作原理：实现一个简单的路由机制"><a href="#路由的工作原理：实现一个简单的路由机制" class="headerlink" title="路由的工作原理：实现一个简单的路由机制"></a>路由的工作原理：实现一个简单的路由机制</h2><p>所谓的页面切换就是一个页面局部内容的组件切换。</p>
+<ul>
+<li>在服务器渲染的页面，URL 的变化都是全部页面内容的切换</li>
+<li>前段路由管理中，则一般只是主内容区域的变化</li>
+</ul>
+<p>实现路由机制的核心逻辑<strong>：根据 URL 路径这个状态来决定内容区域显示什么组件</strong>。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">MyRouter</span> = (<span class="params">&#123; children &#125;</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> routes = _.<span class="title function_">keyBy</span>(</span><br><span class="line">    children.<span class="title function_">map</span>(<span class="function">(<span class="params">c</span>) =&gt;</span> c.<span class="property">props</span>),</span><br><span class="line">    <span class="string">&quot;path&quot;</span></span><br><span class="line">  );</span><br><span class="line">  <span class="keyword">const</span> [hash] = <span class="title function_">useHash</span>();</span><br><span class="line">  <span class="keyword">const</span> <span class="title class_">Page</span> = routes[hash.<span class="title function_">replace</span>(<span class="string">&quot;#&quot;</span>, <span class="string">&quot;&quot;</span>)]?.<span class="property">component</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="title class_">Page</span> ? <span class="language-xml"><span class="tag">&lt;<span class="name">Page</span> /&gt;</span></span> : <span class="string">&quot;Not found.&quot;</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">Route</span> = (<span class="params"></span>) =&gt; <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+<p>其中空组件 Route 可以接收路由的具体参数 path 和 component 从而以声明式的方式去定义路由。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="title class_">MyRouter</span>&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">&quot;page1&quot;</span> <span class="attr">component</span>=<span class="string">&#123;Page1&#125;</span> /&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">&quot;page2&quot;</span> <span class="attr">component</span>=<span class="string">&#123;Page2&#125;</span> /&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">&quot;page3&quot;</span> <span class="attr">component</span>=<span class="string">&#123;Page3&#125;</span> /&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">&quot;page4&quot;</span> <span class="attr">component</span>=<span class="string">&#123;Page4&#125;</span> /&gt;</span></span></span><br><span class="line">&lt;/<span class="title class_">MyRouter</span>&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="使用-React-Router"><a href="#使用-React-Router" class="headerlink" title="使用 React Router"></a>使用 React Router</h2><p>实际项目中需要考虑：路由嵌套，URL 模式匹配，参数提取等。</p>
+<p>React Router 不仅支持浏览器还支持 React Native 以及一些用 Web 实现的移动 App。</p>
+<p>通常在开发中使用的 react-router-dom 是支持浏览器的模块。</p>
+<h3 id="BrowserRouter"><a href="#BrowserRouter" class="headerlink" title="BrowserRouter"></a>BrowserRouter</h3><p>表示用标准的 URL 路径去管理路由。</p>
+<h3 id="Link"><a href="#Link" class="headerlink" title="Link"></a>Link</h3><p>定义一个导航链接，可以无刷新地改变页面 URL。</p>
+<h3 id="Route"><a href="#Route" class="headerlink" title="Route"></a>Route</h3><p>定义一条路由规则，可以指定匹配路径和渲染内容。</p>
+<h3 id="Switch"><a href="#Switch" class="headerlink" title="Switch"></a>Switch</h3><p>可以保证只有第一个匹配到的路由才会被渲染。</p>
+<h2 id="使用嵌套路由：实现二级导航"><a href="#使用嵌套路由：实现二级导航" class="headerlink" title="使用嵌套路由：实现二级导航"></a>使用嵌套路由：实现二级导航</h2><ul>
+<li>能够模糊匹配</li>
+<li>Route 能够嵌套使用</li>
+</ul>
+<h2 id="在-URL-中保存页面状态"><a href="#在-URL-中保存页面状态" class="headerlink" title="在 URL 中保存页面状态"></a>在 URL 中保存页面状态</h2><p>利用 React Router 的参数功能来定义一条路由。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="title class_">Route</span> path=<span class="string">&quot;/tabs/:activeTab&quot;</span> component=&#123;<span class="title class_">TabsPage</span>&#125; /&gt;&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="路由层面实现权限控制"><a href="#路由层面实现权限控制" class="headerlink" title="路由层面实现权限控制"></a>路由层面实现权限控制</h2><p>利用前端路由的动态性。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useState &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Button</span> &#125; <span class="keyword">from</span> <span class="string">&quot;antd&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Route</span>, <span class="title class_">Link</span> &#125; <span class="keyword">from</span> <span class="string">&quot;react-router-dom&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">Page1</span> = (<span class="params"></span>) =&gt; <span class="string">&quot;Page 1&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">Page2</span> = (<span class="params"></span>) =&gt; <span class="string">&quot;Page 2&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">UnauthedPage</span> = (<span class="params"></span>) =&gt; (</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">&#123;&#123;</span> <span class="attr">color:</span> &quot;<span class="attr">red</span>&quot; &#125;&#125;&gt;</span>Unauthorized, please log in first.<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line">);</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> [loggedIn, setLoggedIn] = <span class="title function_">useState</span>(<span class="literal">false</span>);</span><br><span class="line">  <span class="keyword">const</span> routes = loggedIn</span><br><span class="line">    ? [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">path</span>: <span class="string">&quot;/15/RouterAuth&quot;</span>,</span><br><span class="line">          <span class="attr">component</span>: <span class="title class_">Page1</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">path</span>: <span class="string">&quot;/15/RouterAuth/page1&quot;</span>,</span><br><span class="line">          <span class="attr">component</span>: <span class="title class_">Page1</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">path</span>: <span class="string">&quot;/15/RouterAuth/page2&quot;</span>,</span><br><span class="line">          <span class="attr">component</span>: <span class="title class_">Page2</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">      ]</span><br><span class="line">    : [&#123; <span class="attr">path</span>: <span class="string">&quot;/15/RouterAuth&quot;</span>, <span class="attr">component</span>: <span class="title class_">UnauthedPage</span> &#125;];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Router Auth<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Button</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">type</span>=<span class="string">&#123;loggedIn</span> ? &quot;<span class="attr">primary</span>&quot; <span class="attr">:</span> &quot;&quot;&#125;</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> setLoggedIn((v) =&gt; !v)&#125;</span></span><br><span class="line"><span class="language-xml">      &gt;</span></span><br><span class="line"><span class="language-xml">        &#123;loggedIn ? &quot;Log Out&quot; : &quot;Log In&quot;&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;exp-15-router-auth&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;exp-15-sider&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">Link</span> <span class="attr">to</span>=<span class="string">&quot;/15/RouterAuth/page1&quot;</span>&gt;</span>Page 1<span class="tag">&lt;/<span class="name">Link</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">Link</span> <span class="attr">to</span>=<span class="string">&quot;/15/RouterAuth/page2&quot;</span>&gt;</span>Page 2<span class="tag">&lt;/<span class="name">Link</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;exp-15-page-container&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          &#123;routes.map((r) =&gt; (</span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">&#123;r.path&#125;</span> <span class="attr">component</span>=<span class="string">&#123;r.component&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">          ))&#125;</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="思考题-1"><a href="#思考题-1" class="headerlink" title="思考题"></a>思考题</h2><p>为什么 URL 存储状态可以简化页面之间的交互？</p>
+<p>因为如果子页面需要来自父页面的参数时，通过 URL 可以更好地定位。</p>
+
+    </div>
+
+    
+    <section class="post-copyright">
+      
+      <p class="copyright-item">
+        <span>Author:</span>
+        <span>httishere</span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>Permalink:</span>
+        <span><a href="https://httishere.github.io/2023/08/08/notion/8f2c2dc346234e5/">https://httishere.github.io/2023/08/08/notion/8f2c2dc346234e5/</a></span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>License:</span>
+        <span>Copyright (c) 2021 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>Slogan:</span>
+        <span>Good Good Study, Day Day Up.</span>
+      </p>
+      
+    </section>
+    
+    <section class="post-tags">
+      <div>
+        <span>Tag(s):</span>
+        <span class="tag">
+           
+          <a href="/tags/React/"># React</a>
+           
+        </span>
+      </div>
+      <div>
+        <a href="javascript:window.history.back();">back</a>
+        <span>· </span>
+        <a href="/">home</a>
+      </div>
+    </section>
+    <section class="post-nav">
+      
+      <a class="prev" rel="prev" href="/2023/08/09/notion/f5c52bc4bd8d4a1/"
+        >在js内用文本内容定位DOM元素</a
+      >
+       
+      <a class="next" rel="next" href="/2023/08/06/notion/cd92524243e3431/"
+        >React Hooks 精进 13 - Hooks给Form带来的新变化</a
+      >
+      
+    </section>
+     <!--
+ * @Author: your name
+ * @Date: 2021-07-08 11:08:58
+ * @LastEditTime: 2021-08-20 11:11:35
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_partial/gitalk.ejs
+-->
+<link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css">
+<div id="gitalk-container" style="margin-top: 50px;"></div>
+<!-- <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> -->
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script type="text/javascript">
+console.log(md5(location.pathname))
+    new Gitalk({
+        clientID: 'c61a26564784a9cb16f3',
+        clientSecret: '25a391b4405c726bfa417a4d09a8a9d46fd41e12',
+        id: window.location.pathname,
+        repo: 'httIsHere.github.io',
+        owner: 'httIsHere',
+        admin: 'httIsHere',
+        id: md5(location.pathname),
+        distractionFreeMode: false
+    }).render('gitalk-container')
+</script>  
+    <section id="comments" class="comments">
+      <style>
+        .comments {
+          margin: 30px;
+          padding: 10px;
+          background: #fff;
+        }
+        @media screen and (max-width: 800px) {
+          .comments {
+            margin: auto;
+            padding: 10px;
+            background: #fff;
+          }
+        }
+      </style>
+      <!--
+ * @Author: your name
+ * @Date: 2022-01-19 10:26:36
+ * @LastEditTime: 2022-01-19 11:55:49
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_plugins/valine.ejs
+-->
+<!-- <div class="valine_comment"></div> -->
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: '1BHDvzMyiyWmu3v3vBaR2dek-gzGzoHsz',
+      app_key: 'MaYtrzsGSwqpImuLueThWKFE',
+      placeholder: '这里留言。。',
+      notify: 'true',
+      verify: 'true',
+      visitor: 'true',
+    });
+</script>
+    </section>
+    
+  </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© httishere | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

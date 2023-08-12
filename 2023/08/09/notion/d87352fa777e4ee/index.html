@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="referrer" content="no-referrer" />
+
+    <meta name="author" content="httishere">
+
+
+
+
+
+<title>React Hooks 精进 16 - 打包部署 | HTTISHERE</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+    <div class="wrapper">
+        <!--
+ * @Author: your name
+ * @Date: 2020-08-17 15:35:07
+ * @LastEditTime: 2022-01-15 12:59:30
+ * @LastEditors: your name
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_partial/header.ejs
+-->
+<header>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-header header-logo">
+        <a href="/">𝑯𝑻𝑻𝑰𝑺𝑯𝑬𝑹&#39;𝑩𝒍𝒐𝒈</a>
+        <!-- ℍ𝕋𝕋𝕀𝕊ℍ𝔼ℝ𝔼'𝕤 𝔹𝕝𝕠𝕘 -->
+      </div>
+      <div class="menu navbar-right">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/reading">Schedules</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+        <input id="switch_default" type="checkbox" class="switch_default" />
+        <label for="switch_default" class="toggleBtn"></label>
+      </div>
+    </div>
+  </nav>
+
+  
+  <nav class="navbar-mobile" id="nav-mobile">
+    <div class="container">
+      <div class="navbar-header">
+        <div>
+          <a href="/">𝑯𝑻𝑻𝑰𝑺𝑯𝑬𝑹&#39;𝑩𝒍𝒐𝒈</a
+          ><a id="mobile-toggle-theme">·&nbsp;Light</a>
+        </div>
+        <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+      </div>
+      <div class="menu" id="mobile-menu">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/reading">Schedules</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+      </div>
+    </div>
+  </nav>
+</header>
+<script>
+  var mobileBtn = function f() {
+    var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+    var mobileMenu = document.getElementById("mobile-menu");
+    if (toggleMenu.classList.contains("active")) {
+      toggleMenu.classList.remove("active");
+      mobileMenu.classList.remove("active");
+    } else {
+      toggleMenu.classList.add("active");
+      mobileMenu.classList.add("active");
+    }
+  };
+  function addFav() {
+    var title = document.title;
+    var URL = document.URL;
+    try {
+      window.external.addFavorite(URL, title);
+    } catch (e) {
+      try {
+        window.sidebar.addPanel(title, URL, "");
+      } catch (e) {
+        alert("由于浏览器的安全设置\n可以使用Ctrl+D或者Command+D进行手动收藏");
+      }
+    }
+  }
+</script>
+
+        <div class="main">
+            <div class="container">
+    <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>  
+  <article class="post-wrap">
+    <header class="post-header">
+      <h1 class="post-title">React Hooks 精进 16 - 打包部署</h1>
+      
+      <div
+        class="post-meta"
+        id="/2023/08/09/notion/d87352fa777e4ee/"
+        class="leancloud-visitors view"
+      >
+         Author:
+        <a itemprop="author" rel="author" href="/">httishere</a>
+         
+        <span class="post-time">
+          Date:
+          <a href="#"
+            >2023/08/09&nbsp;&nbsp;21:11:00</a
+          >
+        </span>
+         
+        <span class="post-category">
+          Category: 
+          <a href="/categories/React/">React</a>
+          
+        </span>
+         <<
+        <div class="extra">
+          >>
+          <span
+            id="/2023/08/09/notion/d87352fa777e4ee/"
+            class="leancloud-visitors view"
+            data-flag-title="React Hooks 精进 16 - 打包部署"
+          >
+            <span class="post-meta-item-text">Pageviews:</span>
+            <a href="javascript:;" class="leancloud-visitors-count">0</a>
+          </span>
+          
+          <span class="post-count">
+            Words:
+            <a href="">557</a>
+          </span>
+           
+          <span class="post-count">
+            Time:
+            <a href="">2 min</a>
+          </span>
+          
+        </div>
+
+        
+      </div>
+      
+    </header>
+
+    <div class="post-content">
+      <h1 id="了解-Webpack"><a href="#了解-Webpack" class="headerlink" title="了解 Webpack"></a>了解 Webpack</h1><p>通常在实际开发中我们不需要太关注源代码是通过什么编译器如何打包成最后的应用程序的，因为 IDE 已经帮我们把这些都做好了。</p>
+<p>但是我们需要知道它的主要功能，以及能够排查问题。</p>
+<ul>
+<li>Failed to compile：编译阶段的错误</li>
+<li>SyntaxError：语法错误</li>
+</ul>
+<h1 id="Webpack-的基本工作原理"><a href="#Webpack-的基本工作原理" class="headerlink" title="Webpack 的基本工作原理"></a>Webpack 的基本工作原理</h1><p>它的核心思路就是将源代码以及图片，样式文件等资源文件都视为模块，然后通过提供对不同类型资源的处理器，将它们进行统一处理，形成最后可在浏览器运行的代码。</p>
+<p>Webpack 的配置主要分成这几个部分：</p>
+<ul>
+<li>输入输出配置</li>
+<li>配置对于每一类资源的处理器</li>
+<li>插件配置</li>
+</ul>
+<h1 id="loader-和-plugin"><a href="#loader-和-plugin" class="headerlink" title="loader 和 plugin"></a>loader 和 plugin</h1><p>比如我们想在项目中使用 Less 作为 Css 的预处理器，需要在 Webpack 中进行配置。</p>
+<ul>
+<li>less-loader：将 less 代码转换成 css</li>
+<li>css-loader：用于处理 css 中的 import，url 等语句，分析图片等静态资源</li>
+<li>style-loader：自动生成代码，并将打包后的 css 插入页面的 style 标签。</li>
+</ul>
+<p>这个过程设计到 loader 的一个重要机制：<strong>链式使用</strong>。前面一个 loader 的输出结果可以作为后一个 loader 的输入。</p>
+<p>最终生成的 css 代码会以字符串的形式作为一个模块打包到最终结果，然后在运行时由 style-loader 提供一个函数 injectStyleIntoStyleTag，将这个模块加入到页面的 style 标签内。</p>
+<p>如果希望最终生成的 css 文件和 JavaScript 文件分开，此时就需要使用到 plugin。</p>
+<p>只需要简单地引入 mini-css-extract-plugin，可以识别所有的 CSS 模块。</p>
+<p>所以：</p>
+<ul>
+<li>loader：用于处理不同类型的资源，将它们转换成模块</li>
+<li>plugin：通常用于生成一些除了 js bundle 之外的打包结果。</li>
+</ul>
+<h1 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h1><p>代码的混淆和压缩应该用 loader 还是 plugin？</p>
+<p>loader 是针对不同类型文件间的转换、关系处理，最终生成 js 模块，而 plugin 是针对某一个文件在打包过程中的处理，所以应该使用 plugin。</p>
+
+    </div>
+
+    
+    <section class="post-copyright">
+      
+      <p class="copyright-item">
+        <span>Author:</span>
+        <span>httishere</span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>Permalink:</span>
+        <span><a href="https://httishere.github.io/2023/08/09/notion/d87352fa777e4ee/">https://httishere.github.io/2023/08/09/notion/d87352fa777e4ee/</a></span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>License:</span>
+        <span>Copyright (c) 2021 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>Slogan:</span>
+        <span>Good Good Study, Day Day Up.</span>
+      </p>
+      
+    </section>
+    
+    <section class="post-tags">
+      <div>
+        <span>Tag(s):</span>
+        <span class="tag">
+           
+          <a href="/tags/React/"># React</a>
+           
+        </span>
+      </div>
+      <div>
+        <a href="javascript:window.history.back();">back</a>
+        <span>· </span>
+        <a href="/">home</a>
+      </div>
+    </section>
+    <section class="post-nav">
+      
+      <a class="prev" rel="prev" href="/2023/08/12/notion/17368c143e824ed/"
+        >React Hooks 精进 17 - 单元测试 & 常用的第三方工具库</a
+      >
+       
+      <a class="next" rel="next" href="/2023/08/09/notion/e3767b97b5ac41c/"
+        >React Hooks 精进 15 - 按需加载</a
+      >
+      
+    </section>
+     <!--
+ * @Author: your name
+ * @Date: 2021-07-08 11:08:58
+ * @LastEditTime: 2021-08-20 11:11:35
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_partial/gitalk.ejs
+-->
+<link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css">
+<div id="gitalk-container" style="margin-top: 50px;"></div>
+<!-- <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> -->
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script type="text/javascript">
+console.log(md5(location.pathname))
+    new Gitalk({
+        clientID: 'c61a26564784a9cb16f3',
+        clientSecret: '25a391b4405c726bfa417a4d09a8a9d46fd41e12',
+        id: window.location.pathname,
+        repo: 'httIsHere.github.io',
+        owner: 'httIsHere',
+        admin: 'httIsHere',
+        id: md5(location.pathname),
+        distractionFreeMode: false
+    }).render('gitalk-container')
+</script>  
+    <section id="comments" class="comments">
+      <style>
+        .comments {
+          margin: 30px;
+          padding: 10px;
+          background: #fff;
+        }
+        @media screen and (max-width: 800px) {
+          .comments {
+            margin: auto;
+            padding: 10px;
+            background: #fff;
+          }
+        }
+      </style>
+      <!--
+ * @Author: your name
+ * @Date: 2022-01-19 10:26:36
+ * @LastEditTime: 2022-01-19 11:55:49
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_plugins/valine.ejs
+-->
+<!-- <div class="valine_comment"></div> -->
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: '1BHDvzMyiyWmu3v3vBaR2dek-gzGzoHsz',
+      app_key: 'MaYtrzsGSwqpImuLueThWKFE',
+      placeholder: '这里留言。。',
+      notify: 'true',
+      verify: 'true',
+      visitor: 'true',
+    });
+</script>
+    </section>
+    
+  </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© httishere | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

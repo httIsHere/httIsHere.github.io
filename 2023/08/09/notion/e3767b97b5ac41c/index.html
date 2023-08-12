@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="referrer" content="no-referrer" />
+
+    <meta name="author" content="httishere">
+
+
+
+
+
+<title>React Hooks 精进 15 - 按需加载 | HTTISHERE</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+    <div class="wrapper">
+        <!--
+ * @Author: your name
+ * @Date: 2020-08-17 15:35:07
+ * @LastEditTime: 2022-01-15 12:59:30
+ * @LastEditors: your name
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_partial/header.ejs
+-->
+<header>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-header header-logo">
+        <a href="/">𝑯𝑻𝑻𝑰𝑺𝑯𝑬𝑹&#39;𝑩𝒍𝒐𝒈</a>
+        <!-- ℍ𝕋𝕋𝕀𝕊ℍ𝔼ℝ𝔼'𝕤 𝔹𝕝𝕠𝕘 -->
+      </div>
+      <div class="menu navbar-right">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/reading">Schedules</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+        <input id="switch_default" type="checkbox" class="switch_default" />
+        <label for="switch_default" class="toggleBtn"></label>
+      </div>
+    </div>
+  </nav>
+
+  
+  <nav class="navbar-mobile" id="nav-mobile">
+    <div class="container">
+      <div class="navbar-header">
+        <div>
+          <a href="/">𝑯𝑻𝑻𝑰𝑺𝑯𝑬𝑹&#39;𝑩𝒍𝒐𝒈</a
+          ><a id="mobile-toggle-theme">·&nbsp;Light</a>
+        </div>
+        <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+      </div>
+      <div class="menu" id="mobile-menu">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/reading">Schedules</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+      </div>
+    </div>
+  </nav>
+</header>
+<script>
+  var mobileBtn = function f() {
+    var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+    var mobileMenu = document.getElementById("mobile-menu");
+    if (toggleMenu.classList.contains("active")) {
+      toggleMenu.classList.remove("active");
+      mobileMenu.classList.remove("active");
+    } else {
+      toggleMenu.classList.add("active");
+      mobileMenu.classList.add("active");
+    }
+  };
+  function addFav() {
+    var title = document.title;
+    var URL = document.URL;
+    try {
+      window.external.addFavorite(URL, title);
+    } catch (e) {
+      try {
+        window.sidebar.addPanel(title, URL, "");
+      } catch (e) {
+        alert("由于浏览器的安全设置\n可以使用Ctrl+D或者Command+D进行手动收藏");
+      }
+    }
+  }
+</script>
+
+        <div class="main">
+            <div class="container">
+    <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>  
+  <article class="post-wrap">
+    <header class="post-header">
+      <h1 class="post-title">React Hooks 精进 15 - 按需加载</h1>
+      
+      <div
+        class="post-meta"
+        id="/2023/08/09/notion/e3767b97b5ac41c/"
+        class="leancloud-visitors view"
+      >
+         Author:
+        <a itemprop="author" rel="author" href="/">httishere</a>
+         
+        <span class="post-time">
+          Date:
+          <a href="#"
+            >2023/08/09&nbsp;&nbsp;20:30:00</a
+          >
+        </span>
+         
+        <span class="post-category">
+          Category: 
+          <a href="/categories/React/">React</a>
+          
+        </span>
+         <<
+        <div class="extra">
+          >>
+          <span
+            id="/2023/08/09/notion/e3767b97b5ac41c/"
+            class="leancloud-visitors view"
+            data-flag-title="React Hooks 精进 15 - 按需加载"
+          >
+            <span class="post-meta-item-text">Pageviews:</span>
+            <a href="javascript:;" class="leancloud-visitors-count">0</a>
+          </span>
+          
+          <span class="post-count">
+            Words:
+            <a href="">703</a>
+          </span>
+           
+          <span class="post-count">
+            Time:
+            <a href="">2 min</a>
+          </span>
+          
+        </div>
+
+        
+      </div>
+      
+    </header>
+
+    <div class="post-content">
+      <blockquote>
+<p>控制整个应用的大小，提高加载性能是前端开发需要的挑战。</p>
+</blockquote>
+<p>提高首屏加载速度：</p>
+<ul>
+<li>对应用分包</li>
+<li>采用高效的缓存策略</li>
+</ul>
+<h1 id="实现按需加载"><a href="#实现按需加载" class="headerlink" title="实现按需加载"></a>实现按需加载</h1><h2 id="使用-import-语句，定义按需加载的起始模块"><a href="#使用-import-语句，定义按需加载的起始模块" class="headerlink" title="使用 import 语句，定义按需加载的起始模块"></a>使用 import 语句，定义按需加载的起始模块</h2><p>本质在于，需要有动态加载模块的能力——import（ECMA Script 标准的一个提案）。</p>
+<p>这里的 import 作为一个函数动态运行，会返回一个 Promise，在模块加载成功后可以在 Promise 的 then 回调函数中去使用这个模块。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Page</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> [<span class="title class_">RealPage</span>, setRealPage] = <span class="title function_">useState</span>(<span class="literal">null</span>);</span><br><span class="line">  <span class="keyword">import</span>(<span class="string">&quot;./RealPage&quot;</span>).<span class="title function_">then</span>(<span class="function">(<span class="params">comp</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">setRealPage</span>(comp);</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">if</span> (!<span class="title class_">RealPage</span>) <span class="keyword">return</span> <span class="string">&quot;Loading...&quot;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">RealPage</span> /&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>import 语句完全由 Webpack 进行处理的。</strong>Webpack 会把./RealPage’这个模块为起点的所有依赖模块单独打成一个包。</p>
+<p>策略：<strong>按业务模块为目标去做隔离，精良在每个模块的起始页去定义这个拆分点。</strong></p>
+<h2 id="使用-react-loadble-实现组件的异步加载"><a href="#使用-react-loadble-实现组件的异步加载" class="headerlink" title="使用 react-loadble 实现组件的异步加载"></a>使用 react-loadble 实现组件的异步加载</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Loadable</span> <span class="keyword">from</span> <span class="string">&quot;react-loadable&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">Loadable</span>(&#123;</span><br><span class="line">  <span class="attr">loader</span>: <span class="function">() =&gt;</span> <span class="keyword">import</span>(<span class="string">&quot;./HelloLazyLoad&quot;</span>),</span><br><span class="line">  <span class="title function_">loading</span>(<span class="params">&#123; error &#125;</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> error ? <span class="string">&quot;Failed&quot;</span> : <span class="string">&quot;Loading&quot;</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>loader：用于传入一个加载器回调，在组件渲染到页面时被执行</li>
+<li>loading：用于显示加载状态的组件</li>
+</ul>
+<h1 id="使用-service-worker-缓存前端资源"><a href="#使用-service-worker-缓存前端资源" class="headerlink" title="使用 service worker 缓存前端资源"></a>使用 service worker 缓存前端资源</h1><p>对于加载性能的优化除了按需加载之外，还有就是前端资源的缓存。合理的缓存策略可以保证同样的前端资源永远只下载一次。</p>
+<p>service worker 通常用于开发离线的 web 应用。它还提供了拦截前端请求的能力使得它可以结合 localStoage 成为一个独立的缓存方案（可以看作一种前端的资源请求代理）。</p>
+<p>service worker 加上 cache storage（存储静态资源在浏览器端）具有更高的准确性和可靠性。</p>
+<ul>
+<li>缓存永远不过期</li>
+<li>永远不会访问过期的资源</li>
+</ul>
+<h2 id="注册-Service-Worker"><a href="#注册-Service-Worker" class="headerlink" title="注册 Service Worker"></a>注册 Service Worker</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="string">&quot;serviceWorker&quot;</span> <span class="keyword">in</span> navigator) &#123;</span><br><span class="line">  navigator.<span class="property">serviceWorker</span>.<span class="title function_">register</span>(<span class="string">&quot;sw.js&quot;</span>).<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;registered.&quot;</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中 sw.js 就是 Service Worker 脚本的代码路径。</p>
+<h2 id="在-Service-Worker-安装后初始化缓存机制"><a href="#在-Service-Worker-安装后初始化缓存机制" class="headerlink" title="在 Service Worker 安装后初始化缓存机制"></a>在 Service Worker 安装后初始化缓存机制</h2><p>在 Service Worker 的实现代码被下载和执行后，就会触发安装完成的事件，可以在 sw.js 内监听这个事件，从而初始化自己的缓存机制。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在sw.js中监听安装完成事件</span></span><br><span class="line">self.<span class="title function_">addeventListener</span>(<span class="string">&quot;install&quot;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> cachePromise = caches.<span class="title function_">open</span>(<span class="string">&quot;app_cache&quot;</span>);</span><br><span class="line">  e.<span class="title function_">waitUntil</span>(cachePromise);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><strong>Cache Storage 是浏览器提供的一种缓存机制。</strong></p>
+<h2 id="拦截请求"><a href="#拦截请求" class="headerlink" title="拦截请求"></a>拦截请求</h2><p>可以通过监听 fetch 事件来处理所有的请求。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self.<span class="title function_">addeventListener</span>(<span class="string">&quot;fetch&quot;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;&#125;);</span><br></pre></td></tr></table></figure>
+<h1 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h1><p>除了按需加载和 Service Worker，还想到哪些提升应用加载性能的方法？</p>
+
+    </div>
+
+    
+    <section class="post-copyright">
+      
+      <p class="copyright-item">
+        <span>Author:</span>
+        <span>httishere</span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>Permalink:</span>
+        <span><a href="https://httishere.github.io/2023/08/09/notion/e3767b97b5ac41c/">https://httishere.github.io/2023/08/09/notion/e3767b97b5ac41c/</a></span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>License:</span>
+        <span>Copyright (c) 2021 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>Slogan:</span>
+        <span>Good Good Study, Day Day Up.</span>
+      </p>
+      
+    </section>
+    
+    <section class="post-tags">
+      <div>
+        <span>Tag(s):</span>
+        <span class="tag">
+           
+          <a href="/tags/React/"># React</a>
+           
+        </span>
+      </div>
+      <div>
+        <a href="javascript:window.history.back();">back</a>
+        <span>· </span>
+        <a href="/">home</a>
+      </div>
+    </section>
+    <section class="post-nav">
+      
+      <a class="prev" rel="prev" href="/2023/08/09/notion/d87352fa777e4ee/"
+        >React Hooks 精进 16 - 打包部署</a
+      >
+       
+      <a class="next" rel="next" href="/2023/08/09/notion/f5c52bc4bd8d4a1/"
+        >在js内用文本内容定位DOM元素</a
+      >
+      
+    </section>
+     <!--
+ * @Author: your name
+ * @Date: 2021-07-08 11:08:58
+ * @LastEditTime: 2021-08-20 11:11:35
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_partial/gitalk.ejs
+-->
+<link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css">
+<div id="gitalk-container" style="margin-top: 50px;"></div>
+<!-- <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> -->
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script type="text/javascript">
+console.log(md5(location.pathname))
+    new Gitalk({
+        clientID: 'c61a26564784a9cb16f3',
+        clientSecret: '25a391b4405c726bfa417a4d09a8a9d46fd41e12',
+        id: window.location.pathname,
+        repo: 'httIsHere.github.io',
+        owner: 'httIsHere',
+        admin: 'httIsHere',
+        id: md5(location.pathname),
+        distractionFreeMode: false
+    }).render('gitalk-container')
+</script>  
+    <section id="comments" class="comments">
+      <style>
+        .comments {
+          margin: 30px;
+          padding: 10px;
+          background: #fff;
+        }
+        @media screen and (max-width: 800px) {
+          .comments {
+            margin: auto;
+            padding: 10px;
+            background: #fff;
+          }
+        }
+      </style>
+      <!--
+ * @Author: your name
+ * @Date: 2022-01-19 10:26:36
+ * @LastEditTime: 2022-01-19 11:55:49
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_plugins/valine.ejs
+-->
+<!-- <div class="valine_comment"></div> -->
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: '1BHDvzMyiyWmu3v3vBaR2dek-gzGzoHsz',
+      app_key: 'MaYtrzsGSwqpImuLueThWKFE',
+      placeholder: '这里留言。。',
+      notify: 'true',
+      verify: 'true',
+      visitor: 'true',
+    });
+</script>
+    </section>
+    
+  </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© httishere | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

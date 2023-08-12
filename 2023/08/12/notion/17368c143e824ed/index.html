@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="referrer" content="no-referrer" />
+
+    <meta name="author" content="httishere">
+
+
+
+
+
+<title>React Hooks 精进 17 - 单元测试 &amp; 常用的第三方工具库 | HTTISHERE</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+    <div class="wrapper">
+        <!--
+ * @Author: your name
+ * @Date: 2020-08-17 15:35:07
+ * @LastEditTime: 2022-01-15 12:59:30
+ * @LastEditors: your name
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_partial/header.ejs
+-->
+<header>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-header header-logo">
+        <a href="/">𝑯𝑻𝑻𝑰𝑺𝑯𝑬𝑹&#39;𝑩𝒍𝒐𝒈</a>
+        <!-- ℍ𝕋𝕋𝕀𝕊ℍ𝔼ℝ𝔼'𝕤 𝔹𝕝𝕠𝕘 -->
+      </div>
+      <div class="menu navbar-right">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/reading">Schedules</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+        <input id="switch_default" type="checkbox" class="switch_default" />
+        <label for="switch_default" class="toggleBtn"></label>
+      </div>
+    </div>
+  </nav>
+
+  
+  <nav class="navbar-mobile" id="nav-mobile">
+    <div class="container">
+      <div class="navbar-header">
+        <div>
+          <a href="/">𝑯𝑻𝑻𝑰𝑺𝑯𝑬𝑹&#39;𝑩𝒍𝒐𝒈</a
+          ><a id="mobile-toggle-theme">·&nbsp;Light</a>
+        </div>
+        <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+      </div>
+      <div class="menu" id="mobile-menu">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/reading">Schedules</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+      </div>
+    </div>
+  </nav>
+</header>
+<script>
+  var mobileBtn = function f() {
+    var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+    var mobileMenu = document.getElementById("mobile-menu");
+    if (toggleMenu.classList.contains("active")) {
+      toggleMenu.classList.remove("active");
+      mobileMenu.classList.remove("active");
+    } else {
+      toggleMenu.classList.add("active");
+      mobileMenu.classList.add("active");
+    }
+  };
+  function addFav() {
+    var title = document.title;
+    var URL = document.URL;
+    try {
+      window.external.addFavorite(URL, title);
+    } catch (e) {
+      try {
+        window.sidebar.addPanel(title, URL, "");
+      } catch (e) {
+        alert("由于浏览器的安全设置\n可以使用Ctrl+D或者Command+D进行手动收藏");
+      }
+    }
+  }
+</script>
+
+        <div class="main">
+            <div class="container">
+    <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>  
+  <article class="post-wrap">
+    <header class="post-header">
+      <h1 class="post-title">React Hooks 精进 17 - 单元测试 &amp; 常用的第三方工具库</h1>
+      
+      <div
+        class="post-meta"
+        id="/2023/08/12/notion/17368c143e824ed/"
+        class="leancloud-visitors view"
+      >
+         Author:
+        <a itemprop="author" rel="author" href="/">httishere</a>
+         
+        <span class="post-time">
+          Date:
+          <a href="#"
+            >2023/08/12&nbsp;&nbsp;13:02:00</a
+          >
+        </span>
+         
+        <span class="post-category">
+          Category: 
+          <a href="/categories/React/">React</a>
+          
+        </span>
+         <<
+        <div class="extra">
+          >>
+          <span
+            id="/2023/08/12/notion/17368c143e824ed/"
+            class="leancloud-visitors view"
+            data-flag-title="React Hooks 精进 17 - 单元测试 &amp; 常用的第三方工具库"
+          >
+            <span class="post-meta-item-text">Pageviews:</span>
+            <a href="javascript:;" class="leancloud-visitors-count">0</a>
+          </span>
+          
+          <span class="post-count">
+            Words:
+            <a href="">1.1k</a>
+          </span>
+           
+          <span class="post-count">
+            Time:
+            <a href="">4 min</a>
+          </span>
+          
+        </div>
+
+        
+      </div>
+      
+    </header>
+
+    <div class="post-content">
+      <h1 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h1><h2 id="使用-Jest-和-React-Testing-Library-进行单元测试"><a href="#使用-Jest-和-React-Testing-Library-进行单元测试" class="headerlink" title="使用 Jest 和 React Testing Library 进行单元测试"></a>使用 Jest 和 React Testing Library 进行单元测试</h2><h3 id="Jest"><a href="#Jest" class="headerlink" title="Jest"></a>Jest</h3><p>Facebook 推出的 js 但愿测试框架，零配置就能提供并发测试，测试覆盖率，Mock 工具，断言 API 等。</p>
+<ul>
+<li>Jest 从哪里寻找测试文件</li>
+<li>如何创建一个测试用例，并用断言验证测试结果</li>
+<li>如何运行测试</li>
+</ul>
+<p>比如在 src 下有一个 add.js 的文件：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> (a, b) =&gt; a + b;</span><br></pre></td></tr></table></figure>
+<p>再在 src 目录下创建一个<code>add.test.js</code>文件，Jest 会寻找 src 目录下以<code>.test.js(ts, jsx, tsx)</code>结尾的文件，以及 tests 文件夹内的文件，并将其作为测试文件。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// add.test.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> add <span class="keyword">from</span> <span class="string">&quot;./add&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用test函数创建一个测试用例</span></span><br><span class="line"><span class="title function_">test</span>(<span class="string">&quot;renders learn react link&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> s = <span class="title function_">add</span>(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">  <span class="comment">// Jest提供的expect函数断言结果等于3</span></span><br><span class="line">  <span class="title function_">expect</span>(s).<span class="title function_">toBe</span>(<span class="number">3</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><strong>创建完测试用例之后可以在项目根目录通过命令**</strong><code>npx jest —coverage</code>*<strong>*来运行测试。</strong></p>
+<p>但是这仅仅是纯 js 的逻辑测试，对于 React 应用需要浏览器环境的组件需要引入 Test Library 了。</p>
+<h3 id="React-Testing-Library"><a href="#React-Testing-Library" class="headerlink" title="React Testing Library"></a>React Testing Library</h3><ol>
+<li><strong>需要有一个浏览器运行环境：</strong>主要通过 jsdom 这样一个 npm 模块去实现，可以在 nodejs 环境中提供一个虚拟的浏览器环境。</li>
+<li><strong>需要能够解析 JSX</strong></li>
+<li><strong>需要能够方便地渲染一个 React 组件，并对结果进行验证</strong></li>
+</ol>
+<p>项目中自带的 App.test.js：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;render, screen &#125; <span class="keyword">from</span> ‘<span class="meta">@testing</span>-library/react’</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">App</span> <span class="keyword">from</span> <span class="string">&#x27;./App&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">test</span>(<span class="string">&#x27;renders learn react link&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">	<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span></span>)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">const</span> linkele = screen.<span class="title function_">getByText</span>(<span class="regexp">/learn react/i</span>)</span><br><span class="line">	<span class="title function_">expect</span>(linkele).<span class="title function_">toBeTheDocument</span>();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>三个 React 相关的测试 API：</p>
+<ul>
+<li>render：用于在内存中 render 一个 React 组件</li>
+<li>screen：提供工具方法用于获取视频上的元素</li>
+<li>expect 扩展：以方便对 UI 元素进行断言判断</li>
+</ul>
+<h2 id="对自定义-Hooks-进行单元测试"><a href="#对自定义-Hooks-进行单元测试" class="headerlink" title="对自定义 Hooks 进行单元测试"></a>对自定义 Hooks 进行单元测试</h2><p><strong>Hooks 只能在函数组件或者自定义 Hooks 中调用</strong>，所以要对 Hooks 进行单元测试，还是需要借助函数组件。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 对计数器useCounter进行测试</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123;render, screen, fireEvent &#125; <span class="keyword">from</span> ‘<span class="meta">@testing</span>-library/react’</span><br><span class="line"></span><br><span class="line"><span class="title function_">test</span>(<span class="string">&#x27;useCounter&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">const</span> <span class="title function_">testComponent</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">		<span class="keyword">const</span> &#123; count, increment, decrement &#125; = <span class="title function_">useCounter</span>();</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> (</span><br><span class="line">			<span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">				<span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;btn-dec&quot;</span> <span class="attr">onClick</span>=<span class="string">&#123;decrement&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">				<span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;result&quot;</span>&gt;</span>&#123;count&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">				<span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;btn-inc&quot;</span> <span class="attr">onClick</span>=<span class="string">&#123;increment&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">			<span class="tag">&lt;/&gt;</span></span></span><br><span class="line">		)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">testComponent</span> /&gt;</span></span>)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">const</span> btnDec = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#btn-dec&#x27;</span>)</span><br><span class="line">	<span class="keyword">const</span> result = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#result&#x27;</span>)</span><br><span class="line"></span><br><span class="line">	fireEvent.<span class="title function_">click</span>(btnDec)</span><br><span class="line">	<span class="title function_">expect</span>(result).<span class="title function_">toHaveTextContent</span>(<span class="string">&#x27;-1&#x27;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>如何更直接操锁 Hooks 的 API 呢，可以将 Hook 的返回值暴露道函数组件外：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 对计数器useCounter进行测试</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123;render, screen, fireEvent &#125; <span class="keyword">from</span> ‘<span class="meta">@testing</span>-library/react’</span><br><span class="line"></span><br><span class="line"><span class="title function_">test</span>(<span class="string">&#x27;useCounter&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">const</span> hookResult = &#123;&#125;</span><br><span class="line">	<span class="keyword">const</span> <span class="title function_">testComponent</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">		<span class="title class_">Objext</span>.<span class="title function_">assign</span>(hookResult, <span class="title function_">useCounter</span>());</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">testComponent</span> /&gt;</span></span>)</span><br><span class="line"></span><br><span class="line">	<span class="title function_">act</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">		hookResult.<span class="title function_">increment</span>()</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="title function_">expect</span>(hookResult.<span class="property">count</span>).<span class="title function_">toBe</span>(<span class="number">1</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>Testinfg Library 也提供了 Hooks 测试包：<code>@testing-library/react-hooks</code></p>
+<p>该测试包提供了 renderHook 和 act 等方法，能够更加语义化地去创建自定义 Hooks 的单元测试。</p>
+<h1 id="常用的第三方工具库"><a href="#常用的第三方工具库" class="headerlink" title="常用的第三方工具库"></a>常用的第三方工具库</h1><h2 id="lodash"><a href="#lodash" class="headerlink" title="lodash"></a>lodash</h2><p>它提供了非常多的工具函数，可以大大提高开发效率。</p>
+<h3 id="使用-keyBy-将数组快速转换成对象"><a href="#使用-keyBy-将数组快速转换成对象" class="headerlink" title="使用 keyBy 将数组快速转换成对象"></a>使用 keyBy 将数组快速转换成对象</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> data = [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">id</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;Ken&quot;</span>,</span><br><span class="line">    <span class="attr">city</span>: <span class="string">&quot;Hangzhou&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">id</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;Kenny&quot;</span>,</span><br><span class="line">    <span class="attr">city</span>: <span class="string">&quot;Guangzhou&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将其变成一个以name为key的map结构</span></span><br><span class="line"><span class="keyword">import</span> _ <span class="keyword">from</span> <span class="string">&#x27;lodash&#x27;</span></span><br><span class="line"><span class="keyword">const</span> byName = _.<span class="title function_">keyBy</span>(data. <span class="string">&#x27;name&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="使用-debounce-函数，实现输入防抖"><a href="#使用-debounce-函数，实现输入防抖" class="headerlink" title="使用 debounce 函数，实现输入防抖"></a>使用 debounce 函数，实现输入防抖</h3><p>可以实现只有在用户停止输入后一个很短的时间内才进行 change 操作，以保证更好的用户体验。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input onChange=&#123;_.<span class="title function_">dobounce</span>(<span class="function">(<span class="params">e</span>) =&gt;</span> <span class="title function_">setSearch</span>(e.<span class="property">target</span>.<span class="property">value</span>), <span class="number">300</span>)&#125; /&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="使用-template-实现简单的模版引擎"><a href="#使用-template-实现简单的模版引擎" class="headerlink" title="使用 template 实现简单的模版引擎"></a>使用 template 实现简单的模版引擎</h3><p>可以方便地实现一些复杂的字符串生成。</p>
+<p>可以参考相关的<a target="_blank" rel="noopener" href="https://www.lodashjs.com/">官方文档</a>。</p>
+<h2 id="UI-库：Ant-Design-和-Material-UI"><a href="#UI-库：Ant-Design-和-Material-UI" class="headerlink" title="UI 库：Ant Design 和 Material UI"></a>UI 库：Ant Design 和 Material UI</h2><ul>
+<li>Material UI：采用了 Google 的 Material Design 的设计语言，但是它的<strong>组件库缺少一些高级的功能</strong>。</li>
+<li>Ant Design：主打企业级应用的场景，提供了各种高级组件，可以满足企业级的复杂交互应用场景。</li>
+</ul>
+<h2 id="react-use"><a href="#react-use" class="headerlink" title="react-use"></a>react-use</h2><h3 id="useSearchParams"><a href="#useSearchParams" class="headerlink" title="useSearchParams"></a>useSearchParams</h3><p>获取 URL 中的查询字符串。</p>
+<h3 id="useEvent"><a href="#useEvent" class="headerlink" title="useEvent"></a>useEvent</h3><p>如果用 DOM 的原生 API 去绑定事件，通常需要在组件创建时去监听，再在销毁时取消监听。useEvent 封装了这个逻辑：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">useEvent</span>(<span class="string">&quot;hashchange&quot;</span>, onHashChange);</span><br></pre></td></tr></table></figure>
+<h3 id="useCookie"><a href="#useCookie" class="headerlink" title="useCookie"></a>useCookie</h3><p>它可以方便地去读取，更新或者删除某个 Cookie。</p>
+<h3 id="usePrevious"><a href="#usePrevious" class="headerlink" title="usePrevious"></a>usePrevious</h3><p>获取某个 state 的上一个值。</p>
+
+    </div>
+
+    
+    <section class="post-copyright">
+      
+      <p class="copyright-item">
+        <span>Author:</span>
+        <span>httishere</span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>Permalink:</span>
+        <span><a href="https://httishere.github.io/2023/08/12/notion/17368c143e824ed/">https://httishere.github.io/2023/08/12/notion/17368c143e824ed/</a></span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>License:</span>
+        <span>Copyright (c) 2021 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>Slogan:</span>
+        <span>Good Good Study, Day Day Up.</span>
+      </p>
+      
+    </section>
+    
+    <section class="post-tags">
+      <div>
+        <span>Tag(s):</span>
+        <span class="tag">
+           
+          <a href="/tags/React/"># React</a>
+           
+        </span>
+      </div>
+      <div>
+        <a href="javascript:window.history.back();">back</a>
+        <span>· </span>
+        <a href="/">home</a>
+      </div>
+    </section>
+    <section class="post-nav">
+       
+      <a class="next" rel="next" href="/2023/08/09/notion/d87352fa777e4ee/"
+        >React Hooks 精进 16 - 打包部署</a
+      >
+      
+    </section>
+     <!--
+ * @Author: your name
+ * @Date: 2021-07-08 11:08:58
+ * @LastEditTime: 2021-08-20 11:11:35
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_partial/gitalk.ejs
+-->
+<link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css">
+<div id="gitalk-container" style="margin-top: 50px;"></div>
+<!-- <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> -->
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script type="text/javascript">
+console.log(md5(location.pathname))
+    new Gitalk({
+        clientID: 'c61a26564784a9cb16f3',
+        clientSecret: '25a391b4405c726bfa417a4d09a8a9d46fd41e12',
+        id: window.location.pathname,
+        repo: 'httIsHere.github.io',
+        owner: 'httIsHere',
+        admin: 'httIsHere',
+        id: md5(location.pathname),
+        distractionFreeMode: false
+    }).render('gitalk-container')
+</script>  
+    <section id="comments" class="comments">
+      <style>
+        .comments {
+          margin: 30px;
+          padding: 10px;
+          background: #fff;
+        }
+        @media screen and (max-width: 800px) {
+          .comments {
+            margin: auto;
+            padding: 10px;
+            background: #fff;
+          }
+        }
+      </style>
+      <!--
+ * @Author: your name
+ * @Date: 2022-01-19 10:26:36
+ * @LastEditTime: 2022-01-19 11:55:49
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_plugins/valine.ejs
+-->
+<!-- <div class="valine_comment"></div> -->
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: '1BHDvzMyiyWmu3v3vBaR2dek-gzGzoHsz',
+      app_key: 'MaYtrzsGSwqpImuLueThWKFE',
+      placeholder: '这里留言。。',
+      notify: 'true',
+      verify: 'true',
+      visitor: 'true',
+    });
+</script>
+    </section>
+    
+  </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© httishere | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
