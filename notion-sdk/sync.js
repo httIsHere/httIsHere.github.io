@@ -2,7 +2,7 @@
  * @Author: Tina Huang
  * @Date: 2022-09-09 20:01:39
  * @LastEditors: Tina Huang
- * @LastEditTime: 2022-09-10 10:41:58
+ * @LastEditTime: 2023-02-16 16:06:45
  * @Description: 
  */
 'use strict';
@@ -21,6 +21,7 @@ class SyncCommand extends Command {
   async run() {
     // get articles from yuque or cache
     const downloader = new Downloader(config);
+    console.log("downloader ready...")
     await downloader.autoUpdate();
     out.info('sync notion done!');
   }

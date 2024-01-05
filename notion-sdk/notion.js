@@ -2,73 +2,88 @@
  * @Author: Tina Huang
  * @Date: 2022-09-09 19:27:29
  * @LastEditors: HTT httishere0728@gmail.com
- * @LastEditTime: 2023-07-15 21:06:39
+ * @LastEditTime: 2024-01-05 23:50:22
  * @Description:
  */
 
 const config = require("./config"); // 初始化 config
-const { Client, LogLevel } = require("@notionhq/client");
+const { Client, LogLevel, APIErrorCode, ClientErrorCode } = require("@notionhq/client");
 const { NotionToMarkdown } = require("notion-to-md");
 
-const notion = new Client({
-  auth: config.token,
-  logLevel: LogLevel.DEBUG,
-  // baseUrl: config.baseUrl
-});
-const n2m = new NotionToMarkdown({
-  notionClient: notion,
-});
+const notion = new Client({ auth: config.token, logLevel: LogLevel.DEBUG });
+const n2m = new NotionToMarkdown({ notionClient: notion });
 const database_id = config.database;
 
 class NotionClient {
   async getArticles() {
-    const { results } = await notion.databases.query({
-      database_id,
-      filter: {
-        and: [
-          {
-            property: "publish",
-            checkbox: {
-              equals: true,
+    try {
+      const { results } = await notion.databases.query({
+        database_id,
+        filter: {
+          and: [
+            {
+              property: "publish",
+              checkbox: {
+                equals: true,
+              },
             },
-          },
-        ],
-      },
-    });
-    console.log(results);
-    const res = results.map((page) => {
-      // console.log(page.properties.slug)
-      return this.formatPage(page);
-    });
-    return res;
+          ],
+        },
+      });
+      const res = results.map((page) => {
+        return this.formatPage(page);
+      });
+      return res;
+    } catch (error) {
+      if(error.code === ClientErrorCode.RequestTimeout) {
+        console.log('timeout')
+      }
+      if (error.code === APIErrorCode.ObjectNotFound) {
+        //
+        // For example: handle by asking the user to select a different database
+        //
+      } else {
+        // Other error handling code
+        console.error(error)
+      }
+      // return [];
+    }
   }
   async getArticle(id) {
     const pageId = id;
-    const page = await notion.pages.retrieve({ page_id: pageId });
-    let cover = page.cover
-      ? page.cover.external
-        ? page.cover.external.url
-        : page.cover.file
-        ? page.cover.file.url
-        : null
-      : null;
+    try {
+      const page = await notion.pages.retrieve({ page_id: pageId });
+      let cover = page.cover
+        ? page.cover.external
+          ? page.cover.external.url
+          : page.cover.file
+          ? page.cover.file.url
+          : null
+        : null;
 
-    let tags = page.properties.tags.multi_select.map((tag) => {
-      return tag.name;
-    });
-    let categories = page.properties.categories.multi_select.map((tag) => {
-      return tag.name;
-    });
+      let tags = page.properties.tags.multi_select.map((tag) => {
+        return tag.name;
+      });
+      let categories = page.properties.categories.multi_select.map((tag) => {
+        return tag.name;
+      });
 
-    // tags: [Daily]<br />categories: [Daily, Sass]\n\n---\n\n\n
+      // tags: [Daily]<br />categories: [Daily, Sass]\n\n---\n\n\n
 
-    let prefix = `tags: [${tags.join(",")}]<br />categories: [${categories.join(
-      ","
-    )}]<br />cover: ${cover}\n\n---\n\n`;
-
-    return this.getBlocks(pageId).then((block) => {
-      return this.formatPage(page, `${prefix}${block}`);
-    });
+      let prefix = `tags: [${tags.join(
+        ","
+      )}]<br />categories: [${categories.join(
+        ","
+      )}]<br />cover: ${cover}\n\n---\n\n`;
+      // return this.formatPage(page, `${prefix}${block}`);
+      return this.getBlocks(pageId).then((block) => {
+        console.log(block)
+        return this.formatPage(page, `${prefix}${block}`);
+      });
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
   }
   async getBlocks(id) {
     const blockId = id;
@@ -83,6 +98,7 @@ class NotionClient {
   }
 
   formatPage(page, body = null) {
+    // console.log(page);
     let icon = page.icon
       ? page.icon.type === "emoji"
         ? page.icon.emoji
@@ -107,7 +123,7 @@ class NotionClient {
       icon: page.icon,
       cover,
       url: page.url,
-      title: title ? title.plain_text : null,
+      title: title ? `${icon} ${title.plain_text}` : null,
       format: "lake",
       description: description ? description.plain_text : null,
       updated_at: page.properties.updated_at.last_edited_time,

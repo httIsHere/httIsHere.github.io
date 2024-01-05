@@ -2,7 +2,7 @@
  * @Author: Tina Huang
  * @Date: 2022-09-09 20:04:15
  * @LastEditors: HTT httishere0728@gmail.com
- * @LastEditTime: 2023-07-04 16:34:22
+ * @LastEditTime: 2024-01-05 23:49:56
  * @Description:
  */
 "use strict";
@@ -14,7 +14,7 @@ const lodash = require("lodash");
 const Queue = require("queue");
 const filenamify = require("filenamify");
 const NotionClient = require("./notion");
-// const { isPost } = require('../util');
+const { isPost } = require('./util');
 const out = require("./out");
 
 const cwd = process.cwd();
@@ -78,6 +78,7 @@ class Downloader {
     return function () {
       out.info(`download article body: ${item.title}`);
       return client.getArticle(item.id).then((article) => {
+        console.log("format article", article)
         _cachedArticles[index] = article;
       });
     };
@@ -109,7 +110,7 @@ class Downloader {
     let cacheAvaliable;
 
     const findIndexFn = function (item) {
-      return item.slug === article.slug;
+      return item && (item.slug === article.slug);
     };
 
     for (let i = 0; i < realArticles.length; i++) {
@@ -140,15 +141,16 @@ class Downloader {
   }
 
   /**
-   * 读取语雀的文章缓存 json 文件
+   * 读取Notion的文章缓存 json 文件
    */
-  readYuqueCache() {
+  readNotionCache() {
     const { cachePath } = this;
     out.info(`reading from notion.json: ${cachePath}`);
     try {
       const articles = require(cachePath);
       if (Array.isArray(articles)) {
         this._cachedArticles = articles;
+        console.log("reading done!")
         return;
       }
     } catch (error) {
@@ -175,10 +177,10 @@ class Downloader {
    * @param {Object} post 文章详情
    */
   generatePost(post) {
-    // if (!isPost(post)) {
-    //   out.error(`invalid post: ${post}`);
-    //   return;
-    // }
+    if (!isPost(post)) {
+      out.error(`invalid post: ${post}`);
+      return;
+    }
 
     if (new Date(post.published_at).getTime() < this.lastGenerate) {
       out.info(`post not updated skip: ${post.title}`);
@@ -215,7 +217,7 @@ class Downloader {
 
   // 文章下载 => 增量更新文章到缓存 json 文件 => 全量生成 markdown 文章
   async autoUpdate() {
-    this.readYuqueCache();
+    this.readNotionCache();
     await this.fetchArticles();
     this.writeYuqueCache();
     this.generatePosts();

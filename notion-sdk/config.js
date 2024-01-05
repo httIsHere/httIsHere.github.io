@@ -2,7 +2,7 @@
  * @Author: Tina Huang
  * @Date: 2022-09-10 10:40:32
  * @LastEditors: HTT httishere0728@gmail.com
- * @LastEditTime: 2023-07-15 20:39:48
+ * @LastEditTime: 2024-01-05 23:49:41
  * @Description:
  */
 
@@ -32,7 +32,7 @@ function loadConfig() {
   }
   const { notionConfig } = pkg;
   if (!lodash.isObject(notionConfig)) {
-    out.error("package.yueConfig should be an object.");
+    out.error("package.NotionConfig should be an object.");
     return null;
   }
   const config = Object.assign({}, defaultConfig, notionConfig);
