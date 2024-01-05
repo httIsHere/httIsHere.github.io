@@ -2,15 +2,15 @@
  * @Author: Tina Huang
  * @Date: 2022-09-09 19:27:29
  * @LastEditors: Tina Huang
- * @LastEditTime: 2023-02-17 15:32:37
+ * @LastEditTime: 2023-03-01 21:29:53
  * @Description:
  */
 
 const config = require("./config"); // 初始化 config
-const { Client, LogLevel } = require("@notionhq/client");
+const { Client, LogLevel, APIErrorCode, ClientErrorCode } = require("@notionhq/client");
 const { NotionToMarkdown } = require("notion-to-md");
 
-const notion = new Client({ auth: config.token, logLevel: LogLevel });
+const notion = new Client({ auth: config.token, logLevel: LogLevel.DEBUG });
 const n2m = new NotionToMarkdown({ notionClient: notion });
 const database_id = config.database;
 
@@ -34,9 +34,19 @@ class NotionClient {
         return this.formatPage(page);
       });
       return res;
-    } catch (errors) {
-      console.log(errors);
-      return [];
+    } catch (error) {
+      if(error.code === ClientErrorCode.RequestTimeout) {
+        console.log('timeout')
+      }
+      if (error.code === APIErrorCode.ObjectNotFound) {
+        //
+        // For example: handle by asking the user to select a different database
+        //
+      } else {
+        // Other error handling code
+        console.error(error)
+      }
+      // return [];
     }
   }
   async getArticle(id) {

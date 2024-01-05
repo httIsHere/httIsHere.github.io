@@ -1,77 +1,39 @@
 [
-  {
-    "id": "052b00d2-4389-4501-9933-6cb3872e3597",
-    "slug": "052b00d243",
-    "icon": {
-      "type": "emoji",
-      "emoji": "⚫"
-    },
-    "cover": null,
-    "url": "https://www.notion.so/React-Hooks-2-React-Hooks-052b00d24389450199336cb3872e3597",
-    "title": "React Hooks 精进 2 - React基本概念 & Hooks的理解",
-    "format": "lake",
-    "description": null,
-    "updated_at": "2023-01-30T10:35:00.000Z",
-    "created_at": "2023-01-30T10:35:00.000Z",
-    "published_at": "2023-01-30T10:35:00.000Z",
-    "last_editor": "httishere",
-    "body": "tags: [React]<br />categories: [React]<br />cover: null\n\n---\n\n\n## 在React之前\n\n\n需要调用DOM的API来修改DOM树的结构从而改变UI的展示方式。\n\n\n## React之后\n\n\n需要要在业务状态和UI状态之间建立一个绑定的关系。\n\n\n---\n\n\n## 基本概念\n\n\n### 用组件的方式描述UI\n\n\n在React内所有的UI都是通过**组件**去描述和组织的，React组件是以**树状结构**组织到一起的，通常会有一个根组件：\n\n- 内置组件：映射到HTML节点的组件\n- 自定义组件：自己创建的组件，使用时必须以大写字母开头\n\n### 使用state和props管理状态\n\n- state：保存状态的机制\n- props：父子组件之间传递状态的方式\n\n在函数组件内可以使用`useState`这个Hook来保存状态，内置组件和自定义组件都可以在使用时把接收的属性props作为参数，当这个参数变化时组件也会自动重新渲染。\n\n\n```javascript\nimport React from \"react\";\n\nfunction CountLabel({ count }) {\n\tconst color = count > 10 ? \"red\" : \"blue\";\n\treturn <span style={{ color }}>{count}</span>\n}\n\nexport default function Counter() {\n\tconst [count, setCount] = React.userState(0);\n\t\n\treturn (\n\t\t<div>\n\t\t\t<CountLabel count={count} onClick={() => setCount(count + 1)} />\n\t\t</div>\n\t) \n}\n```\n\n\n### JSX语法的本质\n\n\nJSX并不是新的模版语言而是一个**语法糖**，不用JSX语法的话也可以使用React.createElement来实现。\n\n1. JSX的表达能力等价于JavaScript；\n2. 无需学习；\n\n## 创建应用\n\n\n```shell\nnpm run create-react-app my-app\ncd my-app\nnpm start\n```\n\n\n### 在组件内执行异步请求\n\n\n需要有数据状态，loading状态以及错误处理。\n\n\n> **在React组件中，任何一个state发生变化，整个函数组件都会被完全执行一遍。**\n\n- 为了避免在组件内重复定义很多函数，可以使用useCallback这个Hook来缓存回调函数；\n- 异步请求逻辑的重用可以利用Redux这个全局状态管理框架；\n\n## 一些思考\n\n\n### React最打动人的特性是什么？或者说它的最大优点。\n\n- 灵活的jsx\n- 生态强大，核心简单，写法灵活\n\n## Hooks（>16.8)\n\n\n> 原来的基于class的组件完全可以继续使用。\n\n\n### React组件的本质\n\n\n就是从Model到View的映射，这里的Model对应的是state和props。\n\n\n**数据绑定**：当Model发生改变时，函数会重新执行，并且生成新的DOM树，然后React再将新的DOM树以最优的方式更新到浏览器。\n\n\n为什么会出现Hooks，原来的Class组件有哪些问题？\n\n- React组件之间不会互相继承，所以没有利用到Class的继承特性；\n- UI是由状态驱动的，很少会在外部调用一个类实例，组件的所有方法都是内部调用；\n\n所以这两个Class最重要的特性都未使用到，所以用函数去描述**`State ⇒ View`**这样的映射才是最合适的，但是函数组件有没有State和生命周期，于是就有了Hooks。\n\n\n### Hooks的诞生\n\n\n函数和对象不同，实例对象不能够在多次执行之间保存状态，所以我们需要一个能够把外部的数据绑定到函数的执行机制。\n\n\n这个机制就是**Hooks，Hooks就是把某个目标结果钩到某个可能会变化的数据源或者事件源上，那么当被钩到的数据或者事件发生变化时，产生这个目标结果的代码会重新执行，产生更新后的结果。**\n\n\n对于函数组件，这个结果就是最终的DOM树；对于`useCallback`，`useMemo`这样的雨缓存相关的组件则是在依赖项发生变化时去更新缓存。Hooks的结构：\n\n\n![](https://i.hd-r.cn/a6e410883f0975e888ea749be99e35cf.jpg)\n\n\n‼️ Hooks中被钩的对象可以是某个独立的数据源也可以是另一个Hook执行的结果，这样就可以达成**逻辑复用**的效果。\n\n\n### Hooks带来的最大的好处：逻辑复用\n\n\n在之前的React使用中必须借助高阶组件等设计模式来实现逻辑复用，但告诫组件会产生荣誉的组件节点，所有Hooks也大大的**简化了逻辑复用**。\n\n\n比如说实现窗口大小的监听，窗口大小是一个外部数据状态，我们可以通过Hooks的方式对其进行封装，将其变成一个可绑定的数据源，这样代码会更加简洁直观。\n\n\n### Hooks的另一个好处：有助于关注分离\n\n\n能够针对同一个业务逻辑的代码尽可能聚合在一起，在过去的React内需要把同一个业务逻辑的代码分散在组件的不同生命周期内。\n\n\n## 总结\n\n- React的开发思想：从State⇒View的函数式映射；\n- Hooks解决了Class组件存在的代码冗余，难以逻辑复用的问题；\n"
-  },
-  {
-    "id": "6ed49a2a-dc86-4d84-94f3-808ed5e547c2",
-    "slug": "6ed49a2adc",
-    "icon": {
-      "type": "emoji",
-      "emoji": "⚫"
-    },
-    "cover": null,
-    "url": "https://www.notion.so/React-Hooks-1-Hooks-6ed49a2adc864d8494f3808ed5e547c2",
-    "title": "React Hooks 精进 1 - 用Hooks的角度去转变开发思路",
-    "format": "lake",
-    "description": null,
-    "updated_at": "2023-01-30T10:35:00.000Z",
-    "created_at": "2023-01-30T10:35:00.000Z",
-    "published_at": "2023-01-30T10:35:00.000Z",
-    "last_editor": "httishere",
-    "body": "tags: [React]<br />categories: [React]<br />cover: null\n\n---\n\n\n## React 两个颠覆性创新点\n\n- 虚拟DOM机制\n- JSX语法\n\n## Hooks出现之前的业务逻辑复用方式\n\n\n在组件内的不同生命周期中做时间监听的绑定和解绑。\n\n\n## 引入Hooks之后\n\n\n只需要通过Hooks的方式进行封装，将其变成一个可绑定的数据源，这样函数组件就具备了状态管理，生命周期管理等能力。\n\n\n## Hooks的学习路径\n\n1. 全局认知：Hooks的功能边界，什么功能要用Hooks去做\n2. 核心概念和原理：应对实际复杂业务问题的关键能力\n3. 实战：把原理和实际业务场景结合起来，掌握Hooks的思考方式\n\n![](https://i.hd-r.cn/fa23b9c56bc62fe4a0bbd40777b6a67a.jpg)\n\n\n## 学习内容：\n\n\n### 基础篇：抓住问题本质，提高解决复杂问题的能力\n\n\n### 实战篇：业务场景驱动，掌握解决实际问题的思考能力\n\n\n### 扩展篇：了解工具。生态和未来，开拓技术视野\n\n"
-  },
-  {
-    "id": "ce50450a-16b2-4f24-9dd2-316d85a0d909",
-    "slug": "ce50450a16",
-    "icon": {
-      "type": "emoji",
-      "emoji": "⚫"
-    },
-    "cover": null,
-    "url": "https://www.notion.so/2022-ce50450a16b24f249dd2316d85a0d909",
-    "title": "心之所向，行之所往 ｜ 2022总结",
-    "format": "lake",
-    "description": "跌宕起伏，兵荒马乱的一年。",
-    "updated_at": "2023-01-30T10:35:00.000Z",
-    "created_at": "2023-01-30T10:35:00.000Z",
-    "published_at": "2023-01-30T10:35:00.000Z",
-    "last_editor": "httishere",
-    "body": "tags: [复盘]<br />categories: [随笔]<br />cover: null\n\n---\n\n\n说实话，这一年大概是跌宕起伏，兵荒马乱的一年吧。\n\n\n### 工作 & 学习\n\n\n> 🟡 **换了新工作……**  \n> 年初的时候公司的状况实在是有点不好，然后因为一直都跨不出舒适圈，教练非常热心地想要给我介绍工作，刚好她的有个学员的朋友有内推机会，于是想要我发简历，难受，甚至简历都需呀别人催好几遍。  \n>   \n> 发完简历之后，对方表示还不错，我真的是又忐忑又开心，因为我知道其实我不算优秀。之后我提前请假回家过年，正好在回家之后几天收到了面试邀约，不过线上的面试让我减轻了一些压力，第一个面试是关于一些基础问题的面试，还做了一个css效果的小demo，我感觉这个我还是表现得不错。再然后隔天又收到了第二场面试的邀约，这次是一个在线实时coding的测试，关于搜索匹配，其实面试过程不算顺利，也可能是因为在线coding让我特别紧张，之后在面试官的提示下也算是完成了他的预期效果（不过是在面试结束后做好的）。  \n>   \n> 所以我还是算顺利地收到了offer，真的是意外地顺利。\n\n\n> 🟡 **学习基本搁置……**\n\n\n### 爱好\n\n\n今年最没想到的大概是在自媒体上的发展吧，因为身体原因中间搁置了很久，在身体状况好些的时候重新开始了原来的分享，渐渐地也收到了一些合作，然后发布了一个小模版没想到也小爆了一下，希望之后能有更多更好的想法。\n\n\n希望今年的小红书粉丝能达到2w。\n\n\n### 2023的展望\n\n- 希望在专业技能上能有所长进，能多写技术博客\n- 身体健康，开开心心\n- 保持学习\n\n### 今年事件回顾\n\n\n> 🟡 一月  \n> - 达成了蹬腿131kg的成就。  \n>   \n> - 刚买的鼠标放在被子上的缘故，第二天出现在了洗衣机里，不过很坚强地并没有受伤。  \n>   \n> - 妹妹去上班穿了我前一天穿过的衣服，所以带走了我兜里的钥匙，于是被锁在了家里，并且我是在马上要出门去上课的时候才发现，和教练调节了迟一小时上课，并叫了跑腿，外面大雨滂沱，内心迷茫无措。  \n>   \n> - 回家乔迁啦。  \n>   \n> - 在线面试，拿到offer。\n\n\n> 🟡 二月  \n> - 在家看冬奥会。  \n>   \n> - 02/21入职新公司，结果一屁股坐在了地上。\n\n\n> 🟡 三月  \n> - 之前的公司忘记给我停缴，结果还想让我交公司交的部分，最后协调只交了自己交的部分。  \n>   \n> - 第一次做美甲。  \n>   \n> - 硬拉上了新高度70kg。  \n>   \n> - gitee图床被🈲️了  \n>   \n> - 一个月喝了好多奶茶咖啡\n\n\n> 🟡 四月  \n> - 非正式会谈官宣。  \n>   \n> - 开始常态化核酸检测。  \n>   \n> - 收到了教练送的体脂秤。  \n>   \n> - 花28元做了一次单采。  \n>   \n> - 开始居家办公（但是谁知道才办了一天就……  \n>   \n> - 和妹妹一起去了植物园，第一次贴了假睫毛。  \n>   \n> - 因为疫情取消了我们的五一之旅。\n\n\n> 🟡 五月  \n> - 之前在身上摸到了一个肿块，趁五一去检查，结果不太好，需要手术确认。  \n>   \n> - 做了局麻手术，术中病理做出来是恶性肿瘤。  \n>   \n> - 请假。  \n>   \n> - 去做了生殖保护咨询。\n\n\n> 🟡 六月  \n> - 回家修养，开始化疗之程。  \n>   \n> - 手术切口一直好不了。  \n>   \n> - 剃了光头。\n\n\n> 🟡 七月  \n> - 第一次吃了甲鱼。  \n>   \n> - 回归工作，居家办公中。  \n>   \n> - 生日呀。  \n>   \n> - 抢到了饿了么免单。\n\n\n> 🟡 八月  \n> - 收到了生病之后的第一笔工资。  \n>   \n> - 接到了小红书长期合作（也是第一笔合作。\n\n\n> 🟡 九月  \n> - 小红书5000粉。  \n>   \n> - 吃青蟹的时候被扎了，没想到手指就此发炎，然后因为白细胞太低去了医院急诊，结果发现发烧了，于是又去发热门诊验血打针。  \n>   \n> - 每天去医院输液。\n\n\n> 🟡 十月  \n> - 买了一个大菠萝蜜。  \n>   \n> - 每天去医院输液。  \n>   \n> - 公众号粉丝5000。\n\n\n> 🟡 十一月  \n> - 结膜炎，化疗住院。  \n>   \n> - 因为来医院的时候和阳性时空伴随了，在医院被隔离了5天。  \n>   \n> - 结束化疗。  \n>   \n> - 小红书粉丝10000。\n\n\n> 🟡 十二月  \n> - 开始放疗。  \n>   \n> - B站粉丝20000。  \n>   \n> - 更新了组件库2.0。\n\n\n---\n\n\n愿一直做一个善良的人。\n\n\n愿年年身体健康，万事如意。\n\n\n愿新的一年心之所向，行之所往。\n\n"
-  },
-  {
-    "id": "d5fc6184-d9cf-4478-bc67-54b8c42dc17c",
-    "slug": "d5fc6184d9",
-    "icon": {
-      "type": "emoji",
-      "emoji": "💤"
-    },
-    "cover": null,
-    "url": "https://www.notion.so/Notion-Notion-API-Notion-Hexo-d5fc6184d9cf4478bc6754b8c42dc17c",
-    "title": "「Notion」利用Notion API将Notion文章整合到本地Hexo项目（一）",
-    "format": "lake",
-    "description": null,
-    "updated_at": "2023-01-30T10:35:00.000Z",
-    "created_at": "2023-01-30T10:35:00.000Z",
-    "published_at": "2023-01-30T10:35:00.000Z",
-    "last_editor": "httishere",
-    "body": "tags: [Notion]<br />categories: [Notion-API]<br />cover: null\n\n---\n\n\n因为我的Hexo博客是拉取我在语雀上的文章还有本地写的文章，所以没有直接采用相关的Notion部署成Blog的已有API。\n\n\n还是使用将文章拉取到本地再手动部署的方式。\n\n\n> 参考：[yuque-hexo](https://github.com/x-cold/yuque-hexo)\n\n\n## **为Notion API设置访问令牌**\n\n\n需要设置一个Integration（集成），通过Notion API连接访问自己的数据库，然后生成一个访问令牌来访问Notion的API。\n\n\n在[Notion API文档](https://developers.notion.com/reference/intro)页面，点击右上角的**View my integrations** 链接。点击**+ New integration**按钮。\n\n\n![](https://i.postimg.cc/xd0zGHgm/2022-09-10-20-16-22.png)\n\n\n创建集成完毕后，将会在详情页看到自己的访问令牌：\n\n\n![](https://i.postimg.cc/BQ7h8Sg4/2022-09-10-20-17-28.png)\n\n\n## 在Notion内创建你的博客表格\n\n\n![](https://i.postimg.cc/zX4CZV7b/2022-09-10-20-20-05.png)\n\n\n我创建了一个Blog表格，并为每个文章设置了`title`，`slug(urlname)`，`tags`，`categories`，`description`，`publish`，`created_at`和`updated_at`这几个字断。\n\n\n其中`slug`是直接截取了id的一部分作为url name：\n\n\n![](https://i.postimg.cc/HxW545YK/2022-09-10-20-23-53.png)\n\n\n## 在blog项目内配置相关信息\n\n\n点击Blog页面右上角的**···**按钮，在`Connections`内选择我们刚刚创建的**my-blog**集成。\n\n\n事先拥有一个 [hexo](https://github.com/hexojs/hexo)项目，并在 `package.json`中配置相关信息：\n\n\n```json\n\"notionConfig\": {\n    \"mdNameFormat\": \"slug\",\n    \"baseUrl\": \"https://api.notion.com/v1/databases/\",\n    \"token\": \"your Internal Integration Token\",\n    \"database\": \"your database id\",\n    \"postPath\": \"source/_posts/notion\" // markdown所在文件\n},\n```\n\n\n太久了，快要忘记内容了，等下次重新看下再继续。\n\n"
-  },
   null,
-  null,
-  null
+  {
+    "id": "f232c878-e4f8-4496-9d85-9320f7c192d0",
+    "slug": "f232c878e4f8449",
+    "icon": {
+      "type": "emoji",
+      "emoji": "💟"
+    },
+    "cover": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/b3dcc974-bb70-4c35-90e9-7f1e6273387e/%E8%93%9D%E7%B2%89%E8%89%B2%E8%B7%B3%E8%9A%A4%E5%B8%82%E5%9C%BA%E7%9F%A2%E9%87%8F%E6%B4%BB%E5%8A%A8%E5%AE%A3%E4%BC%A0%E4%B8%AD%E6%96%87%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%B0%81%E9%9D%A2.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230301%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230301T133017Z&X-Amz-Expires=3600&X-Amz-Signature=873dbd78056c9e44ef62cf32ae28d0407c7d691613cdbfe66977ad078cafd2c9&X-Amz-SignedHeaders=host&x-id=GetObject",
+    "url": "https://www.notion.so/003-f232c878e4f844969d859320f7c192d0",
+    "title": "💟 汪汪周刊 003期：如何突破自己的学习瓶颈",
+    "format": "lake",
+    "description": null,
+    "updated_at": "2023-02-20T02:12:00.000Z",
+    "created_at": "2023-02-13T01:00:00.000Z",
+    "published_at": "2023-02-13T01:00:00.000Z",
+    "last_editor": "httishere",
+    "body": "tags: [每周分享]<br />categories: [周刊]<br />cover: https://s3.us-west-2.amazonaws.com/secure.notion-static.com/b3dcc974-bb70-4c35-90e9-7f1e6273387e/%E8%93%9D%E7%B2%89%E8%89%B2%E8%B7%B3%E8%9A%A4%E5%B8%82%E5%9C%BA%E7%9F%A2%E9%87%8F%E6%B4%BB%E5%8A%A8%E5%AE%A3%E4%BC%A0%E4%B8%AD%E6%96%87%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%B0%81%E9%9D%A2.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230301%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230301T133017Z&X-Amz-Expires=3600&X-Amz-Signature=873dbd78056c9e44ef62cf32ae28d0407c7d691613cdbfe66977ad078cafd2c9&X-Amz-SignedHeaders=host&x-id=GetObject\n\n---\n\n\n![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/b92fc805-affe-49a2-859c-d44855a2cca3/IMG_6345.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230301%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230301T133019Z&X-Amz-Expires=3600&X-Amz-Signature=d78a5687fb10e33cf4c859813a1579b96645df9fe329ef0be8713499a2d9b134&X-Amz-SignedHeaders=host&x-id=GetObject)\n\n\n### Hello，大家好，这里是阿汪同学。\n\n\n### 本期关键词： 星空葡萄\n\n\n# 前提\n\n\n前几天在逛掘金的时候，看到了一篇大哥写的文章《**如何突破技术瓶颈（适合P6以下**）》，特别有感触，其实毕业后没多久就碰上了疫情导致在工作上一直处于舒适圈也没有突破，一直想学习精进也总是三分热度找不准方向。（在后面会分享该文章部分内容）\n\n\n‼️ **本周刊非纯技术周刊，包括各方面的分享**。\n\n\n# 有趣的\n\n- 本周比较忙，没有太多的时间去更新和学习，只能尽量保证一周一更。\n- 对了我在FlowUs上开了一个线上自习室，欢迎大家和我一起学习打卡！有兴趣可以填写以下报名表！\n\n![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/a75bc9e0-a3f0-436c-99e0-6ff9e525ca97/IMG_6277.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230301%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230301T133019Z&X-Amz-Expires=3600&X-Amz-Signature=9e2587cedd95fe6e8f3e33f13b45bb0ebd553e729eb8f5ba0d22395e1294b376&X-Amz-SignedHeaders=host&x-id=GetObject)\n\n\n# 工具\n\n- **ChatGPT 客户端，支持 Mac、Windows、Linux。**[https://github.com/lencx/ChatGPT#-downloads](https://github.com/lencx/ChatGPT#-downloads)\n- **Everything，**在日常工作中由于文件夹越来越多，时常碰到找不到文件夹。Everything是一款Windows系统的文件搜索工具，通过它可以快速查找电脑中的文件以及文件位置，真正实现全盘搜索\n\n# 专业技术领域\n\n- **如何突破技术瓶颈（适合P6以下**）》by 孟祥_成都\n- • React 计划 signal 功能。\n- [**Modularizing React Applications with Established UI Patterns**](https://martinfowler.com/articles/modularizing-react-apps.html)**`英文`****：如何用成熟的 UI 模式把 React 应用模块化。**\n\n# Widverse · 汪汪汪世界\n\n\n> Widverse 是我开发的组件库，支持嵌入Notion，FlowUs，Wolai，github等。\n\n- 这周开放组件分享。\n\n# 最后的碎碎念\n\n- 不知不觉已经工作第5个年头了，但是回头看来自己还是一无所获，没有优秀的专业能力，没有学习热情，每天还是在浑浑噩噩，看到别人满满的GitHub commits还是会羡慕，但是自己又很难迈出那一步。\n\n# 话题\n\n\n大家都工作了吗？你们对自己以后的职业发展有规划吗？\n\n\n![](https://i.hd-r.cn/9f144b95fa5e7e2b4105f7bbd6a511e4.jpg)\n\n"
+  },
+  {
+    "id": "06e490bd-5265-4fc2-a756-879420a31442",
+    "slug": "06e490bd52654fc",
+    "icon": {
+      "type": "emoji",
+      "emoji": "💟"
+    },
+    "cover": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/027d25c5-d19d-489a-a912-3504f759624a/%E8%93%9D%E7%B2%89%E8%89%B2%E8%B7%B3%E8%9A%A4%E5%B8%82%E5%9C%BA%E7%9F%A2%E9%87%8F%E6%B4%BB%E5%8A%A8%E5%AE%A3%E4%BC%A0%E4%B8%AD%E6%96%87%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%B0%81%E9%9D%A2.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230301%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230301T133019Z&X-Amz-Expires=3600&X-Amz-Signature=e69b1b01cfed4aefd205ce89b71ccd8f2319cfb49cfae2153d23902f3fa9c7fc&X-Amz-SignedHeaders=host&x-id=GetObject",
+    "url": "https://www.notion.so/002-06e490bd52654fc2a756879420a31442",
+    "title": "💟 汪汪周刊 002期：如何保持稳定输出",
+    "format": "lake",
+    "description": "偷懒",
+    "updated_at": "2023-02-16T09:58:00.000Z",
+    "created_at": "2023-02-06T02:55:00.000Z",
+    "published_at": "2023-02-06T02:55:00.000Z",
+    "last_editor": "httishere",
+    "body": "tags: [每周分享]<br />categories: [周刊]<br />cover: https://s3.us-west-2.amazonaws.com/secure.notion-static.com/027d25c5-d19d-489a-a912-3504f759624a/%E8%93%9D%E7%B2%89%E8%89%B2%E8%B7%B3%E8%9A%A4%E5%B8%82%E5%9C%BA%E7%9F%A2%E9%87%8F%E6%B4%BB%E5%8A%A8%E5%AE%A3%E4%BC%A0%E4%B8%AD%E6%96%87%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%B0%81%E9%9D%A2.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230301%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230301T133019Z&X-Amz-Expires=3600&X-Amz-Signature=e69b1b01cfed4aefd205ce89b71ccd8f2319cfb49cfae2153d23902f3fa9c7fc&X-Amz-SignedHeaders=host&x-id=GetObject\n\n---\n\n\n![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/0889d968-052a-4039-8def-343395a7beca/41DE8900-07B8-458A-ABE5-FF511EFED51D.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230301%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230301T133021Z&X-Amz-Expires=3600&X-Amz-Signature=03e82ce7dbc6a3f7e60ecbc72b10a6754d9bccabb8688a5de0461c7196362253&X-Amz-SignedHeaders=host&x-id=GetObject)\n\n\n### Hello，大家好，这里是阿汪同学。\n\n\n### 本期关键词： 锡兰牛乳茶\n\n\n# 前提\n\n\n我今年的打算是可以有稳定的输入输出，不要再三分热度，但是如何保持稳定的输入输出是一个问题。\n\n\n还有很多人正常输入是没问题的但是不会输入，就像我知识在脑子里但是需要去传达给别人的时候不会组织语言，这都是我今年想要训练自己的方面。\n\n\n‼️ **本周刊非纯技术周刊，包括各方面的分享**。\n\n\n# 有趣的\n\n- 谷歌将推出ChatGPT竞争对手Bard，Bard是建立在谷歌现有的大型语言模型Lamda的基础上。\n- 技术写作坚持不下去怎么办，可以看张鑫旭大佬的这篇文章[《执行：坚持不下去，怎么办？》](https://juejin.cn/book/7184663814950879270/section/7184824069563351043)，他还有[**技术写作指南**](https://juejin.cn/book/7184663814950879270)这个专栏，等有时间可以购买看一下。\n\n# 工具\n\n- [https://www.galmoe.com/](https://www.galmoe.com/)：提取B站封面的网站，输入视频的bv号就可以下载视频封面\n- [https://notion2charts.com/](https://notion2charts.com/)：可以关联Notion数据库制作图表，但是非会员只能创建一个\n\n\t![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/38705b7d-ae75-4821-866d-15bf86d6c320/notion2charts-hero-image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230301%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230301T133124Z&X-Amz-Expires=3600&X-Amz-Signature=cb923243376c62bbb0af78a62dad78c4272b38f85671596c1163963232fa7e89&X-Amz-SignedHeaders=host&x-id=GetObject)\n\n\n# 专业技术领域\n\n- `英文`尤雨溪大大的2022年终复盘：[https://blog.vuejs.org/posts/2022-year-in-review.html](https://blog.vuejs.org/posts/2022-year-in-review.html)\n- `英文`10 Web Development Trends in 2023（2023 年 10 大 Web 发展趋势）：[https://www.robinwieruch.de/web-development-trends/](https://www.robinwieruch.de/web-development-trends/)\n\n# Widverse · 汪汪汪世界\n\n\n> Widverse 是我开发的组件库，支持嵌入Notion，FlowUs，Wolai，github等。\n\n- 目前只更新了几个组件，但是还没有正式开放分享，这周尽量完成并公开分享\n- 本周更新一个模版——记账本，下周还会再更新一个——减肥计划模版\n\n# 最后的碎碎念\n\n- 02/06，没想到土耳其一天内发生了2次7.8级的地震，也看到了大唐哥被埋在酒店的新闻，我真的很爱非正式会谈，他的`in my room, on my bed, with my partner`这个梗真的很好笑，有种身边的人发生意外的感觉😭。非正式会谈真的很好看，没有看过的同学可以看一下也是在B站。\n- 终于排到`Notion AI`了，接下去就让它给你讲个故事和回答一下本周的话题吧\n- 02/10，凌晨觉得很不安睡不着，每天都在搜索唐大哥的消息，一直刷实时的微博就希望能有好消息，可是没想到等来的却是坏消息，真的很难过，就像身边的朋友离开了一样。\n\n# 话题\n\n\n你平时会通过什么方式保持学习和分享热情？\n\n\n![](https://i.hd-r.cn/9f144b95fa5e7e2b4105f7bbd6a511e4.jpg)\n\n"
+  }
 ]
