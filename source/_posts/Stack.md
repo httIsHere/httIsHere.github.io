@@ -11,4 +11,4 @@ top: true
 
 
 - [Categories · React](/categories/React/)
-- [Categories · vue](/categories/vue/)
+- [Categories · Vue](/categories/Vue/)
