@@ -1,3 +1,8 @@
+tagColor(type) 
+  return type
+  if type is a '大前端'
+    return red
+
 .post-wrap
   position relative
   width 100%
@@ -53,8 +58,8 @@
       display inline-block
     .archive-item-category-item 
       font-size 12px
-      color: #ffffff
-      background rgba(111, 129, 219, .6)
+      color #ffffff
+      background tagColor(attr(data-type))
       border-radius 12px
       padding 2px 5px
       margin-left 10px
@@ -62,6 +67,11 @@
     &:hover
       color $light-global-link-hover-color
       background-color transparent
+    &::after
+      content attr(data-type)
+      width 100px
+      display inline-block
+      height 18px
     
     .dark-theme &
       color $dark-global-link-color

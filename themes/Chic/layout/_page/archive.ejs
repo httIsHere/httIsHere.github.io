@@ -1,8 +1,8 @@
 <!--
  * @Author: Tina Huang
  * @Date: 2022-02-22 16:12:43
- * @LastEditors: Tina Huang
- * @LastEditTime: 2023-01-31 14:46:23
+ * @LastEditors: HTT httishere0728@gmail.com
+ * @LastEditTime: 2023-04-12 16:19:31
  * @Description: 
 -->
 <div class="post-wrap archive">
@@ -16,7 +16,7 @@
     <!-- 置顶文章 -->
     <h3>🔝🔝🔝</h3>
     <a
-    href="https://descriptive-impulse-a6e.notion.site/Hello-here-is-Tina-b10f03f2226e449887ad86b097e67e78"
+    href="https://httishere666.notion.site/Hello-here-is-Tina-b10f03f2226e449887ad86b097e67e78"
     rel="sidebar"
     style="margin-left: 20px;margin-bottom: 20px;display: inline-block;"
     >👉 𝑴𝒚 𝑳𝒊𝒇𝒆 𝑳𝒐𝒈</a
@@ -27,7 +27,7 @@
                 <a class="archive-item-link" href="<%- url_for(post.path) %>">
                     <%= post.title %>
                     <% post.categories.forEach(item=>{ %>
-                        <span class="archive-item-category-item"><%- item.name %></span>
+                        <span class="archive-item-category-item" data-type="<%- item.name %>"><%- item.name %></span>
                     <% }) %>
                 </a>
                 <span class="archive-item-date"><%- date(post.date, theme.date_format) %></span>
@@ -51,7 +51,7 @@
                 <!-- </div> -->
                 <%= post.title %>
                 <% post.categories.forEach(item=>{ %>
-                    <span class="archive-item-category-item"><%- item.name %></span>
+                    <span class="archive-item-category-item" data-type="<%- item.name %>"><%- item.name %></span>
                     <!-- <a class="archive-item-category-item" href="/categories/<%- item.name %>/"><%- item.name %></a> -->
                 <% }) %>
             </a>

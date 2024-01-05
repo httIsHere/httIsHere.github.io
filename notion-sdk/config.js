@@ -1,8 +1,8 @@
 /*
  * @Author: Tina Huang
  * @Date: 2022-09-10 10:40:32
- * @LastEditors: Tina Huang
- * @LastEditTime: 2022-09-10 18:47:25
+ * @LastEditors: HTT httishere0728@gmail.com
+ * @LastEditTime: 2023-07-15 20:39:48
  * @Description:
  */
 
@@ -17,7 +17,7 @@ const defaultConfig = {
   cachePath: "notion.json",
   lastGeneratePath: "",
   mdNameFormat: "slug",
-  baseUrl: "https://api.notion.com/v1/databases/",
+  baseUrl: "https://api.notion.com/v1/",
   adapter: "hexo",
   concurrency: 5,
   onlyPublished: false,
