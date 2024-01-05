@@ -2,7 +2,7 @@
  * @Author: Tina Huang
  * @Date: 2022-09-09 20:04:15
  * @LastEditors: Tina Huang
- * @LastEditTime: 2023-02-16 16:06:22
+ * @LastEditTime: 2024-01-05 13:59:53
  * @Description:
  */
 "use strict";
@@ -110,7 +110,7 @@ class Downloader {
     let cacheAvaliable;
 
     const findIndexFn = function (item) {
-      return item.slug === article.slug;
+      return item && (item.slug === article.slug);
     };
 
     for (let i = 0; i < realArticles.length; i++) {
