@@ -13,7 +13,7 @@
 
 
 
-<title>「Notion」利用Notion API将Notion文章整合到本地Hexo项目（一） | HTTISHERE</title>
+<title>💘 再见2023，当时只道是寻常 | HTTISHERE</title>
 
 
 
@@ -198,11 +198,11 @@
 </script>  
   <article class="post-wrap">
     <header class="post-header">
-      <h1 class="post-title">「Notion」利用Notion API将Notion文章整合到本地Hexo项目（一）</h1>
+      <h1 class="post-title">💘 再见2023，当时只道是寻常</h1>
       
       <div
         class="post-meta"
-        id="/2023/01/30/notion/d5fc6184d9/"
+        id="/2024/01/06/notion/ac3f15468e4443c/"
         class="leancloud-visitors view"
       >
          Author:
@@ -211,22 +211,22 @@
         <span class="post-time">
           Date:
           <a href="#"
-            >2023/01/30&nbsp;&nbsp;18:35:00</a
+            >2024/01/06&nbsp;&nbsp;16:16:00</a
           >
         </span>
          
         <span class="post-category">
           Category: 
-          <a href="/categories/Notion-API/">Notion-API</a>
+          <a href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a>
           
         </span>
          <<
         <div class="extra">
           >>
           <span
-            id="/2023/01/30/notion/d5fc6184d9/"
+            id="/2024/01/06/notion/ac3f15468e4443c/"
             class="leancloud-visitors view"
-            data-flag-title="「Notion」利用Notion API将Notion文章整合到本地Hexo项目（一）"
+            data-flag-title="💘 再见2023，当时只道是寻常"
           >
             <span class="post-meta-item-text">Pageviews:</span>
             <a href="javascript:;" class="leancloud-visitors-count">0</a>
@@ -234,12 +234,12 @@
           
           <span class="post-count">
             Words:
-            <a href="">355</a>
+            <a href="">747</a>
           </span>
            
           <span class="post-count">
             Time:
-            <a href="">1 min</a>
+            <a href="">2 min</a>
           </span>
           
         </div>
@@ -250,24 +250,113 @@
     </header>
 
     <div class="post-content">
-      <p>因为我的 Hexo 博客是拉取我在语雀上的文章还有本地写的文章，所以没有直接采用相关的 Notion 部署成 Blog 的已有 API。</p>
-<p>还是使用将文章拉取到本地再手动部署的方式。</p>
-<blockquote>
-<p>参考：<a target="_blank" rel="noopener" href="https://github.com/x-cold/yuque-hexo">yuque-hexo</a></p>
+      <p><code>〉》〉》</code> 坚持就是胜利 ✌️！</p>
+<h3 id="工作-amp-学习"><a href="#工作-amp-学习" class="headerlink" title="工作&amp;学习"></a>工作&amp;学习</h3><blockquote>
+<p>💡 经历了差不多一年半居家办公的日子，很轻松是真的，很焦虑和懒散也是真的。焦虑的是工作并不多，懒散的是就是这么不是很饱和的情况下也没有多学习。</p>
 </blockquote>
-<h2 id="为-Notion-API-设置访问令牌"><a href="#为-Notion-API-设置访问令牌" class="headerlink" title="为 Notion API 设置访问令牌"></a><strong>为 Notion API 设置访问令牌</strong></h2><p>需要设置一个 Integration（集成），通过 Notion API 连接访问自己的数据库，然后生成一个访问令牌来访问 Notion 的 API。</p>
-<p>在<a target="_blank" rel="noopener" href="https://developers.notion.com/reference/intro">Notion API 文档</a>页面，点击右上角的<strong>View my integrations</strong> 链接。点击<strong>+ New integration</strong>按钮。</p>
-<p><img src="https://i.postimg.cc/xd0zGHgm/2022-09-10-20-16-22.png" alt=""></p>
-<p>创建集成完毕后，将会在详情页看到自己的访问令牌：</p>
-<p><img src="https://i.postimg.cc/BQ7h8Sg4/2022-09-10-20-17-28.png" alt=""></p>
-<h2 id="在-Notion-内创建你的博客表格"><a href="#在-Notion-内创建你的博客表格" class="headerlink" title="在 Notion 内创建你的博客表格"></a>在 Notion 内创建你的博客表格</h2><p><img src="https://i.postimg.cc/zX4CZV7b/2022-09-10-20-20-05.png" alt=""></p>
-<p>我创建了一个 Blog 表格，并为每个文章设置了<code>title</code>，<code>slug(urlname)</code>，<code>tags</code>，<code>categories</code>，<code>description</code>，<code>publish</code>，<code>created_at</code>和<code>updated_at</code>这几个字断。</p>
-<p>其中<code>slug</code>是直接截取了 id 的一部分作为 url name：</p>
-<p><img src="https://i.postimg.cc/HxW545YK/2022-09-10-20-23-53.png" alt=""></p>
-<h2 id="在-blog-项目内配置相关信息"><a href="#在-blog-项目内配置相关信息" class="headerlink" title="在 blog 项目内配置相关信息"></a>在 blog 项目内配置相关信息</h2><p>点击 Blog 页面右上角的<strong>···</strong>按钮，在<code>Connections</code>内选择我们刚刚创建的<strong>my-blog</strong>集成。</p>
-<p>事先拥有一个  <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo">hexo</a>项目，并在  <code>package.json</code>中配置相关信息：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;notionConfig&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;mdNameFormat&quot;</span><span class="punctuation">:</span> <span class="string">&quot;slug&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;baseUrl&quot;</span><span class="punctuation">:</span> <span class="string">&quot;https://api.notion.com/v1/databases/&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;token&quot;</span><span class="punctuation">:</span> <span class="string">&quot;your Internal Integration Token&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;database&quot;</span><span class="punctuation">:</span> <span class="string">&quot;your database id&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;postPath&quot;</span><span class="punctuation">:</span> <span class="string">&quot;source/_posts/notion&quot;</span> <span class="comment">// markdown所在文件</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
-<p>太久了，快要忘记内容了，等下次重新看下再继续。</p>
+<h3 id="爱好"><a href="#爱好" class="headerlink" title="爱好"></a>爱好</h3><p>今年粉丝也涨了几万了，相关收入居然 6 位数啦！！！虽然压力很大也经常能遇到很多奇葩，但是还是会坚持下去。</p>
+<h3 id="新的一年展望"><a href="#新的一年展望" class="headerlink" title="新的一年展望"></a>新的一年展望</h3><ul>
+<li>多学习，多分享，多进步</li>
+<li>不要乱花钱</li>
+<li>身体健康，减肥成功</li>
+<li>开开心心，去更多的地方看更多的风景</li>
+</ul>
+<h3 id="今年事件回顾"><a href="#今年事件回顾" class="headerlink" title="今年事件回顾"></a>今年事件回顾</h3><blockquote>
+<p>🖤 <strong>一月</strong></p>
+</blockquote>
+<ul>
+<li>跟老妹一起给老妈过了生日 🎂。</li>
+<li>也终于结束了我的放疗。</li>
+<li>为了消耗马斯卡彭，在小红书找了教程做乳酪蛋糕，没有低筋面粉用了妈妈买的预拌粉，结果它膨胀了……</li>
+</ul>
+<blockquote>
+<p>🖤 二<strong>月</strong></p>
+</blockquote>
+<ul>
+<li>非正式的唐大哥因土耳其地震去世了。</li>
+<li>喜欢的 mg 也被暴力解绑，伤心。</li>
+<li>和妮妮坐地铁去了鲁迅故居走一走。</li>
+</ul>
+<blockquote>
+<p>🖤 三<strong>月</strong></p>
+</blockquote>
+<ul>
+<li>和璐婷依婷见面啦！</li>
+<li>和蕾蕾子也见面啦，依旧是御牛道，哈哈哈。（她居然生娃了！）</li>
+<li>去参加了阿姣的婚礼，也一起去了罗蒙。</li>
+</ul>
+<blockquote>
+<p>🖤 四<strong>月</strong></p>
+</blockquote>
+<ul>
+<li>和普飞一起逛了植物园。</li>
+<li>爱上了橙汁和美式的搭配。</li>
+</ul>
+<blockquote>
+<p>🖤 五<strong>月</strong></p>
+</blockquote>
+<ul>
+<li>五一假期和妮妮阿姣一起去了北京！现在我也是去过首都的人了～</li>
+<li>抢到了五月天演唱会的门票！</li>
+<li>购入了大排灯。</li>
+</ul>
+<blockquote>
+<p>🖤 六<strong>月</strong></p>
+</blockquote>
+<ul>
+<li>去看了五月天杭州的演唱会，太开心啦！</li>
+<li>吃了超大一颗的杨梅。</li>
+<li>太伤心了！在淘宝买 10 年 Plus 的被清 0 了！</li>
+</ul>
+<blockquote>
+<p>🖤 七<strong>月</strong></p>
+</blockquote>
+<ul>
+<li>普普通通的一个生日月，和老妹妮妮一起去吃了牛肉火锅，吃了蛋糕，唱了 KTV。</li>
+<li>报名学游泳啦！</li>
+</ul>
+<blockquote>
+<p>🖤 八<strong>月</strong></p>
+</blockquote>
+<ul>
+<li>吃吃喝喝，学会了游泳！</li>
+<li>终于結束了靶向治療！</li>
+<li>尝试开发一个 Chrome 插件，还挺有趣的。</li>
+<li>日本开始排核污水入海，想到看的末世文里面的场景，真的感到作为人类的无力感。</li>
+<li>一大家子去吃了烤全羊，其实味道也就那样不知道为啥要来回开 3，4 个小时去。</li>
+</ul>
+<blockquote>
+<p>🖤 九<strong>月</strong></p>
+</blockquote>
+<ul>
+<li>头发长到可以稍微做一下发型了。</li>
+<li>公司团建去了福建武夷山，虽然很热但是还是很开心。</li>
+<li>小红书被禁言了一周……</li>
+</ul>
+<blockquote>
+<p>🖤 十<strong>月</strong></p>
+</blockquote>
+<ul>
+<li>普普通通的日子。</li>
+<li>开始学习软考的课程。</li>
+</ul>
+<blockquote>
+<p>🖤 十一<strong>月</strong></p>
+</blockquote>
+<ul>
+<li>参加了软考，考懵了都。</li>
+<li>去上海看了五月天演唱会。</li>
+<li>恢复去健身啦！第一天就直接头晕眼花。</li>
+</ul>
+<blockquote>
+<p>🖤 十二<strong>月</strong></p>
+</blockquote>
+<ul>
+<li>和老妹还有她的朋友一起去了大连-威海。</li>
+<li>软考结果出来了，预料之内的没有及格。</li>
+<li>b 站居然 5 万粉啦！</li>
+</ul>
+<p><code>〉》〉》</code> 还是一样做善良的人！做开心的人。</p>
 
     </div>
 
@@ -281,7 +370,7 @@
        
       <p class="copyright-item">
         <span>Permalink:</span>
-        <span><a href="https://httishere.github.io/2023/01/30/notion/d5fc6184d9/">https://httishere.github.io/2023/01/30/notion/d5fc6184d9/</a></span>
+        <span><a href="https://httishere.github.io/2024/01/06/notion/ac3f15468e4443c/">https://httishere.github.io/2024/01/06/notion/ac3f15468e4443c/</a></span>
       </p>
        
       <p class="copyright-item">
@@ -301,7 +390,7 @@
         <span>Tag(s):</span>
         <span class="tag">
            
-          <a href="/tags/Notion/"># Notion</a>
+          <a href="/tags/%E5%A4%8D%E7%9B%98/"># 复盘</a>
            
         </span>
       </div>
@@ -312,13 +401,9 @@
       </div>
     </section>
     <section class="post-nav">
-      
-      <a class="prev" rel="prev" href="/2023/01/30/notion/ce50450a16b24f2/"
-        >心之所向，行之所往 ｜ 2022总结</a
-      >
        
-      <a class="next" rel="next" href="/2023/01/30/notion/d5fc6184d9cf447/"
-        >「Notion」利用Notion API将Notion文章整合到本地Hexo项目（一）</a
+      <a class="next" rel="next" href="/2023/08/12/notion/ef7e5152eeb54d2/"
+        >⚫ React Hooks 精进 18 - 服务器端组件</a
       >
       
     </section>

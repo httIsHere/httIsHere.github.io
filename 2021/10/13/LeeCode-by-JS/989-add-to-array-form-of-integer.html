@@ -1,0 +1,31 @@
+<hr>
+<p>title: 989.add-to-array-form-of-integer<br>date: 2023-02-28 23:02:21<br>tags:</p>
+<pre><code>- LeeCode
+</code></pre><p>categories:</p>
+<pre><code>- LeeCode
+</code></pre><p>hidden: true</p>
+<h2 id="cateHidden-false"><a href="#cateHidden-false" class="headerlink" title="cateHidden: false"></a>cateHidden: false</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>The array-form of an integer num is an array representing its digits in left to right order.</p>
+<p>For example, for num = 1321, the array form is [1,3,2,1].<br>Given num, the array-form of an integer, and an integer k, return the array-form of the integer num + k.</p>
+</blockquote>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><blockquote>
+<p>Input: num = [1,2,0,0], k = 34<br>Output: [1,2,3,4]<br>Explanation: 1200 + 34 = 1234</p>
+</blockquote>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><pre><code class="lang-js">/**
+ * @param {number[]} num
+ * @param {number} k
+ * @return {number[]}
+ */
+var addToArrayForm = function(num, k) {
+    let result = []
+    for(let i = num.length - 1; i &gt;= 0; i--) {
+        result.push((num[i] + k) % 10);
+        k = parseInt((num[i] + k) / 10);
+    }
+    while(k) {
+        result.push(k % 10);
+        k = parseInt(k / 10);
+    }
+    return result.reverse()
+};
+</code></pre>

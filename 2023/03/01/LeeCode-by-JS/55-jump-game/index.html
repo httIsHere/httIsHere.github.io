@@ -13,7 +13,7 @@
 
 
 
-<title>React Hooks 精进 1 - 用Hooks的角度去转变开发思路 | HTTISHERE</title>
+<title>55.jump-game | HTTISHERE</title><meta name="robots" content="noindex">
 
 
 
@@ -198,11 +198,11 @@
 </script>  
   <article class="post-wrap">
     <header class="post-header">
-      <h1 class="post-title">React Hooks 精进 1 - 用Hooks的角度去转变开发思路</h1>
+      <h1 class="post-title">55.jump-game</h1>
       
       <div
         class="post-meta"
-        id="/2023/01/30/notion/6ed49a2adc/"
+        id="/2023/03/01/LeeCode-by-JS/55-jump-game/"
         class="leancloud-visitors view"
       >
          Author:
@@ -211,22 +211,22 @@
         <span class="post-time">
           Date:
           <a href="#"
-            >2023/01/30&nbsp;&nbsp;18:35:00</a
+            >2023/03/01&nbsp;&nbsp;20:32:39</a
           >
         </span>
          
         <span class="post-category">
           Category: 
-          <a href="/categories/React/">React</a>
+          <a href="/categories/LeeCode/">LeeCode</a>
           
         </span>
          <<
         <div class="extra">
           >>
           <span
-            id="/2023/01/30/notion/6ed49a2adc/"
+            id="/2023/03/01/LeeCode-by-JS/55-jump-game/"
             class="leancloud-visitors view"
-            data-flag-title="React Hooks 精进 1 - 用Hooks的角度去转变开发思路"
+            data-flag-title="55.jump-game"
           >
             <span class="post-meta-item-text">Pageviews:</span>
             <a href="javascript:;" class="leancloud-visitors-count">0</a>
@@ -234,7 +234,7 @@
           
           <span class="post-count">
             Words:
-            <a href="">243</a>
+            <a href="">132</a>
           </span>
            
           <span class="post-count">
@@ -250,19 +250,15 @@
     </header>
 
     <div class="post-content">
-      <h2 id="React-两个颠覆性创新点"><a href="#React-两个颠覆性创新点" class="headerlink" title="React 两个颠覆性创新点"></a>React 两个颠覆性创新点</h2><ul>
-<li>虚拟 DOM 机制</li>
-<li>JSX 语法</li>
-</ul>
-<h2 id="Hooks-出现之前的业务逻辑复用方式"><a href="#Hooks-出现之前的业务逻辑复用方式" class="headerlink" title="Hooks 出现之前的业务逻辑复用方式"></a>Hooks 出现之前的业务逻辑复用方式</h2><p>在组件内的不同生命周期中做时间监听的绑定和解绑。</p>
-<h2 id="引入-Hooks-之后"><a href="#引入-Hooks-之后" class="headerlink" title="引入 Hooks 之后"></a>引入 Hooks 之后</h2><p>只需要通过 Hooks 的方式进行封装，将其变成一个可绑定的数据源，这样函数组件就具备了状态管理，生命周期管理等能力。</p>
-<h2 id="Hooks-的学习路径"><a href="#Hooks-的学习路径" class="headerlink" title="Hooks 的学习路径"></a>Hooks 的学习路径</h2><ol>
-<li>全局认知：Hooks 的功能边界，什么功能要用 Hooks 去做</li>
-<li>核心概念和原理：应对实际复杂业务问题的关键能力</li>
-<li>实战：把原理和实际业务场景结合起来，掌握 Hooks 的思考方式</li>
-</ol>
-<p><img src="https://i.hd-r.cn/fa23b9c56bc62fe4a0bbd40777b6a67a.jpg" alt=""></p>
-<h2 id="学习内容："><a href="#学习内容：" class="headerlink" title="学习内容："></a>学习内容：</h2><h3 id="基础篇：抓住问题本质，提高解决复杂问题的能力"><a href="#基础篇：抓住问题本质，提高解决复杂问题的能力" class="headerlink" title="基础篇：抓住问题本质，提高解决复杂问题的能力"></a>基础篇：抓住问题本质，提高解决复杂问题的能力</h3><h3 id="实战篇：业务场景驱动，掌握解决实际问题的思考能力"><a href="#实战篇：业务场景驱动，掌握解决实际问题的思考能力" class="headerlink" title="实战篇：业务场景驱动，掌握解决实际问题的思考能力"></a>实战篇：业务场景驱动，掌握解决实际问题的思考能力</h3><h3 id="扩展篇：了解工具。生态和未来，开拓技术视野"><a href="#扩展篇：了解工具。生态和未来，开拓技术视野" class="headerlink" title="扩展篇：了解工具。生态和未来，开拓技术视野"></a>扩展篇：了解工具。生态和未来，开拓技术视野</h3>
+      <h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>You are given an integer array nums. You are initially positioned at the array’s first index, and each element in the array represents your maximum jump length at that position.</p>
+<p>Return true if you can reach the last index, or false otherwise.</p>
+</blockquote>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><blockquote>
+<p>Input: nums = [2,3,1,1,4]<br>Output: true<br>Explanation: Jump 1 step from index 0 to 1, then 3 steps to the last index.</p>
+</blockquote>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number[]</span>&#125; <span class="variable">nums</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">boolean</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> canJump = <span class="keyword">function</span> (<span class="params">nums</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nums.<span class="property">length</span> === <span class="number">1</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">backtracking</span> = (<span class="params">current</span>) =&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span> (current &lt; nums[<span class="number">0</span>]) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; current; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] &gt;= current - i) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="title function_">backtracking</span>(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">backtracking</span>(nums.<span class="property">length</span> - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<!-- flag of hidden posts -->
     </div>
 
     
@@ -275,7 +271,7 @@
        
       <p class="copyright-item">
         <span>Permalink:</span>
-        <span><a href="https://httishere.github.io/2023/01/30/notion/6ed49a2adc/">https://httishere.github.io/2023/01/30/notion/6ed49a2adc/</a></span>
+        <span><a href="https://httishere.github.io/2023/03/01/LeeCode-by-JS/55-jump-game/">https://httishere.github.io/2023/03/01/LeeCode-by-JS/55-jump-game/</a></span>
       </p>
        
       <p class="copyright-item">
@@ -295,7 +291,7 @@
         <span>Tag(s):</span>
         <span class="tag">
            
-          <a href="/tags/React/"># React</a>
+          <a href="/tags/LeeCode/"># LeeCode</a>
            
         </span>
       </div>
@@ -306,15 +302,7 @@
       </div>
     </section>
     <section class="post-nav">
-      
-      <a class="prev" rel="prev" href="/2023/01/30/notion/052b00d24389450/"
-        >React Hooks 精进 2 - React基本概念 & Hooks的理解</a
-      >
        
-      <a class="next" rel="next" href="/2023/01/30/notion/6ed49a2adc864d8/"
-        >React Hooks 精进 1 - 用Hooks的角度去转变开发思路</a
-      >
-      
     </section>
      <!--
  * @Author: your name

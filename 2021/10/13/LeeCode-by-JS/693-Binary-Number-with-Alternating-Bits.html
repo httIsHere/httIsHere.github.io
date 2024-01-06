@@ -1,0 +1,27 @@
+<hr>
+<p>title: Bits<br>date: 2023-02-27 21:26:51<br>tags:</p>
+<pre><code>- LeeCode
+</code></pre><p>categories:</p>
+<pre><code>- LeeCode
+</code></pre><p>hidden: true</p>
+<h2 id="cateHidden-false"><a href="#cateHidden-false" class="headerlink" title="cateHidden: false"></a>cateHidden: false</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>Given a positive integer, check whether it has alternating bits: namely, if two adjacent bits will always have different values.</p>
+</blockquote>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><blockquote>
+<p>Input: n = 5<br>Output: true<br>Explanation: The binary representation of 5 is: 101</p>
+</blockquote>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><pre><code class="lang-js">/**
+ * @param {number} n
+ * @return {boolean}
+ */
+var hasAlternatingBits = function(n) {
+    let pre = -1;
+    while(n) {
+        if(pre === n % 2) return false;
+        pre = n % 2;
+        n = parseInt(n /2);
+    }
+    return true;
+};
+</code></pre>
+<h3 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h3><p>Accepted<br>204/204 cases passed (49 ms)<br>Your runtime beats 99.37 % of javascript submissions<br>Your memory usage beats 9.46 % of javascript submissions (42.5 MB)</p>
