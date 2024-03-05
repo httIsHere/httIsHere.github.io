@@ -1,8 +1,8 @@
 /*
  * @Author: Tina Huang
  * @Date: 2022-09-09 19:27:29
- * @LastEditors: HTT httishere0728@gmail.com
- * @LastEditTime: 2024-01-05 23:50:22
+ * @LastEditors: Tina Huang
+ * @LastEditTime: 2024-03-05 14:41:13
  * @Description:
  */
 
@@ -77,7 +77,7 @@ class NotionClient {
       )}]<br />cover: ${cover}\n\n---\n\n`;
       // return this.formatPage(page, `${prefix}${block}`);
       return this.getBlocks(pageId).then((block) => {
-        console.log(block)
+        console.log('block', block)
         return this.formatPage(page, `${prefix}${block}`);
       });
     } catch (error) {
@@ -89,7 +89,7 @@ class NotionClient {
     const blockId = id;
     const mdblocks = await n2m.pageToMarkdown(blockId);
     const mdString = n2m.toMarkdownString(mdblocks);
-    return mdString.parent;
+    return mdString;
   }
 
   async getComments(id) {
