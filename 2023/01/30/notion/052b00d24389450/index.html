@@ -211,7 +211,7 @@
         <span class="post-time">
           Date:
           <a href="#"
-            >2023/01/30&nbsp;&nbsp;18:35:00</a
+            >2023/01/30&nbsp;&nbsp;18:35</a
           >
         </span>
          
@@ -296,7 +296,7 @@
 <h3 id="Hooks-的诞生"><a href="#Hooks-的诞生" class="headerlink" title="Hooks 的诞生"></a>Hooks 的诞生</h3><p>函数和对象不同，实例对象不能够在多次执行之间保存状态，所以我们需要一个能够把外部的数据绑定到函数的执行机制。</p>
 <p>这个机制就是<strong>Hooks，Hooks 就是把某个目标结果钩到某个可能会变化的数据源或者事件源上，那么当被钩到的数据或者事件发生变化时，产生这个目标结果的代码会重新执行，产生更新后的结果。</strong></p>
 <p>对于函数组件，这个结果就是最终的 DOM 树；对于<code>useCallback</code>，<code>useMemo</code>这样的雨缓存相关的组件则是在依赖项发生变化时去更新缓存。Hooks 的结构：</p>
-<p><img src="https://i.hd-r.cn/a6e410883f0975e888ea749be99e35cf.jpg" alt="a6e410883f0975e888ea749be99e35cf.jpg"></p>
+<p><img src="https://i.hd-r.cn/a6e410883f0975e888ea749be99e35cf.jpg" alt=""></p>
 <p>‼️ Hooks 中被钩的对象可以是某个独立的数据源也可以是另一个 Hook 执行的结果，这样就可以达成<strong>逻辑复用</strong>的效果。</p>
 <h3 id="Hooks-带来的最大的好处：逻辑复用"><a href="#Hooks-带来的最大的好处：逻辑复用" class="headerlink" title="Hooks 带来的最大的好处：逻辑复用"></a>Hooks 带来的最大的好处：逻辑复用</h3><p>在之前的 React 使用中必须借助高阶组件等设计模式来实现逻辑复用，但告诫组件会产生荣誉的组件节点，所有 Hooks 也大大的<strong>简化了逻辑复用</strong>。</p>
 <p>比如说实现窗口大小的监听，窗口大小是一个外部数据状态，我们可以通过 Hooks 的方式对其进行封装，将其变成一个可绑定的数据源，这样代码会更加简洁直观。</p>

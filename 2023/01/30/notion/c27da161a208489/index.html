@@ -135,67 +135,7 @@
 
         <div class="main">
             <div class="container">
-    <div class="post-toc">
-    <div class="tocbot-list">
-    </div>
-    <div class="tocbot-list-menu">
-        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
-        <a onclick="go_top()">Back to top</a>
-        <a onclick="go_bottom()">Go to bottom</a>
-    </div>
-</div>
-
-<script>
-    document.ready(
-        function () {
-            tocbot.init({
-                tocSelector: '.tocbot-list',
-                contentSelector: '.post-content',
-                headingSelector: 'h1, h2, h3, h4, h5',
-                collapseDepth: 1,
-                orderedList: false,
-                scrollSmooth: true,
-            })
-        }
-    )
-
-    function expand_toc() {
-        var b = document.querySelector(".tocbot-toc-expand");
-        tocbot.init({
-            tocSelector: '.tocbot-list',
-            contentSelector: '.post-content',
-            headingSelector: 'h1, h2, h3, h4, h5',
-            collapseDepth: 6,
-            orderedList: false,
-            scrollSmooth: true,
-        });
-        b.setAttribute("onclick", "collapse_toc()");
-        b.innerHTML = "Collapse all"
-    }
-
-    function collapse_toc() {
-        var b = document.querySelector(".tocbot-toc-expand");
-        tocbot.init({
-            tocSelector: '.tocbot-list',
-            contentSelector: '.post-content',
-            headingSelector: 'h1, h2, h3, h4, h5',
-            collapseDepth: 1,
-            orderedList: false,
-            scrollSmooth: true,
-        });
-        b.setAttribute("onclick", "expand_toc()");
-        b.innerHTML = "Expand all"
-    }
-
-    function go_top() {
-        window.scrollTo(0, 0);
-    }
-
-    function go_bottom() {
-        window.scrollTo(0, document.body.scrollHeight);
-    }
-
-</script>  
+    
   <article class="post-wrap">
     <header class="post-header">
       <h1 class="post-title">💟 汪汪周刊 001期： 新年再出发</h1>
@@ -211,7 +151,7 @@
         <span class="post-time">
           Date:
           <a href="#"
-            >2023/01/30&nbsp;&nbsp;18:35:00</a
+            >2023/01/30&nbsp;&nbsp;18:35</a
           >
         </span>
          
@@ -234,78 +174,25 @@
           
           <span class="post-count">
             Words:
-            <a href="">765</a>
+            <a href="">2</a>
           </span>
            
           <span class="post-count">
             Time:
-            <a href="">2 min</a>
+            <a href="">1 min</a>
           </span>
           
         </div>
 
         
-        <img class="post-cover" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/a0bdc100-d0e6-4660-8a91-9071d9d01779/6db8f3a0-318c-4fe3-a023-b2ca401fcb80/%E8%93%9D%E7%B2%89%E8%89%B2%E8%B7%B3%E8%9A%A4%E5%B8%82%E5%9C%BA%E7%9F%A2%E9%87%8F%E6%B4%BB%E5%8A%A8%E5%AE%A3%E4%BC%A0%E4%B8%AD%E6%96%87%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%B0%81%E9%9D%A2.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240106%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240106T091256Z&X-Amz-Expires=3600&X-Amz-Signature=273998229f296675bf51a8be53a772993b362bec39fd6172e4dffab164dddd87&X-Amz-SignedHeaders=host&x-id=GetObject" alt="" />
+        <img class="post-cover" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/a0bdc100-d0e6-4660-8a91-9071d9d01779/6db8f3a0-318c-4fe3-a023-b2ca401fcb80/%E8%93%9D%E7%B2%89%E8%89%B2%E8%B7%B3%E8%9A%A4%E5%B8%82%E5%9C%BA%E7%9F%A2%E9%87%8F%E6%B4%BB%E5%8A%A8%E5%AE%A3%E4%BC%A0%E4%B8%AD%E6%96%87%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%B0%81%E9%9D%A2.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240314%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240314T130750Z&X-Amz-Expires=3600&X-Amz-Signature=3d46899568df55d1f1e023c2bcc9e2a0b7e74209ff2f235adf535bba0a1c71c8&X-Amz-SignedHeaders=host&x-id=GetObject" alt="" />
         
       </div>
       
     </header>
 
     <div class="post-content">
-      <p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/a0bdc100-d0e6-4660-8a91-9071d9d01779/560bd117-80ad-4b0e-bac7-73a9319fe47e/IMG_5974.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240106%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20240106T091258Z&amp;X-Amz-Expires=3600&amp;X-Amz-Signature=6865b1d50da3d962cb49a6e9c9e872a38f5a584045dc9acb91a102fbca952977&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject" alt="IMG_5974.jpg"></p>
-<h3 id="Hello，大家好，这里是阿汪同学。"><a href="#Hello，大家好，这里是阿汪同学。" class="headerlink" title="Hello，大家好，这里是阿汪同学。"></a>Hello，大家好，这里是阿汪同学。</h3><h3 id="本期关键词：-蔓越莓曲奇"><a href="#本期关键词：-蔓越莓曲奇" class="headerlink" title="本期关键词： 蔓越莓曲奇"></a>本期关键词： 蔓越莓曲奇</h3><h1 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h1><p>我以前也有想过做一些平时的学习分享，但是基本都没有坚持下来，再者去年的特殊情况使我的工作学习都进入了一个停滞状态，新的一年我想重新出发，和大家一起共同成长。</p>
-<p>同时想通过做这个周刊分享来提高自己的文笔和逻辑能力。</p>
-<p>‼️ <strong>本周刊非纯技术周刊，包括各方面的分享</strong>。</p>
-<h1 id="有趣的"><a href="#有趣的" class="headerlink" title="有趣的"></a>有趣的</h1><ul>
-<li><p>回顾自己的 github：<a target="_blank" rel="noopener" href="https://wrapped.run/#">https://wrapped.run/</a></p>
-<pre><code>    看我去年那少得可怜的commits。
-</code></pre></li>
-</ul>
-<pre><code>![0fed55c5a8c4a8d94a40ff6e9e614d39.png](https://i.hd-r.cn/0fed55c5a8c4a8d94a40ff6e9e614d39.png)
-</code></pre><ul>
-<li><p>ChatGPT</p>
-<pre><code>    &gt; **ChatGPT: OptimizingLanguage Modelsfor Dialogue**
-</code></pre></li>
-</ul>
-<pre><code>    We’ve trained a model called ChatGPT which interacts in a conversational way. The dialogue format makes it possible for ChatGPT to answer followup questions, admit its mistakes, challenge incorrect premises, and reject inappropriate requests. ChatGPT is a sibling model to [InstructGPT](https://openai.com/blog/instruction-following/), which is trained to follow an instruction in a prompt and provide a detailed response.
-
-
-ChatGPT是一款基于GPT-3模型的聊天机器人平台，它拥有智能的自然语言处理功能，能够帮助开发者快速构建出自定义的聊天机器人，并且支持多种语言的交互，可以帮助开发者更快地将技术成果推向市场。
-
-- 但是目前ChatGPT被部分地区和学校禁用。
-</code></pre><ul>
-<li><p>双缝干涉实验</p>
-<pre><code>    因为我不是专业的怕形容不好，但是可以看一下相关的视频或者解说，非常有意思。
-</code></pre></li>
-</ul>
-<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><ul>
-<li>最近觉得不错的免费图床：<a target="_blank" rel="noopener" href="https://www.hd-r.cn/">https://www.hd-r.cn/</a>，不会很大程度地压缩图片，速度快，无需注册</li>
-<li><p>快速生成自定义的 Notion 封面：<a target="_blank" rel="noopener" href="https://notioncovergenerator.com/">https://notioncovergenerator.com/</a>，Create CustomNotion Coversfree in minutes!</p>
-<pre><code>    ![1ea04e31af95dc545128439559ac21a2.png](https://i.hd-r.cn/1ea04e31af95dc545128439559ac21a2.png)
-</code></pre></li>
-<li><p><a target="_blank" rel="noopener" href="https://splitbee.io/"><strong>Splitbee</strong></a>，轻量级访客分析工具，我的组件库也是用了这个工具，可以充分了解大家更喜欢哪个组件便于我去更新迭代更多大家喜爱的内容。</p>
-<pre><code>    ![3c8eff422fa2e74af5045b0250a70440.png](https://i.hd-r.cn/3c8eff422fa2e74af5045b0250a70440.png)
-</code></pre></li>
-</ul>
-<h1 id="专业技术领域"><a href="#专业技术领域" class="headerlink" title="专业技术领域"></a>专业技术领域</h1><ul>
-<li><a target="_blank" rel="noopener" href="https://blog.bitsrc.io/react-form-validation-5aa06193bec4"><strong>Best Way to Handle Form Validation: React Hook Form and Zod</strong></a> <strong><code>英文</code></strong></li>
-<li><a target="_blank" rel="noopener" href="https://www.macarthur.me/posts/options-for-removing-event-listeners"><strong>You’ve Got Options for Removing Event Listeners</strong></a> <strong><code>英文</code></strong></li>
-<li>模块联邦作者 Zack Jackson 近几周在投入  <a target="_blank" rel="noopener" href="https://twitter.com/ScriptedAlchemy/status/1619951813687660544">Rust Webpack</a> ，30 天内会<a target="_blank" rel="noopener" href="https://twitter.com/ScriptedAlchemy/status/1621220073192189952">开源</a>。 - 在工作项目内也使用了模块联邦，还需要再多看看源码。</li>
-</ul>
-<h1 id="Widverse-·-汪汪汪世界"><a href="#Widverse-·-汪汪汪世界" class="headerlink" title="Widverse · 汪汪汪世界"></a>Widverse · 汪汪汪世界</h1><blockquote>
-<p>Widverse 是我开发的组件库，支持嵌入 Notion，FlowUs，Wolai，github 等。</p>
-</blockquote>
-<ul>
-<li>本周比较忙碌所以暂无更新。</li>
-</ul>
-<h1 id="最后的碎碎念"><a href="#最后的碎碎念" class="headerlink" title="最后的碎碎念"></a>最后的碎碎念</h1><ul>
-<li>每次回家都要玩烘焙，买一堆烘焙材料，结果每次都要在返杭前疯狂的消耗材料不然就得浪费。</li>
-<li>这周正式回杭州啦，从去年开始已经居家办公 7 个月了，现在特别想正式回归职场。</li>
-<li>说好的年后开始减肥却每天还在大吃大喝，住院的护士问我是不是胖了让我控制体重，害，减肥太难了。</li>
-</ul>
-<h1 id="话题"><a href="#话题" class="headerlink" title="话题"></a>话题</h1><p>你相信有平行世界吗？</p>
-<p>如果有你觉得平行世界的你是个怎么样的人？</p>
-<p><img src="https://i.hd-r.cn/9f144b95fa5e7e2b4105f7bbd6a511e4.jpg" alt="9f144b95fa5e7e2b4105f7bbd6a511e4.jpg"></p>
+      <p>[object Object]</p>
 
     </div>
 

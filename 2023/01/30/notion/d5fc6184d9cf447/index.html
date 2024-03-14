@@ -211,7 +211,7 @@
         <span class="post-time">
           Date:
           <a href="#"
-            >2023/01/30&nbsp;&nbsp;18:35:00</a
+            >2023/01/30&nbsp;&nbsp;18:35</a
           >
         </span>
          
@@ -257,13 +257,13 @@
 </blockquote>
 <h2 id="为-Notion-API-设置访问令牌"><a href="#为-Notion-API-设置访问令牌" class="headerlink" title="为 Notion API 设置访问令牌"></a><strong>为 Notion API 设置访问令牌</strong></h2><p>需要设置一个 Integration（集成），通过 Notion API 连接访问自己的数据库，然后生成一个访问令牌来访问 Notion 的 API。</p>
 <p>在<a target="_blank" rel="noopener" href="https://developers.notion.com/reference/intro">Notion API 文档</a>页面，点击右上角的<strong>View my integrations</strong> 链接。点击<strong>+ New integration</strong>按钮。</p>
-<p><img src="https://i.postimg.cc/xd0zGHgm/2022-09-10-20-16-22.png" alt="2022-09-10-20-16-22.png"></p>
+<p><img src="https://i.postimg.cc/xd0zGHgm/2022-09-10-20-16-22.png" alt=""></p>
 <p>创建集成完毕后，将会在详情页看到自己的访问令牌：</p>
-<p><img src="https://i.postimg.cc/BQ7h8Sg4/2022-09-10-20-17-28.png" alt="2022-09-10-20-17-28.png"></p>
-<h2 id="在-Notion-内创建你的博客表格"><a href="#在-Notion-内创建你的博客表格" class="headerlink" title="在 Notion 内创建你的博客表格"></a>在 Notion 内创建你的博客表格</h2><p><img src="https://i.postimg.cc/zX4CZV7b/2022-09-10-20-20-05.png" alt="2022-09-10-20-20-05.png"></p>
+<p><img src="https://i.postimg.cc/BQ7h8Sg4/2022-09-10-20-17-28.png" alt=""></p>
+<h2 id="在-Notion-内创建你的博客表格"><a href="#在-Notion-内创建你的博客表格" class="headerlink" title="在 Notion 内创建你的博客表格"></a>在 Notion 内创建你的博客表格</h2><p><img src="https://i.postimg.cc/zX4CZV7b/2022-09-10-20-20-05.png" alt=""></p>
 <p>我创建了一个 Blog 表格，并为每个文章设置了<code>title</code>，<code>slug(urlname)</code>，<code>tags</code>，<code>categories</code>，<code>description</code>，<code>publish</code>，<code>created_at</code>和<code>updated_at</code>这几个字断。</p>
 <p>其中<code>slug</code>是直接截取了 id 的一部分作为 url name：</p>
-<p><img src="https://i.postimg.cc/HxW545YK/2022-09-10-20-23-53.png" alt="2022-09-10-20-23-53.png"></p>
+<p><img src="https://i.postimg.cc/HxW545YK/2022-09-10-20-23-53.png" alt=""></p>
 <h2 id="在-blog-项目内配置相关信息"><a href="#在-blog-项目内配置相关信息" class="headerlink" title="在 blog 项目内配置相关信息"></a>在 blog 项目内配置相关信息</h2><p>点击 Blog 页面右上角的<strong>···</strong>按钮，在<code>Connections</code>内选择我们刚刚创建的<strong>my-blog</strong>集成。</p>
 <p>事先拥有一个  <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo">hexo</a>项目，并在  <code>package.json</code>中配置相关信息：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;notionConfig&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;mdNameFormat&quot;</span><span class="punctuation">:</span> <span class="string">&quot;slug&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;baseUrl&quot;</span><span class="punctuation">:</span> <span class="string">&quot;https://api.notion.com/v1/databases/&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;token&quot;</span><span class="punctuation">:</span> <span class="string">&quot;your Internal Integration Token&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;database&quot;</span><span class="punctuation">:</span> <span class="string">&quot;your database id&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;postPath&quot;</span><span class="punctuation">:</span> <span class="string">&quot;source/_posts/notion&quot;</span> <span class="comment">// markdown所在文件</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>

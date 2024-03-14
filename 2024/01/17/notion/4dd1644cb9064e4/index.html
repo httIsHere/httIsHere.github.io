@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="referrer" content="no-referrer" />
+
+    <meta name="author" content="httishere">
+
+
+
+
+
+<title>▪️ Slack App开发记录 | HTTISHERE</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+    <div class="wrapper">
+        <!--
+ * @Author: your name
+ * @Date: 2020-08-17 15:35:07
+ * @LastEditTime: 2022-01-15 12:59:30
+ * @LastEditors: your name
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_partial/header.ejs
+-->
+<header>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-header header-logo">
+        <a href="/">𝑯𝑻𝑻𝑰𝑺𝑯𝑬𝑹&#39;𝑩𝒍𝒐𝒈</a>
+        <!-- ℍ𝕋𝕋𝕀𝕊ℍ𝔼ℝ𝔼'𝕤 𝔹𝕝𝕠𝕘 -->
+      </div>
+      <div class="menu navbar-right">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/reading">Schedules</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+        <input id="switch_default" type="checkbox" class="switch_default" />
+        <label for="switch_default" class="toggleBtn"></label>
+      </div>
+    </div>
+  </nav>
+
+  
+  <nav class="navbar-mobile" id="nav-mobile">
+    <div class="container">
+      <div class="navbar-header">
+        <div>
+          <a href="/">𝑯𝑻𝑻𝑰𝑺𝑯𝑬𝑹&#39;𝑩𝒍𝒐𝒈</a
+          ><a id="mobile-toggle-theme">·&nbsp;Light</a>
+        </div>
+        <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+      </div>
+      <div class="menu" id="mobile-menu">
+        
+        <a class="menu-item" href="/archives">Posts</a>
+        
+        <a class="menu-item" href="/category">Categories</a>
+        
+        <a class="menu-item" href="/tag">Tags</a>
+        
+        <a class="menu-item" href="/reading">Schedules</a>
+        
+        <a class="menu-item" href="/about">About</a>
+        
+      </div>
+    </div>
+  </nav>
+</header>
+<script>
+  var mobileBtn = function f() {
+    var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+    var mobileMenu = document.getElementById("mobile-menu");
+    if (toggleMenu.classList.contains("active")) {
+      toggleMenu.classList.remove("active");
+      mobileMenu.classList.remove("active");
+    } else {
+      toggleMenu.classList.add("active");
+      mobileMenu.classList.add("active");
+    }
+  };
+  function addFav() {
+    var title = document.title;
+    var URL = document.URL;
+    try {
+      window.external.addFavorite(URL, title);
+    } catch (e) {
+      try {
+        window.sidebar.addPanel(title, URL, "");
+      } catch (e) {
+        alert("由于浏览器的安全设置\n可以使用Ctrl+D或者Command+D进行手动收藏");
+      }
+    }
+  }
+</script>
+
+        <div class="main">
+            <div class="container">
+    
+  <article class="post-wrap">
+    <header class="post-header">
+      <h1 class="post-title">▪️ Slack App开发记录</h1>
+      
+      <div
+        class="post-meta"
+        id="/2024/01/17/notion/4dd1644cb9064e4/"
+        class="leancloud-visitors view"
+      >
+         Author:
+        <a itemprop="author" rel="author" href="/">httishere</a>
+         
+        <span class="post-time">
+          Date:
+          <a href="#"
+            >2024/01/17&nbsp;&nbsp;11:09</a
+          >
+        </span>
+         
+        <span class="post-category">
+          Category: 
+          <a href="/categories/%E5%BC%80%E5%8F%91/">开发</a>
+          
+        </span>
+         <<
+        <div class="extra">
+          >>
+          <span
+            id="/2024/01/17/notion/4dd1644cb9064e4/"
+            class="leancloud-visitors view"
+            data-flag-title="▪️ Slack App开发记录"
+          >
+            <span class="post-meta-item-text">Pageviews:</span>
+            <a href="javascript:;" class="leancloud-visitors-count">0</a>
+          </span>
+          
+          <span class="post-count">
+            Words:
+            <a href="">800</a>
+          </span>
+           
+          <span class="post-count">
+            Time:
+            <a href="">4 min</a>
+          </span>
+          
+        </div>
+
+        
+      </div>
+      
+    </header>
+
+    <div class="post-content">
+      <ol>
+<li>使用 <a target="_blank" rel="noopener" href="https://ngrok.com/download">ngrok</a>，它可为在计算机上本地打开的端口创建外部可寻址 URL。</li>
+<li><p>在 Slack 内创建 Ap</p>
+<ul>
+<li>创建 Slack 工作区</li>
+<li><p><strong>创建一个新的</strong><a target="_blank" rel="noopener" href="https://api.slack.com/apps"><strong>Slack 应用程序</strong></a>：「Create New Ap」，选择 From scratch。</p>
+<pre><code>    ![](https://prod-files-secure.s3.us-west-2.amazonaws.com/a0bdc100-d0e6-4660-8a91-9071d9d01779/db4af0d3-e94a-46be-9cff-379ac9db813e/%E6%88%AA%E5%B1%8F2024-02-26_15.51.48.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240305%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20240305T064046Z&amp;X-Amz-Expires=3600&amp;X-Amz-Signature=11545bff8741ecf0838c9058648d002392e2abf547767d9d80e2774717df3e2b&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject)
+</code></pre></li>
+<li><p>设置应用程序的<strong>OAuth 和权限</strong>，点击左侧目录的「 OAuth &amp; Permissions」 - 在<strong>Redirect URLs</strong>内添加新的重定向 url 用于应用安装和授权，重定向的 url 需要使用到你的 ngrok domain，如<code>puma-rational-rapidly.ngrok-free.app</code> 。</p>
+<pre><code>        ![](https://prod-files-secure.s3.us-west-2.amazonaws.com/a0bdc100-d0e6-4660-8a91-9071d9d01779/94e302df-b0cc-4b7f-a852-bd0a43fee050/%E6%88%AA%E5%B1%8F2024-02-26_16.11.24.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240305%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20240305T064047Z&amp;X-Amz-Expires=3600&amp;X-Amz-Signature=e353a0f61f9dff043eb4ad1aa1460c9e444815a81cf220dc79fff625274d1fe5&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject)
+
+    - 在**Scopes**内设置应用程序的应用域
+
+        ![](https://prod-files-secure.s3.us-west-2.amazonaws.com/a0bdc100-d0e6-4660-8a91-9071d9d01779/232da410-5c16-4a27-8ea9-801f9524a458/%E6%88%AA%E5%B1%8F2024-02-26_16.19.09.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240305%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20240305T064048Z&amp;X-Amz-Expires=3600&amp;X-Amz-Signature=c066771e20de300345ed73e8166cd932408936c1cd3cf31479d4a4a6dde11e36&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject)
+</code></pre></li>
+<li><p>通过「Install Ap」→ 「Install to Workspace」将应用程序安装到我们的工作区，安装成功后获取到了<strong>SLACK_BOT_TOKEN（v1），</strong>后面会用到。</p>
+<pre><code>    ![](https://prod-files-secure.s3.us-west-2.amazonaws.com/a0bdc100-d0e6-4660-8a91-9071d9d01779/7b928644-e0b7-470a-bf23-72f568db806f/%E6%88%AA%E5%B1%8F2024-02-26_16.34.34.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240305%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20240305T064048Z&amp;X-Amz-Expires=3600&amp;X-Amz-Signature=28a1a226ad51e0ad8067d7ae2381195f63b0ef95ed676c4c9a67f3048d1208cc&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject)
+</code></pre></li>
+</ul>
+</li>
+</ol>
+<pre><code>    ![](https://prod-files-secure.s3.us-west-2.amazonaws.com/a0bdc100-d0e6-4660-8a91-9071d9d01779/4e2bb3fd-645f-42a9-bf86-b640b7aa8de6/%E6%88%AA%E5%B1%8F2024-02-26_16.40.03.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240305%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20240305T064048Z&amp;X-Amz-Expires=3600&amp;X-Amz-Signature=5725131c8dd99e03cbe36f8cbf06a12fdf1b9a95ce129d1c4e4c656dc1deac61&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject)
+
+- 进入应用程序的基本信息内获取基本的应用程序凭证：「Settings」→ 「**Basic Information」**，后续需要配置进环境变量
+
+    ![](https://prod-files-secure.s3.us-west-2.amazonaws.com/a0bdc100-d0e6-4660-8a91-9071d9d01779/a1b40867-90bd-4931-b610-c50e4de91521/%E6%88%AA%E5%B1%8F2024-02-26_16.52.06.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240305%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20240305T064049Z&amp;X-Amz-Expires=3600&amp;X-Amz-Signature=c066489a2be49339dc25aac5797dec1e2fe4b5c40f9dd4761cbfe375cfee7c45&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject)
+
+- 创建应用程序的斜杠命令，用于机器人监听对应的命令，创建时这里的**Request URL**要填你的`&#123;ngrok domain&#125;/slack/events` 。
+
+    ![](https://prod-files-secure.s3.us-west-2.amazonaws.com/a0bdc100-d0e6-4660-8a91-9071d9d01779/047dd59b-5b61-4c72-8d49-119a33f11f96/%E6%88%AA%E5%B1%8F2024-02-26_17.11.13.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240305%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20240305T064049Z&amp;X-Amz-Expires=3600&amp;X-Amz-Signature=9506a4100e7dbfcabd12023f16953cfbe786f849ed8f40ee3ecb9afe51ce00ef&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject)
+</code></pre>
+    </div>
+
+    
+    <section class="post-copyright">
+      
+      <p class="copyright-item">
+        <span>Author:</span>
+        <span>httishere</span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>Permalink:</span>
+        <span><a href="https://httishere.github.io/2024/01/17/notion/4dd1644cb9064e4/">https://httishere.github.io/2024/01/17/notion/4dd1644cb9064e4/</a></span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>License:</span>
+        <span>Copyright (c) 2021 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+      </p>
+       
+      <p class="copyright-item">
+        <span>Slogan:</span>
+        <span>Good Good Study, Day Day Up.</span>
+      </p>
+      
+    </section>
+    
+    <section class="post-tags">
+      <div>
+        <span>Tag(s):</span>
+        <span class="tag">
+           
+          <a href="/tags/Slack/"># Slack</a>
+           
+        </span>
+      </div>
+      <div>
+        <a href="javascript:window.history.back();">back</a>
+        <span>· </span>
+        <a href="/">home</a>
+      </div>
+    </section>
+    <section class="post-nav">
+      
+      <a class="prev" rel="prev" href="/2024/03/05/notion/c05e50cfd8954c8/"
+        >▪️ antd使用Form无法获取item数据</a
+      >
+       
+      <a class="next" rel="next" href="/2024/01/06/notion/ac3f15468e4443c/"
+        >💘 再见2023，当时只道是寻常</a
+      >
+      
+    </section>
+     <!--
+ * @Author: your name
+ * @Date: 2021-07-08 11:08:58
+ * @LastEditTime: 2021-08-20 11:11:35
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_partial/gitalk.ejs
+-->
+<link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css">
+<div id="gitalk-container" style="margin-top: 50px;"></div>
+<!-- <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> -->
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script type="text/javascript">
+console.log(md5(location.pathname))
+    new Gitalk({
+        clientID: 'c61a26564784a9cb16f3',
+        clientSecret: '25a391b4405c726bfa417a4d09a8a9d46fd41e12',
+        id: window.location.pathname,
+        repo: 'httIsHere.github.io',
+        owner: 'httIsHere',
+        admin: 'httIsHere',
+        id: md5(location.pathname),
+        distractionFreeMode: false
+    }).render('gitalk-container')
+</script>  
+    <section id="comments" class="comments">
+      <style>
+        .comments {
+          margin: 30px;
+          padding: 10px;
+          background: #fff;
+        }
+        @media screen and (max-width: 800px) {
+          .comments {
+            margin: auto;
+            padding: 10px;
+            background: #fff;
+          }
+        }
+      </style>
+      <!--
+ * @Author: your name
+ * @Date: 2022-01-19 10:26:36
+ * @LastEditTime: 2022-01-19 11:55:49
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /hexo-yuque-blog/themes/Chic/layout/_plugins/valine.ejs
+-->
+<!-- <div class="valine_comment"></div> -->
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: '1BHDvzMyiyWmu3v3vBaR2dek-gzGzoHsz',
+      app_key: 'MaYtrzsGSwqpImuLueThWKFE',
+      placeholder: '这里留言。。',
+      notify: 'true',
+      verify: 'true',
+      visitor: 'true',
+    });
+</script>
+    </section>
+    
+  </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© httishere | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
