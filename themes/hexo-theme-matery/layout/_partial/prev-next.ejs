@@ -12,7 +12,7 @@ var hashCode = function (str) {
     return hash;
 };
 
-var featureimg = '/medias/featureimages/0.jpg';
+var featureimg = '/medias/featureimages/cover-bg-0.jpg';
 var featureImages = theme.featureImages;
 %>
 
@@ -33,7 +33,8 @@ var featureImages = theme.featureImages;
                             var num = Math.abs(hashCode(page.prev.title) % len);
                             featureimg = featureImages[num];
                         %>
-                        <img src="<%- theme.jsDelivr.url %><%- url_for(featureimg) %>" class="responsive-img" alt="<%= page.prev.title %>">
+                        <img src="<%- theme.jsDelivr.url %><%- url_for(featureimg) %>" class="responsive-img"
+                            alt="<%= page.prev.title %>">
                         <% } %>
                         <span class="card-title"><%= page.prev.title %></span>
                     </div>
@@ -41,9 +42,9 @@ var featureImages = theme.featureImages;
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         <% if (page.prev.summary && page.prev.summary.length > 0) { %>
-                            <%- page.prev.summary %>
+                        <%- page.prev.summary %>
                         <% } else { %>
-                            <%- strip_html(page.prev.excerpt).substring(0, 120) %>
+                        <%- strip_html(page.prev.excerpt).substring(0, 120) %>
                         <% } %>
                     </div>
                     <div class="publish-info">
@@ -55,8 +56,8 @@ var featureImages = theme.featureImages;
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             <% page.prev.categories.forEach(category => { %>
                             <a href="<%- url_for(category.path) %>" class="post-category">
-                                    <%- category.name %>
-                                </a>
+                                <%- category.name %>
+                            </a>
                             <% }); %>
                             <% } else if (page.prev.author && page.prev.author.length > 0) { %>
                             <i class="fas fa-user fa-fw"></i>
@@ -93,7 +94,8 @@ var featureImages = theme.featureImages;
                         <%
                             featureimg = featureImages[Math.abs(hashCode(page.title) % featureImages.length)];
                         %>
-                        <img src="<%- theme.jsDelivr.url %><%- url_for(featureimg) %>" class="responsive-img" alt="<%= page.title %>">
+                        <img src="<%- theme.jsDelivr.url %><%- url_for(featureimg) %>" class="responsive-img"
+                            alt="<%= page.title %>">
                         <% } %>
                         <span class="card-title"><%= page.title %></span>
                     </div>
@@ -101,22 +103,22 @@ var featureImages = theme.featureImages;
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         <% if (page.summary && page.summary.length > 0) { %>
-                            <%- page.summary %>
+                        <%- page.summary %>
                         <% } else { %>
-                            <%- strip_html(page.excerpt).substring(0, 120) %>
+                        <%- strip_html(page.excerpt).substring(0, 120) %>
                         <% } %>
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i><%= date(page.date, config.date_format) %>
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i><%= date(page.date, config.date_format) %>
+                        </span>
                         <span class="publish-author">
                             <% if (page.categories && page.categories.length > 0) { %>
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             <% page.categories.forEach(category => { %>
                             <a href="<%- url_for(category.path) %>" class="post-category">
-                                    <%- category.name %>
-                                </a>
+                                <%- category.name %>
+                            </a>
                             <% }); %>
                             <% } else if (page.author && page.author.length > 0) { %>
                             <i class="fas fa-user fa-fw"></i>
@@ -155,7 +157,8 @@ var featureImages = theme.featureImages;
                         <%
                             featureimg = featureImages[Math.abs(hashCode(page.next.title) % featureImages.length)];
                         %>
-                        <img src="<%- theme.jsDelivr.url %><%- url_for(featureimg) %>" class="responsive-img" alt="<%= page.next.title %>">
+                        <img src="<%- theme.jsDelivr.url %><%- url_for(featureimg) %>" class="responsive-img"
+                            alt="<%= page.next.title %>">
                         <% } %>
                         <span class="card-title"><%= page.next.title %></span>
                     </div>
@@ -163,22 +166,22 @@ var featureImages = theme.featureImages;
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         <% if (page.next.summary && page.next.summary.length > 0) { %>
-                            <%- page.next.summary %>
+                        <%- page.next.summary %>
                         <% } else { %>
-                            <%- strip_html(page.next.excerpt).substring(0, 120) %>
+                        <%- strip_html(page.next.excerpt).substring(0, 120) %>
                         <% } %>
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i><%= date(page.next.date, config.date_format) %>
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i><%= date(page.next.date, config.date_format) %>
+                        </span>
                         <span class="publish-author">
                             <% if (page.next.categories && page.next.categories.length > 0) { %>
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             <% page.next.categories.forEach(category => { %>
                             <a href="<%- url_for(category.path) %>" class="post-category">
-                                    <%- category.name %>
-                                </a>
+                                <%- category.name %>
+                            </a>
                             <% }); %>
                             <% } else if (page.next.author && page.next.author.length > 0) { %>
                             <i class="fas fa-user fa-fw"></i>
@@ -215,7 +218,8 @@ var featureImages = theme.featureImages;
                         <%
                             featureimg = featureImages[Math.abs(hashCode(page.title) % featureImages.length)];
                         %>
-                        <img src="<%- theme.jsDelivr.url %><%- url_for(featureimg) %>" class="responsive-img" alt="<%= page.title %>">
+                        <img src="<%- theme.jsDelivr.url %><%- url_for(featureimg) %>" class="responsive-img"
+                            alt="<%= page.title %>">
                         <% } %>
                         <span class="card-title"><%= page.title %></span>
                     </div>
@@ -223,22 +227,22 @@ var featureImages = theme.featureImages;
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         <% if (page.summary && page.summary.length > 0) { %>
-                            <%- page.summary %>
+                        <%- page.summary %>
                         <% } else { %>
-                            <%- strip_html(page.excerpt).substring(0, 120) %>
+                        <%- strip_html(page.excerpt).substring(0, 120) %>
                         <% } %>
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i><%= date(page.date, config.date_format) %>
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i><%= date(page.date, config.date_format) %>
+                        </span>
                         <span class="publish-author">
                             <% if (page.categories && page.categories.length > 0) { %>
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             <% page.categories.forEach(category => { %>
                             <a href="<%- url_for(category.path) %>" class="post-category">
-                                    <%- category.name %>
-                                </a>
+                                <%- category.name %>
+                            </a>
                             <% }); %>
                             <% } else if (page.author && page.author.length > 0) { %>
                             <i class="fas fa-user fa-fw"></i>

@@ -31,7 +31,7 @@
     var month = '1970-01';
 
     // post feature image.
-    var featureimg = '/medias/featureimages/0.jpg';
+    var featureimg = '/medias/featureimages/cover-bg-0.jpg';
     var featureImages = theme.featureImages;
     %>
 
@@ -73,7 +73,8 @@
                                 <%
                                     featureimg = featureImages[Math.abs(hashCode(post.title) % featureImages.length)];
                                 %>
-                                <img src="<%- theme.jsDelivr.url %><%- url_for(featureimg) %>" class="responsive-img" alt="<%= post.title %>">
+                                <img src="<%- theme.jsDelivr.url %><%- url_for(featureimg) %>" class="responsive-img"
+                                    alt="<%= post.title %>">
                                 <% } %>
                                 <span class="card-title"><%= post.title %></span>
                             </div>
@@ -81,21 +82,22 @@
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 <% if (post.summary && post.summary.length > 0) { %>
-                                    <%- post.summary %>
+                                <%- post.summary %>
                                 <% } else { %>
-                                    <%- strip_html(post.content).substring(0, 120) %>
+                                <%- strip_html(post.content).substring(0, 120) %>
                                 <% } %>
                             </div>
                             <div class="publish-info">
                                 <span class="publish-date">
-                                    <i class="far fa-clock fa-fw icon-date"></i><%= date(post.date, config.date_format) %>
+                                    <i
+                                        class="far fa-clock fa-fw icon-date"></i><%= date(post.date, config.date_format) %>
                                 </span>
                                 <span class="publish-author">
                                     <% if (post.categories && post.categories.length > 0) { %>
                                     <i class="fas fa-bookmark fa-fw icon-category"></i>
                                     <% post.categories.forEach(category => { %>
                                     <a href="<%- url_for(category.path) %>" class="post-category">
-                                    <%- category.name %>
+                                        <%- category.name %>
                                     </a>
                                     <% }); %>
                                     <% } else if (post.author && post.author.length > 0) { %>

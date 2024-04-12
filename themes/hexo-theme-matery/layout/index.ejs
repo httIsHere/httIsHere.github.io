@@ -1,7 +1,7 @@
 <% if (is_home() && page.current === 1) { %>
 <%- partial('_partial/index-cover') %>
 <% } else { %>
-    <%- partial('_partial/bg-cover') %>
+<%- partial('_partial/bg-cover') %>
 <% } %>
 
 <main class="content">
@@ -14,15 +14,15 @@
             <div class="card">
                 <div class="card-content">
                     <% if (theme.dream.enable) { %>
-                        <%- partial('_widget/dream') %>
+                    <%- partial('_widget/dream') %>
                     <% } %>
 
                     <% if (theme.music.enable && !theme.music.fixed) { %>
-                        <%- partial('_widget/music') %>
-                        <% } %>
+                    <%- partial('_widget/music') %>
+                    <% } %>
 
                     <% if (theme.video.enable) { %>
-                        <%- partial('_widget/video') %>
+                    <%- partial('_widget/video') %>
                     <% } %>
 
                     <% if (theme.recommend.enable) { %>
@@ -63,14 +63,15 @@
                             <img src="<%- url_for(post.img) %>" class="responsive-img" alt="<%= post.title %>">
                             <% } else { %>
                             <%
-                                var featureimg = '/medias/featureimages/0.jpg';
+                                var featureimg = '/medias/featureimages/cover-bg-0.jpg';
                                 var featureImages = theme.featureImages;
                                 if (!featureImages || featureImages.length == 0) {
                                     return featureimg;
                                 }
                                 featureimg = featureImages[Math.abs(hashCode(post.title) % featureImages.length)]
                             %>
-                            <img src="<%- theme.jsDelivr.url %><%- url_for(featureimg) %>" class="responsive-img" alt="<%= post.title %>">
+                            <img src="<%- theme.jsDelivr.url %><%- url_for(featureimg) %>" class="responsive-img"
+                                alt="<%= post.title %>">
                             <% } %>
                             <span class="card-title"><%= post.title %></span>
                         </div>
@@ -79,11 +80,11 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             <% if (post.summary && post.summary.length > 0) { %>
-                                <%- post.summary %>
+                            <%- post.summary %>
                             <% } else if (post.excerpt && post.excerpt.length > 0) { %>
-                                <%- strip_html(post.excerpt).substring(0, 120) %>
+                            <%- strip_html(post.excerpt).substring(0, 120) %>
                             <% } else if (post.content && post.content.length > 0) { %>
-                                <%- strip_html(post.content).substring(0, 120) %>
+                            <%- strip_html(post.content).substring(0, 120) %>
                             <% } %>
                         </div>
                         <div class="publish-info">

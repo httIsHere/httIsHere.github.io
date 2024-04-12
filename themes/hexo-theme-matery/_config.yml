@@ -64,15 +64,15 @@ cover:
 # index page dream text,
 # 配置首页显示"梦想"的语句.
 dream:
-  enable: true
+  enable: false
   showTitle: true
-  title: 我的梦想
+  title: My dream
   text: 不是每个人都应该像我这样去建造一座水晶大教堂，但是每个人都应该拥有自己的梦想，设计自己的梦想，追求自己的梦想，实现自己的梦想。梦想是生命的灵魂，是心灵的灯塔，是引导人走向成功的信仰。有了崇高的梦想，只要矢志不渝地追求，梦想就会成为现实，奋斗就会变成壮举，生命就会创造奇迹。——罗伯·舒乐
 
 # Whether to display the musics.
 # 是否在首页显示音乐.
 music:
-  enable: true
+  enable: false
   title: #非吸底模式有效
     enable: true
     show: 听听音乐
@@ -82,7 +82,7 @@ music:
   id: 503838841     #require	song id / playlist id / album id / search keyword
   fixed: true       # 开启吸底模式
   autoplay: false   # 是否自动播放
-  theme: '#42b983'
+  theme: '#93A07d'
   loop: 'all'       # 音频循环播放, 可选值: 'all', 'one', 'none'
   order: 'random'   # 音频循环顺序, 可选值: 'list', 'random'
   preload: 'auto'   # 预加载，可选值: 'none', 'metadata', 'auto'
@@ -213,21 +213,21 @@ profile:
 myProjects:
   enable: true
   data:
-    hexo-theme-matery:
+    Widverse · 静态组件库:
       icon: fas fa-file-alt
-      iconBackground: 'linear-gradient(to bottom right, #66BB6A 0%, #81C784 100%)'
-      url: http://github.com/blinkfox/hexo-theme-matery
-      desc: This is a Hexo blog theme with 'Material Design' and responsive design.
-    Fenix:
+      iconBackground: 'linear-gradient(to bottom right, #f2c867 0%, #e0e0d0 100%)'
+      url: https://httishere.gitee.io/widverse-site/
+      desc: 这是一个原创的静态组件库，可用于嵌入Notion，FlowUs，Wolai等平台。
+    Notion Collector:
         icon: fas fa-database
-        iconBackground: 'linear-gradient(to bottom right, #F06292 0%, #EF5350 100%)'
-        url: https://github.com/blinkfox/fenix
-        desc: 这是 Spring Data JPA 复杂或动态 SQL 查询的扩展库。
-    typora-vue-theme:
+        iconBackground: 'linear-gradient(to bottom right, #c5e2ca 0%, #395f64 100%)'
+        url: https://github.com/httIsHere/Notion-Collector-v3
+        desc: 这是浏览器端摘录内容至Notion的拓展插件（本插件目前仅支持Chrome（谷歌浏览器）v115以上使用！）。
+    vue-calendar-week:
         icon: fas fa-file-alt
-        iconBackground: 'linear-gradient(to bottom right, #29B6F6 0%, #1E88E5 100%)'
-        url: https://github.com/blinkfox/typora-vue-theme
-        desc: This is a typora theme inspired by Vue document style.
+        iconBackground: 'linear-gradient(to bottom right, #9d8ba3 0%, #e0b1bd 100%)'
+        url: https://github.com/httIsHere/vue-calendar-week
+        desc: 为用户提供周日历日程表设计的Vue插件，用户可通过自由拖动选区建立日程事件。
 
 # config my skills informations in about page.
 # If you don't want to display this `My Skills` content, you can deactivate or delete this configuration.
@@ -235,24 +235,18 @@ myProjects:
 mySkills:
   enable: true
   data:
-    Java:
-      background: 'linear-gradient(to right, #FF0066 0%, #FF00CC 100%)'
-      percent: 85%
-    JavaScript:
-      background: 'linear-gradient(to right, #9900FF 0%, #CC66FF 100%)'
-      percent: 80%
     HTML5:
-      background: 'linear-gradient(to right, #2196F3 0%, #42A5F5 100%)'
+      background: 'linear-gradient(to right, #ae9ab8 0%, #e7daed 100%)'
+      percent: 76.21%
+    JavaScript:
+      background: 'linear-gradient(to right, #b2bfa1 0%, #e3e9db 100%)'
       percent: 80%
     CSS:
-      background: 'linear-gradient(to right, #00BCD4 0%, #80DEEA 100%)'
-      percent: 70%
-    SQL:
-      background: 'linear-gradient(to right, #4CAF50 0%, #81C784 100%)'
+      background: 'linear-gradient(to right, #c29faf 0%, #ead9e1 100%)'
       percent: 90%
-    程序设计:
-      background: 'linear-gradient(to right, #FFEB3B 0%, #FFF176 100%)'
-      percent: 75%
+    Nodejs:
+      background: 'linear-gradient(to right, #959ec5 0%, #cacee2 100%)'
+      percent: 50%
 
 # config gallery of my photos in about page.
 # If you don't want to display this `Gallery` content, you can deactivate or delete this configuration.
@@ -260,9 +254,9 @@ mySkills:
 myGallery:
   enable: true
   data:
-    - /medias/featureimages/0.jpg
-    - /medias/featureimages/1.jpg
-    - /medias/featureimages/2.jpg
+    - /medias/featureimages/cover-bg-1.jpg
+    - /medias/featureimages/cover-bg-0.jpg
+    - /medias/featureimages/cover-bg-3.jpg
 
 # Whether to display post-calender in the `archive` page
 # 设置在归档页面中是否显示'文章日历'控件
@@ -361,7 +355,7 @@ minivaline:
   # If you want everyone visiting your site to see a uniform language, you can set a force language value
   # Available values: en  | zh-CN | (and many more)
   # More i18n info: https://github.com/MiniValine/minivaline-i18n
-  lang:
+  lang: zh-CN
   # Expression Url.
   # https://github.com/MiniValine/MiniValine/blob/master/.github/FAQ.md#how-to-customize-emoticons
   emoticonUrl:
@@ -463,30 +457,35 @@ libs:
 # The post featured images that needs to be displayed when there is no image.
 # 无文章特色图片时需要显示的文章特色图片.
 featureImages:
-- /medias/featureimages/0.jpg
-- /medias/featureimages/1.jpg
-- /medias/featureimages/2.jpg
-- /medias/featureimages/3.jpg
-- /medias/featureimages/4.jpg
-- /medias/featureimages/5.jpg
-- /medias/featureimages/6.jpg
-- /medias/featureimages/7.jpg
-- /medias/featureimages/8.jpg
-- /medias/featureimages/9.jpg
-- /medias/featureimages/10.jpg
-- /medias/featureimages/11.jpg
-- /medias/featureimages/12.jpg
-- /medias/featureimages/13.jpg
-- /medias/featureimages/14.jpg
-- /medias/featureimages/15.jpg
-- /medias/featureimages/16.jpg
-- /medias/featureimages/17.jpg
-- /medias/featureimages/18.jpg
-- /medias/featureimages/19.jpg
-- /medias/featureimages/20.jpg
-- /medias/featureimages/21.jpg
-- /medias/featureimages/22.jpg
-- /medias/featureimages/23.jpg
+- /medias/featureimages/cover-bg-0.jpg
+- /medias/featureimages/cover-bg-1.jpg
+- /medias/featureimages/cover-bg-3.jpg
+- /medias/featureimages/cover-bg-4.jpg
+- /medias/featureimages/cover-bg-5.jpg
+- /medias/featureimages/cover-bg-6.jpg
+- /medias/featureimages/cover-bg-7.jpg
+- /medias/featureimages/cover-bg-8.jpg
+# - /medias/featureimages/3.jpg
+# - /medias/featureimages/4.jpg
+# - /medias/featureimages/5.jpg
+# - /medias/featureimages/6.jpg
+# - /medias/featureimages/7.jpg
+# - /medias/featureimages/8.jpg
+# - /medias/featureimages/9.jpg
+# - /medias/featureimages/10.jpg
+# - /medias/featureimages/11.jpg
+# - /medias/featureimages/12.jpg
+# - /medias/featureimages/13.jpg
+# - /medias/featureimages/14.jpg
+# - /medias/featureimages/15.jpg
+# - /medias/featureimages/16.jpg
+# - /medias/featureimages/17.jpg
+# - /medias/featureimages/18.jpg
+# - /medias/featureimages/19.jpg
+# - /medias/featureimages/20.jpg
+# - /medias/featureimages/21.jpg
+# - /medias/featureimages/22.jpg
+# - /medias/featureimages/23.jpg
 
 # default configs that the default policy for every articles/posts
 # default 配置文章的默认转载规则
@@ -582,7 +581,7 @@ instantpage:
 # banner 是否每日切换.
 # 若为 false, 则 banner 默认为 /medias/banner/0.jpg
 banner:
-  enable: true
+  enable: false
 
 #ICP备案信息尾部显示
 icp:
@@ -605,7 +604,7 @@ jsDelivr:
 # 网站背景图
 background:
   enable: false
-  url: "https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg"
+  # url: "https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg"
 
 # 说说 https://artitalk.js.org/
 artitalk:
