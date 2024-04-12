@@ -1,7 +1,8 @@
 ---
 title: About
 date: 2020-01-12 17:45:23
-type: about
+type: "about"
+layout: "about"
 ---
 
 <img src="yjtp.png" class="banner">

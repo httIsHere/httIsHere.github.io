@@ -6,6 +6,7 @@
  * @Description: 
 -->
 <div class="post-wrap archive">
+    <div id="recent-posts"></div>
     <!-- <ul class="site-data">
         <li><span><%- site.posts.length %></span><br><span>文章</span></li>
         <li><span><%- site.categories.length %></span><br><span>分类</span></li>
@@ -15,52 +16,48 @@
     <% if(page.prev < 1) { %>
     <!-- 置顶文章 -->
     <h3>🔝🔝🔝</h3>
-    <a
-    href="https://httishere666.notion.site/Hello-here-is-Tina-b10f03f2226e449887ad86b097e67e78"
-    rel="sidebar"
-    style="margin-left: 20px;margin-bottom: 20px;display: inline-block;"
-    >👉 𝑴𝒚 𝑳𝒊𝒇𝒆 𝑳𝒐𝒈</a
-  >
+    <a href="https://httishere666.notion.site/Hello-here-is-Tina-b10f03f2226e449887ad86b097e67e78" rel="sidebar"
+        style="margin-left: 20px;margin-bottom: 20px;display: inline-block;">👉 𝑴𝒚 𝑳𝒊𝒇𝒆 𝑳𝒐𝒈</a>
     <% page.posts.each(function (post) { %>
-        <% if(post.top) { %>
-            <article class="archive-item">
-                <a class="archive-item-link" href="<%- url_for(post.path) %>">
-                    <%= post.title %>
-                    <% post.categories.forEach(item=>{ %>
-                        <span class="archive-item-category-item" data-type="<%- item.name %>"><%- item.name %></span>
-                    <% }) %>
-                </a>
-                <span class="archive-item-date"><%- date(post.date, theme.date_format) %></span>
-            </article>
-        <% } %>
+    <% if(post.top) { %>
+    <article class="archive-item">
+        <a class="archive-item-link" href="<%- url_for(post.path) %>">
+            <%= post.title %>
+            <% post.categories.forEach(item=>{ %>
+            <span class="archive-item-category-item" data-type="<%- item.name %>"><%- item.name %></span>
+            <% }) %>
+        </a>
+        <span class="archive-item-date"><%- date(post.date, theme.date_format) %></span>
+    </article>
+    <% } %>
     <% }) %>
     <% } %>
     <% var last_year = ''; %>
     <% page.posts.each(function (post) { %>
-        <% var cur_year = post.date.year(); %>
+    <% var cur_year = post.date.year(); %>
 
-        <% if(last_year !== cur_year){ %>
-            <h3><%- cur_year %></h3>
-        <% last_year = cur_year; } %>
-        
-        <!-- 首页隐藏 || 分类展示 -->
-        <% if(!post.top && ((!page.category && !post.hidden) || (page.category && !post.cateHidden))) { %>
-        <article class="archive-item new">
-            <a class="archive-item-link" href="<%- url_for(post.path) %>">
-                <!-- <div class="category"> -->
-                <!-- </div> -->
-                <%= post.title %>
-                <% post.categories.forEach(item=>{ %>
-                    <span class="archive-item-category-item" data-type="<%- item.name %>"><%- item.name %></span>
-                    <!-- <a class="archive-item-category-item" href="/categories/<%- item.name %>/"><%- item.name %></a> -->
-                <% }) %>
-            </a>
-            <span class="archive-item-date"><%- date(post.date, theme.date_format) %></span>
-            <% if(post.description) { %>
-                <p class="desc"><%- post.description %></p>
-            <% } %>
-        </article>
+    <% if(last_year !== cur_year){ %>
+    <h3><%- cur_year %></h3>
+    <% last_year = cur_year; } %>
+
+    <!-- 首页隐藏 || 分类展示 -->
+    <% if(!post.top && ((!page.category && !post.hidden) || (page.category && !post.cateHidden))) { %>
+    <article class="archive-item new">
+        <a class="archive-item-link" href="<%- url_for(post.path) %>">
+            <!-- <div class="category"> -->
+            <!-- </div> -->
+            <%= post.title %>
+            <% post.categories.forEach(item=>{ %>
+            <span class="archive-item-category-item" data-type="<%- item.name %>"><%- item.name %></span>
+            <!-- <a class="archive-item-category-item" href="/categories/<%- item.name %>/"><%- item.name %></a> -->
+            <% }) %>
+        </a>
+        <span class="archive-item-date"><%- date(post.date, theme.date_format) %></span>
+        <% if(post.description) { %>
+        <p class="desc"><%- post.description %></p>
         <% } %>
+    </article>
+    <% } %>
     <% }) %>
     <%- partial('_partial/paginator') %>
 </div>
