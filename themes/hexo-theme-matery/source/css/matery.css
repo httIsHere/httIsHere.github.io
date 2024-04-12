@@ -1,5 +1,10 @@
 /*全局基础样式*/
 /*小屏幕下(手机类)的样式*/
+@font-face {
+    font-family: huangyou;
+    src: url("../fonts/站酷仓耳渔阳体-W02.ttf") format("truetype");
+}
+
 :root {
     --main-bg-color: #93A07d;
     --main-color: #e5d8c6;
@@ -7,7 +12,10 @@
     --main-link: #c7aaa6;
     --main-color-opacity: rgba(229, 216, 198, .2);
     --main-bg-color-op: rgba(147, 160, 125, .5);
-  }
+
+    font-family: huangyou, monospace， sans-serif;
+}
+
 @media only screen and (max-width: 601px) {
     .container {
         width: 95%;
@@ -397,11 +405,11 @@ header .side-nav .social-link {
 }
 
 .cover-btns a:hover {
-    border: 1px solid #f44336;
-    background-color: #f44336;
-    box-shadow: 0 14px 26px -12px rgba(241, 225, 209, 0.42),
-    0 4px 23px 0 rgba(0, 0, 0, 0.12),
-    0 8px 10px -5px rgba(241, 225, 209, 0.2);
+    border: 1px solid var(--main-font);
+    background-color: var(--main-font);
+    box-shadow: 0 14px 26px -12px var(--main-color-opacity),
+        0 4px 23px 0 rgba(0, 0, 0, 0.12),
+        0 8px 10px -5px var(--main-color-opacity);
 }
 
 .cover-btns a i {
@@ -1038,8 +1046,8 @@ article .article-tags .chip {
 
 #artDetail .card {
     box-shadow: 0 10px 35px 2px rgba(0, 0, 0, .15),
-    0 5px 15px rgba(0, 0, 0, .07),
-    0 2px 5px -5px rgba(0, 0, 0, .1) !important;
+        0 5px 15px rgba(0, 0, 0, .07),
+        0 2px 5px -5px rgba(0, 0, 0, .1) !important;
 }
 
 #artDetail .tag-cate {
@@ -2044,8 +2052,7 @@ footer .copy-right {
 
 /*二级菜单*/
 
-.nav-menu {
-}
+.nav-menu {}
 
 .nav-menu li .sub-nav {
     position: absolute;
@@ -2141,13 +2148,13 @@ footer .copy-right {
 }
 
 .m-nav-show,
-.m-nav-item > a:hover {
+.m-nav-item>a:hover {
     color: #FFF;
     background: rgba(255, 255, 255, .8);
 }
 
-.m-nav-show > a:before,
-.m-nav-item > a:hover:before {
+.m-nav-show>a:before,
+.m-nav-item>a:hover:before {
     opacity: 1;
 }
 
