@@ -1,0 +1,55 @@
+<hr>
+<p>title: 242.valid-anagram<br>date: 2021-10-13 16:31:14<br>tags:</p>
+<pre><code>- LeeCode
+</code></pre><p>categories: </p>
+<pre><code>- LeeCode
+</code></pre><p>hidden: true</p>
+<h2 id="cateHidden-false"><a href="#cateHidden-false" class="headerlink" title="cateHidden: false"></a>cateHidden: false</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><blockquote>
+<p>Given two strings s and t, return true if t is an anagram of s, and false otherwise.</p>
+</blockquote>
+<p>有效的字母异位词。</p>
+<h3 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h3><pre><code>// example 1
+Input: s = &quot;anagram&quot;, t = &quot;nagaram&quot;
+Output: true
+
+// example 2
+Input: s = &quot;rat&quot;, t = &quot;car&quot;
+Output: false
+</code></pre><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>对字符串的字符进行收集并比较。</p>
+<pre><code class="lang-js">var isAnagram = function(s, t) {
+
+    if(s.length !== t.length) return false;
+    let s_r = null, t_r = null;
+
+    s_r = getChars(s);
+    t_r = getChars(t);
+
+    if(Object.keys(s_r).length !== Object.keys(t_r).length) return false;
+
+    let flag = true;
+
+    Object.keys(s_r).forEach(key =&gt; {
+        if(s_r[key] !== t_r[key]) {
+            flag = false;
+            return flag;
+        }
+    })
+
+    return flag;
+
+    function getChars(s) {
+        let result = {};
+        for (let i = 0; i &lt; s.length; i++) {
+            result[s[i]] ? result[s[i]]++ : (result[s[i]] = 1);
+        }
+        // console.log(result);
+        return result;
+    }
+};
+</code></pre>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><blockquote>
+<p>Accepted</p>
+<p>35/35 cases passed (99 ms)</p>
+<p>Your runtime beats 60.14 % of javascript submissions</p>
+<p>Your memory usage beats 66.11 % of javascript submissions (41 MB)</p>
+</blockquote>

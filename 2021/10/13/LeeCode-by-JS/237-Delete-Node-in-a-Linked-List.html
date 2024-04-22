@@ -1,0 +1,20 @@
+<hr>
+<p>title: 237.Delete Node in a Linked List<br>date: 2021-10-13 16:31:14<br>tags:</p>
+<pre><code>- LeeCode
+</code></pre><p>categories: </p>
+<pre><code>- LeeCode
+</code></pre><p>hidden: true</p>
+<h2 id="cateHidden-false"><a href="#cateHidden-false" class="headerlink" title="cateHidden: false"></a>cateHidden: false</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><blockquote>
+<p>Write a function to delete a node in a singly-linked list. You will not be given access to the head of the list, instead you will be given access to the node to be deleted directly.<br>It is guaranteed that the node to be deleted is not a tail node in the list.</p>
+</blockquote>
+<p>删除链表中的当前节点。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>没有头节点，也就无法获取上一个节点，那么思路只能将当前节点作为头节点：</p>
+<ul>
+<li>复制下一个节点给当前节点</li>
+<li>将下一个节点作为需要删除的节点</li>
+</ul>
+<pre><code class="lang-js">var deleteNode = function(node) {
+    node.val = node.next.val;
+    node.next = node.next.next;
+};
+</code></pre>

@@ -1,0 +1,65 @@
+<hr>
+<p>title: 1967.number-of-strings-that-appear-as-substrings-in-word<br>date: 2021-12-16 10:12:53<br>mathjax: true<br>tags:</p>
+<pre><code>- LeeCode
+</code></pre><p>categories: </p>
+<pre><code>- LeeCode
+</code></pre><p>hidden: true</p>
+<h2 id="cateHidden-false"><a href="#cateHidden-false" class="headerlink" title="cateHidden: false"></a>cateHidden: false</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>Given an array of strings patterns and a string word, return the number of strings in patterns that exist as a substring in word.</p>
+<p>A substring is a contiguous sequence of characters within a string.</p>
+</blockquote>
+<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><pre><code class="lang-bash">Input: patterns = [&quot;a&quot;,&quot;abc&quot;,&quot;bc&quot;,&quot;d&quot;], word = &quot;abc&quot;
+Output: 3
+Explanation:
+- &quot;a&quot; appears as a substring in &quot;abc&quot;.
+- &quot;abc&quot; appears as a substring in &quot;abc&quot;.
+- &quot;bc&quot; appears as a substring in &quot;abc&quot;.
+- &quot;d&quot; does not appear as a substring in &quot;abc&quot;.
+3 of the strings in patterns appear as a substring in word.
+
+Input: patterns = [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;], word = &quot;aaaaabbbbb&quot;
+Output: 2
+Explanation:
+- &quot;a&quot; appears as a substring in &quot;aaaaabbbbb&quot;.
+- &quot;b&quot; appears as a substring in &quot;aaaaabbbbb&quot;.
+- &quot;c&quot; does not appear as a substring in &quot;aaaaabbbbb&quot;.
+2 of the strings in patterns appear as a substring in word.
+</code></pre>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>用String的<code>indexOf</code>很容易就能解决。</p>
+<pre><code class="lang-js">var numOfStrings = function(patterns, word) {
+    let num = 0;
+    for(let i = 0; i &lt; patterns.length; i++) {
+        if(word.indexOf(patterns[i]) &gt; -1) {
+            num += 1;
+        }
+    }
+    return num;
+}
+</code></pre>
+<p>如果自己实现<code>indexOf</code>方法：</p>
+<pre><code class="lang-js">    function myIndexOf(str, word) {
+        let _str = str.split(&#39;&#39;), num = -1, _l = +word.length; // word.length需要转成Number
+        for(let i in _str) {
+            if(_str[i] === word[0]) {
+                let flag = true, limit = Number(i) + _l;
+                for(let j = i; j &lt; limit; j++) {
+                    if(_str[j] !== word[j - i]) {
+                        flag = false;
+                        break;
+                    }
+                }
+                if(flag) {
+                    num = i;
+                    break;
+                }
+            }
+        }
+        return num;
+    }
+</code></pre>
+<h3 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h3><blockquote>
+<p>Accepted</p>
+<p>82/82 cases passed (146 ms)</p>
+<p>Your runtime beats 5.83 % of javascript submissions</p>
+<p>Your memory usage beats 89.81 % of javascript submissions (39.6 MB)</p>
+</blockquote>

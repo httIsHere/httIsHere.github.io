@@ -1,0 +1,40 @@
+<hr>
+<p>title: 1979.find-greatest-common-divisor-of-array<br>date: 2021-12-10 14:09:54<br>mathjax: true<br>tags:</p>
+<pre><code>- LeeCode
+</code></pre><p>categories: </p>
+<pre><code>- LeeCode
+</code></pre><p>hidden: true</p>
+<h2 id="cateHidden-false"><a href="#cateHidden-false" class="headerlink" title="cateHidden: false"></a>cateHidden: false</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>Given an integer array nums, return the greatest common divisor of the smallest number and largest number in nums.</p>
+<p>The greatest common divisor of two numbers is the largest positive integer that evenly divides both numbers.</p>
+</blockquote>
+<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><pre><code class="lang-bash">Input: nums = [2,5,6,9,10]
+Output: 2
+Explanation:
+The smallest number in nums is 2.
+The largest number in nums is 10.
+The greatest common divisor of 2 and 10 is 2.
+</code></pre>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><pre><code class="lang-js">var findGCD = function(nums) {
+    let min = nums[0], max = nums[0], gcd = 0;
+    for(let i = 1; i &lt; nums.length; i++) {
+        if(nums[i] &lt; min) {
+            min = nums[i];
+        } else if(nums[i] &gt; max) {
+            max = nums[i];
+        }
+    }
+    for(let i = 1; i &lt;= min &amp;&amp; i &lt;= max; i++) {
+        if(min % i === 0 &amp;&amp; max % i === 0) {
+            gcd = i;
+        }
+    }
+    return gcd;
+};
+</code></pre>
+<h3 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h3><blockquote>
+<p>Accepted</p>
+<p>215/215 cases passed (76 ms)</p>
+<p>Your runtime beats 78.57 % of javascript submissions</p>
+<p>Your memory usage beats 50.34 % of javascript submissions (40.2 MB)</p>
+</blockquote>

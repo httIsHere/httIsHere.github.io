@@ -1,0 +1,38 @@
+<hr>
+<p>title: 1961.check-if-string-is-a-prefix-of-array<br>date: 2021-12-16 11:22:51<br>mathjax: true<br>tags:</p>
+<pre><code>- LeeCode
+</code></pre><p>categories: </p>
+<pre><code>- LeeCode
+</code></pre><p>hidden: true</p>
+<h2 id="cateHidden-false"><a href="#cateHidden-false" class="headerlink" title="cateHidden: false"></a>cateHidden: false</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>Given a string s and an array of strings words, determine whether s is a prefix string of words.</p>
+<p>A string s is a prefix string of words if s can be made by concatenating the first k strings in words for some positive k no larger than words.length.</p>
+<p>Return true if s is a prefix string of words, or false otherwise.</p>
+</blockquote>
+<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><pre><code class="lang-bash">Input: s = &quot;iloveleetcode&quot;, words = [&quot;i&quot;,&quot;love&quot;,&quot;leetcode&quot;,&quot;apples&quot;]
+Output: true
+Explanation:
+s can be made by concatenating &quot;i&quot;, &quot;love&quot;, and &quot;leetcode&quot; together.
+
+Input: s = &quot;iloveleetcode&quot;, words = [&quot;apples&quot;,&quot;i&quot;,&quot;love&quot;,&quot;leetcode&quot;]
+Output: false
+Explanation:
+It is impossible to make s using a prefix of arr.
+</code></pre>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><pre><code class="lang-js">var isPrefixString = function(s, words) {
+    let str = &#39;&#39;;
+    for(let i = 0; i &lt; words.length; i++) {
+        str = str.concat(words[i]);
+        if(s === str) {
+            return true;
+        }
+    }
+    return false;
+};
+</code></pre>
+<h3 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h3><blockquote>
+<p>Accepted</p>
+<p>349/349 cases passed (106 ms)</p>
+<p>Your runtime beats 17.91 % of javascript submissions</p>
+<p>Your memory usage beats 91.04 % of javascript submissions (39.8 MB)</p>
+</blockquote>

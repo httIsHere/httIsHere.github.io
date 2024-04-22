@@ -1,0 +1,41 @@
+<hr>
+<p>title: 257.Binary Tree Paths<br>date: 2021-10-13 16:31:14<br>tags:</p>
+<pre><code>- LeeCode
+</code></pre><p>categories: </p>
+<pre><code>- LeeCode
+</code></pre><p>hidden: true</p>
+<h2 id="cateHidden-false"><a href="#cateHidden-false" class="headerlink" title="cateHidden: false"></a>cateHidden: false</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><blockquote>
+<p>Given the root of a binary tree, return all root-to-leaf paths in any order.</p>
+<p>A leaf is a node with no children.</p>
+</blockquote>
+<p>给定二叉树的根，以任意顺序返回所有根到叶的路径。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>【无参考】根据递归，记录每个节点的路径，遇到叶节点时返回当前节点路径。</p>
+<pre><code class="lang-js">var binaryTreePaths = function(root) {
+
+    let result = [], path = &#39;&#39;;
+
+    binaryTreePath(root, path);
+
+    return result;
+
+    function binaryTreePath(root, path) {
+        // path: 父节点的路径
+        if(!root) return null;
+        if(!root.left &amp;&amp; !root.right) {
+            // ^ It&#39;s a leaf
+            path += root.val;
+            result.push(path);
+            return;
+        }
+        path += `${root.val}-&gt;`; // 记录当前节点
+        binaryTreePath(root.left, path);
+        binaryTreePath(root.right, path);
+    }
+};
+</code></pre>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><blockquote>
+<p>Accepted</p>
+<p>208/208 cases passed (115 ms)</p>
+<p>Your runtime beats 21.56 % of javascript submissions</p>
+<p>Your memory usage beats 65.7 % of javascript submissions (40.1 MB)</p>
+</blockquote>

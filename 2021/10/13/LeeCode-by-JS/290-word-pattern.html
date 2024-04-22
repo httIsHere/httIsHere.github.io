@@ -1,0 +1,53 @@
+<hr>
+<p>title: 290.word-pattern<br>date: 2021-10-21 14:50:02<br>tags:</p>
+<pre><code>- LeeCode
+</code></pre><p>categories: </p>
+<pre><code>- LeeCode
+</code></pre><p>hidden: true</p>
+<h2 id="cateHidden-false"><a href="#cateHidden-false" class="headerlink" title="cateHidden: false"></a>cateHidden: false</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><blockquote>
+<p>Given a pattern and a string s, find if s follows the same pattern.</p>
+<p>Here follow means a full match, such that there is a bijection between a letter in pattern and a non-empty word in s.</p>
+</blockquote>
+<h3 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h3><pre><code class="lang-bash"># 1
+Input: pattern = &quot;abba&quot;, s = &quot;dog cat cat dog&quot;
+Output: true
+
+# 2
+Input: pattern = &quot;abba&quot;, s = &quot;dog cat cat fish&quot;
+Output: false
+
+# 3
+Input: pattern = &quot;aaaa&quot;, s = &quot;dog cat cat dog&quot;
+Output: false
+
+# 4
+Input: pattern = &quot;abba&quot;, s = &quot;dog dog dog dog&quot;
+Output: false
+</code></pre>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>需要检查字符和单词之间的映射关系（条件是唯一1对1映射）。</p>
+<pre><code class="lang-js">var wordPattern = function(pattern, s) {
+    // 和之前的字符映射类似
+    let tep = {}, flag = true;
+    let _s = s.split(&#39; &#39;);
+    if(pattern.length !== _s.length) return false;
+    for(let i = 0; i &lt; pattern.length; i++) {
+        if(!tep[pattern[i]]) tep[pattern[i]] = _s[i];
+        else if(tep[pattern[i]] !== _s[i]) return false;
+        // 检查是否存在映射关系
+        Object.keys(tep).forEach(item =&gt; {
+            if(tep[item] === _s[i] &amp;&amp; item !== pattern[i]) {
+                flag = false;
+                return;
+            }
+        });
+        if(!flag) return false;
+    }
+    return true;
+};
+</code></pre>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><blockquote>
+<p>Accepted</p>
+<p>36/36 cases passed (94 ms)</p>
+<p>Your runtime beats 30.47 % of javascript submissions</p>
+<p>Your memory usage beats 65.61 % of javascript submissions (38.5 MB)</p>
+</blockquote>

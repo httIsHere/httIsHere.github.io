@@ -1,0 +1,50 @@
+<hr>
+<p>title: 1991.find-the-middle-index-in-array<br>date: 2021-12-07 15:07:39<br>mathjax: true<br>tags:</p>
+<pre><code>- LeeCode
+</code></pre><p>categories: </p>
+<pre><code>- LeeCode
+</code></pre><p>hidden: true</p>
+<h2 id="cateHidden-false"><a href="#cateHidden-false" class="headerlink" title="cateHidden: false"></a>cateHidden: false</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>Given a 0-indexed integer array nums, find the leftmost middleIndex (i.e., the smallest amongst all the possible ones).</p>
+<p>A middleIndex is an index where <code>nums[0] + nums[1] + ... + nums[middleIndex-1] == nums[middleIndex+1] + nums[middleIndex+2] + ... + nums[nums.length-1]</code>.</p>
+<p>If <code>middleIndex == 0</code>, the left side sum is considered to be 0. Similarly, if <code>middleIndex == nums.length - 1</code>, the right side sum is considered to be 0.</p>
+<p>Return the leftmost middleIndex that satisfies the condition, or -1 if there is no such index.</p>
+</blockquote>
+<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><pre><code class="lang-bash">Input: nums = [2,3,-1,8,4]
+Output: 3
+Explanation:
+The sum of the numbers before index 3 is: 2 + 3 + -1 = 4
+The sum of the numbers after index 3 is: 4 = 4
+
+Input: nums = [2,5]
+Output: -1
+Explanation:
+There is no valid middleIndex.
+</code></pre>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><pre><code class="lang-js">/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var findMiddleIndex = function(nums) {
+    if(nums.length &lt;= 1) return 0;
+    let mid_index = 0;
+    while(mid_index &lt; nums.length) {
+        let l = 0, r = 0;
+        for(let i = 0; i &lt; nums.length; i++) {
+            if(i &lt; mid_index) l += nums[i];
+            if(i &gt; mid_index) r += nums[i];
+        }
+        if(l === r) {
+            return mid_index;
+        }
+        mid_index++;
+    }
+    return -1;
+};
+</code></pre>
+<h3 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h3><blockquote>
+<p>Accepted</p>
+<p>294/294 cases passed (88 ms)</p>
+<p>Your runtime beats 28.21 % of javascript submissions</p>
+<p>Your memory usage beats 23.59 % of javascript submissions (40.9 MB)</p>
+</blockquote>

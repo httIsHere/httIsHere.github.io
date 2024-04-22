@@ -1,0 +1,48 @@
+<hr>
+<p>title: 2000.reverse-prefix-of-word<br>date: 2021-12-06 16:23:13<br>mathjax: true<br>tags:</p>
+<pre><code>- LeeCode
+</code></pre><p>categories: </p>
+<pre><code>- LeeCode
+</code></pre><p>hidden: true</p>
+<h2 id="cateHidden-false"><a href="#cateHidden-false" class="headerlink" title="cateHidden: false"></a>cateHidden: false</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><blockquote>
+<p>Given a 0-indexed string word and a character ch, reverse the segment of word that starts at index 0 and ends at the index of the first occurrence of ch (inclusive). If the character ch does not exist in word, do nothing.</p>
+<ul>
+<li>For example, if word = “abcdefd” and ch = “d”, then you should reverse the segment that starts at 0 and ends at 3 (inclusive). The resulting string will be “dcbaefd”.</li>
+</ul>
+<p>Return the resulting string.</p>
+</blockquote>
+<h3 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h3><pre><code class="lang-bash">Input: word = &quot;abcdefd&quot;, ch = &quot;d&quot;
+Output: &quot;dcbaefd&quot;
+Explanation: The first occurrence of &quot;d&quot; is at index 3. 
+Reverse the part of word from 0 to 3 (inclusive), the resulting string is &quot;dcbaefd&quot;.
+</code></pre>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><pre><code class="lang-js">/**
+ * @param {string} word
+ * @param {character} ch
+ * @return {string}
+ */
+var reversePrefix = function(word, ch) {
+    let _num = -1; // the index of ch
+    let i = 0;
+    word = word.split(&#39;&#39;);
+    while(i &lt; word.length) {
+        if(word[i] === ch) {
+            _num = i;
+            break;
+        }
+        i++;
+    }
+    for(let i = 0; i &lt; _num / 2; i++) {
+        let temp = word[i];
+        word[i] = word[_num - i];
+        word[_num - i] = temp;
+    }
+    return word.join(&#39;&#39;);
+};
+</code></pre>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><blockquote>
+<p>Accepted</p>
+<p>112/112 cases passed (76 ms)</p>
+<p>Your runtime beats 60.98 % of javascript submissions</p>
+<p>Your memory usage beats 46.34 % of javascript submissions (39 MB)</p>
+</blockquote>

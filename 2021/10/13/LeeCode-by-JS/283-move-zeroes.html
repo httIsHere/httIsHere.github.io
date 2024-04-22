@@ -1,0 +1,31 @@
+<hr>
+<p>title: 283.move zeroes<br>date: 2021-10-21 14:25:44<br>tags:</p>
+<pre><code>- LeeCode
+</code></pre><p>categories: </p>
+<pre><code>- LeeCode
+</code></pre><p>hidden: true</p>
+<h2 id="cateHidden-false"><a href="#cateHidden-false" class="headerlink" title="cateHidden: false"></a>cateHidden: false</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><blockquote>
+<p>Given an integer array nums, move all 0’s to the end of it while maintaining the relative order of the non-zero elements.</p>
+<p>Note that you must do this in-place without making a copy of the array.</p>
+<p>将数组内的所有零移至数组末尾。</p>
+</blockquote>
+<h3 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h3><pre><code class="lang-bash">Input: nums = [0,1,0,3,12]
+Output: [1,3,12,0,0]
+</code></pre>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>将数组内的0用非0数字进行覆盖，再根据数组内0的个数对数组后几位进行置0。</p>
+<pre><code class="lang-js">var moveZeroes = function(nums) {
+    if(nums.length &lt;= 1) return nums;
+    let zero_num = 0;
+    for(var i = 0; i &lt; nums.length; i++) {
+        if(nums[i] !== 0) {
+            // 覆盖0
+            nums[zero_num] = nums[i];
+            zero_num++;
+        }
+    }
+    for(let i = zero_num; i &lt; nums.length; i++) {
+        nums[i] = 0;
+    }
+    return nums;
+};
+</code></pre>

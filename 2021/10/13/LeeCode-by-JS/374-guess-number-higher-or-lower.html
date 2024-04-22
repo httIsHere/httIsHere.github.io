@@ -1,0 +1,50 @@
+<hr>
+<p>title: 374.guess-number-higher-or-lower<br>date: 2021-11-19 11:15:59<br>tags:</p>
+<pre><code>- LeeCode
+</code></pre><p>categories: </p>
+<pre><code>- LeeCode
+</code></pre><p>hidden: true</p>
+<h2 id="cateHidden-false"><a href="#cateHidden-false" class="headerlink" title="cateHidden: false"></a>cateHidden: false</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><blockquote>
+<p>We are playing the Guess Game. The game is as follows:</p>
+<p>I pick a number from 1 to n. You have to guess which number I picked.</p>
+<p>Every time you guess wrong, I will tell you whether the number I picked is higher or lower than your guess.</p>
+<p>You call a pre-defined API int guess(int num), which returns 3 possible results:</p>
+<ul>
+<li><p>-1: The number I picked is lower than your guess (i.e. pick &lt; num).</p>
+</li>
+<li><p>1: The number I picked is higher than your guess (i.e. pick &gt; num).</p>
+</li>
+<li><p>0: The number I picked is equal to your guess (i.e. pick == num).</p>
+</li>
+</ul>
+<p>Return the number that I picked.</p>
+</blockquote>
+<h3 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h3><pre><code class="lang-bash">Input: n = 10, pick = 6
+Output: 6
+</code></pre>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>二分查找。</p>
+<pre><code class="lang-js">// guess是一个前置API
+var guessNumber = function (n) {
+  let min = 1,
+    max = n, mid;
+  while (min &lt;= max) {
+    mid = Math.floor((min + max) / 2);
+    switch (guess(mid)) {
+      case -1:
+        max = mid - 1;
+        break;
+      case 1:
+        min = mid + 1;
+        break;
+      case 0:
+        return mid;
+    }
+  }
+};
+</code></pre>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><blockquote>
+<p>Accepted</p>
+<p>25/25 cases passed (68 ms)</p>
+<p>Your runtime beats 90.8 % of javascript submissions</p>
+<p>Your memory usage beats 15.01 % of javascript submissions (38.8 MB)</p>
+</blockquote>

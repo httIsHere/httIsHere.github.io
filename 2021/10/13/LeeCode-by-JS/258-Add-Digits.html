@@ -1,0 +1,38 @@
+<hr>
+<p>title: 258.Add Digits<br>date: 2021-10-15 11:02:42<br>tags:</p>
+<pre><code>- LeeCode
+</code></pre><p>categories: </p>
+<pre><code>- LeeCode
+</code></pre><p>hidden: true</p>
+<h2 id="cateHidden-false"><a href="#cateHidden-false" class="headerlink" title="cateHidden: false"></a>cateHidden: false</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><blockquote>
+<p>Given an integer num, repeatedly add all its digits until the result has only one digit, and return it.<br>给定一个非负整数 num，反复将各个位上的数字相加，直到结果为一位数。</p>
+</blockquote>
+<h3 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h3><pre><code class="lang-bash">Input: num = 38
+Output: 2
+Explanation: The process is
+38 --&gt; 3 + 8 --&gt; 11
+11 --&gt; 1 + 1 --&gt; 2 
+Since 2 has only one digit, return it.
+</code></pre>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><h4 id="1-简单循环暴力解法"><a href="#1-简单循环暴力解法" class="headerlink" title="1. 简单循环暴力解法"></a>1. 简单循环暴力解法</h4><pre><code class="lang-js">var addDigits = function(num) {
+    if(num &lt; 10) return num;
+
+    while(num &gt;= 10) {
+        let sum = 0, cur = num;
+        while(cur &gt;= 10) {
+            sum += cur % 10;
+            cur = Math.floor(cur / 10);
+        }
+        sum += cur;
+        num = sum;
+    }
+    return num;
+};
+</code></pre>
+<h4 id="2-Do-it-without-any-loop-recursion-in-O-1-runtime"><a href="#2-Do-it-without-any-loop-recursion-in-O-1-runtime" class="headerlink" title="2. Do it without any loop/recursion in O(1) runtime"></a>2. Do it without any loop/recursion in O(1) runtime</h4><p><a href="https://blog.csdn.net/weixin_44485744/article/details/104114182">参考解法</a></p>
+<pre><code class="lang-js">var addDigits = function(num) {
+    // ! 38 = 3*10 + 8 = 3*9 + 3 + 8(各位相加为 3 + 8,即减小了9的3倍)
+    // 每次都减少9的倍数
+    return (num - 1) % 9 + 1;
+}
+</code></pre>

@@ -1,0 +1,1442 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="vue source code 1.0, HTTISHERE">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>vue source code 1.0 | HTTISHERE</title>
+    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/avatar.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">HTTISHERE</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/avatar.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">HTTISHERE</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/cover-bg-6.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">vue source code 1.0</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">
+                                <span class="chip bg-color">从入门到放弃</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Vue/" class="post-category">
+                                Vue
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-01-22
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    2.7k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    12 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <ul>
+<li><p>前置准备<br><img src="https://upload-images.jianshu.io/upload_images/14447586-b4092d45e1f254ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/798/format/webp" alt=""></p>
+<ul>
+<li><p>Flow基本语法<br>对类型的限制，检测。</p>
+<pre class="line-numbers language-none"><code class="language-none">function sum(a: number, b:number) &#123;
+    return a + b;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; vue源码内的一个函数
+export function renderList (
+    val: any, &#x2F;&#x2F; any表示传入的类型可以是任何类型
+    render: (
+        val: any,
+        keyOrIndex: string | number, &#x2F;&#x2F; 表示需要是字符串或者数字
+        index?: number &#x2F;&#x2F; ?代表index可以不传，但是传的话一定要传入数字类型；
+                       &#x2F;&#x2F; 如果问号是在冒号后面，则这个参数必须要传，但可以是数字类型也可以是空
+    ) &#x3D;&gt; VNode
+): ?Array&lt;VNode&gt;&#123;
+    ...
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>原型和原型继承<br>Vue代码中是使用原型继承的方式实现父子组件共享初始化代码的。</p>
+<pre class="line-numbers language-none"><code class="language-none">function Student(props) &#123;
+    this.name &#x3D; props.name || &#39;Unnamed&#39;;
+&#125;
+
+Student.prototype.hello &#x3D; function () &#123;
+    alert(&#39;Hello, &#39; + this.name + &#39;!&#39;);
+&#125;
+
+&#x2F;&#x2F; 基于Student拓展出PrimaryStudent
+function PrimaryStudent(props) &#123;
+    &#x2F;&#x2F; 调用Student构造函数，绑定this变量:
+    Student.call(this, props);
+    this.grade &#x3D; props.grade || 1;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>此时PrimaryStudent并没有继承Student，其原型链还是：</p>
+<pre class="line-numbers language-none"><code class="language-none">new PrimaryStudent() ----&gt; PrimaryStudent.prototype ----&gt; Object.prototype ----&gt; null<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>若是继承则原型链：</p>
+<pre class="line-numbers language-none"><code class="language-none">new PrimaryStudent() ----&gt; PrimaryStudent.prototype ----&gt; Student.prototype ----&gt; Object.prototype ----&gt; null<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>此时需要一个中间对象来实现，将中间对象的原型要指向<code>Student.prototype</code>，不能直接<code>PrimaryStudent.prototype = Student.prototype;</code>。</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 空函数F:
+function F() &#123;&#125;
+
+&#x2F;&#x2F; 把F的原型指向Student.prototype:
+F.prototype &#x3D; Student.prototype;
+
+&#x2F;&#x2F; 把PrimaryStudent的原型指向一个新的F对象，F对象的原型正好指向Student.prototype:
+PrimaryStudent.prototype &#x3D; new F();
+
+&#x2F;&#x2F; 把PrimaryStudent原型的构造函数修复为PrimaryStudent:
+PrimaryStudent.prototype.constructor &#x3D; PrimaryStudent;
+
+&#x2F;&#x2F; 在PrimaryStudent原型（就是new F()对象）上定义方法：
+PrimaryStudent.prototype.getGrade &#x3D; function () &#123;
+    return this.grade;
+&#125;;
+
+var Lilei &#x3D; new PrimaryStudent(&#123;
+    name: &#39;李雷&#39;,
+    grade: 2
+&#125;);
+&#x2F;&#x2F; 验证原型:
+Lilei.__proto__ &#x3D;&#x3D;&#x3D; PrimaryStudent.prototype; &#x2F;&#x2F; true
+Lilei.__proto__.__proto__ &#x3D;&#x3D;&#x3D; Student.prototype; &#x2F;&#x2F; true
+
+&#x2F;&#x2F; 验证继承关系:
+Lilei instanceof PrimaryStudent; &#x2F;&#x2F; true
+Lilei instanceof Student; &#x2F;&#x2F; true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>原来的原型链：<br><img src="https://cdn.liaoxuefeng.com/cdn/files/attachments/001439872136313496e60e07ed143bda40a0200b12d8cc3000/l" alt=""><br>新的原型链：<br><img src="https://cdn.liaoxuefeng.com/cdn/files/attachments/001439872160923ca15925ec79f4692a98404ddb2ed5503000/l" alt=""></p>
+<p>封装这个继承过程：</p>
+<pre class="line-numbers language-none"><code class="language-none">function inherits(Child, Parent) &#123;
+    var F &#x3D; function () &#123;&#125;;
+    F.prototype &#x3D; Parent.prototype;
+    Child.prototype &#x3D; new F();
+    Child.prototype.constructor &#x3D; Child;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>最后JavaScript的原型继承实现方式就是：<br>  定义新的构造函数，并在内部用call()调用希望“继承”的构造函数，并绑定this；<br>  借助中间函数F实现原型链继承，最好通过封装的inherits函数完成；<br>  继续在新的构造函数的原型上定义新方法。<br>参考（还需要深入研究）：<br><a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/0014344997013405abfb7f0e1904a04ba6898a384b1e925000">廖雪峰js教程</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Inheritance_and_the_prototype_chain">继承与原型链</a></p>
+</li>
+<li><p>Object.defineProperty<br>使用它实现响应式数据功能（数据绑定）。</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; vue 内定义响应式数据
+export function defineReactive (
+    obj: Object,
+    key: string,
+    val: any,
+    customSetter?: ?Function,
+    shallow?: boolean
+) &#123;
+    .....
+    Object.defineProperty(obj, key, &#123;
+        enumerable: true, &#x2F;&#x2F; 是否可以遍历该key
+        configurable: true, &#x2F;&#x2F; 是否可以删除该key或者重新配置该key
+        get: function reactiveGetter () &#123;
+            const value &#x3D; getter ? getter.call(obj) : val
+            if (Dep.target) &#123;
+                dep.depend()
+                if (childOb) &#123;
+                    childOb.dep.depend()
+                    if (Array.isArray(value)) &#123;
+                        dependArray(value)
+                    &#125;
+                &#125;
+            &#125;
+            return value
+        &#125;,
+        set: function reactiveSetter (newVal) &#123;
+            const value &#x3D; getter ? getter.call(obj) : val
+            &#x2F;* eslint-disable no-self-compare *&#x2F;
+            if (newVal &#x3D;&#x3D;&#x3D; value || (newVal !&#x3D;&#x3D; newVal &amp;&amp; value !&#x3D;&#x3D; value)) &#123;
+                return
+            &#125;
+            &#x2F;* eslint-enable no-self-compare *&#x2F;
+            if (process.env.NODE_ENV !&#x3D;&#x3D; &#39;production&#39; &amp;&amp; customSetter) &#123;
+                customSetter()
+            &#125;
+            if (setter) &#123;
+                setter.call(obj, newVal)
+            &#125; else &#123;
+                val &#x3D; newVal
+            &#125;
+            childOb &#x3D; !shallow &amp;&amp; observe(newVal)
+            dep.notify()
+        &#125;
+    &#125;)
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>Object.defineProperty</code>这个函数有三个参数，第一个参数即为需要设置的对象，第二个参数为要设置的键值，第三个参数是一个配置对象，里面可以有：<br>value: 对应key的值<br>configurable：是否可以删除该key或者重新配置该key<br>enumerable：是否可以遍历该key<br>writable：是否可以修改该key<br>get: 获取该key值时调用的函数<br>set: 设置该key值时调用的函数</p>
+<pre class="line-numbers language-none"><code class="language-none">let x &#x3D; &#123;&#125;
+x[&#39;name&#39;] &#x3D; &#39;vue&#39;
+console.log(Object.getOwnPropertyDescriptor(x,&#39;name&#39;))
+&#x2F;&#x2F; Object.getOwnPropertyDescriptor可以获取对象某个key的描述对象
+&#x2F;*
+ * &#123;
+ *  value: &quot;vue&quot;,
+ *  writable: true, 
+ *  enumerable: true, 
+ *  configurable: true
+ *  &#125;
+*&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>此时对其进行操作：</p>
+<pre class="line-numbers language-none"><code class="language-none">Object.defineProperty(x, &#39;name&#39;, &#123;
+  configurable: false
+&#125;)
+&#x2F;&#x2F; 结果
+delete x[&quot;name&quot;]; &#x2F;&#x2F; false
+
+Object.defineProperty(x, 0, &#123;
+    enumerable: false
+&#125;)
+&#x2F;&#x2F; 不能使用for等循环对x进行遍历<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在vue的Observer类中有下面一行代码：</p>
+<pre class="line-numbers language-none"><code class="language-none">def(value, &#39;__ob__&#39;, this);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>这里def是个工具函数，目的是想给value添加一个key为<strong>ob</strong>，值为this，程序下面要遍历value对其子内容进行递归设置，如果直接用value.<strong>ob</strong>这种方式，在遍历时又会取到造成，这显然不是本意，所以def函数是利用Object.defineProperty给value添加的属性，同时enumerable设置为false。<br><code>set</code>和<code>get</code>类似于在获取对象值和设置对象值时加了一个代理。</p>
+<pre class="line-numbers language-none"><code class="language-none">Object.defineProperty(x, &#39;name&#39;, &#123;
+    get: function()&#123;
+       console.log(&quot;getter called!&quot;)
+    &#125;,
+    set: function(newVal)&#123;
+        console.log(&quot;setter called! newVal is:&quot; + newVal)
+    &#125;
+&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>所以在访问x[‘name’]时回打印getter called，在设置x[‘name’] = ‘httishere’时会打印setter called! newVal is:httishere，正是通过这种方式实现了访问属性时收集依赖，设置属性时源码有一句dep.notify，里面便是通知视图更新的相关操作。</p>
+</li>
+<li><p>Vnode<br>virtual node，虚拟节点，原生dom节点对象非常大，若直接操作dom，性能代价会比较大。</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; vue 内对vnode的定义
+export default class VNode &#123;
+    tag: string | void;
+    data: VNodeData | void;
+    children: ?Array&lt;VNode&gt;;
+    text: string | void;
+    elm: Node | void;
+    ns: string | void;
+    context: Component | void; &#x2F;&#x2F; rendered in this component&#39;s scope
+    key: string | number | void;
+    componentOptions: VNodeComponentOptions | void;
+    componentInstance: Component | void; &#x2F;&#x2F; component instance
+    parent: VNode | void; &#x2F;&#x2F; component placeholder node
+
+    &#x2F;&#x2F; strictly internal
+    raw: boolean; &#x2F;&#x2F; contains raw HTML? (server only)
+    isStatic: boolean; &#x2F;&#x2F; hoisted static node
+    isRootInsert: boolean; &#x2F;&#x2F; necessary for enter transition check
+    isComment: boolean; &#x2F;&#x2F; empty comment placeholder?
+    isCloned: boolean; &#x2F;&#x2F; is a cloned node?
+    isOnce: boolean; &#x2F;&#x2F; is a v-once node?
+    asyncFactory: Function | void; &#x2F;&#x2F; async component factory function
+    asyncMeta: Object | void;
+    isAsyncPlaceholder: boolean;
+    ssrContext: Object | void;
+    fnContext: Component | void; &#x2F;&#x2F; real context vm for functional nodes
+    fnOptions: ?ComponentOptions; &#x2F;&#x2F; for SSR caching
+    fnScopeId: ?string;
+    ....
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>发生修改时，从全局看问题的方式就是异步，先把修改放到队列中，然后整成一批去修改，做diff：</p>
+<pre class="line-numbers language-none"><code class="language-none">queueWatcher(this);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>函数柯里化<br>将多参数的函数化作多个部分函数去调用。</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 例子 一个需要两个参数的函数
+function getSum(a,b)&#123;
+    return a+b;
+&#125;
+&#x2F;&#x2F; 有时候可能参数的获得是异步的，其他参数会在另一个时间点再传入
+function getSum(a)&#123;
+    return function(b)&#123;
+        return a+b;
+    &#125;
+&#125;
+let f &#x3D; getSum(2)
+console.log(f(3))
+console.log(getSum(2)(3)) &#x2F;&#x2F; 5<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这样参数就可以在不同的时间点传入，Vue源码中有一个platform目录，专门存放和平台相关的源码，对函数进行柯里化就可以不用每次运行就进行平台判断。</p>
+<pre class="line-numbers language-none"><code class="language-none">function ...(平台相关参数)&#123;
+    return function(平台不相关参数)&#123;
+      处理逻辑
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在Vue的patch以及编译环节都应用了这种方式。</p>
+</li>
+<li><p>Macrotask与Microtask<br>与js的事件循环机制息息相关，Vue更新不是数据一改马上同步更新视图，而是将更改都放入到队列中，同一个watcher不会重复，然后异步处理更新逻辑。在实现异步的方式时，js实际提供了两种task—Macrotask与Microtask。</p>
+<pre class="line-numbers language-none"><code class="language-none">console.log(&#39;script start&#39;);
+setTimeout(function() &#123;
+    console.log(&#39;setTimeout&#39;);
+    Promise.resolve().then(function() &#123;
+        console.log(&#39;promise3&#39;);
+    &#125;).then(function() &#123;
+        console.log(&#39;promise4&#39;);
+    &#125;);
+&#125;, 0);
+Promise.resolve().then(function() &#123;
+    console.log(&#39;promise1&#39;);
+&#125;).then(function() &#123;
+    console.log(&#39;promise2&#39;);
+&#125;);
+console.log(&#39;script end&#39;);
+&#x2F;&#x2F; 结果
+script start
+script end
+promise1
+promise2
+setTimeout
+promise3
+promise4<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>js事件循环中有两个队列，一个叫MacroTask，一个MircroTask，大任务队列（MacroTask）跑大任务，比如主流程程序、事件处理函数、setTimeout等等，小任务队列（MircroTask）跑小任务，比如Promise，js总是先从大任务队列拿一个执行，然后再把所有小任务队列全部执行再循环往复。<br>上述代码整体的代码段就是一个大任务在执行，执行完毕再执行同级所有小任务，执行完之后再取一个大任务执行，此时就是取setTimeout，之后再是这里面的小任务。<br>重点是<strong>上面程序本身也是一个大任务</strong>，<br><a target="_blank" rel="noopener" href="https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/">Macrotask Vs Microtask</a><br><a target="_blank" rel="noopener" href="https://juejin.im/entry/58d4df3b5c497d0057eb99ff">理解js中Macrotask和Microtask</a><br><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2014/10/event-loop.html">阮一峰 Eventloop理解</a></p>
+</li>
+<li><p>递归编程算法<br>Vue源码中大量使用了递归算法—比如dom diff算法、ast的优化、目标代码的生成等等。</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 经典dom diff算法
+while (oldStartIdx &lt;&#x3D; oldEndIdx &amp;&amp; newStartIdx &lt;&#x3D; newEndIdx) &#123;
+  if (isUndef(oldStartVnode)) &#123;
+    oldStartVnode &#x3D; oldCh[++oldStartIdx]; &#x2F;&#x2F; Vnode has been moved left
+  &#125; else if (isUndef(oldEndVnode)) &#123;
+    oldEndVnode &#x3D; oldCh[--oldEndIdx];
+  &#125; else if (sameVnode(oldStartVnode, newStartVnode)) &#123;
+    patchVnode(oldStartVnode, newStartVnode, insertedVnodeQueue);
+    oldStartVnode &#x3D; oldCh[++oldStartIdx];
+    newStartVnode &#x3D; newCh[++newStartIdx];
+  &#125; else if (sameVnode(oldEndVnode, newEndVnode)) &#123;
+    patchVnode(oldEndVnode, newEndVnode, insertedVnodeQueue);
+    oldEndVnode &#x3D; oldCh[--oldEndIdx];
+    newEndVnode &#x3D; newCh[--newEndIdx];
+  &#125; else if (sameVnode(oldStartVnode, newEndVnode)) &#123; &#x2F;&#x2F; Vnode moved right
+    patchVnode(oldStartVnode, newEndVnode, insertedVnodeQueue);
+    canMove &amp;&amp; nodeOps.insertBefore(parentElm, oldStartVnode.elm, nodeOps.nextSibling(oldEndVnode.elm));
+    oldStartVnode &#x3D; oldCh[++oldStartIdx];
+    newEndVnode &#x3D; newCh[--newEndIdx];
+  &#125; else if (sameVnode(oldEndVnode, newStartVnode)) &#123; &#x2F;&#x2F; Vnode moved left
+    patchVnode(oldEndVnode, newStartVnode, insertedVnodeQueue);
+    canMove &amp;&amp; nodeOps.insertBefore(parentElm, oldEndVnode.elm, oldStartVnode.elm);
+    oldEndVnode &#x3D; oldCh[--oldEndIdx];
+    newStartVnode &#x3D; newCh[++newStartIdx];
+  &#125; else &#123;
+    if (isUndef(oldKeyToIdx)) &#123; oldKeyToIdx &#x3D; createKeyToOldIdx(oldCh, oldStartIdx, oldEndIdx); &#125;
+    idxInOld &#x3D; isDef(newStartVnode.key)
+      ? oldKeyToIdx[newStartVnode.key]
+      : findIdxInOld(newStartVnode, oldCh, oldStartIdx, oldEndIdx);
+    if (isUndef(idxInOld)) &#123; &#x2F;&#x2F; New element
+      createElm(newStartVnode, insertedVnodeQueue, parentElm, oldStartVnode.elm, false, newCh, newStartIdx);
+    &#125; else &#123;
+      vnodeToMove &#x3D; oldCh[idxInOld];
+      if (sameVnode(vnodeToMove, newStartVnode)) &#123;
+        patchVnode(vnodeToMove, newStartVnode, insertedVnodeQueue);
+        oldCh[idxInOld] &#x3D; undefined;
+        canMove &amp;&amp; nodeOps.insertBefore(parentElm, vnodeToMove.elm, oldStartVnode.elm);
+      &#125; else &#123;
+        &#x2F;&#x2F; same key but different element. treat as new element
+        createElm(newStartVnode, insertedVnodeQueue, parentElm, oldStartVnode.elm, false, newCh, newStartIdx);
+      &#125;
+    &#125;
+    newStartVnode &#x3D; newCh[++newStartIdx];
+  &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>主要是用于比较新旧Vnode节点然后更新子节点，调用者是patchVnode函数，我们发现这部分函数中又会调用会patchVnode，调用链条为:patchVnode-&gt;updateChildren-&gt;patchVnode。同时，即便没有直接应用递归，在将模板编译成AST（抽象语法树）的过程中，其使用了栈去模拟了递归的思想，由此可见递归算法的重要性。不管是真实dom还是vnode，其实本质都是树状结构，本来就是递归定义的东西。</p>
+</li>
+<li><p>编译原理基础知识</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; vue内
+const ast &#x3D; parse(template.trim(), options)
+if (options.optimize !&#x3D;&#x3D; false) &#123;
+    optimize(ast, options)
+&#125;
+const code &#x3D; generate(ast, options)
+return &#123;
+    ast,
+    render: code.render,
+    staticRenderFns: code.staticRenderFns
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>首先通过parse函数将template编译为抽象语法树ast，然后对ast进行代码优化，最后生成render函数。就是将模板html编译为render函数。<br>AST（抽象语法树），就是一种表现大家共同点的结构，得到ast是翻译的基础。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>参考文章：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/c914ccd498e7">Vue源码解析准备篇 from 海洋之木</a></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">阿汪同学</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://httishere.github.io/2019/01/22/vue1.0/">https://httishere.github.io/2019/01/22/vue1.0/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">阿汪同学</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">
+                                    <span class="chip bg-color">从入门到放弃</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/reward-alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/reward.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+</style>
+
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css">
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script type="module">
+    import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+    init({
+        el: '#vcomments',
+        serverURL: 'https://waline-1-x3506913.deta.app/',
+        //appId: '2',
+        //appKey: '2',
+        //notify: 'false' === 'true',
+        //verify: 'false' === 'true',
+        //visitor: 'true' === 'true',
+        //avatar: 'mm',
+        //pageSize: '10',
+        //lang: 'zh-cn',
+        //placeholder: 'just go go'
+    });
+</script>
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/01/23/vue2.0/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/cover-bg-5.jpg" class="responsive-img"
+                            alt="vue source code 2.0">
+                        
+                        <span class="card-title">vue source code 2.0</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                        
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-01-23
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Vue/" class="post-category">
+                                Vue
+                            </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">
+                        <span class="chip bg-color">从入门到放弃</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/01/22/constructor%20&%20prototype/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/cover-bg-7.jpg" class="responsive-img"
+                            alt="constructor &amp; prototype">
+                        
+                        <span class="card-title">constructor &amp; prototype</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                        
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-01-22
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/JavaScript/" class="post-category">
+                                JavaScript
+                            </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/js/">
+                        <span class="chip bg-color">js</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2024</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">阿汪同学</a>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/httIsHere" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:httishere0728@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

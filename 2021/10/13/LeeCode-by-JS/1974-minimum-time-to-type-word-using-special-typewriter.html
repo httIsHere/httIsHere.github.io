@@ -1,0 +1,67 @@
+<hr>
+<p>title: 1974.minimum-time-to-type-word-using-special-typewriter<br>date: 2021-12-10 11:57:32<br>mathjax: true<br>tags:</p>
+<pre><code>- LeeCode
+</code></pre><p>categories: </p>
+<pre><code>- LeeCode
+</code></pre><p>hidden: true</p>
+<h2 id="cateHidden-false"><a href="#cateHidden-false" class="headerlink" title="cateHidden: false"></a>cateHidden: false</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>There is a special typewriter with lowercase English letters ‘a’ to ‘z’ arranged in a circle with a pointer. A character can only be typed if the pointer is pointing to that character. The pointer is initially pointing to the character ‘a’.</p>
+<p><img src="https://gitee.com/httishere/blog-image/raw/master/img/chart.jpeg" alt=""><br>Each second, you may perform one of the following operations:</p>
+<ul>
+<li>Move the pointer one character counterclockwise or clockwise.</li>
+<li>Type the character the pointer is currently on.</li>
+</ul>
+<p>Given a string word, return the minimum number of seconds to type out the characters in word.</p>
+</blockquote>
+<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><pre><code class="lang-bash">Input: word = &quot;abc&quot;
+Output: 5
+Explanation: 
+The characters are printed as follows:
+- Type the character &#39;a&#39; in 1 second since the pointer is initially on &#39;a&#39;.
+- Move the pointer clockwise to &#39;b&#39; in 1 second.
+- Type the character &#39;b&#39; in 1 second.
+- Move the pointer clockwise to &#39;c&#39; in 1 second.
+- Type the character &#39;c&#39; in 1 second.
+
+Input: word = &quot;zjpc&quot;
+Output: 34
+Explanation:
+The characters are printed as follows:
+- Move the pointer counterclockwise to &#39;z&#39; in 1 second.
+- Type the character &#39;z&#39; in 1 second.
+- Move the pointer clockwise to &#39;j&#39; in 10 seconds.
+- Type the character &#39;j&#39; in 1 second.
+- Move the pointer clockwise to &#39;p&#39; in 6 seconds.
+- Type the character &#39;p&#39; in 1 second.
+- Move the pointer counterclockwise to &#39;c&#39; in 13 seconds.
+- Type the character &#39;c&#39; in 1 second.
+</code></pre>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>计算两个字符之间的移动距离，取最小。</p>
+<pre><code class="lang-js">/**
+ * @param {string} word
+ * @return {number}
+ */
+var minTimeToType = function(word) {
+    let move_num = 0, // 当前字符与目标字符的距离
+        seconds = 0; // 总使用时间
+    let current_ch = &#39;a&#39;;
+    for(let ch of word) {
+        seconds++;
+        let tar = ch.charCodeAt(), cur = current_ch.charCodeAt();
+        move_num = Math.abs(tar - cur);
+        if(move_num &gt; 13) {
+            move_num = 26 - move_num;
+        }
+        seconds += move_num;
+        current_ch = ch;
+        move_num = 0;
+    }
+    return seconds;
+};
+</code></pre>
+<h3 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h3><blockquote>
+<p>Accepted</p>
+<p>134/134 cases passed (88 ms)</p>
+<p>Your runtime beats 29.85 % of javascript submissions</p>
+<p>Your memory usage beats 14.93 % of javascript submissions (40.9 MB)</p>
+</blockquote>
